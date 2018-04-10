@@ -41,5 +41,10 @@ namespace EquityTradingPlatformApi.Models
         [Required]
         public int UserId;
 
+        public virtual Block Block { get; set; }
+
+        [Required]
+        public int BlockId;
+
     }
 }
