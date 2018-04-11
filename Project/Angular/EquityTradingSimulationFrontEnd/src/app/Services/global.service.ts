@@ -12,7 +12,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class GlobalService {
 
-  private _baseUrl:string = "http://localhost:60061/api/Admin";
+  private _baseUrl:string; // = "http://localhost:60061/api/Admin";
 
   // login: Login[];
   // admin: Admin[];
@@ -22,7 +22,8 @@ export class GlobalService {
 
   constructor(private _http:Http) { }
 
-  AdminCred(credentials):Observable<any>{
+  PostMethod(credentials,url):Observable<any>{
+    this._baseUrl = url;
     return this._http.post(this._baseUrl,credentials).map(this.extractData).catch(this.handleError);
   }
 

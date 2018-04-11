@@ -8,7 +8,14 @@ import { LoginComponent } from './Components/login/login.component';
 import { AdminloginComponent } from './Components/adminlogin/adminlogin.component';
 
 import {GlobalService} from "./Services/global.service";
+<<<<<<< HEAD
 import { BuyrequestComponent } from './Components/buyrequest/buyrequest.component';
+=======
+import {HttpModule, JsonpModule} from '@angular/http';
+
+import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
+>>>>>>> f29250f5a35a6aea6b1b3a1de5826810649de87f
 
 
 @NgModule({
@@ -20,7 +27,11 @@ import { BuyrequestComponent } from './Components/buyrequest/buyrequest.componen
     BuyrequestComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpModule,
+    JsonpModule,
   ],
   providers: [GlobalService],
   bootstrap: [AppComponent]
