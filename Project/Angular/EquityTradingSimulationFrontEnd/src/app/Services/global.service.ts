@@ -9,6 +9,7 @@ import 'rxjs/add/operator/catch';
 // import {Stocks} from '../Models/Login';
 // import {Contains} from '../Models/Login';
 
+
 @Injectable()
 export class GlobalService {
 
