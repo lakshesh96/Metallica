@@ -22,7 +22,7 @@ namespace EquityTradingPlatformApi.Models
 
         public virtual User User { get; set; }
 
-        // ishan bhadwa
+        [Required]
         public int UserId;
     }
 }
