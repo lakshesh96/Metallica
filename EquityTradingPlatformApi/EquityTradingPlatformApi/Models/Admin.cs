@@ -16,7 +16,6 @@ namespace EquityTradingPlatformApi.Models
         [Required]
         public string Password { get; set; }
 
-        [Required]
-        public int a { get; set; }
+       
     }
 }
