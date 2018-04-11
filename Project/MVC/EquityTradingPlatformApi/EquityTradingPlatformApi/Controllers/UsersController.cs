@@ -71,6 +71,21 @@ namespace EquityTradingPlatformApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // Login Functionality for USERS
+        [Route("api/Users/Login")]
+        public IHttpActionResult PostLogin(LoginUser user)
+        {
+            foreach(User u in db.Users)
+            {
+                if (u.UserName == user.UserName && u.Password == user.Password)
+                {
+                    return Ok("User Found. Approved: " + u.Approved);
+                }                    
+            }
+
+            return Ok(false);
+        }
+
         // POST: api/Users
         [ResponseType(typeof(User))]
         public IHttpActionResult PostUser(User user)
@@ -127,5 +142,11 @@ namespace EquityTradingPlatformApi.Controllers
         {
             return db.Users.Count(e => e.Id == id) > 0;
         }
+    }
+
+    public class LoginUser
+    {
+        public string UserName { get; set; }
+        public string Password { get; set; }
     }
 }
