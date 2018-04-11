@@ -10,7 +10,8 @@ import {GlobalService} from '../../Services/global.service';
 })
 export class AdminloginComponent implements OnInit {
   admin:FormGroup;
-  url:"http://localhost:60061/api/Admin";
+  url = "http://localhost:52705/api/Admin";
+  value2:string;
   constructor(private globalService:GlobalService) { }
 
   ngOnInit() {
@@ -20,16 +21,18 @@ export class AdminloginComponent implements OnInit {
     });
   }
   onSubmit({ value, valid }: { value: Admin, valid: boolean }) {
-    console.log(value, valid);
+    //console.log(value,valid);
 
-    let data: any = {AdminUserName: value.Username, AdminPass: value.Password}
-
-    this.globalService.AuthAdmin(data,this.url).subscribe(
-      response => value=response,
+    //let data: any = {Username: value.Username, Password: value.Password}
+    //console.log(value);
+    //console.log(data);
+    this.globalService.PostMethod(value,this.url).subscribe(
+      response => this.value2=response,
       error => console.error(error),
       () => console.log(),
     );
-    console.log(value);
+    console.log(this.value2);
+    //console.log("hello");
      
   }
 }

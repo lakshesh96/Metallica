@@ -1,0 +1,129 @@
+<div class="container">
+  <div class="row">
+  <div class="col-md-6">
+    <form [formGroup]="stock">
+      <br /> <br />
+      <h3 class="display-9">Add Stocks</h3>
+      <div>
+        Stock Name: <input type="text" formControlName="Name" class="form-group form-control col-sm-4"/>
+        <div class="error text-warning" *ngIf="stock.get('Name').hasError('required') && stock.get('Name').touched">
+          Stock Name not filled.
+        </div>
+        <div class="error text-warning" *ngIf="stock.get('Name').hasError('pattern') && stock.get('Name').touched">
+            Stock Name must involve characters only.
+        </div>
+      </div>
+      <div>
+        Stock Symbol: <input type="text" formControlName="Symbol" class="form-group form-control col-sm-4"/>
+        <div class="error text-warning" *ngIf="stock.get('Symbol').hasError('required') && stock.get('Symbol').touched">
+          Stock Symbol not filled.
+        </div>
+        <div class="error text-warning" *ngIf="stock.get('Symbol').hasError('pattern') && stock.get('Symbol').touched">
+          Stock Symbol must involve characters only.
+        </div>
+      </div>
+      <div>
+        Stock Price: <input type="text" formControlName="CurrentPrice" class="form-group form-control col-sm-4"/>
+        <div class="error text-warning" *ngIf="stock.get('CurrentPrice').hasError('required') && stock.get('CurrentPrice').touched">
+          Stock Price not filled.
+        </div>
+        <div class="error text-warning" *ngIf="stock.get('Symbol').hasError('pattern') && stock.get('CurrentPrice').touched">
+          Stock Price must involve numbers only.
+        </div>
+      </div>
+      <div>
+        Stock Quantity: <input type="text" formControlName="VolumeAvailable" class="form-group form-control col-sm-4"/>
+        <div class="error text-warning" *ngIf="stock.get('VolumeAvailable').hasError('required') && stock.get('VolumeAvailable').touched">
+          Stock Volume not filled.
+        </div>
+        <div class="error text-warning" *ngIf="stock.get('VolumeAvailable').hasError('pattern') && stock.get('VolumeAvailable').touched">
+          Stock Volume must involve numbers only.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-outline-success" (click)="onAdd(stock);stock.reset()">Add Stock</button>
+      <!--<div class="alert alert-danger alert-dismissible" *ngIf="!stock.valid && stock.get('VolumeAvailable').touched && stock.get('CurrentPrice').touched && stock.get('Symbol').touched && stock.get('Name').touched">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        Wrong Inputs - Enter Again
+      </div>-->
+    </form>
+  </div>  
+  <div class="col-md-6" >
+      <br /> <br />
+    <h3 class="display-9">Current Stocks Present in Exchange</h3>
+    <div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td scope="col">
+              <a href="#" ng-click="">
+                Stock Name
+                <span ng-show="sortType == 'Name' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'Name' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td scope="col">
+              <a href="#" ng-click="sortType = 'Symbol'; sortReverse = !sortReverse">
+                Symbol 
+                <span ng-show="sortType == 'Symbol' && !sortReverse" class="fa fa-caret-down"></span>
+                <span ng-show="sortType == 'Symbol' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td scope="col">
+              <a href="#" ng-click="sortType = 'CurrentPrice'; sortReverse = !sortReverse">
+              Current Price 
+              <span ng-show="sortType == 'CurrentPrice' && !sortReverse" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'CurrentPrice' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+          </td>
+            <td scope="col">
+              <a href="#" ng-click="sortType = 'VolumeAvailable'; sortReverse = !sortReverse">
+                Volume 
+              <span ng-show="sortType == 'VolumeAvailable' && !sortReverse" class="fa fa-caret-down"></span>
+              <span ng-show="sortType == 'VolumeAvailable' && sortReverse" class="fa fa-caret-up"></span>
+              </a>
+            </td>
+            <td scope="col">
+              Reclaim Shares
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- <tr>
+            <td>Tata Consultancy Services</td>
+            <td>TCS</td>
+            <td>1024</td>
+            <td>10000</td>
+            <td><input type="button" value="Reclaim Share" class="btn btn-outline-primary"/></td>
+          </tr>
+          <tr>
+            <td>Gail</td>
+            <td>GAIL</td>
+            <td>376</td>
+            <td>1500</td>
+            <td><input type="button" value="Reclaim Share" class="btn btn-outline-primary"/></td>
+          </tr>
+          <tr>
+            <td>Infosys</td>
+            <td>INFY</td>
+            <td>1001</td>
+            <td>2000</td>
+            <td><input type="button" value="Reclaim Share" class="btn btn-outline-primary"/></td>
+          </tr>   -->
+
+          <tr *ngFor="let data of list"  >
+            <td>{{data.Name}}</td>
+            <td>{{data.Symbol}}</td>
+            <td>{{data.CurrentPrice}}</td>
+            <td>{{data.VolumeAvailable}}</td>
+            <td><input type="button" value="Reclaim Share" class="btn btn-outline-primary"/></td>
+          </tr>
+
+        </tbody>
+      </table>
+      <br /><br /><br />
+      <input type="file" (change)="handleFile($event)" accept=".xls,.xlsx"/>
+    </div>
+  </div>
+  </div>
+</div>

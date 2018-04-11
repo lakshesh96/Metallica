@@ -22,9 +22,22 @@ export class GlobalService {
 
   constructor(private _http:Http) { }
 
-  AuthAdmin(credentials,url):Observable<any>{
+  PostMethod(credentials,url):Observable<any>{
+    //console.log(credentials);
+    console.log(url);
     this._baseUrl = url;
     return this._http.post(this._baseUrl,credentials).map(this.extractData).catch(this.handleError);
+  }
+
+  GetMethod(url):Observable<any[]>{
+    this._baseUrl = url;    
+    return this._http.get(this._baseUrl).map(this.extractData).catch(this.handleError);
+  }
+
+  PutMethod(data,url):Observable<any>{
+    
+    this._baseUrl = url;        
+    return this._http.put(this._baseUrl+"/"+data.id,data).map(this.extractData).catch(this.handleError);
   }
 
   extractData(res:Response){
@@ -33,6 +46,12 @@ export class GlobalService {
     console.log(body);
     return body || {};
   }
+
+  extractBlocks()
+  {
+    
+  }
+
 
   handleError(error: Response | any) {
     let errMsg: string;

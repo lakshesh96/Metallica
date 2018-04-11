@@ -1,12 +1,84 @@
 <div class="container">
-  <h1 style="text-align: center;">Block Creation</h1>
+  <h1 style="text-align: center; margin-bottom: 50px;">Block Creation</h1>
   <div class="row">
-    <div class="col-md-6"></div>
     <div class="col-md-6">
-      <div class="form-group">
-        <label for="Block Size">Block Size</label>
-        <input type="text" class="form-control"> 
+      <label for="Stock Name"><h3>TCS</h3></label>
+      <p>Description About stock</p>
+    </div>
+    <div class="col-md-6">
+      <form>
+          <div class="form-group">
+              <label for="Block Size">Block Size</label>
+              <input type="text" class="form-control"> 
+          </div>
+          <input type="button"  class="btn btn-outline-primary" value="Create Block" (click)="createblock()" />
+          <input type="button"  class="btn btn-outline-primary" value="Add to New Block" (click)="addblock()" />
+      </form>
+      
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2 style="text-align: center; margin-top:50px;">Pending Blocks</h2>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Trader Name</th>
+              <th>Stock Name</th>
+              <th>Stock Symbol</th>
+              <th>Size</th>
+              <th>Creation Date</th>
+              <th>Order type</th>
+              <th>Side</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pending of blocks">
+              <td>{{pending.TraderName}}</td>
+              <td>{{pending.StockName}}</td>
+              <td>{{pending.Symbol}}</td>
+              <td>{{pending.Size}}</td>
+              <td>{{pending.Date}}</td>
+              <td>{{pending.OrderType}}</td>
+              <td>{{pending.OrderSide}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
+  <div class="row">
+      <div class="col-md-12">
+      <h2 style="text-align: center; margin-top: 50px;">Partial Blocks</h2>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Trader Name</th>
+                <th>Stock Name</th>
+                <th>Stock Symbol</th>
+                <th>Size</th>
+                <th>Volume Left</th>
+                <th>Creation Date</th>
+                <th>Order type</th>
+                <th>Side</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let partial of blocks">
+                <td>{{partial.TraderName}}</td>
+                <td>{{partial.StockName}}</td>
+                <td>{{partial.Symbol}}</td>
+                <td>{{partial.Size}}</td>
+                <td>{{partial.vol}}</td>
+                <td>{{partial.Date}}</td>
+                <td>{{partial.OrderType}}</td>
+                <td>{{partial.OrderSide}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 </div>
