@@ -38,8 +38,7 @@ import {StocksService} from './Services/stocks.service';
     HttpModule,
     JsonpModule,
   ],
-  providers: [GlobalService,ExceltojsonService,AdminstocksService,StocksService],
-  providers: [GlobalService,ExceltojsonService,AdminstocksService,AddStockAdminService],
+  providers: [GlobalService,ExceltojsonService,AdminstocksService,StocksService,AddStockAdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
