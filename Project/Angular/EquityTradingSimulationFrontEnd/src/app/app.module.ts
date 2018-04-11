@@ -8,6 +8,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { AdminloginComponent } from './Components/adminlogin/adminlogin.component';
 
 import {GlobalService} from "./Services/global.service";
+import { BuyrequestComponent } from './Components/buyrequest/buyrequest.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {GlobalService} from "./Services/global.service";
     AppComponent,
     BlockCreationComponent,
     LoginComponent,
-    AdminloginComponent
+    AdminloginComponent,
+    BuyrequestComponent
   ],
   imports: [
     BrowserModule
