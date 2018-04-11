@@ -93,7 +93,7 @@ namespace EquityTradingPlatformApi.Controllers
         //Batch Add of Stocks
         [ActionName("PutList")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult StockList(ArrayList mydata)
+        public IHttpActionResult StockList(List<object> mydata)
         {
             try
             {
