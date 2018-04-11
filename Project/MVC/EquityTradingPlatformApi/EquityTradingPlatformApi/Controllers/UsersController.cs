@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -79,10 +80,22 @@ namespace EquityTradingPlatformApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Users.Add(user);
-            db.SaveChanges();
+            // By default user should'nt be approved
+            user.Approved = false;
 
-            return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
+            try
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+            }
+            catch (DbUpdateException e)
+            {
+                // If employee doesn't Exist.
+                return Ok("Error. Maybe employee doesn't exist. " + e.Message);
+            }
+   
+            //return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
+            return Ok(user.Id);
         }
 
         // DELETE: api/Users/5
