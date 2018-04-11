@@ -1,0 +1,33 @@
+<div align="center">
+  <div style="width:50%;height:40%;padding:35px"class="border border-dark">
+  <form novalidate (ngSubmit)="onSubmit(login)" [formGroup]="login">
+    <legend><strong>Login</strong></legend>
+    <div class="form-group" >
+      <label >
+          <span  class="col-sm-2 col-form-label"><strong>Type Of User :</strong></span>
+          <input type="radio" formControlName="Type"  value="r1" id="portfolioManager"> Portfolio Manager
+          <input type="radio" formControlName="Type"  value="r2" id="trader" >Trader
+          <input type="radio" formControlName="Type"  value="r3" id="pmt">Portfolio Manager & Trader
+        </label>
+        <div class="error" *ngIf="login.get('Type').hasError(('required')) && login.get('Type').touched"></div>
+      </div>
+      <div class="form-group">
+      <label>
+      <span class="col-sm-2 col-form-label" ><strong>Username :</strong></span>
+      <input type="text" placeholder="Enter Username" formControlName="Username" >
+    </label>
+    <div class="error text-danger" *ngIf="login.get('Username').hasError(('required')) && login.get('Username').touched">Username is required</div>
+      </div>
+  <div class="form-group">  
+    <label>
+        <span class="col-sm-2 col-form-label"><strong>Password :</strong></span>
+        <input type="password" placeholder="Enter Password" formControlName="Password">
+      </label>
+      <div class="error text-danger" *ngIf="login.get('Password').hasError('required') && login.get('Password').touched">
+        Password is required
+      </div>
+    </div>
+      <button type="submit" class="btn btn-outline-success" [disabled]="!login.valid">Log In</button>
+  </form>
+  </div>
+  </div>

@@ -4,17 +4,23 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BlockCreationComponent } from './Components/block-creation/block-creation.component';
+import { LoginComponent } from './Components/login/login.component';
+import { AdminloginComponent } from './Components/adminlogin/adminlogin.component';
+
+import {GlobalService} from "./Services/global.service";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BlockCreationComponent
+    BlockCreationComponent,
+    LoginComponent,
+    AdminloginComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

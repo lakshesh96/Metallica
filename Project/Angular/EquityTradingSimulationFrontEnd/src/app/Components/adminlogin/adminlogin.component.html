@@ -1,0 +1,24 @@
+<div align="center">
+  <div style="width:50%;height:40%;padding:35px"class="border border-dark">
+  <form novalidate (ngSubmit)="onSubmit(admin)" [formGroup]="admin">
+    <legend><strong>Admin Login</strong></legend>
+    <div class="form-group">
+      <label>
+      <span class="col-sm-2 col-form-label" ><strong>Username :</strong></span>
+      <input type="text" placeholder="Enter Username" formControlName="Username" >
+    </label>
+    <div class="error text-danger" *ngIf="admin.get('Username').hasError(('required')) && admin.get('Username').touched">Username is required</div>
+      </div>
+  <div class="form-group">  
+    <label>
+        <span class="col-sm-2 col-form-label"><strong>Password :</strong></span>
+        <input type="password" placeholder="Enter Password" formControlName="Password">
+      </label>
+      <div class="error text-danger" *ngIf="admin.get('Password').hasError('required') && admin.get('Password').touched">
+        Password is required
+      </div>
+    </div>
+      <button type="submit" class="btn btn-outline-success" [disabled]="!admin.valid">Log In</button>
+  </form>
+  </div>
+  </div>
