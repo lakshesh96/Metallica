@@ -13,8 +13,6 @@ namespace EquityTradingPlatformApi.Models
         [Required]
         public int UserId { get; set; }
         [Required]
-        public int StockId { get; set; }
-        [Required]
         public DateTime Date { get; set; }
         [Required]
         public int PriceExecuted { get; set; }
