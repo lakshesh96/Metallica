@@ -71,6 +71,7 @@ namespace EquityTradingPlatformApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+
         // Login Functionality for USERS
         [Route("api/Users/Login")]
         public IHttpActionResult PostLogin(LoginUser user)
@@ -86,6 +87,7 @@ namespace EquityTradingPlatformApi.Controllers
             return Ok(false);
         }
 
+        // User Registration
         // POST: api/Users
         [ResponseType(typeof(User))]
         public IHttpActionResult PostUser(User user)
@@ -98,6 +100,15 @@ namespace EquityTradingPlatformApi.Controllers
             // By default user should'nt be approved
             user.Approved = false;
 
+            foreach(User u in db.Users)
+            {
+                if (u.UserName == user.UserName)
+                    return Ok("UserName already exists");
+
+                if (u.EmployeeId == user.EmployeeId)
+                    return Ok("EmployeeID already exists.");
+            }
+
             try
             {
                 db.Users.Add(user);
@@ -106,7 +117,7 @@ namespace EquityTradingPlatformApi.Controllers
             catch (DbUpdateException e)
             {
                 // If employee doesn't Exist.
-                return Ok("Error. Maybe employee doesn't exist. " + e.Message);
+                return Ok("Error. EmployeeId doesn't exist. " + e.Message);
             }
    
             //return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
