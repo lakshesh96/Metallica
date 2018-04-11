@@ -12,7 +12,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class GlobalService {
 
-  private _baseUrl:string; // = "http://localhost:52705/api/Admin";
+  private _baseUrl:string; // = "http://localhost:60061/api/Admin";
 
   // login: Login[];
   // admin: Admin[];
@@ -33,6 +33,12 @@ export class GlobalService {
     console.log(body);
     return body || {};
   }
+
+  extractBlocks()
+  {
+    
+  }
+
 
   handleError(error: Response | any) {
     let errMsg: string;
