@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { BlockCreationComponent } from './Components/block-creation/block-creation.component';
 import { LoginComponent } from './Components/login/login.component';
 import { AdminloginComponent } from './Components/adminlogin/adminlogin.component';
+import { BuyrequestComponent } from './Components/buyrequest/buyrequest.component';
 
 import {GlobalService} from "./Services/global.service";
 import { ExceltojsonService } from "./Services/exceltojson/exceltojson.service";
 import { AdminstocksService } from "./Services/adminstocks/adminstocks.service";
-import { BuyrequestComponent } from './Components/buyrequest/buyrequest.component';
+import {AddStockAdminService} from "./Services/add-stock-admin/add-stock-admin.service";
+
 import {HttpModule, JsonpModule} from '@angular/http';
 
 import {FormsModule} from '@angular/forms';
@@ -34,7 +36,7 @@ import { AdminStockManageComponent } from './Components/admin-stock-manage/admin
     HttpModule,
     JsonpModule,
   ],
-  providers: [GlobalService,ExceltojsonService,AdminstocksService],
+  providers: [GlobalService,ExceltojsonService,AdminstocksService,AddStockAdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -42,7 +42,7 @@ export class AdminStockManageComponent implements OnInit {
   }
 
   //Section for excel to json
-  public result: any;
+  result: any;
   private xlsxToJsonService: ExceltojsonService = new ExceltojsonService();
 
   handleFile(event) {
@@ -50,6 +50,7 @@ export class AdminStockManageComponent implements OnInit {
     this.xlsxToJsonService.processFileToJson({}, file).subscribe(data => {
       this.result = data['sheets'].Sheet1;
       console.log(JSON.stringify(this.result));
+      this.AddP(this.result);
       for(var i in this.result){
         if(this.result[i].Symbol!=null && this.result[i].Name!=null && this.result[i].CurrentPrice!=null&&this.result[i].VolumeAvailable!=null)
         {var p =new Contains(this.result[i].Symbol,this.result[i].Name,this.result[i].CurrentPrice,this.result[i].VolumeAvailable);
@@ -57,15 +58,15 @@ export class AdminStockManageComponent implements OnInit {
         this.list=this.ser.list;}
       }
     })
+    //console.log(this.result);
 
-    this.AddP();
+    
+
   }
 
-AddP()
+AddP(result)
 {
-    alert("Stocks Sent");
-    this.stocksService.AddStocks(this.result);
-    
+    this.stocksService.AddStocks(result);
 }
 
 }
