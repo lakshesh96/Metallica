@@ -8,7 +8,7 @@ namespace EquityTradingPlatformApi.Models
 {
     public class Stocks
     {
-        public int Id { get; set; }
+        public int Id { get; set; } 
 
         [Required]
         public string Symbol { get; set; }

@@ -48,6 +48,8 @@ namespace EquityTradingPlatformApi.Models
         [Required]
         public int UserId;
 
+        public int PMId;
+
         [Required]
         public OrderStatus OrderStatus { get; set; }
 

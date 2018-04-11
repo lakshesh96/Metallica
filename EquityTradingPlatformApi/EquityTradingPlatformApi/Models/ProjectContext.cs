@@ -8,6 +8,10 @@ namespace EquityTradingPlatformApi.Models
 {
     public class ProjectContext:DbContext
     {
+        public ProjectContext()
+        {
+            this.Configuration.LazyLoadingEnabled = false;
+        }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Block> Blocks { get; set; }
         public DbSet<Employee> Employees { get; set; }
