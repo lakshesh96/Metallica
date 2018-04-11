@@ -37,18 +37,16 @@ namespace EquityTradingPlatformApi.Models
         [Required]
         public Side OrderSide { get; set; }
 
-        public virtual Stocks Stocks { get; set; }
-
         [Required]
         public int StocksId { get; set; }
+        public virtual Stocks Stocks { get; set; }
 
         [Required]
         public int Quantity { get; set; }
 
-        public virtual User User { get; set; }
-
         [Required]
         public int UserId;
+        public virtual User User { get; set; }
 
         public int PMId;
 
@@ -62,10 +60,9 @@ namespace EquityTradingPlatformApi.Models
         [Required]
         public double StopPrice { get; set; }
 
-        public virtual Block Block { get; set; }
 
-        [Required]
         public int BlockId;
+        public virtual Block Block { get; set; }
 
         public virtual IEnumerable<CurrentPosition> Positions { get; set; }
 
