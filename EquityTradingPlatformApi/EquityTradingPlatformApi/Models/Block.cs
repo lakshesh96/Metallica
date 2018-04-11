@@ -6,7 +6,7 @@ using System.Web;
 
 namespace EquityTradingPlatformApi.Models
 {
-    public enum Status
+    public enum BlockStatus
     {
         Partial,
         Pending,
@@ -18,7 +18,7 @@ namespace EquityTradingPlatformApi.Models
         public int Id { get; set; }
 
         [Required]
-        public Status Status { get; set; }
+        public BlockStatus BlockStatus { get; set; }
 
         public virtual User User { get; set; }
 

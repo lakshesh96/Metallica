@@ -34,6 +34,6 @@ namespace EquityTradingPlatformApi.Models
         public int EmployeeId { get; set; }
 
         [Required]
-        public UserType Type { get; set; } 
+        public UserType Type { get; set; }
     }
 }

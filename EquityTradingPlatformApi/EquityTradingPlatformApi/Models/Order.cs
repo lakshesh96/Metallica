@@ -19,6 +19,13 @@ namespace EquityTradingPlatformApi.Models
         Buy,
         Sell
     }
+
+    public enum OrderStatus
+    {
+        Executed,
+        Partial,
+        Pending
+    }
     
     public class Order
     {
@@ -40,6 +47,18 @@ namespace EquityTradingPlatformApi.Models
 
         [Required]
         public int UserId;
+
+        [Required]
+        public OrderStatus OrderStatus { get; set; }
+
+        [Required]
+        public int VolumeExecuted { get; set; }
+
+        [Required]
+        public int LimitPrice { get; set; }
+
+        [Required]
+        public int StopPrice { get; set; }
 
     }
 }

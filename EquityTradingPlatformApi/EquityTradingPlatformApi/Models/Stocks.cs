@@ -9,8 +9,6 @@ namespace EquityTradingPlatformApi.Models
     public class Stocks
     {
         [Required]
-        public int StockId { get; set; }
-        [Required]
         public string Symbol { get; set; }
         [Required]
         public string Name { get; set; }
@@ -18,6 +16,8 @@ namespace EquityTradingPlatformApi.Models
         public int CurrentPrice { get; set; }
         [Required]
         public int VolumeAvailable { get; set; }
+
+
 
     }
 }
