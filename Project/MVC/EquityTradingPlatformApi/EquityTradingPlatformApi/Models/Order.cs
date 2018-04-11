@@ -53,19 +53,19 @@ namespace EquityTradingPlatformApi.Models
         [Required]
         public OrderStatus OrderStatus { get; set; }
 
-        [Required]
-        public int VolumeExecuted { get; set; }
 
         [Required]
-        public int LimitPrice { get; set; }
+        public double LimitPrice { get; set; }
 
         [Required]
-        public int StopPrice { get; set; }
+        public double StopPrice { get; set; }
 
         public virtual Block Block { get; set; }
 
         [Required]
         public int BlockId;
+
+        public virtual IEnumerable<CurrentPosition> Positions { get; set; }
 
     }
 }

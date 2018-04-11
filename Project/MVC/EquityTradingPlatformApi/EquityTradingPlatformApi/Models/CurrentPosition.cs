@@ -15,11 +15,13 @@ namespace EquityTradingPlatformApi.Models
         [Required]
         public DateTime Date { get; set; }
         [Required]
-        public int PriceExecuted { get; set; }
-        [Required]
-        public int Quantity { get; set; }
+        public double PriceExecuted { get; set; }
+        
         [Required]
         public int OrderId { get; set; }
+
+        [Required]
+        public int VolumeExecuted { get; set; }
 
         public virtual Order Order { get; set; }
     }

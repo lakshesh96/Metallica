@@ -191,12 +191,20 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804110617186_Initial.cs" />
+    <Compile Include="Migrations\201804110617186_Initial.Designer.cs">
+      <DependentUpon>201804110617186_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804110645088_Changes.cs" />
+    <Compile Include="Migrations\201804110645088_Changes.Designer.cs">
+      <DependentUpon>201804110645088_Changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Block.cs" />
     <Compile Include="Models\CurrentPosition.cs" />
@@ -275,6 +283,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804110617186_Initial.resx">
+      <DependentUpon>201804110617186_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804110645088_Changes.resx">
+      <DependentUpon>201804110645088_Changes.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -289,7 +305,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>52705</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
