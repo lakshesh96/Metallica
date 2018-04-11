@@ -29,6 +29,6 @@ import {ReactiveFormsModule} from '@angular/forms';
     JsonpModule,
   ],
   providers: [GlobalService],
-  bootstrap: [AdminloginComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
