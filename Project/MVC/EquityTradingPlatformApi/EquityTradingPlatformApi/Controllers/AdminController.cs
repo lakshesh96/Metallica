@@ -19,57 +19,60 @@ namespace EquityTradingPlatformApi.Controllers
         private ProjectContext db = new ProjectContext();
 
         // GET: api/Admin
-        public IQueryable<Admin> GetAdmins()
+        public IHttpActionResult GetAdmins()
         {
-            return db.Admins;
+            return Ok("Not Authorized");
         }
 
         // GET: api/Admin/5
         [ResponseType(typeof(Admin))]
         public IHttpActionResult GetAdmin(int id)
         {
-            Admin admin = db.Admins.Find(id);
-            if (admin == null)
-            {
-                return NotFound();
-            }
+            //Admin admin = db.Admins.Find(id);
+            //if (admin == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return Ok(admin);
+            //return Ok(admin);
+
+            return Ok("Not authorized");
         }
 
         // PUT: api/Admin/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAdmin(int id, Admin admin)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            if (id != admin.Id)
-            {
-                return BadRequest();
-            }
+            //if (id != admin.Id)
+            //{
+            //    return BadRequest();
+            //}
 
-            db.Entry(admin).State = EntityState.Modified;
+            //db.Entry(admin).State = EntityState.Modified;
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AdminExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            //try
+            //{
+            //    db.SaveChanges();
+            //}
+            //catch (DbUpdateConcurrencyException)
+            //{
+            //    if (!AdminExists(id))
+            //    {
+            //        return NotFound();
+            //    }
+            //    else
+            //    {
+            //        throw;
+            //    }
+            //}
 
-            return StatusCode(HttpStatusCode.NoContent);
+            //return StatusCode(HttpStatusCode.NoContent);
+            return Ok("Not Authorized");
         }
 
         // POST: api/Admin
@@ -81,26 +84,30 @@ namespace EquityTradingPlatformApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Admins.Add(admin);
-            db.SaveChanges();
+            // dummy authentication of admin
+            // TO BE changed later
+            if (admin.UserName == "admin" && admin.Password == "password")
+                return Ok(true);
 
-            return CreatedAtRoute("DefaultApi", new { id = admin.Id }, admin);
+            //return CreatedAtRoute("DefaultApi", new { id = admin.Id }, admin);
+            return Ok(false);
         }
 
         // DELETE: api/Admin/5
         [ResponseType(typeof(Admin))]
         public IHttpActionResult DeleteAdmin(int id)
         {
-            Admin admin = db.Admins.Find(id);
-            if (admin == null)
-            {
-                return NotFound();
-            }
+            //Admin admin = db.Admins.Find(id);
+            //if (admin == null)
+            //{
+            //    return NotFound();
+            //}
 
-            db.Admins.Remove(admin);
-            db.SaveChanges();
+            //db.Admins.Remove(admin);
+            //db.SaveChanges();
 
-            return Ok(admin);
+            //return Ok(admin);
+            return Ok("Not Authorized");
         }
 
         protected override void Dispose(bool disposing)

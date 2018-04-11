@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using EquityTradingPlatformApi.Models;
+using Newtonsoft.Json.Linq;
 
 namespace EquityTradingPlatformApi.Controllers
 {
@@ -76,7 +77,7 @@ namespace EquityTradingPlatformApi.Controllers
 
 
         // POST: api/Stocks
-        [ResponseType(typeof(Stocks))]
+        /*[ResponseType(typeof(Stocks))]
         public IHttpActionResult PostStocks(Stocks stocks)
         {
             if (!ModelState.IsValid)
@@ -88,25 +89,26 @@ namespace EquityTradingPlatformApi.Controllers
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = stocks.Id }, stocks);
-        }
+        }*/
 
         //Batch Add of Stocks
-        [ActionName("PutList")]
+        [Route("api/Stocks/PutList")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult StockList(List<object> mydata)
+        [HttpPost]
+        public IHttpActionResult PostStockList(List<Stocks> mydata)
         {
             try
             {
                 foreach (var item in mydata)
                 {
-                    Stocks stock = (Stocks)Newtonsoft.Json.JsonConvert.DeserializeObject(item.ToString());
-                    db.Stocks.Add(stock);
+                    //Stocks stock = (Stocks)Newtonsoft.Json.JsonConvert.DeserializeObject(item.ToString());
+                    db.Stocks.Add(item);
 
                 }
                 db.SaveChanges();
                 return StatusCode(HttpStatusCode.NoContent);
             }
-            catch(Exception)
+            catch(Exception e)
             {
                 return NotFound();
             }
