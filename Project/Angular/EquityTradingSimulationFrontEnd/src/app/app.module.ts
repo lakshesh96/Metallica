@@ -18,6 +18,8 @@ import {HttpModule, JsonpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AdminStockManageComponent } from './Components/admin-stock-manage/admin-stock-manage.component';
+import{SearchComponent} from './Components/search/search.component';
+import {StocksService} from './Services/stocks.service';
 
 
 @NgModule({
@@ -27,7 +29,7 @@ import { AdminStockManageComponent } from './Components/admin-stock-manage/admin
     LoginComponent,
     AdminloginComponent,
     AdminStockManageComponent,
-    BuyrequestComponent
+    BuyrequestComponent,SearchComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ import { AdminStockManageComponent } from './Components/admin-stock-manage/admin
     HttpModule,
     JsonpModule,
   ],
+  providers: [GlobalService,ExceltojsonService,AdminstocksService,StocksService],
   providers: [GlobalService,ExceltojsonService,AdminstocksService,AddStockAdminService],
   bootstrap: [AppComponent]
 })
