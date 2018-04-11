@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BlockCreationComponent } from './Components/block-creation/block-creation.component';
 
+import {GlobalService} from "./Services/global.service";
+
 
 @NgModule({
   declarations: [
@@ -14,7 +16,7 @@ import { BlockCreationComponent } from './Components/block-creation/block-creati
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
