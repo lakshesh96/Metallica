@@ -8,7 +8,7 @@ import { GlobalService } from "../global.service";
 @Injectable()
 export class AdminstocksService {
 
-  private _baseUrl: string = "http://api/Stocks/";
+  private _baseUrl: string = "http://localhost:52705/api/Stocks/PutList";
 
   stocks:any;
 
@@ -28,6 +28,7 @@ export class AdminstocksService {
   AddStocks(r:any)
   {
       alert("Stocks received at my service");
+      console.log(r+"ankitchutiya");
       this.globalService.PostMethod(r,this._baseUrl).subscribe(
           response => response,
           error => console.error(error),
