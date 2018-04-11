@@ -38,7 +38,7 @@ namespace EquityTradingPlatformApi.Models
         public Side OrderSide { get; set; }
 
         [Required]
-        public string StockId { get; set; }
+        public int StockId { get; set; }
 
         [Required]
         public int Quantity { get; set; }
