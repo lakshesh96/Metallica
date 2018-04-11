@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { BlockCreationComponent } from './Components/block-creation/block-creation.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BlockCreationComponent
   ],
   imports: [
     BrowserModule
