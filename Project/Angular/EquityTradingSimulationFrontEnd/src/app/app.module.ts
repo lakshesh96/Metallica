@@ -10,6 +10,7 @@ import { AdminloginComponent } from './Components/adminlogin/adminlogin.componen
 import {GlobalService} from "./Services/global.service";
 import { ExceltojsonService } from "./Services/exceltojson/exceltojson.service";
 import { AdminstocksService } from "./Services/adminstocks/adminstocks.service";
+import { BuyrequestComponent } from './Components/buyrequest/buyrequest.component';
 import {HttpModule, JsonpModule} from '@angular/http';
 
 import {FormsModule} from '@angular/forms';
@@ -23,7 +24,8 @@ import { AdminStockManageComponent } from './Components/admin-stock-manage/admin
     BlockCreationComponent,
     LoginComponent,
     AdminloginComponent,
-    AdminStockManageComponent
+    AdminStockManageComponent,
+    BuyrequestComponent
   ],
   imports: [
     BrowserModule,
