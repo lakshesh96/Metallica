@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Admin} from '../../Models/admin';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
+import {GlobalService} from '../../Services/global.service';
 
 @Component({
   selector: 'app-adminlogin',
@@ -9,8 +10,8 @@ import { FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class AdminloginComponent implements OnInit {
   admin:FormGroup;
-  url:"";
-  constructor(/*private globalService:ApiDataService*/) { }
+  url:"http://localhost:60061/api/Admin";
+  constructor(private globalService:GlobalService) { }
 
   ngOnInit() {
     this.admin = new FormGroup({
@@ -22,12 +23,11 @@ export class AdminloginComponent implements OnInit {
     console.log(value, valid);
 
     let data: any = {AdminUserName: value.Username, AdminPass: value.Password, URL: this.url}
-    
-    /*this.globalService.StoreAdminDetails(data).subscribe(
+    this.globalService.AuthAdmin(data).subscribe(
       response => value=response,
       error => console.error(error),
       () => console.log()
-    );*/
+    );
      
   }
 }
