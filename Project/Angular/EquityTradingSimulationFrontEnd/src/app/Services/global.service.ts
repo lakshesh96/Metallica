@@ -22,8 +22,8 @@ export class GlobalService {
 
   constructor(private _http:Http) { }
 
-  AuthAdmin(credentials):Observable<any>{
-    this._baseUrl = credentials.URL;
+  AuthAdmin(credentials,url):Observable<any>{
+    this._baseUrl = url;
     return this._http.post(this._baseUrl,credentials).map(this.extractData).catch(this.handleError);
   }
 

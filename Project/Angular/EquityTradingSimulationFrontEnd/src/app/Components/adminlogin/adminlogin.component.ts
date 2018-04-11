@@ -22,12 +22,14 @@ export class AdminloginComponent implements OnInit {
   onSubmit({ value, valid }: { value: Admin, valid: boolean }) {
     console.log(value, valid);
 
-    let data: any = {AdminUserName: value.Username, AdminPass: value.Password, URL: this.url}
-    this.globalService.AuthAdmin(data).subscribe(
+    let data: any = {AdminUserName: value.Username, AdminPass: value.Password}
+
+    this.globalService.AuthAdmin(data,this.url).subscribe(
       response => value=response,
       error => console.error(error),
-      () => console.log()
+      () => console.log(),
     );
+    console.log(value);
      
   }
 }
