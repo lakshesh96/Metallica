@@ -15,7 +15,7 @@ namespace EquityTradingPlatformApi.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        public int CurrentPrice { get; set; }
+        public double CurrentPrice { get; set; }
         [Required]
         public int VolumeAvailable { get; set; }
 
