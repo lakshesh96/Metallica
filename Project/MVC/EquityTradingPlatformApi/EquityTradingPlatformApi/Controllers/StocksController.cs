@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -35,8 +36,11 @@ namespace EquityTradingPlatformApi.Controllers
             return Ok(stocks);
         }
 
-        // PUT: api/Stocks/5
-        [ResponseType(typeof(void))]
+        
+
+
+    // PUT: api/Stocks/5
+    [ResponseType(typeof(void))]
         public IHttpActionResult PutStocks(int id, Stocks stocks)
         {
             if (!ModelState.IsValid)
@@ -70,6 +74,7 @@ namespace EquityTradingPlatformApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+
         // POST: api/Stocks
         [ResponseType(typeof(Stocks))]
         public IHttpActionResult PostStocks(Stocks stocks)
@@ -85,8 +90,31 @@ namespace EquityTradingPlatformApi.Controllers
             return CreatedAtRoute("DefaultApi", new { id = stocks.Id }, stocks);
         }
 
-        // DELETE: api/Stocks/5
-        [ResponseType(typeof(Stocks))]
+        //Batch Add of Stocks
+        [ActionName("PutList")]
+        [ResponseType(typeof(void))]
+        public IHttpActionResult StockList(ArrayList mydata)
+        {
+            try
+            {
+                foreach (var item in mydata)
+                {
+                    Stocks stock = (Stocks)Newtonsoft.Json.JsonConvert.DeserializeObject(item.ToString());
+                    db.Stocks.Add(stock);
+
+                }
+                db.SaveChanges();
+                return StatusCode(HttpStatusCode.NoContent);
+            }
+            catch(Exception)
+            {
+                return NotFound();
+            }
+        }
+
+
+    // DELETE: api/Stocks/5
+    [ResponseType(typeof(Stocks))]
         public IHttpActionResult DeleteStocks(int id)
         {
             Stocks stocks = db.Stocks.Find(id);
