@@ -24,12 +24,13 @@ export class AdminloginComponent implements OnInit {
 
     let data: any = {AdminUserName: value.Username, AdminPass: value.Password}
 
-    this.globalService.AuthAdmin(data,this.url).subscribe(
+    this.globalService.PostMethod(data,this.url).subscribe(
       response => value=response,
       error => console.error(error),
       () => console.log(),
     );
     console.log(value);
+    console.log("hello");
      
   }
 }
