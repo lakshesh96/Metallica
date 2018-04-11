@@ -12,7 +12,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class GlobalService {
 
-  private _baseUrl:string; // = "http://localhost:60061/api/Admin";
+  private _baseUrl:string; // = "http://localhost:52705/api/Admin";
 
   // login: Login[];
   // admin: Admin[];
