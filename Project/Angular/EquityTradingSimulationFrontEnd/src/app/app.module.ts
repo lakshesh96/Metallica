@@ -7,6 +7,8 @@ import { BlockCreationComponent } from './Components/block-creation/block-creati
 import { LoginComponent } from './Components/login/login.component';
 import { AdminloginComponent } from './Components/adminlogin/adminlogin.component';
 
+import {GlobalService} from "./Services/global.service";
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,7 @@ import { AdminloginComponent } from './Components/adminlogin/adminlogin.componen
   imports: [
     BrowserModule
   ],
-  providers: [],
-  bootstrap: [LoginComponent]
+  providers: [GlobalService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
