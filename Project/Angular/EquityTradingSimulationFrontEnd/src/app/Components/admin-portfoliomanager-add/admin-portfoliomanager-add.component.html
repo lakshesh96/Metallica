@@ -1,0 +1,47 @@
+<div>
+  <div style="float: right;">
+      <input type="button" value="Add Portfolio Managers from file" (click)="file.click()" class="btn btn-info">
+      <input id="fileupload" name="fileupload" type="file" [hidden]="true" (change)="handleFile($event)" ng-model="files" ng-file-select="onFileSelect(files)" ng-multiple="false" accept=".xls,.xlsx" #file>
+  </div>
+  <div class="container row">
+  <div>
+  <table class="table table-light table-hover scroll" >
+  <thead><legend>Portfolio Manager pending for approval</legend></thead> 
+     <tr class="table-secondary">
+          <th>Name</th>
+          <th>Portfolio Manager Id</th>
+          <th>Action</th>
+        </tr>
+   
+      <tr *ngFor = "let e of PendingList">
+          <td>{{e.Name}}</td>
+          <td>{{e.EmpId}}</td>
+          <button class="btn btn-outline-success" style="width: 170px">Approve</button>
+      </tr>
+        
+  </table>
+  </div>
+  <div style="margin-left: 150px">
+  <table class="table table-light table-hover scroll">
+  <thead><legend>Portfolio Manager approved</legend></thead>
+      <tr class="table-secondary">
+          <th>Name</th>
+          <th>Portfolio Manager Id</th>
+          <th>Action</th>
+      </tr>
+      <tr *ngFor = "let e of ApprovedList">
+          <td>{{e.Name}}</td>
+          <td>{{e.EmpId}}</td>
+          <button class="btn btn-outline-danger">Disapprove</button>
+      </tr>
+  </table>
+  </div>
+ </div> 
+ <div class="">
+    <legend>JSON Data Test Area</legend>
+    {{result}}
+</div>
+</div>
+
+
+
