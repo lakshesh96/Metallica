@@ -24,5 +24,11 @@ namespace EquityTradingPlatformApi.Models
 
         [Required]
         public int UserId { get; set; }
+
+        public Side Side { get; set; }
+
+        public virtual Stocks Stocks { get; set; }
+
+        public int StocksId { get; set; }
     }
 }
