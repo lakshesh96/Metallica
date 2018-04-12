@@ -2,7 +2,7 @@ import {RouterModule,Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 
 
-const ShopRoutes:Routes = [
+/*const ShopRoutes:Routes = [
     { path:"Login",component:
 ]
 @NgModule({
@@ -11,4 +11,4 @@ exports :[RouterModule]
 })
 export class RoutesModule{
 
-}
+}*/
