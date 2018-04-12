@@ -10,6 +10,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using EquityTradingPlatformApi.Models;
+using Newtonsoft.Json.Linq;
 
 namespace EquityTradingPlatformApi.Controllers
 {
@@ -79,20 +80,22 @@ namespace EquityTradingPlatformApi.Controllers
         [ResponseType(typeof(Admin))]
         public IHttpActionResult PostAdmin(Admin admin)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            var result = JObject.Parse(@"{}");
+            result["response"] = false;
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             if (admin.UserName == db.Admins.First().UserName && admin.Password == db.Admins.First().Password)
-                return Ok(true);
+                result["response"] = true;
 
             // dummy authentication of admin
             //if (admin.UserName == "admin" && admin.Password == "password")
             //    return Ok(true);
 
             //return CreatedAtRoute("DefaultApi", new { id = admin.Id }, admin);
-            return Ok(false);
+            return Ok(result);
         }
 
         // DELETE: api/Admin/5
