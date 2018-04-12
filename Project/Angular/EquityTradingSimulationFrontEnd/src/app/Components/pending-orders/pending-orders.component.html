@@ -1,0 +1,61 @@
+<div class="container">
+  <br>
+  <div>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" #search (onchange)="Search(search.value)">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit" (click)="Search(search.value)">Search</button>
+    </form>
+  </div>
+  <br>
+
+  <div class="col-md-12 col-sm-12">
+    <div class="form-group">
+      <label>Stock Name</label>
+      <input class="form-control" type="text" #name/>
+    </div>
+    <div class="form-group">
+        <label>Symbol Name</label>
+        <input class="form-control" type="text" #symbol/>
+    </div>
+    <div class="form-group">
+        <label>Quantity</label>
+        <input class="form-control" type="text" #quantity/>
+    </div>
+    <div class="form-group">
+        <label>Stock Name</label>
+        <input class="form-control" type="text" #name/>
+    </div>
+  
+  <div class="form-group col-lg-12 col-md-12 col-sm-12">
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered">
+        <thead>
+          <tr class="table-primary">
+            <th scope="col">Trader_Name</th>
+            <th scope="col" ><i class="fa fa-arrow-up" (click)="sort_stock_Name_ascending()"></i>Stock Name<i class="fa fa-arrow-down" (click)="sort_stock_Name_descending()"></i></th>
+            <th scope="col">Symbol</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Buying Price</th>
+            <th scope="col"><i class="fa fa-arrow-up" (click)="sort_CurPrice_ascending()"></i>Current Price<i class="fa fa-arrow-down" (click)="sort_CurPrice_descending()"></i></th>
+            <th scope="col">Total Value</th>
+            <th scope="col">Side</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of PendingShow">
+            <td>{{p.Trader_Name}}</td>
+            <td>{{p.Name}}</td>
+            <td>{{p.Symbol}}</td>
+            <td>{{p.Quantity}}</td>
+            <td>{{p.Buying_Price}}</td>
+            <td>{{p.CurrentPrice}}</td>
+            <td>{{p.Total_Value}}</td>
+            <td>{{p.Side}}</td>
+            <td><button type="button" class="btn btn-warning">Modify</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
