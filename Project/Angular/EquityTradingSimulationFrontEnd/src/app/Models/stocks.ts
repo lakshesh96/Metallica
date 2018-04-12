@@ -1,13 +1,9 @@
 export class Stocks 
 {
-    Name:string;
-    Symbol:string;
-    CurrentPrice:number;
-    constructor(Name,Symbol,CurrentPrice)
+    
+    constructor( public Id: number,public Name:string,public  Symbol:string,public CurrentPrice:number,public VolumeAvailable:number)
     {
-        this.Name=Name;
-        this.Symbol=Symbol;
-        this.CurrentPrice=CurrentPrice;
+
     }
 
 }

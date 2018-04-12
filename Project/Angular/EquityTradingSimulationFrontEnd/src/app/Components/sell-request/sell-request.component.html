@@ -1,0 +1,60 @@
+<div class="container">
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="border border-dark" style="padding: 20px;">
+       <form novalidate (ngSubmit)="onSubmit(sell)" [formGroup]="sell">
+          <div align="center"><legend><strong>Sell</strong></legend>
+          </div> 
+          <div>
+          <label><strong>Quantity :</strong></label>
+          <input type="number" class="form-control"  min="1" formControlName="Quantity" >
+          <!--<div class="error text-danger" *ngIf="sell.get('Quantity').hasError(('required')) && sell.get('Quantity').touched">Quantity is required</div>-->
+          </div>
+            <br>
+            <div>
+                <label><strong>Market Price: </strong></label>
+                <input type="text" class="form-control"  min="1" formControlName="MPrice" >
+            </div>
+            <br>
+          <div  class="container row" >
+            <div>
+              <select class="custom-select" style="width: 300px"  #Order >
+                  <option selected="">Select Order type</option>
+                  <option value ="Market">Market Price</option>
+                  <option value="Limit">Limit Price</option>
+                  <option value="Stop">Stop Price</option>
+                  <option value="StopLimit">Stop-Limit </option>
+                </select>
+                <br>
+            </div><div style="margin-left: 50px">
+                <button class="btn btn-outline-warning" (click)="Toggle(Order.value)">Set</button>
+            </div>
+          </div>
+          <div>
+            <label [hidden]="Limit"> Enter Limit Price</label>
+            <br>
+            <input type="text" [hidden]="Limit" class="form-control">
+          </div>
+          <div>
+              <label [hidden]="Stop"> Enter Stop Price</label>
+              <br>
+              <input type="text" [hidden]="Stop" class="form-control">
+            </div>
+          
+          <br>
+          <br>
+          <button type="submit" class="btn btn-outline-info"  (click)="Add(sell)">Create Order</button><br>
+          <div align="center"><legend><strong>Sell Order:</strong></legend>
+          <div class="form-group">
+            <label>
+            <strong>Stock Name : </strong><label id="n" name="n">{{model.Stock_Name}}</label><br>
+            <strong>Quantity Held : </strong><label id="q" name="qty">{{model.Quantity}}</label><br>
+            <strong>Average Price :</strong><label id="ap" name="avgprice">{{model.Price}}</label>' '<br>
+            <strong>Gain :</strong><label id="g" name="gain">''''</label>
+          </label>
+          </div></div>
+  </form>
+  </div>
+  </div> 
+</div>

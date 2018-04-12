@@ -21,6 +21,7 @@ import { AdminTraderAddComponent } from './Components/admin-trader-add/admin-tra
 import { AdminPortfoliomanagerAddComponent } from './Components/admin-portfoliomanager-add/admin-portfoliomanager-add.component';
 import { PendingOrdersComponent } from './Components/pending-orders/pending-orders.component';
 import { CurrentPositionComponent } from './Components/current-position/current-position.component';
+import { SellRequestComponent } from './Components/sell-request/sell-request.component';
 
 //Services
 import { ExceltojsonService } from './Services/exceltojson/exceltojson.service';
@@ -33,9 +34,10 @@ import { AddPmAdminService } from './Services/add-pm-admin/add-pm-admin.service'
 import { PendingListService } from './Services/Pending/pending-list.service';
 import { BlockserviceService } from './Services/blockservice/blockservice.service';
 import{CurrentPositionService} from "../app/Services/current-position/current-position.service"
-
 import { OrderService } from './Services/Order/order.service';
-
+import {SellService} from './Services/sell-service/sell.service';
+import {BuyService} from './Services/buy-service/buy.service';
+import{BuySellService} from './Services/buy-sell/buy-sell.service';
 
 
 
@@ -52,7 +54,8 @@ import { OrderService } from './Services/Order/order.service';
     AdminTraderAddComponent,
     AdminPortfoliomanagerAddComponent,
     PendingOrdersComponent,
-    CurrentPositionComponent
+    CurrentPositionComponent,
+    SellRequestComponent
     
   ],
   imports: [
@@ -75,7 +78,10 @@ import { OrderService } from './Services/Order/order.service';
     PendingListService,
     BlockserviceService,
     CurrentPositionService,
-    OrderService
+    OrderService,
+    SellService,
+    BuySellService,
+    BuyService
   ],
   bootstrap: [AppComponent]
 })

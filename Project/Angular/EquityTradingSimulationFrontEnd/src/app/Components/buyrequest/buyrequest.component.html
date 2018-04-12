@@ -1,44 +1,56 @@
-
-<div align="center">
-  <div style="width:50%;height:40%;padding:35px"class="border border-dark">
-  <form novalidate (ngSubmit)="onSubmit(buy)" [formGroup]="buy">
-    <legend><strong>Buy</strong></legend>
-    <div class="form-group">
-      <label id="stockname"><strong>TCS</strong></label>
-    </div>
-    <div class="form-group">
-      <label id="stockprice"><strong>3000</strong></label>
-      <label id="stockvolume"><strong>(Vol-500)</strong> </label>
-    </div>
-
-    <div class="form-group">
-     
-      <span class="col-sm-2 col-form-label" ><strong>Quantity :</strong></span>
-      <input type="number" min="1" formControlName="Quantity" >
-    
-    <div class="error text-danger" *ngIf="buy.get('Quantity').hasError(('required')) && buy.get('Quantity').touched">Quantity is required</div>
-      </div>
-     
-      <div class="form-group">
-          <span class="col-sm-2 col-form-label" ><strong>Price :</strong></span>
-      <input type="radio" ng-model="myVar" value="MarketOrder">Market Price
-      <input type="radio" ng-model="myVar" value="LimitOrder">Limit Price
-   
-    
-    
-  </div>
-
-  <div class="form-group">  
-   
-        <span class="col-sm-2 col-form-label"><strong>Stop Loss :</strong></span>
-        <input type="text" formControlName="StopPrice">
-        <div class="error text-danger" *ngIf="buy.get('StopPrice').hasError('pattern')">Stop Price should have only digits</div>  
-     
-    </div>
-
-      <button type="submit" class="btn btn-outline-primary" [disabled]="!buy.valid">Create Order</button>
-  </form>
-  </div>
-  </div>
-
- 
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="border border-dark" style="padding: 20px;">
+           <form novalidate (ngSubmit)="onSubmit(sell)" [formGroup]="buy">
+              <div align="center"><legend><strong>Buy</strong></legend>
+              </div> 
+              <div>
+              <label><strong>Quantity :</strong></label>
+              <input type="number" class="form-control"  min="1" formControlName="Quantity" >
+              <!--<div class="error text-danger" *ngIf="sell.get('Quantity').hasError(('required')) && sell.get('Quantity').touched">Quantity is required</div>-->
+              </div>
+                <br>
+                <div>
+                    <label><strong>Market Price: </strong></label>
+                    <input type="text" class="form-control"  min="1" formControlName="MPrice" >
+                </div>
+                <br>
+              <div  class="container row" >
+                <div>
+                  <select class="custom-select" style="width: 300px"  #Order >
+                      <option selected="">Select Order type</option>
+                      <option value ="Market">Market Price</option>
+                      <option value="Limit">Limit Price</option>
+                      <option value="Stop">Stop Price</option>
+                      <option value="StopLimit">Stop-Limit </option>
+                    </select>
+                    <br>
+                </div><div style="margin-left: 50px">
+                    <button class="btn btn-outline-warning" (click)="Toggle(Order.value)">Set</button>
+                </div>
+              </div>
+              <div>
+                <label [hidden]="Limit"> Enter Limit Price</label>
+                <br>
+                <input type="text" [hidden]="Limit" class="form-control">
+              </div>
+              <div>
+                  <label [hidden]="Stop"> Enter Stop Price</label>
+                  <br>
+                  <input type="text" [hidden]="Stop" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-outline-info"  (click)="Add(buy)">Create Order</button><br>
+                <div align="center"><legend><strong>Buy Order:</strong></legend>
+                  <div class="form-group">
+                    <label>
+                    <strong>Stock Name : </strong><label id="n" name="n">{{order.Name}}</label><br>
+                    <strong>Quantity Held : </strong><label id="q" name="qty">{{order.VolumeAvailable}}</label><br>
+                  </label>
+                  </div></div>
+              <br>
+              <br>              
+      </form>
+      </div> 
+</div>
