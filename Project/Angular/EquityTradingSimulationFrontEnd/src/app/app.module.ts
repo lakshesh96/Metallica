@@ -85,7 +85,10 @@ import { AuthGuardService } from './Services/Auth-Guard/auth-guard.service';
     CurrentPositionService,
     OrderService,
 	LoginService,
-	AuthGuardService
+	AuthGuardService,
+	BuySellService,
+	BuyService,
+	SellService
   ],
   bootstrap: [AppComponent]
 })
