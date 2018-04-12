@@ -24,6 +24,8 @@ import { AdminStockManageComponent } from './Components/admin-stock-manage/admin
 import{SearchComponent} from './Components/search/search.component';
 import {StocksService} from './Services/stocks.service';
 import { RegisterComponent } from '../app/Components/register/register.component';
+import { AdminTraderAddComponent } from './Components/admin-trader-add/admin-trader-add.component';
+import { AdminPortfoliomanagerAddComponent } from './Components/admin-portfoliomanager-add/admin-portfoliomanager-add.component';
 
 
 @NgModule({
@@ -33,7 +35,7 @@ import { RegisterComponent } from '../app/Components/register/register.component
 		LoginComponent,
 		AdminloginComponent,
 		AdminStockManageComponent,
-		BuyrequestComponent,SearchComponent, RegisterComponent
+		BuyrequestComponent,SearchComponent, RegisterComponent, AdminTraderAddComponent, AdminPortfoliomanagerAddComponent
 	],
 	imports: [
 		BrowserModule,
