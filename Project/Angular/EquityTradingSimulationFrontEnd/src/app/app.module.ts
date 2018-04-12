@@ -31,6 +31,7 @@ import { AddTraderAdminService } from './Services/add-trader-admin/add-trader-ad
 import { AddPmAdminService } from './Services/add-pm-admin/add-pm-admin.service';
 import { PendingListService } from './Services/Pending/pending-list.service';
 import { BlockserviceService } from './Services/blockservice/blockservice.service';
+import { PendingOrdersComponent } from './Components/pending-orders/pending-orders.component';
 
 
 
@@ -46,7 +47,8 @@ import { BlockserviceService } from './Services/blockservice/blockservice.servic
     AdminStockManageComponent,
     SearchComponent,
     AdminTraderAddComponent,
-    AdminPortfoliomanagerAddComponent
+    AdminPortfoliomanagerAddComponent,
+    PendingOrdersComponent
     
   ],
   imports: [
