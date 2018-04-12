@@ -14,16 +14,15 @@ export class AdminStockManageComponent implements OnInit {
 
   stock:FormGroup;
   list=[];
-  stocks: any[];
+  //stocks: any[];
   constructor(public ser:AddStockAdminService,public stocksService:AdminstocksService){
     this.stock = new FormGroup({
       Name: new FormControl('', [Validators.required, Validators.minLength(2),Validators.pattern("[aA-zZ]*")]),
       Symbol: new FormControl('',[Validators.required, Validators.minLength(2),Validators.pattern("[aA-zZ]*")]),
       CurrentPrice: new FormControl('',[Validators.required,Validators.pattern("[0-9]*")]),
       VolumeAvailable: new FormControl('',[Validators.required,Validators.pattern("[0-9]*")])
-  });
-
-  //this.stocks= stocksService.stocks;
+    });
+    this.list= stocksService.stocks;
   }
   
   onAdd({ value, valid }: { value: Contains, valid: boolean }){

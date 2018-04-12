@@ -28,7 +28,7 @@ export class AdminstocksService {
   AddStocks(r:any)
   {
     alert("Stocks received at my service");
-    console.log(r+"ankitchutiya");
+    console.log(r+"--");
     this.globalService.PostMethod(r,this._baseUrl).subscribe(
         response => response,
         error => console.error(error),

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import{ExceltojsonService} from "../../Services/exceltojson/exceltojson.service"
+import{ExceltojsonService} from "../../Services/exceltojson/exceltojson.service";
+import { AddTraderAdminService } from "../../Services/add-trader-admin/add-trader-admin.service";
 
 @Component({
   selector: 'app-admin-trader-add',
@@ -9,7 +10,7 @@ import{ExceltojsonService} from "../../Services/exceltojson/exceltojson.service"
 export class AdminTraderAddComponent implements OnInit {
 
 
-  constructor() {
+  constructor(private addtraderservice:AddTraderAdminService) {
  
    }
 
@@ -23,7 +24,12 @@ export class AdminTraderAddComponent implements OnInit {
     let file = event.target.files[0];
     this.xlsxToJsonService.processFileToJson({}, file).subscribe(data => {
       this.result = data['sheets'].Sheet1;
+      this.AddTrader();
     })
 
 }
+
+  AddTrader(){
+    this.addtraderservice.AddTraders(this.result);    
+  }
 }
