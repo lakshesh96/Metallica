@@ -1,0 +1,34 @@
+
+<div class="d1">
+    <h1> Current position</h1>
+   <div class="d2">
+  <table class="table table-hover">
+    <thead>
+     <tr class="table-danger">
+      <th scope="col">Trader_Name</th>
+      <th scope="col">Stock_Name</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Volume_Brought</th>
+      <th scope="col">Buying Price</th>
+      <th scope="col">Current Price</th>
+      <th scope="col">Total Value</th>
+      <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>     
+    <tr  class="table-light" *ngFor = "let e of list">
+      <td>{{e.Trader_Name}}</td>
+      <td>{{e.Stock_Name}}</td>
+      <td>{{e.Symbol}}</td>
+      <td>{{e.Volume_Brought}}</td>
+      <td>{{e.Buying_Price}}</td>
+      <td>{{e.Current_Price}}</td>
+      <td>{{e.Total_Value}}</td>
+      <td>
+      <button class="btn btn-success" style="width:90px">Sell </button> 
+      </td>
+    </tr> 
+  </tbody>
+  </table> 
+  </div>
+  </div>
