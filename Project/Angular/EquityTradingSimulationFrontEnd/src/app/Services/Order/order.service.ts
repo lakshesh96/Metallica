@@ -4,14 +4,12 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-
 @Injectable()
-export class BlockserviceService {
-
- private url:string="http://localhost:52705/api/blocks";
+export class OrderService {
+  private url:string="http://localhost:52705/api/Orders";
   constructor(private http:Http) { }
 
-  get_blockdata():Observable<any>{
+  get_orderdata():Observable<any>{
     return this.http.get(this.url).map(this.extractData);
   }
 

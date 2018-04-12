@@ -9,12 +9,25 @@ import { AddTraderAdminService } from "../../Services/add-trader-admin/add-trade
 })
 export class AdminTraderAddComponent implements OnInit {
 
+  listapproved:any[];
+  listunapproved:any[];
 
   constructor(private addtraderservice:AddTraderAdminService) {
  
    }
 
   ngOnInit() {
+    this.addtraderservice.getApprovedTraders().subscribe
+    (response => this.listapproved = response,
+    error => console.error(error),
+    () => { console.info(this.listapproved)}
+    );
+
+    this.addtraderservice.getUnapprovedTraders().subscribe
+    (response => this.listunapproved = response,
+    error => console.error(error),
+    () => { console.info(this.listunapproved)}
+    );
   }
 
   public result: any;
