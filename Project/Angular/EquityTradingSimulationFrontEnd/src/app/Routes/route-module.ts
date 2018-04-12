@@ -12,6 +12,7 @@ import { AdminTraderAddComponent } from '../Components/admin-trader-add/admin-tr
 import { CurrentPositionComponent } from '../Components/current-position/current-position.component';
 import { PendingOrdersComponent } from '../Components/pending-orders/pending-orders.component';
 import { Login } from '../Models/login';
+import { AuthGuardService } from '../Services/Auth-Guard/auth-guard.service';
 
 
 const AppRoutes:Routes = [
@@ -24,13 +25,13 @@ const AppRoutes:Routes = [
             {path:"Trader",component:AdminTraderAddComponent}
             ]
     },
-    {path:"Blocks",component:BlockCreationComponent},
-    {path:"Buy",component:BuyrequestComponent},
-    {path:"CurrentPosition",component:CurrentPositionComponent},
-    {path:"PendingOrders",component:PendingOrdersComponent},
-    {path:"Search" ,component:SearchComponent},
-    {path:"",component:CurrentPositionComponent},
-    {path:"*",component:CurrentPositionComponent}
+    {path:"Blocks",component:BlockCreationComponent,canActivate: [AuthGuardService]},
+    {path:"Buy",component:BuyrequestComponent,canActivate: [AuthGuardService]},
+    {path:"CurrentPosition",component:CurrentPositionComponent,canActivate: [AuthGuardService]},
+    {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardService]},
+    {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardService]},
+    {path:"",component:RegisterComponent,canActivate: [AuthGuardService]},
+    {path:"*",component:LoginComponent,canActivate: [AuthGuardService]}
 ]
 @NgModule({
 imports : [RouterModule.forRoot(AppRoutes)],
