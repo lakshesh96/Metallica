@@ -46,6 +46,7 @@ import {LoginService} from './Services/login/login.service';
 
 import { AuthGuardService } from './Services/Auth-Guard/auth-guard.service';
 import { AdminComponent } from './Components/admin/admin.component';
+import { AddstocksComponent } from './Components/addstocks/addstocks.component';
 
 @NgModule({
   declarations: [
