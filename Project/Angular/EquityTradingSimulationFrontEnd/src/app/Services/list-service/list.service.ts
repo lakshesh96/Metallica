@@ -11,6 +11,7 @@ export class ListService {
 
   reg:Regmodel;
   url = "http://localhost:52705/api/Users/PutList";
+  url1:string="http://localhost:52705/api/Users";
   users:any[];
   status:string;
 
@@ -27,7 +28,7 @@ export class ListService {
   }
 
   GetUsers(){
-    this.globalService.GetMethod(this.url).subscribe(
+    this.globalService.GetMethod(this.url1).subscribe(
       response => this.users = response,
       error => console.error(error),
       () => console.log()
