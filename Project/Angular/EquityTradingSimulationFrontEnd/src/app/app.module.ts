@@ -34,6 +34,7 @@ import { PendingListService } from './Services/Pending/pending-list.service';
 import { BlockserviceService } from './Services/blockservice/blockservice.service';
 import{CurrentPositionService} from "../app/Services/current-position/current-position.service"
 
+import { OrderService } from './Services/Order/order.service';
 
 
 
@@ -73,7 +74,8 @@ import{CurrentPositionService} from "../app/Services/current-position/current-po
     AddPmAdminService,
     PendingListService,
     BlockserviceService,
-    CurrentPositionService
+    CurrentPositionService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

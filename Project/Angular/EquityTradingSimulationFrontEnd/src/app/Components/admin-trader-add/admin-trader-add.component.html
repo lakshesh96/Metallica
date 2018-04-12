@@ -12,9 +12,9 @@
           <th>Trader Id</th>
           <th>Action</th>
       </tr>         
-      <tr *ngFor = "let e of PendingList">
+      <tr *ngFor = "let e of listunapproved">
           <td>{{e.Name}}</td>
-          <td>{{e.EmpId}}</td>
+          <td>{{e.Id}}</td>
           <button class="btn btn-outline-success" style="width: 150px">Approve</button>
       </tr>         
   </table>
@@ -27,9 +27,9 @@
           <th>Trader Id</th>
           <th>Action</th>
       </tr>     
-      <tr *ngFor = "let e of ApprovedList; let i=index">
+      <tr *ngFor = "let e of listapproved; let i=index">
           <td>{{e.Name}}</td>
-          <td>{{e.EmpId}}</td>
+          <td>{{e.Id}}</td>
           <button class="btn btn-outline-danger" >Disapprove</button>
       </tr>      
   </table>
