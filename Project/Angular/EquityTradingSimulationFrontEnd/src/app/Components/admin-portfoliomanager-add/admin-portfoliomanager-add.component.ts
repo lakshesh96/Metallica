@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import{ExceltojsonService} from "../../Services/exceltojson/exceltojson.service"
+import{ExceltojsonService} from "../../Services/exceltojson/exceltojson.service";
+import { AddPmAdminService } from "../../Services/add-pm-admin/add-pm-admin.service";
 
 @Component({
   selector: 'app-admin-portfoliomanager-add',
@@ -8,7 +9,7 @@ import{ExceltojsonService} from "../../Services/exceltojson/exceltojson.service"
 })
 export class AdminPortfoliomanagerAddComponent implements OnInit {
 
-  constructor() { }
+  constructor(private addpmservice:AddPmAdminService) { }
 
   ngOnInit() {
   }
@@ -19,7 +20,12 @@ export class AdminPortfoliomanagerAddComponent implements OnInit {
     let file = event.target.files[0];
     this.xlsxToJsonService.processFileToJson({}, file).subscribe(data => {
       this.result = data['sheets'].Sheet1;
+      this.AddPM();
     })
 
 }
+
+  AddPM(){
+    this.addpmservice.AddPMs(this.result);
+  }
 }
