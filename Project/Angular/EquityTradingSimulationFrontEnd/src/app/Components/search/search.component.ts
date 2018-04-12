@@ -11,11 +11,18 @@ export class SearchComponent implements OnInit
 {
   StockShow:Stocks[]
 
-  constructor(private SS:StocksService) { }
+  constructor(private SS:StocksService) { 
+    // this.StockShow=this.SS.StocksList;
+    // console.log(this.StockShow);
+  }
+  getStocks(){
+    this.StockShow=this.SS.StocksList;
+    console.log(this.StockShow);
+  }
 
   ngOnInit() 
-  {
-    this.StockShow=this.SS.StocksList;
+  {   
+    //this.StockShow=this.SS.StocksList;
   }
   sort_stock_Name_ascending()
   {
