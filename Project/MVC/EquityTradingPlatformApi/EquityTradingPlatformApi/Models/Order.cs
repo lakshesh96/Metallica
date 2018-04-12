@@ -48,7 +48,7 @@ namespace EquityTradingPlatformApi.Models
         public int UserId { get; set; }
         public virtual User User { get; set; }
 
-        public int PMId { get; set; }
+        public int? PMId { get; set; }
 
         [Required]
         public OrderStatus OrderStatus { get; set; }
@@ -63,7 +63,7 @@ namespace EquityTradingPlatformApi.Models
         [Required]
         public DateTime DateAdded { get; set; }
 
-        public int BlockId { get; set; }
+        public int? BlockId { get; set; }
 
         public virtual IEnumerable<CurrentPosition> Positions { get; set; }
 
