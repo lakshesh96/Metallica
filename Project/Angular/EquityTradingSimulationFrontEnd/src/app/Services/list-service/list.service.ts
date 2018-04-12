@@ -5,7 +5,9 @@ import {GlobalService} from '../../Services/global.service';
 @Injectable()
 export class ListService {
 
-  constructor(private globalService:GlobalService) { }
+  constructor(private globalService:GlobalService) { 
+    this.GetUsers();
+  }
 
   reg:Regmodel;
   url = "http://localhost:52705/api/Users";

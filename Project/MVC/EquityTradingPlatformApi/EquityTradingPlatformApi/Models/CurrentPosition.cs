@@ -10,19 +10,24 @@ namespace EquityTradingPlatformApi.Models
     {
         [Required]
         public int Id { get; set; }
+        
         //[Required]
         //public int UserId { get; set; }
+        //public virtual User User { get; set; }
+
         [Required]
         public DateTime Date { get; set; }
+
         [Required]
         public double PriceExecuted { get; set; }
         
         [Required]
         public int OrderId { get; set; }
+        public virtual Order Order { get; set; }
 
         [Required]
         public int VolumeExecuted { get; set; }
 
-        public virtual Order Order { get; set; }
+        
     }
 }

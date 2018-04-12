@@ -7,7 +7,7 @@
   <div>
   <table class="table table-light table-hover scroll" >
   <thead><legend>Traders pending for approval</legend></thead>
-      <tr class="table-secondary">
+      <tr class="table-danger">
           <th>Name</th>
           <th>Trader Id</th>
           <th>Action</th>
@@ -19,10 +19,10 @@
       </tr>         
   </table>
   </div>
-  <div style="margin-left: 150px">
+  <div style="margin-left: 140px">
   <table class="table table-light table-hover scroll">
   <thead><legend>Traders approved</legend></thead>
-      <tr class="table-secondary">
+      <tr class="table-danger">
           <th>Name</th>
           <th>Trader Id</th>
           <th>Action</th>
@@ -30,7 +30,7 @@
       <tr *ngFor = "let e of listapproved; let i=index">
           <td>{{e.Name}}</td>
           <td>{{e.Id}}</td>
-          <button class="btn btn-outline-danger" >Disapprove</button>
+          <button class="btn btn-outline-danger"  >Disapprove</button>
       </tr>      
   </table>
   </div>

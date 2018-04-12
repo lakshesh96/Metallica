@@ -98,7 +98,7 @@ namespace EquityTradingPlatformApi.Controllers
         }
 
 
-
+        /* EDIT USER FUNCTIONALITY
         // PUT: api/Users/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUser(int id, User user)
@@ -133,10 +133,14 @@ namespace EquityTradingPlatformApi.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+        */
 
 
-        // Login Functionality for USERS
+        // LOGIN FOR TRADERS AND PM
+        // Post: api/Users/Login
         [Route("api/Users/Login")]
+        [ResponseType(typeof(void))]
+        [HttpPost]
         public IHttpActionResult PostLogin(LoginUser user)
         {
             foreach(User u in db.Users)
@@ -151,7 +155,9 @@ namespace EquityTradingPlatformApi.Controllers
         }
 
 
-        //Batch Add Users
+
+        // BATCH ADD USERS
+        // Post: api/Users/PutList
         [Route("api/Users/PutList")]
         [ResponseType(typeof(void))]
         [HttpPost]
@@ -171,6 +177,7 @@ namespace EquityTradingPlatformApi.Controllers
                 return NotFound();
             }
         }
+
 
 
         // USER REGISTRATION 
@@ -210,6 +217,8 @@ namespace EquityTradingPlatformApi.Controllers
             return Ok(user.Id);
         }
 
+
+        /* DELETE USER FUNCTIONALITY
         // DELETE: api/Users/5
         [ResponseType(typeof(User))]
         public IHttpActionResult DeleteUser(int id)
@@ -225,9 +234,10 @@ namespace EquityTradingPlatformApi.Controllers
 
             return Ok(user);
         }
+        */
 
 
-        // APPROVE USERS
+        // APPROVE USERS (TOGGLE)
         // POST: api/Users/Approve
         [HttpPost]
         [Route("api/Users/Approve")]
@@ -261,6 +271,10 @@ namespace EquityTradingPlatformApi.Controllers
         }
 
 
+
+
+        // Extra Functions
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)
