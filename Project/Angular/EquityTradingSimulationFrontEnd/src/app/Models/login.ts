@@ -2,7 +2,7 @@
 export class Login {
     constructor(
         public Type:string,
-        public Username:string,
+        public UserName:string,
         public Password:string
     ){}
 }

@@ -7,6 +7,12 @@ import { BlockCreationComponent } from '../Components/block-creation/block-creat
 import { BuyrequestComponent } from '../Components/buyrequest/buyrequest.component';
 import { AdminStockManageComponent } from '../Components/admin-stock-manage/admin-stock-manage.component';
 import{SearchComponent} from '../Components/search/search.component';
+import { AdminPortfoliomanagerAddComponent } from '../Components/admin-portfoliomanager-add/admin-portfoliomanager-add.component';
+import { AdminTraderAddComponent } from '../Components/admin-trader-add/admin-trader-add.component';
+import { CurrentPositionComponent } from '../Components/current-position/current-position.component';
+import { PendingOrdersComponent } from '../Components/pending-orders/pending-orders.component';
+import { Login } from '../Models/login';
+import { AuthGuardService } from '../Services/Auth-Guard/auth-guard.service';
 
 
 const AppRoutes:Routes = [
@@ -14,12 +20,18 @@ const AppRoutes:Routes = [
     {path:"Register",component:RegisterComponent},
     {path:"AdminLogin",component:AdminloginComponent,
         children:[
-            {path:"Stocks",component:AdminStockManageComponent}
+            {path:"Stocks",component:AdminStockManageComponent},
+            {path:"PortflioManager",component:AdminPortfoliomanagerAddComponent},
+            {path:"Trader",component:AdminTraderAddComponent}
             ]
     },
-    {path:"Blocks",component:BlockCreationComponent},
-    {path:"Buy",component:BuyrequestComponent},
-    {path:"Search" ,component:SearchComponent}
+    {path:"Blocks",component:BlockCreationComponent,canActivate: [AuthGuardService]},
+    {path:"Buy",component:BuyrequestComponent,canActivate: [AuthGuardService]},
+    {path:"CurrentPosition",component:CurrentPositionComponent,canActivate: [AuthGuardService]},
+    {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardService]},
+    {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardService]},
+    {path:"",component:RegisterComponent,canActivate: [AuthGuardService]},
+    {path:"*",component:LoginComponent,canActivate: [AuthGuardService]}
 ]
 @NgModule({
 imports : [RouterModule.forRoot(AppRoutes)],

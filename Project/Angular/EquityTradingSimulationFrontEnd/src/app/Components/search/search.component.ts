@@ -15,9 +15,25 @@ export class SearchComponent implements OnInit
   constructor(private SS:StocksService,private buysellservice:BuySellService) { 
     // this.StockShow=this.SS.StocksList;
     // console.log(this.StockShow);
+    this.DemoRefresh();
   }
+
+  DemoRefresh(){
+    this.SS.GetStocks().subscribe(
+      response => this.StockShow = response,
+      error => console.error(error),
+      () => console.log()
+    );
+  }
+
   getStocks(){
-    this.StockShow=this.SS.StocksList;
+    this.SS.GetStocks().subscribe(
+      response => this.StockShow = response,
+      error => console.error(error),
+      () => this.DemoRefresh()
+    );
+
+   // this.StockShow=this.SS.StocksList;
     console.log(this.StockShow);
   }
 

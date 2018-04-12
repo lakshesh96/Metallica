@@ -41,6 +41,11 @@ import{BuySellService} from './Services/buy-sell/buy-sell.service';
 
 
 
+import {LoginService} from './Services/login/login.service';
+
+
+import { AuthGuardService } from './Services/Auth-Guard/auth-guard.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,9 +84,8 @@ import{BuySellService} from './Services/buy-sell/buy-sell.service';
     BlockserviceService,
     CurrentPositionService,
     OrderService,
-    SellService,
-    BuySellService,
-    BuyService
+	LoginService,
+	AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
