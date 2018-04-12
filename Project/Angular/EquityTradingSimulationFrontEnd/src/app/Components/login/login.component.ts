@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.globalService.PostMethod(value,this.url).subscribe(
     response => {this.id=response.id;
+      console.log(response);
       sessionStorage.setItem("UserId",this.id.toString());
       console.log(sessionStorage.getItem("UserId"));
     },
