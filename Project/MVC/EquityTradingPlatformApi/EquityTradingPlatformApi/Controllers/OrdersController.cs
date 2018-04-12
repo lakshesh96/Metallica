@@ -79,6 +79,8 @@ namespace EquityTradingPlatformApi.Controllers
                 return BadRequest(ModelState);
             }
 
+            order.DateAdded = System.DateTime.Now;
+
             db.Orders.Add(order);
             db.SaveChanges();
 

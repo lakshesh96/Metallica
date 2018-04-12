@@ -60,6 +60,8 @@ namespace EquityTradingPlatformApi.Models
         [Required]
         public double StopPrice { get; set; }
 
+        [Required]
+        public DateTime DateAdded { get; set; }
 
         public int BlockId;
         public virtual Block Block { get; set; }
