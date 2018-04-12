@@ -45,7 +45,7 @@ import {LoginService} from './Services/login/login.service';
 
 
 import { AuthGuardService } from './Services/Auth-Guard/auth-guard.service';
-import { AddstocksComponent } from './Components/addstocks/addstocks.component';
+import { AdminComponent } from './Components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +62,7 @@ import { AddstocksComponent } from './Components/addstocks/addstocks.component';
     PendingOrdersComponent,
     CurrentPositionComponent,
     SellRequestComponent,
-    AddstocksComponent
+    AdminComponent
     
   ],
   imports: [
