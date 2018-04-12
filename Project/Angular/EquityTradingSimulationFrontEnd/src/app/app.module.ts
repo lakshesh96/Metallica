@@ -23,28 +23,22 @@ import {StocksService} from './Services/stocks.service';
 
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		BlockCreationComponent,
-		LoginComponent,
-		AdminloginComponent,
-		AdminStockManageComponent,
-		BuyrequestComponent,SearchComponent
-	],
-	imports: [
-		BrowserModule,
-		ReactiveFormsModule,
-		FormsModule,
-		HttpModule,
-		JsonpModule,
-	],
-	providers: [
-		GlobalService,
-		ExceltojsonService,
-		AdminstocksService,
-		StocksService,
-		AddStockAdminService
-	],
-	bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    BlockCreationComponent,
+    LoginComponent,
+    AdminloginComponent,
+    AdminStockManageComponent,
+    BuyrequestComponent,SearchComponent
+  ],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpModule,
+    JsonpModule,
+  ],
+  providers: [GlobalService,ExceltojsonService,AdminstocksService,StocksService,AddStockAdminService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
