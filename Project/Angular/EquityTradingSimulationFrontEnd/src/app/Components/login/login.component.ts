@@ -22,4 +22,11 @@ export class LoginComponent implements OnInit {
     console.log(value, valid);
     
   }
+ /* getData() {
+
+    var username = <HTMLInputElement>document.getElementById("username");
+    var password = <HTMLInputElement>document.getElementById("password");
+    sessionStorage.setItem("Username", username.value);
+    sessionStorage.setItem("Password", password.value);
+  }*/
 }
