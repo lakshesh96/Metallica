@@ -220,6 +220,10 @@
     <Compile Include="Migrations\201804120919044_Date added in Order Table.Designer.cs">
       <DependentUpon>201804120919044_Date added in Order Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804120950032_removingFKforBlock.cs" />
+    <Compile Include="Migrations\201804120950032_removingFKforBlock.Designer.cs">
+      <DependentUpon>201804120950032_removingFKforBlock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Block.cs" />
@@ -314,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804120919044_Date added in Order Table.resx">
       <DependentUpon>201804120919044_Date added in Order Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804120950032_removingFKforBlock.resx">
+      <DependentUpon>201804120950032_removingFKforBlock.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

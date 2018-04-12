@@ -64,7 +64,6 @@ namespace EquityTradingPlatformApi.Models
         public DateTime DateAdded { get; set; }
 
         public int BlockId;
-        public virtual Block Block { get; set; }
 
         public virtual IEnumerable<CurrentPosition> Positions { get; set; }
 
