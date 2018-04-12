@@ -17,7 +17,7 @@ trader:any[]=[];
 showtraders(){
 this.users=this.listservice.users;
 console.log(this.users);
-let j=0;
+
 for (let i = 0; i < this.users.length; i++) {
   
   const element = this.users[i];

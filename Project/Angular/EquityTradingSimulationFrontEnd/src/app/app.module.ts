@@ -63,7 +63,8 @@ import { AddstocksComponent } from './Components/addstocks/addstocks.component';
     PendingOrdersComponent,
     CurrentPositionComponent,
     SellRequestComponent,
-    AdminComponent
+    AdminComponent,
+    AddstocksComponent
     
   ],
   imports: [
