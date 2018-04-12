@@ -1,5 +1,6 @@
 export class Blocks{
     constructor(
+        public block_status:number,
         public trader_name:string,
         public stock_name:string,
         public symbol:string,
@@ -8,7 +9,6 @@ export class Blocks{
         public date:string,
         public order_type:string,
         public side:string,
-        
     ){
 
     }
