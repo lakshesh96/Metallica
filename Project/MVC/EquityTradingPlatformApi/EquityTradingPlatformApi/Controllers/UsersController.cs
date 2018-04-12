@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -70,6 +71,23 @@ namespace EquityTradingPlatformApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+
+        // Login Functionality for USERS
+        [Route("api/Users/Login")]
+        public IHttpActionResult PostLogin(LoginUser user)
+        {
+            foreach(User u in db.Users)
+            {
+                if (u.UserName == user.UserName && u.Password == user.Password)
+                {
+                    return Ok("User Found. Approved: " + u.Approved);
+                }                    
+            }
+
+            return Ok(false);
+        }
+
+        // User Registration
         // POST: api/Users
         [ResponseType(typeof(User))]
         public IHttpActionResult PostUser(User user)
@@ -79,10 +97,31 @@ namespace EquityTradingPlatformApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Users.Add(user);
-            db.SaveChanges();
+            // By default user should'nt be approved
+            user.Approved = false;
 
-            return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
+            foreach(User u in db.Users)
+            {
+                if (u.UserName == user.UserName)
+                    return Ok("UserName already exists");
+
+                if (u.EmployeeId == user.EmployeeId)
+                    return Ok("EmployeeID already exists.");
+            }
+
+            try
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+            }
+            catch (DbUpdateException e)
+            {
+                // If employee doesn't Exist.
+                return Ok("Error. EmployeeId doesn't exist. " + e.Message);
+            }
+   
+            //return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
+            return Ok(user.Id);
         }
 
         // DELETE: api/Users/5
@@ -114,5 +153,11 @@ namespace EquityTradingPlatformApi.Controllers
         {
             return db.Users.Count(e => e.Id == id) > 0;
         }
+    }
+
+    public class LoginUser
+    {
+        public string UserName { get; set; }
+        public string Password { get; set; }
     }
 }
