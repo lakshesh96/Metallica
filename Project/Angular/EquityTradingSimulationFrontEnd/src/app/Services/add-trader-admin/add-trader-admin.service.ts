@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map'; 
 import 'rxjs/add/operator/catch'; 
 import { GlobalService } from "../global.service";
+import { User } from "../../Models/user";
 
 @Injectable()
 export class AddTraderAdminService {
@@ -11,6 +12,7 @@ export class AddTraderAdminService {
   private _baseUrl: string = "http://localhost:52705/api/Users/PutList";
   private _baseUrl1: string = "http://localhost:52705/api/Trader/Approved";
   private _baseUrl2: string = "http://localhost:52705/api/Trader/Unapproved";
+  private _baseUrl3: string = "http://localhost:52705/api/Users/Approve?id=";
 
   traders:any;
 
@@ -19,37 +21,52 @@ export class AddTraderAdminService {
 
   getApprovedTraders()
   {
-      this.globalService.GetMethod(this._baseUrl1).subscribe
+      /* this.globalService.GetMethod(this._baseUrl1).subscribe
           (response => this.traders = response,
           error => console.error(error),
           () => { console.info(this.traders)}
-      ); 
+      );  */
 
       return this.globalService.GetMethod(this._baseUrl1);
   }
 
   getUnapprovedTraders()
   {
-      this.globalService.GetMethod(this._baseUrl2).subscribe
+      /* this.globalService.GetMethod(this._baseUrl2).subscribe
           (response => this.traders = response,
           error => console.error(error),
           () => { console.info(this.traders)}
-      ); 
+      );  */
 
       return this.globalService.GetMethod(this._baseUrl2);
   }
   
+  ToggleTrader(r:User){
+   // alert("Traders received at my service toggle");
+    /* this.globalService.PostMethod(r,this._baseUrl3+r.Id).subscribe(
+        response => response,
+        error => console.error(error),
+        //() => window.location.reload()
+        //() => this.getTraders()
+    );
+    console.info(r); */
+    
+    return this.globalService.PostMethod(r,this._baseUrl3+r.Id);
+
+  }
 
   AddTraders(r:any)
   {
-    alert("Traders received at my service");
+    /* alert("Traders received at my service");
     console.log(r+"traders");
     this.globalService.PostMethod(r,this._baseUrl).subscribe(
         response => response,
         error => console.error(error),
         //() => this.getTraders()
     );
-    console.info(r);
+    console.info(r); */
+
+    return this.globalService.PostMethod(r,this._baseUrl);
   }
 
 }

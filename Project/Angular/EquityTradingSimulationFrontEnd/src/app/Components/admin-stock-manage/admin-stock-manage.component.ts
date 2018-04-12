@@ -31,21 +31,28 @@ export class AdminStockManageComponent implements OnInit{
   onAdd({ value, valid }: { value: Contains, valid: boolean }){
     if(valid){
       var p =new Contains(value.Symbol,value.Name,value.CurrentPrice,value.VolumeAvailable);
-      this.ser.onAdd(p);
+      this.ser.onAdd(p).subscribe(
+        response => response,
+        error => console.error(error),
+        () => this.DemoRefreshTable()
+      );
       this.list=this.ser.list;
     }
     else 
       alert("Invalid Input");
   }
 
-
-  ngOnInit() {
+  DemoRefreshTable(){
     this.stocksService.getStocks().subscribe
     (response => this.listnew = response,
     error => console.error(error),
     () => { console.info()}
-    //() => { console.info(this.listnew)}
-); 
+  );
+  }
+
+  ngOnInit() {
+    this.DemoRefreshTable();
+    //() => { console.info(this.listnew)} 
   }
 
 
@@ -73,7 +80,11 @@ export class AdminStockManageComponent implements OnInit{
 
   AddP(result)
   {
-    this.stocksService.AddStocks(result);
+    this.stocksService.AddStocks(result).subscribe(
+      response => response,
+      error => console.error(error),
+      () => this.DemoRefreshTable()
+  );
   }
 
 }

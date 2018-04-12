@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Login} from '../../Models/login';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
+import {LoginService} from '../../Services/login/login.service';
+import {GlobalService} from '../../Services/global.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import { FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   login:FormGroup;
-  constructor() { }
+  constructor(private globalService:GlobalService) { }
 
   ngOnInit() {
     this.login = new FormGroup({

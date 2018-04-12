@@ -15,7 +15,7 @@
       <tr *ngFor = "let e of listunapproved">
           <td>{{e.Name}}</td>
           <td>{{e.Id}}</td>
-          <button class="btn btn-outline-success" style="width: 150px">Approve</button>
+          <button class="btn btn-outline-success" (click)="Toggle(e)" style="width: 150px">Approve</button>
       </tr>         
   </table>
   </div>
@@ -30,7 +30,7 @@
       <tr *ngFor = "let e of listapproved; let i=index">
           <td>{{e.Name}}</td>
           <td>{{e.Id}}</td>
-          <button class="btn btn-outline-danger"  >Disapprove</button>
+          <button class="btn btn-outline-danger" (click)="Toggle(e)" >Disapprove</button>
       </tr>      
   </table>
   </div>

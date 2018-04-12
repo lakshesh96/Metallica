@@ -30,13 +30,14 @@ export class AdminstocksService {
 
   AddStocks(r:any)
   {
-    alert("Stocks received at my service");
+  /*   alert("Stocks received at my service");
     //console.log(r+"--");
     this.globalService.PostMethod(r,this._baseUrl).subscribe(
         response => response,
         error => console.error(error),
         () => this.getStocks()
     );
-    //console.info("AddStocks Service wala: "+r);
+    //console.info("AddStocks Service wala: "+r); */
+    return this.globalService.PostMethod(r,this._baseUrl);
   }
 }
