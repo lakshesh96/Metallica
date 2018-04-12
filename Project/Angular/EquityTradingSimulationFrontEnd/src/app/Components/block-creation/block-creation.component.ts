@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {BlockserviceService} from "../../Services/blockservice/blockservice.service";
 import { OrderService } from '../../Services/Order/order.service';
+import { ListService } from '../../Services/list-service/list.service';
+import { StocksService } from '../../Services/StocksList/stocks.service';
 
 @Component({
   selector: 'app-block-creation',
@@ -11,25 +13,34 @@ export class BlockCreationComponent implements OnInit {
 
   block:any[];
   order:any[];
-
-  constructor(private bs:BlockserviceService,private os:OrderService) { }
+  user:any[];
+  stock:any[];
+  constructor(
+      private blockservice:BlockserviceService,
+      private orderservice:OrderService,
+      private listservice:ListService,
+      private stockservice:StocksService
+    ) { }
 
   ngOnInit() {
+   
+     
   }
-
-  getblockdata()
+ getvalue()
+ {
+     this.block=this.blockservice.block;
+     this.order=this.orderservice.order;
+     this.user=this.listservice.users;
+     this.stock=this.stockservice.StocksList;
+     
+ }
+  show()
   {
-      this.bs.get_blockdata().subscribe
-          (response => this.block = response,
-          error => console.error(error)
-      ); 
+      console.log(this.user);
+      console.log(this.block);
+      console.log(this.order);
+      console.log(this.stock)
+      
   }
-  getorderdata()
-  {
-      this.os.get_orderdata().subscribe
-          (response => this.order = response,
-          error => console.error(error)
-      ); 
-  }
-
+ 
 }
