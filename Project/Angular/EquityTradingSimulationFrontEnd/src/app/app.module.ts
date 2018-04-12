@@ -37,7 +37,7 @@ import { AdminPortfoliomanagerAddComponent } from './Components/admin-portfoliom
 		LoginComponent,
 		AdminloginComponent,
 		AdminStockManageComponent,
-		BuyrequestComponent, SearchComponent, RegisterComponent, AdminTraderAddComponent, AdminPortfoliomanagerAddComponent, RouterModule
+		BuyrequestComponent, SearchComponent, RegisterComponent, AdminTraderAddComponent, AdminPortfoliomanagerAddComponent
 	],
 	imports: [
 		BrowserModule,
@@ -45,6 +45,7 @@ import { AdminPortfoliomanagerAddComponent } from './Components/admin-portfoliom
 		FormsModule,
 		HttpModule,
 		JsonpModule,
+		RouterModule
 	],
 	providers: [
 		GlobalService,
