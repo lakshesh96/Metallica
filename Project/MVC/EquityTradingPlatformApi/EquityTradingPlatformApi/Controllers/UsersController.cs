@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using EquityTradingPlatformApi.Models;
+using Newtonsoft.Json.Linq;
 
 namespace EquityTradingPlatformApi.Controllers
 {
@@ -143,15 +144,30 @@ namespace EquityTradingPlatformApi.Controllers
         [HttpPost]
         public IHttpActionResult PostLogin(LoginUser user)
         {
-            foreach(User u in db.Users)
+            var result = JObject.Parse(@"{}");
+            result["response"] = false;
+
+            foreach (User u in db.Users)
             {
                 if (u.UserName == user.UserName && u.Password == user.Password)
                 {
-                    return Ok("User Found. Approved: " + u.Approved);
+                    if (u.Type == user.Type)
+                    {
+                        result["response"] = true;
+                        result["type"] = u.Type.ToString();
+                        result["error"] = "";
+                    } 
+                    else
+                    {
+                        result["response"] = false;
+                        result["type"] = "";
+                        result["error"] = "Incorrect UserType";
+                    }
+                    return Ok(result);
                 }                    
             }
-
-            return Ok(false);
+            result["error"] = "Incorrect UserName or Password";
+            return Ok(result);
         }
 
 
@@ -218,6 +234,7 @@ namespace EquityTradingPlatformApi.Controllers
         }
 
 
+
         /* DELETE USER FUNCTIONALITY
         // DELETE: api/Users/5
         [ResponseType(typeof(User))]
@@ -235,6 +252,7 @@ namespace EquityTradingPlatformApi.Controllers
             return Ok(user);
         }
         */
+
 
 
         // APPROVE USERS (TOGGLE)
@@ -294,5 +312,6 @@ namespace EquityTradingPlatformApi.Controllers
     {
         public string UserName { get; set; }
         public string Password { get; set; }
+        public UserType Type { get; set; }
     }
 }
