@@ -43,8 +43,9 @@ export class AdminStockManageComponent implements OnInit{
     this.stocksService.getStocks().subscribe
     (response => this.listnew = response,
     error => console.error(error),
-    () => { console.info(this.listnew)}
-    ); 
+    () => { console.info()}
+    //() => { console.info(this.listnew)}
+); 
   }
 
 

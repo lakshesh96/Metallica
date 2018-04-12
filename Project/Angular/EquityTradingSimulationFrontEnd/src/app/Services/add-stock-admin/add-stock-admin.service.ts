@@ -10,7 +10,6 @@ export class AddStockAdminService {
     //console.log(value,valid);
       this.list.push(p);
       //console.log(this.list);
+      
   }
-
-
 }
