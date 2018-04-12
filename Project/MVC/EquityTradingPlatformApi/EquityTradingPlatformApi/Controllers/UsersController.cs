@@ -17,12 +17,16 @@ namespace EquityTradingPlatformApi.Controllers
     {
         private ProjectContext db = new ProjectContext();
 
+
+        // GET ALL USERS
         // GET: api/Users
         public IQueryable<User> GetUsers()
         {
             return db.Users;
         }
 
+
+        /* GET SPECIFIC USER BY ID
         // GET: api/Users/5
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUser(int id)
@@ -35,7 +39,66 @@ namespace EquityTradingPlatformApi.Controllers
 
             return Ok(user);
         }
+        */
 
+
+        // GET APPROVED TRADERS
+        // GET: api/Trader/Approved
+        [HttpGet]
+        [Route("api/Trader/Approved")]
+        [ResponseType(typeof(User))]
+        public IHttpActionResult GetApprovedTraders()
+        {
+            var approvedTraders = from user in db.Users
+                                  where user.Approved == true && (user.Type == UserType.Trader || user.Type == UserType.Both)
+                                  select user;
+            return Ok(approvedTraders);
+        }
+
+
+        // GET UNAPPROVED TRADERS
+        // GET: api/Trader/Unapproved
+        [HttpGet]
+        [Route("api/Trader/Unapproved")]
+        [ResponseType(typeof(User))]
+        public IHttpActionResult GetUnapprovedTraders()
+        {
+            var approvedTraders = from user in db.Users
+                                  where user.Approved == false && (user.Type == UserType.Trader || user.Type == UserType.Both)
+                                  select user;
+            return Ok(approvedTraders);
+        }
+
+
+        // GET APPROVED PM
+        // GET: api/PM/Approved
+        [HttpGet]
+        [Route("api/PM/Approved")]
+        [ResponseType(typeof(User))]
+        public IHttpActionResult GetApprovedPM()
+        {
+            var approvedTraders = from user in db.Users
+                                  where user.Approved == true && (user.Type == UserType.PortfolioManager || user.Type == UserType.Both)
+                                  select user;
+            return Ok(approvedTraders);
+        }
+
+
+        // GET UNAPPROVED PM
+        // GET: api/PM/Unapproved
+        [HttpGet]
+        [Route("api/PM/Unapproved")]
+        [ResponseType(typeof(User))]
+        public IHttpActionResult GetUnapprovedPM()
+        {
+            var approvedTraders = from user in db.Users
+                                  where user.Approved == false && (user.Type == UserType.PortfolioManager || user.Type == UserType.Both)
+                                  select user;
+            return Ok(approvedTraders);
+        }
+
+
+        /* EDIT USER FUNCTIONALITY
         // PUT: api/Users/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUser(int id, User user)
@@ -70,10 +133,14 @@ namespace EquityTradingPlatformApi.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+        */
 
 
-        // Login Functionality for USERS
+        // LOGIN FOR TRADERS AND PM
+        // Post: api/Users/Login
         [Route("api/Users/Login")]
+        [ResponseType(typeof(void))]
+        [HttpPost]
         public IHttpActionResult PostLogin(LoginUser user)
         {
             foreach(User u in db.Users)
@@ -87,7 +154,10 @@ namespace EquityTradingPlatformApi.Controllers
             return Ok(false);
         }
 
-        //Batch Add Users
+
+
+        // BATCH ADD USERS
+        // Post: api/Users/PutList
         [Route("api/Users/PutList")]
         [ResponseType(typeof(void))]
         [HttpPost]
@@ -108,7 +178,9 @@ namespace EquityTradingPlatformApi.Controllers
             }
         }
 
-        // User Registration
+
+
+        // USER REGISTRATION 
         // POST: api/Users
         [ResponseType(typeof(User))]
         public IHttpActionResult PostUser(User user)
@@ -145,6 +217,8 @@ namespace EquityTradingPlatformApi.Controllers
             return Ok(user.Id);
         }
 
+
+        /* DELETE USER FUNCTIONALITY
         // DELETE: api/Users/5
         [ResponseType(typeof(User))]
         public IHttpActionResult DeleteUser(int id)
@@ -160,7 +234,47 @@ namespace EquityTradingPlatformApi.Controllers
 
             return Ok(user);
         }
+        */
 
+
+        // APPROVE USERS (TOGGLE)
+        // POST: api/Users/Approve
+        [HttpPost]
+        [Route("api/Users/Approve")]
+        [ResponseType(typeof(bool))]
+        public IHttpActionResult ApproveUser(int id)
+        {
+            bool result = false;
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                foreach(User u in db.Users)
+                {
+                    if (u.Id == id)
+                    {
+                        u.Approved = !u.Approved;
+                        result = true;
+                    }
+                }
+                db.SaveChanges();
+                return Ok(result);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return Ok(false);
+            }
+        }
+
+
+
+
+        // Extra Functions
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

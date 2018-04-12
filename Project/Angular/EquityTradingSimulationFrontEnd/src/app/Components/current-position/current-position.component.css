@@ -18,7 +18,7 @@ table tbody{
     
 }
 table td{
-    width: 100px;
+    width: 160px;
 }
 table  th{
     width: 144px;
@@ -26,4 +26,10 @@ table  th{
 table thead{
 
     display :block;
+}
+.d2{
+    
+    margin: auto;
+    width: 80%;
+    
 }

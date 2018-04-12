@@ -14,7 +14,8 @@ buy:FormGroup;
   ngOnInit() {
     this.buy = new FormGroup({
       Quantity: new FormControl('', [Validators.required]),
-     
+      LimitPrice:new FormControl('',[Validators.pattern("[0-9]{1,}")]),
+      StopPrice:new FormControl('',[Validators.pattern("[0-9]{1,}")]) 
       
     });
   }

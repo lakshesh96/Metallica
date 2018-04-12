@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
+import {GlobalService} from '../../Services/global.service';
 
 @Injectable()
 export class AddStockAdminService {
 
   list=[];
-  constructor() { }
+  url = "http://localhost:52705/api/Stocks";
+
+  constructor(private globalService:GlobalService) { }
 
   onAdd(p){
     //console.log(value,valid);
-      this.list.push(p);
-      //console.log(this.list);
+    this.list.push(p);
+    //console.log(this.list);
+    let b:any = {Symbol: this.list[0].Symbol, Name: this.list[0].Name, CurrentPrice: this.list[0].CurrentPrice, VolumeAvailable: this.list[0].VolumeAvailable}
+    this.globalService.PostMethod(b,this.url).subscribe(
+      response => response,
+      error => console.error(error),
+      () => console.log()
+    );
   }
-
-
 }

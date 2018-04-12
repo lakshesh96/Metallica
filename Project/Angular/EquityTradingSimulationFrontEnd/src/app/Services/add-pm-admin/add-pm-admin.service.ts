@@ -9,20 +9,33 @@ import { GlobalService } from "../global.service";
 export class AddPmAdminService {
 
   private _baseUrl: string = "http://localhost:52705/api/Users/PutList";
+  private _baseUrl1: string = "http://localhost:52705/api/PM/Approved";
+  private _baseUrl2: string = "http://localhost:52705/api/PM/Unapproved";
 
   pms:any;
 
   constructor(private _http: Http,private globalService:GlobalService) {
   }
 
-  getPMs()
+  getPMApproved()
   {
-      this.globalService.GetMethod(this._baseUrl).subscribe
+      this.globalService.GetMethod(this._baseUrl1).subscribe
           (response => this.pms = response,
           error => console.error(error),
           () => { console.info(this.pms)}
       ); 
+      return this.globalService.GetMethod(this._baseUrl1);
   }
+
+  getPMUnapproved()
+  {
+      this.globalService.GetMethod(this._baseUrl2).subscribe
+          (response => this.pms = response,
+          error => console.error(error),
+          () => { console.info(this.pms)}
+      ); 
+      return this.globalService.GetMethod(this._baseUrl2);
+    }
   
 
   AddPMs(r:any)
@@ -32,7 +45,7 @@ export class AddPmAdminService {
     this.globalService.PostMethod(r,this._baseUrl).subscribe(
         response => response,
         error => console.error(error),
-        () => this.getPMs()
+        //() => this.getPMs()
     );
     console.info(r);
   }

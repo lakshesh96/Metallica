@@ -28,10 +28,9 @@ namespace EquityTradingPlatformApi.Models
         [Required]
         public string UserName { get; set; }
 
-        public virtual Employee Employee { get; set; }
-
         [Required]
         public int EmployeeId { get; set; }
+        public virtual Employee Employee { get; set; }
 
         [Required]
         public UserType Type { get; set; }
