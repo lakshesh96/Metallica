@@ -21,9 +21,9 @@ export class AdminStockManageComponent implements OnInit {
       Symbol: new FormControl('',[Validators.required, Validators.minLength(2),Validators.pattern("[aA-zZ]*")]),
       CurrentPrice: new FormControl('',[Validators.required,Validators.pattern("[0-9]*")]),
       VolumeAvailable: new FormControl('',[Validators.required,Validators.pattern("[0-9]*")])
-  });
-
-  //this.stocks= stocksService.stocks;
+    });
+    this.stocks= stocksService.stocks;
+    this.list = this.stocks;
   }
   
   onAdd({ value, valid }: { value: Contains, valid: boolean }){
