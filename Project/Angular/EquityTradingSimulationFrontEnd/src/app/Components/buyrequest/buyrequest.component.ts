@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class BuyrequestComponent implements OnInit {
 buy:FormGroup;
-checked = true;
+
   constructor() { }
 
   ngOnInit() {

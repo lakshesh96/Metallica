@@ -23,13 +23,12 @@ import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AdminStockManageComponent } from './Components/admin-stock-manage/admin-stock-manage.component';
 import{SearchComponent} from './Components/search/search.component';
-import {StocksService} from './Services/stocks.service';
+import {StocksService} from './Services/StocksList/stocks.service';
 import { RegisterComponent } from '../app/Components/register/register.component';
-import { RouterModule } from '@angular/router';
+
 import { AdminTraderAddComponent } from './Components/admin-trader-add/admin-trader-add.component';
 import { AdminPortfoliomanagerAddComponent } from './Components/admin-portfoliomanager-add/admin-portfoliomanager-add.component';
-import { RoutesModule } from './Routes/route-module';
-
+import {RoutesModule} from './Routes/route-module';
 
 @NgModule({
 	declarations: [
@@ -45,8 +44,8 @@ import { RoutesModule } from './Routes/route-module';
 		ReactiveFormsModule,
 		FormsModule,
 		HttpModule,
-		JsonpModule,
-		RoutesModule
+		JsonpModule,RoutesModule,
+
 	],
 	providers: [
 		GlobalService,
