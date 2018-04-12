@@ -6,6 +6,7 @@ import { AdminloginComponent } from '../Components/adminlogin/adminlogin.compone
 import { BlockCreationComponent } from '../Components/block-creation/block-creation.component';
 import { BuyrequestComponent } from '../Components/buyrequest/buyrequest.component';
 import { AdminStockManageComponent } from '../Components/admin-stock-manage/admin-stock-manage.component';
+import{SearchComponent} from '../Components/search/search.component';
 
 
 const AppRoutes:Routes = [
@@ -18,6 +19,7 @@ const AppRoutes:Routes = [
     },
     {path:"Blocks",component:BlockCreationComponent},
     {path:"Buy",component:BuyrequestComponent},
+    {path:"Search" ,component:SearchComponent}
 ]
 @NgModule({
 imports : [RouterModule.forRoot(AppRoutes)],
