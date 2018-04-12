@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import{Stocks} from '../Models/stocks';
-import{GlobalService} from '../Services/global.service';
+import{Stocks} from '../../Models/stocks';
+import{GlobalService} from '../global.service';
 
 @Injectable()
 export class StocksService

@@ -24,7 +24,7 @@
     "core-js": "^2.4.1",
     "rxjs": "^5.5.6",
     "ts-md5": "^1.2.4",
-    "ts-xlsx": "0.0.11",
+    "ts-xlsx": "file:ts-xlsx",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

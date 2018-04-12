@@ -211,6 +211,10 @@
     <Compile Include="Migrations\201804111012466_StockChange.Designer.cs">
       <DependentUpon>201804111012466_StockChange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804120607537_mymigration.cs" />
+    <Compile Include="Migrations\201804120607537_mymigration.Designer.cs">
+      <DependentUpon>201804120607537_mymigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Block.cs" />
@@ -299,6 +303,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804111012466_StockChange.resx">
       <DependentUpon>201804111012466_StockChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804120607537_mymigration.resx">
+      <DependentUpon>201804120607537_mymigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
