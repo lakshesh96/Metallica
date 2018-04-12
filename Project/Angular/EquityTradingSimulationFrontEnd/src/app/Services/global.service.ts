@@ -27,6 +27,8 @@ export class GlobalService {
     //console.log(credentials);
     console.log(url);
     this._baseUrl = url;
+    console.log("At Post Service ->");
+    console.log(credentials);
     return this._http.post(this._baseUrl,credentials).map(this.extractData).catch(this.handleError);
   }
 
