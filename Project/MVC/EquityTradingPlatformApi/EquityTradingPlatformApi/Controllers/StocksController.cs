@@ -12,6 +12,7 @@ using System.Web.Http.Description;
 using EquityTradingPlatformApi.Models;
 using Newtonsoft.Json.Linq;
 
+
 namespace EquityTradingPlatformApi.Controllers
 {
     public class StocksController : ApiController
@@ -45,36 +46,55 @@ namespace EquityTradingPlatformApi.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutStocks(int id, Stocks stocks)
         {
+            var result = JObject.Parse(@"{}");
+            result["success"] = false;
+            result["error"] = "Id not found in database";
+
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                //return BadRequest(ModelState);
+                result["error"] = "ModelState Invalid";
+                return Ok(result);
             }
 
             if (id != stocks.Id)
             {
-                return BadRequest();
+                //return BadRequest();
+                result["error"] = "Body and Id do not match";
+                return Ok(result);
             }
 
             db.Entry(stocks).State = EntityState.Modified;
-
+            
             try
             {
-
+                //foreach (Stocks s in db.Stocks)
+                //{
+                //    if (s.Id == id)
+                //    {
+                //        s.CurrentPrice = stocks.CurrentPrice;
+                //        result["success"] = true;
+                //        result["error"] = "0";
+                //    }
+                //}
                 db.SaveChanges();
+                result["success"] = true;
+                result["error"] = "0";
             }
             catch (DbUpdateConcurrencyException)
             {
                 if (!StocksExists(id))
                 {
-                    return NotFound();
+                    result["error"] = "DbUpdateConcurrencyException: Stock for this id doesn't exist";
+                    return Ok(result);
                 }
                 else
                 {
                     throw;
                 }
             }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(result);
+            //return StatusCode(HttpStatusCode.NoContent);
         }
 
 
