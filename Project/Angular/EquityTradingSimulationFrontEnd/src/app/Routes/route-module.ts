@@ -13,6 +13,7 @@ import { CurrentPositionComponent } from '../Components/current-position/current
 import { PendingOrdersComponent } from '../Components/pending-orders/pending-orders.component';
 import { Login } from '../Models/login';
 import { AuthGuardService } from '../Services/Auth-Guard/auth-guard.service';
+import { SellRequestComponent } from '../Components/sell-request/sell-request.component';
 
 
 const AppRoutes:Routes = [
@@ -31,7 +32,8 @@ const AppRoutes:Routes = [
     {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardService]},
     {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardService]},
     {path:"",component:RegisterComponent,canActivate: [AuthGuardService]},
-    {path:"*",component:LoginComponent,canActivate: [AuthGuardService]}
+    {path:"*",component:LoginComponent,canActivate: [AuthGuardService]},
+    {path:"Sell/:id",component:SellRequestComponent}
 ]
 @NgModule({
 imports : [RouterModule.forRoot(AppRoutes)],

@@ -4,6 +4,7 @@ import {SellService} from '../../Services/sell-service/sell.service';
 import { BuySellService } from "../../Services/buy-sell/buy-sell.service";
 import{CurrentPosition} from "../../Models/current-position";
 import { Sellmodel } from "../../Models/sell";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sell-request',
@@ -11,11 +12,11 @@ import { Sellmodel } from "../../Models/sell";
   styleUrls: ['./sell-request.component.css']
 })
 export class SellRequestComponent implements OnInit {
-
+  id ="";
   sell:FormGroup;
   checked = true;
   model:CurrentPosition;
-  constructor(private service:SellService,private bs:BuySellService) {
+  constructor(private service:SellService,private bs:BuySellService,private route: ActivatedRoute,) {
     this.model = this.bs.sellorder; 
    }
 
@@ -30,6 +31,7 @@ export class SellRequestComponent implements OnInit {
   
   }
   ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
     this.sell = new FormGroup({
       Quantity: new FormControl('', [Validators.required]),
       CurrentPrice:new FormControl('', [Validators.required]),
