@@ -232,6 +232,10 @@
     <Compile Include="Migrations\201804120958465_DbChange2.Designer.cs">
       <DependentUpon>201804120958465_DbChange2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804121024132_Dbchange3.cs" />
+    <Compile Include="Migrations\201804121024132_Dbchange3.Designer.cs">
+      <DependentUpon>201804121024132_Dbchange3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Block.cs" />
@@ -335,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804120958465_DbChange2.resx">
       <DependentUpon>201804120958465_DbChange2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121024132_Dbchange3.resx">
+      <DependentUpon>201804121024132_Dbchange3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
