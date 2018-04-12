@@ -18,7 +18,7 @@ import { AddTraderAdminService } from "./Services/add-trader-admin/add-trader-ad
 import { AddPmAdminService } from "./Services/add-pm-admin/add-pm-admin.service";
 
 import {HttpModule, JsonpModule} from '@angular/http';
-
+import {PendingListService}from './Services/Pending/pending-list.service'
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AdminStockManageComponent } from './Components/admin-stock-manage/admin-stock-manage.component';
@@ -29,6 +29,7 @@ import { RegisterComponent } from '../app/Components/register/register.component
 import { AdminTraderAddComponent } from './Components/admin-trader-add/admin-trader-add.component';
 import { AdminPortfoliomanagerAddComponent } from './Components/admin-portfoliomanager-add/admin-portfoliomanager-add.component';
 import {RoutesModule} from './Routes/route-module';
+import { PendingOrdersComponent } from './Components/pending-orders/pending-orders.component';
 
 @NgModule({
 	declarations: [
@@ -37,7 +38,7 @@ import {RoutesModule} from './Routes/route-module';
 		LoginComponent,
 		AdminloginComponent,
 		AdminStockManageComponent,
-		BuyrequestComponent, SearchComponent, RegisterComponent, AdminTraderAddComponent, AdminPortfoliomanagerAddComponent
+		BuyrequestComponent, SearchComponent, RegisterComponent, AdminTraderAddComponent, AdminPortfoliomanagerAddComponent, PendingOrdersComponent
 	],
 	imports: [
 		BrowserModule,
@@ -55,7 +56,8 @@ import {RoutesModule} from './Routes/route-module';
 		AddStockAdminService,
 		ListService,
 		AddTraderAdminService,
-		AddPmAdminService
+		AddPmAdminService,
+		PendingListService
 	],
 	bootstrap: [AppComponent]
 })
