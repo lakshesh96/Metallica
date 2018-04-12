@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class BlockserviceService {
 
- 
+ private url:string="";
   constructor(private http:Http) { }
 
 
