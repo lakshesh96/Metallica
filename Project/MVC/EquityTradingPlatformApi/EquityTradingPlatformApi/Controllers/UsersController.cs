@@ -36,6 +36,49 @@ namespace EquityTradingPlatformApi.Controllers
             return Ok(user);
         }
 
+
+        [Route("api/Trader/Approved")]
+        [ResponseType(typeof(User))]
+        public IHttpActionResult GetApprovedTraders()
+        {
+            var approvedTraders = from user in db.Users
+                                  where user.Approved == true && (user.Type == UserType.Trader || user.Type == UserType.Both)
+                                  select user;
+            return Ok(approvedTraders);
+        }
+
+        [Route("api/Trader/Unapproved")]
+        [ResponseType(typeof(User))]
+        public IHttpActionResult GetUnapprovedTraders()
+        {
+            var approvedTraders = from user in db.Users
+                                  where user.Approved == false && (user.Type == UserType.Trader || user.Type == UserType.Both)
+                                  select user;
+            return Ok(approvedTraders);
+        }
+
+        [Route("api/PM/Approved")]
+        [ResponseType(typeof(User))]
+        public IHttpActionResult GetApprovedPM()
+        {
+            var approvedTraders = from user in db.Users
+                                  where user.Approved == true && (user.Type == UserType.PortfolioManager || user.Type == UserType.Both)
+                                  select user;
+            return Ok(approvedTraders);
+        }
+
+        [Route("api/PM/Unapproved")]
+        [ResponseType(typeof(User))]
+        public IHttpActionResult GetUnapprovedPM()
+        {
+            var approvedTraders = from user in db.Users
+                                  where user.Approved == false && (user.Type == UserType.PortfolioManager || user.Type == UserType.Both)
+                                  select user;
+            return Ok(approvedTraders);
+        }
+
+
+
         // PUT: api/Users/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUser(int id, User user)
