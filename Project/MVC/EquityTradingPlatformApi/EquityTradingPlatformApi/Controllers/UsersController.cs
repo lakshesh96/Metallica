@@ -154,6 +154,7 @@ namespace EquityTradingPlatformApi.Controllers
                     if (u.Type == user.Type)
                     {
                         result["response"] = true;
+                        result["id"] = u.Id;
                         result["type"] = u.Type.ToString();
                         result["error"] = "";
                     } 
