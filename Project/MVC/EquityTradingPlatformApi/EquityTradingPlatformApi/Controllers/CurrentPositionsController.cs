@@ -25,9 +25,22 @@ namespace EquityTradingPlatformApi.Controllers
             var getUserOrders = from order in db.Orders
                                 where (order.UserId == userId && (order.OrderStatus == OrderStatus.Executed || order.OrderStatus == OrderStatus.Partial))
                                 select order.Id;
-            
 
+            if (getUserOrders == null)
+                return Ok(false);
+            else
+            { 
+                List<int> currentUserOrderIds = getUserOrders.ToList();
 
+                List<CurrentPosition> returnPositions = new List<CurrentPosition>();
+
+                foreach (CurrentPosition currentPos in db.CurrentPositions)
+                    foreach (int id in currentUserOrderIds)
+                        if (currentPos.OrderId == id)
+                            returnPositions.Add(currentPos);
+
+                return Ok(returnPositions);
+            }
 
 
             //CurrentPosition currentPosition = db.CurrentPositions.Find(id);
@@ -37,7 +50,7 @@ namespace EquityTradingPlatformApi.Controllers
             //}
 
             //return Ok(currentPosition);
-            return Ok(true);
+            //return Ok(true);
         }
 
 
