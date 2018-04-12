@@ -44,7 +44,7 @@ export class AdminStockManageComponent implements OnInit{
     (response => this.listnew = response,
     error => console.error(error),
     () => { console.info(this.listnew)}
-); 
+    ); 
   }
 
 
