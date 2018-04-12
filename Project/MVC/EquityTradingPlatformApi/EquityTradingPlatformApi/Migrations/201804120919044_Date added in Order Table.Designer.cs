@@ -7,13 +7,13 @@ namespace EquityTradingPlatformApi.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class mymigration : IMigrationMetadata
+    public sealed partial class DateaddedinOrderTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(mymigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DateaddedinOrderTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804120607537_mymigration"; }
+            get { return "201804120919044_Date added in Order Table"; }
         }
         
         string IMigrationMetadata.Source

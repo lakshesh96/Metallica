@@ -196,6 +196,7 @@
     <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Exchange\Exchange.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,9 +212,13 @@
     <Compile Include="Migrations\201804111012466_StockChange.Designer.cs">
       <DependentUpon>201804111012466_StockChange.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804120607537_mymigration.cs" />
-    <Compile Include="Migrations\201804120607537_mymigration.Designer.cs">
-      <DependentUpon>201804120607537_mymigration.cs</DependentUpon>
+    <Compile Include="Migrations\201804120748193_Set FK for Block.cs" />
+    <Compile Include="Migrations\201804120748193_Set FK for Block.Designer.cs">
+      <DependentUpon>201804120748193_Set FK for Block.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804120919044_Date added in Order Table.cs" />
+    <Compile Include="Migrations\201804120919044_Date added in Order Table.Designer.cs">
+      <DependentUpon>201804120919044_Date added in Order Table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -304,8 +309,11 @@
     <EmbeddedResource Include="Migrations\201804111012466_StockChange.resx">
       <DependentUpon>201804111012466_StockChange.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804120607537_mymigration.resx">
-      <DependentUpon>201804120607537_mymigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804120748193_Set FK for Block.resx">
+      <DependentUpon>201804120748193_Set FK for Block.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804120919044_Date added in Order Table.resx">
+      <DependentUpon>201804120919044_Date added in Order Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
