@@ -28,6 +28,7 @@ import { RegisterComponent } from '../app/Components/register/register.component
 import { RouterModule } from '@angular/router';
 import { AdminTraderAddComponent } from './Components/admin-trader-add/admin-trader-add.component';
 import { AdminPortfoliomanagerAddComponent } from './Components/admin-portfoliomanager-add/admin-portfoliomanager-add.component';
+import { RoutesModule } from './Routes/route-module';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { AdminPortfoliomanagerAddComponent } from './Components/admin-portfoliom
 		LoginComponent,
 		AdminloginComponent,
 		AdminStockManageComponent,
-		BuyrequestComponent, SearchComponent, RegisterComponent, AdminTraderAddComponent, AdminPortfoliomanagerAddComponent, RouterModule
+		BuyrequestComponent, SearchComponent, RegisterComponent, AdminTraderAddComponent, AdminPortfoliomanagerAddComponent
 	],
 	imports: [
 		BrowserModule,
@@ -45,6 +46,7 @@ import { AdminPortfoliomanagerAddComponent } from './Components/admin-portfoliom
 		FormsModule,
 		HttpModule,
 		JsonpModule,
+		RoutesModule
 	],
 	providers: [
 		GlobalService,
