@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{ExceltojsonService} from "../../Services/exceltojson/exceltojson.service";
 import { AddTraderAdminService } from "../../Services/add-trader-admin/add-trader-admin.service";
+import { User } from "../../Models/user";
 
 @Component({
   selector: 'app-admin-trader-add',
@@ -9,14 +10,14 @@ import { AddTraderAdminService } from "../../Services/add-trader-admin/add-trade
 })
 export class AdminTraderAddComponent implements OnInit {
 
-  listapproved:any[];
-  listunapproved:any[];
+  listapproved:User[];
+  listunapproved:User[];
 
   constructor(private addtraderservice:AddTraderAdminService) {
  
    }
 
-  ngOnInit() {
+   Demo(){
     this.addtraderservice.getApprovedTraders().subscribe
     (response => this.listapproved = response,
     error => console.error(error),
@@ -28,6 +29,10 @@ export class AdminTraderAddComponent implements OnInit {
     error => console.error(error),
     () => { console.info(this.listunapproved)}
     );
+   }
+
+  ngOnInit() {
+   this.Demo();
   }
 
   public result: any;
@@ -43,6 +48,26 @@ export class AdminTraderAddComponent implements OnInit {
 }
 
   AddTrader(){
-    this.addtraderservice.AddTraders(this.result);    
+    this.addtraderservice.AddTraders(this.result).subscribe(
+      response => response,
+      error => console.error(error),
+      () => this.Demo()
+  );
+  }
+
+  Toggle(e:User){
+    //alert("Approve Trader?");
+    if(e.Approved==false){
+      alert("Approve Trader Manager?");
+      }else if(e.Approved==true){
+        alert("Disapprove Trader Manager?");
+      }
+
+    this.addtraderservice.ToggleTrader(e).subscribe(
+      response => response,
+      error => console.error(error),
+      () => this.Demo()
+      //() => this.getTraders()
+  );
   }
 }
