@@ -226,6 +226,41 @@ namespace EquityTradingPlatformApi.Controllers
             return Ok(user);
         }
 
+
+        // APPROVE USERS
+        // POST: api/Users/Approve
+        [HttpPost]
+        [Route("api/Users/Approve")]
+        [ResponseType(typeof(bool))]
+        public IHttpActionResult ApproveUser(int id)
+        {
+            bool result = false;
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                foreach(User u in db.Users)
+                {
+                    if (u.Id == id)
+                    {
+                        u.Approved = !u.Approved;
+                        result = true;
+                    }
+                }
+                db.SaveChanges();
+                return Ok(result);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return Ok(false);
+            }
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
