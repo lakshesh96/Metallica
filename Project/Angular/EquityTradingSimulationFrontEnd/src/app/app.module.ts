@@ -6,6 +6,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 import {GlobalService} from "./Services/global.service";
 
+
+//Components
 import { AppComponent } from './app.component';
 import { BlockCreationComponent } from './Components/block-creation/block-creation.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -17,6 +19,9 @@ import { AdminStockManageComponent } from './Components/admin-stock-manage/admin
 import { SearchComponent } from './Components/search/search.component';
 import { AdminTraderAddComponent } from './Components/admin-trader-add/admin-trader-add.component';
 import { AdminPortfoliomanagerAddComponent } from './Components/admin-portfoliomanager-add/admin-portfoliomanager-add.component';
+
+
+//Services
 import { ExceltojsonService } from './Services/exceltojson/exceltojson.service';
 import { AdminstocksService } from './Services/adminstocks/adminstocks.service';
 import { StocksService } from './Services/StocksList/stocks.service';
