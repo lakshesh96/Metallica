@@ -11,6 +11,9 @@ import {GlobalService} from '../../Services/global.service';
 })
 export class LoginComponent implements OnInit {
   login:FormGroup;
+  url = "http://localhost:52705/api/Admin";
+  value2:string;
+
   constructor(private globalService:GlobalService) { }
 
   ngOnInit() {
@@ -21,7 +24,12 @@ export class LoginComponent implements OnInit {
     });
   }
   onSubmit({ value, valid }: { value: Login, valid: boolean }) {
-    console.log(value, valid);
+    //console.log(value, valid);
+    // this.globalService.PostMethod(value,this.url).subscribe(
+    //   response => this.value2=response,
+    //   error => console.error(error),
+    //   () => console.log(),
+    // );
     
   }
  /* getData() {

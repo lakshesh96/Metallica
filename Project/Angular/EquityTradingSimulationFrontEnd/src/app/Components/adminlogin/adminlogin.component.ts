@@ -10,8 +10,10 @@ import {GlobalService} from '../../Services/global.service';
 })
 export class AdminloginComponent implements OnInit {
   admin:FormGroup;
+  //url = "http://localhost:52705/api/Users/Login";
   url = "http://localhost:52705/api/Admin";
   value2:string;
+  id:string;
   constructor(private globalService:GlobalService) { }
 
   ngOnInit() {
@@ -27,12 +29,16 @@ export class AdminloginComponent implements OnInit {
     //console.log(value);
     //console.log(data);
     this.globalService.PostMethod(value,this.url).subscribe(
-      response => this.value2=response,
+      response => {this.id=response.id;
+        sessionStorage.setItem("UserId",this.id.toString());
+        },
       error => console.error(error),
-      () => console.log(),
+      () => console.log(this.value2),
     );
+    console.log("I am here");
     console.log(this.value2);
     //console.log("hello");
+    sessionStorage.setItem("UserId",this.value2);
      
   }
 }
