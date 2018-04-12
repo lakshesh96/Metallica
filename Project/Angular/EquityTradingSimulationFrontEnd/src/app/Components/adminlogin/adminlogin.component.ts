@@ -30,10 +30,11 @@ export class AdminloginComponent implements OnInit {
     //console.log(data);
     this.globalService.PostMethod(value,this.url).subscribe(
       response => {this.id=response.id;
-        sessionStorage.setItem("UserId",this.id.toString());
+        console.log(response.response);
+        sessionStorage.setItem("AdminLogin",response.response);
         },
       error => console.error(error),
-      () => console.log(this.value2),
+      () => console.log(),
     );
     console.log("I am here");
     console.log(this.value2);
