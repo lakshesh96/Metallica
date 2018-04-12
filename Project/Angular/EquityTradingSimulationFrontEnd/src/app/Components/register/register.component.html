@@ -1,3 +1,78 @@
-<p>
-  register works!
-</p>
+
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="border border-dark" style="padding: 20px;">
+      <form novalidate (ngSubmit)="onSubmit(register)" [formGroup]="register">
+        <div align="center"><legend><strong>Register</strong></legend>
+        </div> 
+      
+      <div class="form-group" >
+      <label >
+      <strong>Type Of User :</strong>
+      <input type="radio" formControlName="Type" value="r1" id="portfolioManager"> Portfolio Manager
+      <input type="radio" formControlName="Type" value="r2" id="trader" >Trader
+      <input type="radio" formControlName="Type" value="r3" id="pmt">Portfolio Manager & Trader
+      </label>
+      <div class="error" *ngIf="register.get('Type').hasError(('required')) &&register.get('Type').touched"></div>
+      </div>
+      
+      <div class="form-group">
+        <label>
+        <strong>Name :</strong></label>
+        <input type="text" class="form-control" placeholder="Enter name" formControlName="Name" #name>
+        <div class="error text-danger" *ngIf="register.get('Name').hasError('required') && register.get('Name').touched">Name is required</div>
+        <div class="error text-danger" *ngIf="register.get('Name').touched && register.get('Name').hasError('minlength')">Minimum length should be 5</div>
+        </div>
+        
+      <div class="form-group">
+      <label>
+      <strong>Username :</strong>
+      </label>
+      <input type="text" class="form-control" placeholder="Enter Username" formControlName="Username" #uname >
+      <div class="error text-danger" *ngIf="register.get('Username').hasError(('required')) &&register.get('Username').touched">Username is required</div>
+      <div class="error text-danger" *ngIf="register.get('Username').touched && register.get('Username').hasError('minlength')">Minimum length should be 5</div>
+    </div>
+      
+      <div formGroupName="Userpass">
+      
+      <div class="form-group"> 
+      <label><strong>Password :</strong></label>
+      <input type="password" class="form-control" placeholder="Enter Password" formControlName="Password" #pwd>
+      <div class="error text-danger" *ngIf="register.get('Userpass').get('Password').hasError('required') && register.get('Userpass').get('Password').touched">Password is required</div>
+      <div class="error text-danger" *ngIf="register.get('Userpass').get('Password').hasError('pattern')">Password should have atleast one uppercase alphabet and two digits</div>
+      <div class="error text-danger" *ngIf="register.get('Userpass').get('Password').touched && register.get('Userpass').get('Password').hasError('minlength')">Minimum length should be 5</div>
+    </div>
+      
+      <div class="form-group"> 
+        <label>
+        <strong>Confirm Password :</strong>
+        </label>
+        <input type="password" class="form-control" placeholder="Re-enter Password" formControlName="Cpassword" #cpwd>
+        
+        <div class="error text-danger" *ngIf="register.get('Userpass').get('Cpassword').hasError('required') && register.get('Userpass').get('Cpassword').touched">Confirming Password is required</div>
+        <div class="error text-danger" *ngIf="register.get('Userpass').get('Cpassword').touched && register.get('Userpass').get('Cpassword').hasError('minlength')">Minimum length should be 5</div>
+        <div class="error text-danger" *ngIf="register.get('Userpass').get('Cpassword').hasError('pattern')">Password should have atleast one uppercase alphabet and two digits</div>
+        <div class="error text-danger" *ngIf="register.get('Userpass').get('Cpassword').touched && register.get('Userpass').hasError('nomatch')">Password must match</div>
+      </div>
+      
+      </div>
+      
+      <div class="form-group">
+          <label>
+          <strong>Empid :</strong>
+          </label>
+          
+          <input type="text" class="form-control" placeholder="Enter Empid" formControlName="Empid" #eid >
+          <div class="error text-danger" *ngIf="register.get('Empid').hasError(('required')) &&register.get('Empid').touched">Empid is required</div>
+          <div class="error text-danger" *ngIf="register.get('Empid').hasError('pattern')">Employee Id should have only digits</div> 
+        </div>
+      <button type="submit" class="btn btn-outline-success" (click)="AddReg(register)" >Register</button>
+      </form>
+      </div>
+      
+  </div>
+  <div class="col-md-3"></div>
+  
+</div>
+
