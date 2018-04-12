@@ -17,12 +17,16 @@ namespace EquityTradingPlatformApi.Controllers
     {
         private ProjectContext db = new ProjectContext();
 
+
+        // GET ALL USERS
         // GET: api/Users
         public IQueryable<User> GetUsers()
         {
             return db.Users;
         }
 
+
+        /* GET SPECIFIC USER BY ID
         // GET: api/Users/5
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUser(int id)
@@ -35,8 +39,12 @@ namespace EquityTradingPlatformApi.Controllers
 
             return Ok(user);
         }
+        */
 
 
+        // GET APPROVED TRADERS
+        // GET: api/Trader/Approved
+        [HttpGet]
         [Route("api/Trader/Approved")]
         [ResponseType(typeof(User))]
         public IHttpActionResult GetApprovedTraders()
@@ -47,6 +55,10 @@ namespace EquityTradingPlatformApi.Controllers
             return Ok(approvedTraders);
         }
 
+
+        // GET UNAPPROVED TRADERS
+        // GET: api/Trader/Unapproved
+        [HttpGet]
         [Route("api/Trader/Unapproved")]
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUnapprovedTraders()
@@ -57,6 +69,10 @@ namespace EquityTradingPlatformApi.Controllers
             return Ok(approvedTraders);
         }
 
+
+        // GET APPROVED PM
+        // GET: api/PM/Approved
+        [HttpGet]
         [Route("api/PM/Approved")]
         [ResponseType(typeof(User))]
         public IHttpActionResult GetApprovedPM()
@@ -67,6 +83,10 @@ namespace EquityTradingPlatformApi.Controllers
             return Ok(approvedTraders);
         }
 
+
+        // GET UNAPPROVED PM
+        // GET: api/PM/Unapproved
+        [HttpGet]
         [Route("api/PM/Unapproved")]
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUnapprovedPM()
@@ -130,6 +150,7 @@ namespace EquityTradingPlatformApi.Controllers
             return Ok(false);
         }
 
+
         //Batch Add Users
         [Route("api/Users/PutList")]
         [ResponseType(typeof(void))]
@@ -151,7 +172,8 @@ namespace EquityTradingPlatformApi.Controllers
             }
         }
 
-        // User Registration
+
+        // USER REGISTRATION 
         // POST: api/Users
         [ResponseType(typeof(User))]
         public IHttpActionResult PostUser(User user)
