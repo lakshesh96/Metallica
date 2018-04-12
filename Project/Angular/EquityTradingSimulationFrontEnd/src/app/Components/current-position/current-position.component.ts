@@ -9,10 +9,23 @@ import{CurrentPositionService} from "../../Services/current-position/current-pos
 })
 export class CurrentPositionComponent implements OnInit {
   list : CurrentPosition[];
-  constructor(private DS: CurrentPositionService) { }
+  constructor(private DS: CurrentPositionService) {
+    this.DemoRefresh();
+   }
+
+  DemoRefresh(){
+    this.DS.GetPosition().subscribe(
+      response => this.list = response,
+      error => console.error(error),
+      () => console.log(this.list)
+    );
+  }
 
   getPosition(){
-    this.list = this.DS.CurrentS;
+    
+  this.DemoRefresh();
+    //this.list = this.DS.CurrentS;
+    alert("executed");
   }
 
   ngOnInit() {

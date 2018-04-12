@@ -32,11 +32,13 @@ export class StocksService implements OnInit
   }
 
   GetStocks(){
-    this.globalService.GetMethod(this.url).subscribe(
+    /* this.globalService.GetMethod(this.url).subscribe(
       response => this.StocksList = response,
       error => console.error(error),
       () => console.log()
-    );
+    ); */
+
+    return this.globalService.GetMethod(this.url);
   }
 
 }
