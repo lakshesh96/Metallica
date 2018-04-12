@@ -11,16 +11,8 @@
     <div class="error text-danger" *ngIf="buy.get('Quantity').hasError(('required')) && buy.get('Quantity').touched">Quantity is required</div>
       </div>
 
-    <div class="form-group" >
-     
-          <span  class="col-sm-2 col-form-label"><strong> Price :</strong></span>
-          <input type="radio" name="limit" > Current Price
-          <input type="radio" name="limit" > Limit Price
-          <input type="text">
-          
-        
-        <div class="error" *ngIf="buy.get('LimitPrice').hasError(('required')) && buy.get('LimitPrice').touched"></div>
-      </div>
+
+   
 
   <div class="form-group">  
     <label>
@@ -35,3 +27,10 @@
   </div>
   
  
+  <input type="radio" ng-model="myVar" value="MarketOrder">MarketOrder
+  <input type="radio" ng-model="myVar" value="LimitOrder">LimitOrder
+  <div ng-switch="myVar">
+  <div ng-switch-when="LimitOrder">
+  <input type="text">
+  </div>
+  </div> 

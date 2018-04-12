@@ -13,6 +13,8 @@ import { ExceltojsonService } from "./Services/exceltojson/exceltojson.service";
 import { AdminstocksService } from "./Services/adminstocks/adminstocks.service";
 import {AddStockAdminService} from "./Services/add-stock-admin/add-stock-admin.service";
 import {ListService } from './Services/list-service/list.service';
+import { AddTraderAdminService } from "./Services/add-trader-admin/add-trader-admin.service";
+import { AddPmAdminService } from "./Services/add-pm-admin/add-pm-admin.service";
 
 import {HttpModule, JsonpModule} from '@angular/http';
 
@@ -46,7 +48,9 @@ import { RegisterComponent } from '../app/Components/register/register.component
 		AdminstocksService,
 		StocksService,
 		AddStockAdminService,
-		ListService
+		ListService,
+		AddTraderAdminService,
+		AddPmAdminService
 	],
 	bootstrap: [AppComponent]
 })
