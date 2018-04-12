@@ -23,7 +23,7 @@ export class AdminStockManageComponent implements OnInit {
       VolumeAvailable: new FormControl('',[Validators.required,Validators.pattern("[0-9]*")])
   });
 
-  //this.stocks= stocksService.getStocks();
+  //this.stocks= stocksService.stocks;
   }
   
   onAdd({ value, valid }: { value: Contains, valid: boolean }){

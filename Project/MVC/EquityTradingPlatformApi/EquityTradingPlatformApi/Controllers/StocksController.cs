@@ -77,7 +77,7 @@ namespace EquityTradingPlatformApi.Controllers
 
 
         // POST: api/Stocks
-        /*[ResponseType(typeof(Stocks))]
+        [ResponseType(typeof(Stocks))]
         public IHttpActionResult PostStocks(Stocks stocks)
         {
             if (!ModelState.IsValid)
@@ -85,11 +85,30 @@ namespace EquityTradingPlatformApi.Controllers
                 return BadRequest(ModelState);
             }
 
+            foreach (Stocks s in db.Stocks)
+            {
+                // Check if symbol already present
+                if (s.Symbol == stocks.Symbol)
+                {
+                    return Ok(new { response = "false", error = "Symbol already exists."});
+                }
+
+
+                // Check if same name stock already present
+                if (s.Name == stocks.Name)
+                {
+                    return Ok(new { response = "false", error = "Stock Name already exists." });
+                }                    
+            }
+
             db.Stocks.Add(stocks);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = stocks.Id }, stocks);
-        }*/
+            return Ok(new { response = "true"});
+
+            //return CreatedAtRoute("DefaultApi", new { id = stocks.Id }, stocks);
+            //return Ok(true);
+        }
 
         //Batch Add of Stocks
         [Route("api/Stocks/PutList")]
@@ -103,10 +122,9 @@ namespace EquityTradingPlatformApi.Controllers
                 {
                     //Stocks stock = (Stocks)Newtonsoft.Json.JsonConvert.DeserializeObject(item.ToString());
                     db.Stocks.Add(item);
-
                 }
                 db.SaveChanges();
-                return StatusCode(HttpStatusCode.NoContent);
+                return Ok(true);
             }
             catch(Exception e)
             {
