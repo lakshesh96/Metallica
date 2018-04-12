@@ -37,11 +37,12 @@ namespace EquityTradingPlatformApi.Controllers
             return Ok(stocks);
         }
 
-        
 
 
-    // PUT: api/Stocks/5
-    [ResponseType(typeof(void))]
+        // Edit Stock Price only
+        // PUT: api/Stocks/5
+        [Route("api/Stocks/Edit")]
+        [ResponseType(typeof(void))]
         public IHttpActionResult PutStocks(int id, Stocks stocks)
         {
             if (!ModelState.IsValid)
@@ -58,6 +59,7 @@ namespace EquityTradingPlatformApi.Controllers
 
             try
             {
+
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
@@ -90,22 +92,21 @@ namespace EquityTradingPlatformApi.Controllers
                 // Check if symbol already present
                 if (s.Symbol == stocks.Symbol)
                 {
-                    return Ok(new { response = "false", error = "Symbol already exists."});
+                    return Ok(new {response = "false", error = "Symbol already exists."});
                 }
 
 
                 // Check if same name stock already present
                 if (s.Name == stocks.Name)
                 {
-                    return Ok(new { response = "false", error = "Stock Name already exists." });
+                    return Ok(new {response = "false", error = "Stock Name already exists." });
                 }                    
             }
 
             db.Stocks.Add(stocks);
             db.SaveChanges();
 
-            return Ok(new { response = "true"});
-
+            return Ok(new {response = "true"});
             //return CreatedAtRoute("DefaultApi", new { id = stocks.Id }, stocks);
             //return Ok(true);
         }
