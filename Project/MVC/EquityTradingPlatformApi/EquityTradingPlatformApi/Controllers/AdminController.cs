@@ -84,10 +84,12 @@ namespace EquityTradingPlatformApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            // dummy authentication of admin
-            // TO BE changed later
-            if (admin.UserName == "admin" && admin.Password == "password")
+            if (admin.UserName == db.Admins.First().UserName && admin.Password == db.Admins.First().Password)
                 return Ok(true);
+
+            // dummy authentication of admin
+            //if (admin.UserName == "admin" && admin.Password == "password")
+            //    return Ok(true);
 
             //return CreatedAtRoute("DefaultApi", new { id = admin.Id }, admin);
             return Ok(false);
