@@ -14,10 +14,11 @@ export class AddStockAdminService {
     this.list.push(p);
     //console.log(this.list);
     let b:any = {Symbol: this.list[0].Symbol, Name: this.list[0].Name, CurrentPrice: this.list[0].CurrentPrice, VolumeAvailable: this.list[0].VolumeAvailable}
-    this.globalService.PostMethod(b,this.url).subscribe(
+    /* this.globalService.PostMethod(b,this.url).subscribe(
       response => response,
       error => console.error(error),
       () => console.log()
-    );
+    ); */
+    return this.globalService.PostMethod(b,this.url);
   }
 }

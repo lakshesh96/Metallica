@@ -9,13 +9,77 @@ import {PendingListService} from '../../Services/Pending/pending-list.service';
 })
 export class PendingOrdersComponent implements OnInit 
 {
-  PendingShow:PendingStocks[]
+  ListStocks:any[];
+  divhide:boolean;
+  
 
   constructor(private PS:PendingListService) { }
 
   ngOnInit()
   {
-    this.PendingShow=this.PS.ListPending;
+    this.getOrders();
+    this.divhide=this.PS.divhide;
   }
+  getOrders()
+  {
+      this.PS.getProducts().subscribe
+          (response => this.ListStocks = response,
+          error => console.error(error),
+          () => { console.info(this.ListStocks) }
+      ); 
+  }
+  postdata()
+  {
+      let p: any = {  };
+      alert();
+      this.PS.postdata(p).subscribe(
+          response => response,
+          error => console.error(error),
+          () => this.getOrders()
+      );
+  console.info(p);
+  }
+  Put(Id:number,Trader_Name:string,Name:string,Symbol:number,Quantity:number,Buying_Price:number,CurrentPrice:number,
+    Total_Value:number,typeoforder:string,side:string, )
+  {
+      let pt:any={Id:Id,Trader_Name:Trader_Name,Name:Name,Symbol:Symbol, Quantity:Quantity,Buying_Price:Buying_Price,
+        CurrentPrice:CurrentPrice,Total_Value:Total_Value,typeoforder:typeoforder,side:side};
+         
+      alert(typeoforder);
+      this.PS.Put(pt).subscribe(
+        response => response,
+        error => console.error(error),
+        () => this.getOrders()
+    );
+  }
+  sort_stock_Name_ascending()
+  {
+   this.ListStocks.sort((a, b) => a.Name.localeCompare(b.Name));
+  }
+  sort_stock_Name_descending()
+  {
+    this.ListStocks.sort((a, b) => a.Name.localeCompare(b.Name));
+    this.ListStocks.reverse();
+  }
+  Index(i)
+  {
+    this.PS.Index(i);
+  }
+  sort_CurPrice_ascending()
+  {
+   this.ListStocks.sort(function(obj1, obj2)
+   {
+     return obj1.CurrentPrice-obj2.CurrentPrice;
+   })
+  }
+
+  sort_CurPrice_descending()
+  {
+    this.ListStocks.sort(function(obj1, obj2)
+    {
+      return obj2.CurrentPrice-obj1.CurrentPrice;
+    })
+  }
+ 
 
 }

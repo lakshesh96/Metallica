@@ -1,22 +1,67 @@
 import { Injectable } from '@angular/core';
-import{PendingStocks} from '../../Models/pending-stocks'
+import {Http,Response} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map'; //
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class PendingListService 
 {
-  ListPending:PendingStocks[]=[];
+  private _baseUrl: string = "";
+  index :number;
+  divhide:boolean=true;
 
-  constructor()
+  constructor(private _http: Http)
   {
-    this.ListPending=
-    [
-      new PendingStocks("Aditya","Tata Consultancy Service","TCS",1000,3058,2981,3058000,"Buy"),
-      new PendingStocks("Aditya","State Bank of India","SBI",432,254,240,674342,"Buy"),
-      new PendingStocks("Aditya","Punjab National Bank","PNB",5600,3058,97,34242,"Sell"),
-      new PendingStocks("Aditya","Reliance Industries","RIL",2560,3058,941,3045300,"Buy"),
-      new PendingStocks("Aditya","Glenmark Pharma","Glenmark",3200,3058,565,268963,"Sell"),
-      new PendingStocks("Aditya","Infosys","Infosys",2900,3058,1411,909765,"Buy"),
-    ]
+
+  }
+  getProducts(): Observable<any[]>
+  {
+    return this._http.get(this._baseUrl).
+    map(this.extractData).catch(this.handleError);
   }
 
+  extractData(res: Response)
+  {
+    let response = res.json();
+    let body = response;
+    console.log(body);
+    
+    return body || {};
+  }
+  handleError(error: Response | any)
+  {
+    let errMsg: string;
+    if (error instanceof Response) {
+        const body = error.json() || '';
+        const err = body.error || JSON.stringify(body);
+        errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+        errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    let errorResponse = error.json();
+    if (errorResponse.StatusCode == 401) {
+        location.reload();
+    }
+    return Observable.throw(errMsg);
+  }
+  Index(id:number)
+  {
+      this.index=id;
+      
+  }
+  Put(list:number):Observable<number>
+  {
+      alert("service");
+      return this._http.put(this._baseUrl +"/"+this.index,list).map(this.extractData);
+  }
+  postdata(Stocklist: any): Observable<any>
+  {
+    return this._http.post(this._baseUrl, Stocklist).
+    map(this.extractData).catch(this.handleError);
+    
+  }
+  
+  
 }
