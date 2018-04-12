@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BlockserviceService} from "../../Services/blockservice/blockservice.service";
 
 @Component({
   selector: 'app-block-creation',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlockCreationComponent implements OnInit {
 
-  constructor() { }
+  block:any[];
+
+  constructor(private bs:BlockserviceService) { }
 
   ngOnInit() {
   }
+
+  getdata()
+  {
+      this.bs.get_data().subscribe
+          (response => this.block = response,
+          error => console.error(error),
+          () => console.log()
+      ); 
+  }
+
 
 }
