@@ -32,12 +32,10 @@ import { AddTraderAdminService } from './Services/add-trader-admin/add-trader-ad
 import { AddPmAdminService } from './Services/add-pm-admin/add-pm-admin.service';
 import { PendingListService } from './Services/Pending/pending-list.service';
 import { BlockserviceService } from './Services/blockservice/blockservice.service';
-import{CurrentPositionService} from "../app/Services/current-position/current-position.service"
+import{CurrentPositionService} from "../app/Services/current-position/current-position.service";
+import {LoginService} from './Services/login/login.service';
 
 import { OrderService } from './Services/Order/order.service';
-
-
-
 
 @NgModule({
   declarations: [
@@ -75,7 +73,8 @@ import { OrderService } from './Services/Order/order.service';
     PendingListService,
     BlockserviceService,
     CurrentPositionService,
-    OrderService
+    OrderService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
