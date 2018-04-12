@@ -8,9 +8,9 @@
         </div>
         <div class="form-group" >
           <label ><strong>Type Of User :</strong></label>
-          <input type="radio" formControlName="Type" value="r1" id="portfolioManager" /> Portfolio Manager
-          <input type="radio" formControlName="Type" value="r2" id="trader" />Trader
-          <input type="radio" formControlName="Type" value="r3" id="pmt" />Portfolio Manager + Trader
+          <input type="radio" formControlName="Type" value="PortfolioManager" id="portfolioManager" /> Portfolio Manager
+          <input type="radio" formControlName="Type" value="Trader" id="trader" />Trader
+          <input type="radio" formControlName="Type" value="Both" id="pmt" />Portfolio Manager + Trader
           <div class="error" *ngIf="register.get('Type').hasError(('required')) &&register.get('Type').touched"></div>
         </div>
         <div class="form-group">
