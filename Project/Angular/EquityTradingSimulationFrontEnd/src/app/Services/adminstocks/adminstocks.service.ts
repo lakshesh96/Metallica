@@ -21,7 +21,8 @@ export class AdminstocksService {
       this.globalService.GetMethod(this._baseUrl1).subscribe
           (response => this.stocks = response,
           error => console.error(error),
-          () => { console.info(this.stocks)}
+          () => { console.info()}
+          //() => { console.info(this.stocks)}
       ); 
       return this.globalService.GetMethod(this._baseUrl1);
   }
@@ -30,12 +31,12 @@ export class AdminstocksService {
   AddStocks(r:any)
   {
     alert("Stocks received at my service");
-    console.log(r+"--");
+    //console.log(r+"--");
     this.globalService.PostMethod(r,this._baseUrl).subscribe(
         response => response,
         error => console.error(error),
         () => this.getStocks()
     );
-    console.info("AddStocks Service wala: "+r);
+    //console.info("AddStocks Service wala: "+r);
   }
 }
