@@ -24,6 +24,7 @@ import { AdminStockManageComponent } from './Components/admin-stock-manage/admin
 import{SearchComponent} from './Components/search/search.component';
 import {StocksService} from './Services/stocks.service';
 import { RegisterComponent } from '../app/Components/register/register.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { RegisterComponent } from '../app/Components/register/register.component
 		LoginComponent,
 		AdminloginComponent,
 		AdminStockManageComponent,
-		BuyrequestComponent,SearchComponent, RegisterComponent
+		BuyrequestComponent,SearchComponent, RegisterComponent,
+		RouterModule
 	],
 	imports: [
 		BrowserModule,
