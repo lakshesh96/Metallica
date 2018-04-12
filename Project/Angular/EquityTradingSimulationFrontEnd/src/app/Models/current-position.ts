@@ -6,6 +6,5 @@ export class CurrentPosition {
         public Buying_Price: number,
         public Current_Price :number ,
         public Total_Value: number ){
-
 }
 }
