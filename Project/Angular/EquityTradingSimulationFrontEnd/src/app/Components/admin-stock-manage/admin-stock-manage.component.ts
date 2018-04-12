@@ -59,9 +59,6 @@ export class AdminStockManageComponent implements OnInit {
       }
     })
     //console.log(this.result);
-
-    
-
   }
 
 AddP(result)

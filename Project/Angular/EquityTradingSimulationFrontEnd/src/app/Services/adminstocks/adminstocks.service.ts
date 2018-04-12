@@ -15,7 +15,7 @@ export class AdminstocksService {
   constructor(private _http: Http,private globalService:GlobalService) {
   }
 
-   getStocks()
+  getStocks()
   {
       this.globalService.GetMethod(this._baseUrl).subscribe
           (response => this.stocks = response,
@@ -24,18 +24,16 @@ export class AdminstocksService {
       ); 
   }
   
-  
+
   AddStocks(r:any)
   {
-      alert("Stocks received at my service");
-      console.log(r+"ankitchutiya");
-      this.globalService.PostMethod(r,this._baseUrl).subscribe(
-          response => response,
-          error => console.error(error),
-          () => this.getStocks()
-      );
-      console.info(r);
-  
+    alert("Stocks received at my service");
+    console.log(r+"ankitchutiya");
+    this.globalService.PostMethod(r,this._baseUrl).subscribe(
+        response => response,
+        error => console.error(error),
+        () => this.getStocks()
+    );
+    console.info(r);
   }
-
 }
