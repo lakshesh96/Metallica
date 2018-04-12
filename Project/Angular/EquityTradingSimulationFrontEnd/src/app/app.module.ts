@@ -36,6 +36,7 @@ import{CurrentPositionService} from "../app/Services/current-position/current-po
 import {LoginService} from './Services/login/login.service';
 
 import { OrderService } from './Services/Order/order.service';
+import { AuthGuardService } from './Services/Auth-Guard/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { OrderService } from './Services/Order/order.service';
     BlockserviceService,
     CurrentPositionService,
     OrderService,
-    LoginService
+	LoginService,
+	AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
