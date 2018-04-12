@@ -19,7 +19,8 @@ export class BlockCreationComponent implements OnInit {
   {
       this.bs.get_blockdata().subscribe
           (response => this.block = response,
-          error => console.error(error)
+          error => console.error(error),
+          () => console.log()
       ); 
   }
 
