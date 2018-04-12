@@ -44,7 +44,7 @@ namespace EquityTradingPlatformApi.Exchange
                     }
                     else
                     {
-                        //item.BlockId =null;
+                       // item.BlockId =null;
                         //item.
                     }
                 }
