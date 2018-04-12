@@ -13,6 +13,8 @@ import { ExceltojsonService } from "./Services/exceltojson/exceltojson.service";
 import { AdminstocksService } from "./Services/adminstocks/adminstocks.service";
 import {AddStockAdminService} from "./Services/add-stock-admin/add-stock-admin.service";
 import {ListService } from './Services/list-service/list.service';
+import { AddTraderAdminService } from "./Services/add-trader-admin/add-trader-admin.service";
+import { AddPmAdminService } from "./Services/add-pm-admin/add-pm-admin.service";
 
 import {HttpModule, JsonpModule} from '@angular/http';
 
@@ -22,6 +24,8 @@ import { AdminStockManageComponent } from './Components/admin-stock-manage/admin
 import{SearchComponent} from './Components/search/search.component';
 import {StocksService} from './Services/stocks.service';
 import { RegisterComponent } from '../app/Components/register/register.component';
+import { AdminTraderAddComponent } from './Components/admin-trader-add/admin-trader-add.component';
+import { AdminPortfoliomanagerAddComponent } from './Components/admin-portfoliomanager-add/admin-portfoliomanager-add.component';
 
 
 @NgModule({
@@ -31,7 +35,7 @@ import { RegisterComponent } from '../app/Components/register/register.component
 		LoginComponent,
 		AdminloginComponent,
 		AdminStockManageComponent,
-		BuyrequestComponent,SearchComponent, RegisterComponent
+		BuyrequestComponent,SearchComponent, RegisterComponent, AdminTraderAddComponent, AdminPortfoliomanagerAddComponent
 	],
 	imports: [
 		BrowserModule,
@@ -46,7 +50,9 @@ import { RegisterComponent } from '../app/Components/register/register.component
 		AdminstocksService,
 		StocksService,
 		AddStockAdminService,
-		ListService
+		ListService,
+		AddTraderAdminService,
+		AddPmAdminService
 	],
 	bootstrap: [AppComponent]
 })
