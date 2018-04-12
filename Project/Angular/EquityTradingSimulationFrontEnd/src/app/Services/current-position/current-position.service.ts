@@ -23,11 +23,13 @@ export class CurrentPositionService {
 
   GetPosition(){
     let userid = sessionStorage.getItem("UserId");
-    this.globalService.GetWithId(this.url,userid).subscribe(
+    /* this.globalService.GetWithId(this.url,userid).subscribe(
       response => this.CurrentS = response,
       error => console.error(error),
       () => console.log(this.CurrentS)
-    );
+    ); */
+
+    return this.globalService.GetWithId(this.url,userid);
   }
 
 }
