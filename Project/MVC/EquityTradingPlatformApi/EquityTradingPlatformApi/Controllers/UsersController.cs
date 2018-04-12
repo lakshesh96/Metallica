@@ -87,6 +87,27 @@ namespace EquityTradingPlatformApi.Controllers
             return Ok(false);
         }
 
+        //Batch Add Users
+        [Route("api/Users/PutList")]
+        [ResponseType(typeof(void))]
+        [HttpPost]
+        public IHttpActionResult PostUserList(List<User> mydata)
+        {
+            try
+            {
+                foreach (var item in mydata)
+                {
+                    db.Users.Add(item);
+                }
+                db.SaveChanges();
+                return StatusCode(HttpStatusCode.NoContent);
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+            }
+        }
+
         // User Registration
         // POST: api/Users
         [ResponseType(typeof(User))]
