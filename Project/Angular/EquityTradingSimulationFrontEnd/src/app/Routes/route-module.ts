@@ -14,16 +14,20 @@ import { PendingOrdersComponent } from '../Components/pending-orders/pending-ord
 import { Login } from '../Models/login';
 import { AuthGuardService } from '../Services/Auth-Guard/auth-guard.service';
 import { SellRequestComponent } from '../Components/sell-request/sell-request.component';
+import { AdminComponent } from '../Components/admin/admin.component';
 
 
 const AppRoutes:Routes = [
     { path:"Login",component:LoginComponent},
     {path:"Register",component:RegisterComponent},
-    {path:"AdminLogin",component:AdminloginComponent,
+    {path:"Admin",component:AdminComponent,
         children:[
             {path:"Stocks",component:AdminStockManageComponent},
-            {path:"PortflioManager",component:AdminPortfoliomanagerAddComponent},
-            {path:"Trader",component:AdminTraderAddComponent}
+            {path:"AdminLogin",component:AdminloginComponent},
+            {path:"PortfolioManager",component:AdminPortfoliomanagerAddComponent},
+            {path:"Trader",component:AdminTraderAddComponent},
+            {path:"",component:AdminloginComponent},
+            {path:"**",component:AdminloginComponent}
             ]
     },
     {path:"Blocks",component:BlockCreationComponent,canActivate: [AuthGuardService]},
@@ -32,7 +36,7 @@ const AppRoutes:Routes = [
     {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardService]},
     {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardService]},
     {path:"",component:RegisterComponent,canActivate: [AuthGuardService]},
-    {path:"*",component:LoginComponent,canActivate: [AuthGuardService]},
+    {path:"**",component:LoginComponent,canActivate: [AuthGuardService]},
     {path:"Sell/:id",component:SellRequestComponent}
 ]
 @NgModule({

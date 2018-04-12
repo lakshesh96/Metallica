@@ -45,6 +45,7 @@ import {LoginService} from './Services/login/login.service';
 
 
 import { AuthGuardService } from './Services/Auth-Guard/auth-guard.service';
+import { AdminComponent } from './Components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { AuthGuardService } from './Services/Auth-Guard/auth-guard.service';
     AdminPortfoliomanagerAddComponent,
     PendingOrdersComponent,
     CurrentPositionComponent,
-    SellRequestComponent
+    SellRequestComponent,
+    AdminComponent
     
   ],
   imports: [
