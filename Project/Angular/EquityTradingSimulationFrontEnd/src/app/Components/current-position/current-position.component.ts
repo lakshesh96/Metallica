@@ -11,10 +11,12 @@ export class CurrentPositionComponent implements OnInit {
   list : CurrentPosition[];
   constructor(private DS: CurrentPositionService) { }
 
-
+  getPosition(){
+    this.list = this.DS.CurrentS;
+  }
 
   ngOnInit() {
-    this.list=this.DS.CurrentS
+    //this.list=this.DS.CurrentS
   }
 
 }
