@@ -20,15 +20,15 @@ namespace EquityTradingPlatformApi.Models
         [Required]
         public BlockStatus BlockStatus { get; set; }
 
-        public virtual User User { get; set; }
-
         [Required]
         public int UserId { get; set; }
+        public virtual User User { get; set; }
 
         public Side Side { get; set; }
 
-        public virtual Stocks Stocks { get; set; }
+        public OrderType Type { get; set; }
 
         public int StocksId { get; set; }
+        public virtual Stocks Stocks { get; set; }
     }
 }

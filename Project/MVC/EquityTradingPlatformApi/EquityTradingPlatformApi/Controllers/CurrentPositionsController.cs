@@ -16,6 +16,34 @@ namespace EquityTradingPlatformApi.Controllers
     {
         private ProjectContext db = new ProjectContext();
 
+
+        // GET CURRENT POSITION FOR USER
+        [Route("api/Position/Approved")]
+        [HttpGet]
+        public IHttpActionResult GetCurrentPositionForUser(int userId)
+        {
+            var getUserOrders = from order in db.Orders
+                                where (order.UserId == userId && (order.OrderStatus == OrderStatus.Executed || order.OrderStatus == OrderStatus.Partial))
+                                select order.Id;
+            
+
+
+
+
+            //CurrentPosition currentPosition = db.CurrentPositions.Find(id);
+            //if (currentPosition == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //return Ok(currentPosition);
+            return Ok(true);
+        }
+
+
+
+
+
         // GET: api/CurrentPositions
         public IQueryable<CurrentPosition> GetCurrentPositions()
         {
