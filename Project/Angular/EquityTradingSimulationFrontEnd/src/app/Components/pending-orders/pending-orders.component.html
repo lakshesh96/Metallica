@@ -8,13 +8,21 @@
   </div>
   <br>
 
-  <div class="col-md-12 col-sm-12">
+  <div  class="col-md-12 col-sm-12">
     <div class="form-group">
-      <label>Stock Name</label>
-      <input class="form-control" type="text" #name/>
+        <label>Id</label>
+        <input  class="form-control" type="text" #id/>
     </div>
     <div class="form-group">
-        <label>Symbol Name</label>
+        <label>Trader_Name</label>
+        <input class="form-control" type="text" #name/>
+    </div>
+    <div  class="form-group">
+        <label>Stock Name</label>
+        <input class="form-control" type="text" #stock/>
+    </div>
+    <div   class="form-group">
+        <label>Symbol</label>
         <input class="form-control" type="text" #symbol/>
     </div>
     <div class="form-group">
@@ -22,15 +30,37 @@
         <input class="form-control" type="text" #quantity/>
     </div>
     <div class="form-group">
-        <label>Stock Name</label>
-        <input class="form-control" type="text" #name/>
+        <label>Buying Price</label>
+        <input class="form-control" type="text" #buy/>
     </div>
-  
+    <div class="form-group">
+        <label>Current Price</label>
+        <input class="form-control" type="text" #curr/>
+    </div>
+    <div class="form-group">
+        <label>Total Value</label>
+        <input class="form-control" type="text" #total/>
+    </div>
+    <div class="form-group">
+        <label>Type of Order</label>
+        <input class="form-control" type="text" #type/>
+    </div>
+    <div class="form-group">
+        <label>Side</label>
+        <input class="form-control" type="text" #side/>
+    </div>
+    <div>
+        <input type="button" class="btn btn-default" value="Save Changes" (click)="Put(id.value,name.value,
+        stock.value,symbol.value,quantity.value,buy.value,curr.value,total.value,type.value,side.value)" />
+    </div>
+  </div>
+  <br>
   <div class="form-group col-lg-12 col-md-12 col-sm-12">
     <div class="table-responsive">
       <table class="table table-hover table-bordered">
         <thead>
           <tr class="table-primary">
+            <th scope="col">Id</th>
             <th scope="col">Trader_Name</th>
             <th scope="col" ><i class="fa fa-arrow-up" (click)="sort_stock_Name_ascending()"></i>Stock Name<i class="fa fa-arrow-down" (click)="sort_stock_Name_descending()"></i></th>
             <th scope="col">Symbol</th>
@@ -38,24 +68,31 @@
             <th scope="col">Buying Price</th>
             <th scope="col"><i class="fa fa-arrow-up" (click)="sort_CurPrice_ascending()"></i>Current Price<i class="fa fa-arrow-down" (click)="sort_CurPrice_descending()"></i></th>
             <th scope="col">Total Value</th>
+            <th scope="col">Type of Order</th>
             <th scope="col">Side</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let p of PendingShow">
-            <td>{{p.Trader_Name}}</td>
-            <td>{{p.Name}}</td>
-            <td>{{p.Symbol}}</td>
-            <td>{{p.Quantity}}</td>
-            <td>{{p.Buying_Price}}</td>
-            <td>{{p.CurrentPrice}}</td>
-            <td>{{p.Total_Value}}</td>
-            <td>{{p.Side}}</td>
-            <td><button type="button" class="btn btn-warning">Modify</button></td>
+          <tr *ngFor="let l of ListStocks;let i=index">
+            <td>{{l.Id}}</td>
+            <td>{{l.Trader_Name}}</td>
+            <td>{{l.Name}}</td>
+            <td>{{l.Symbol}}</td>
+            <td>{{l.Quantity}}</td>
+            <td>{{l.Buying_Price}}</td>
+            <td>{{l.CurrentPrice}}</td>
+            <td>{{l.Total_Value}}</td>
+            <td>{{l.typeoforder}}</td>
+            <td>{{l.side}}</td>
+            <td><input type="button" class="btn btn-warning" value="Modify" (click)="Index(l.Id);id.value=l.Id;name.value=l.Trader_Name;
+             stock.value=l.Name;symbol.value=l.Symbol;quantity.value=l.Quantity;buy.value=l.Buying_Price;curr.value=l.CurrentPrice;total.value=l.Total_Value;
+             type.value=l.typeoforder;side.value=l.side;"/></td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
+
+
