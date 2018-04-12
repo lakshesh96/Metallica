@@ -28,6 +28,7 @@ import { RegisterComponent } from '../app/Components/register/register.component
 import { RouterModule } from '@angular/router';
 import { AdminTraderAddComponent } from './Components/admin-trader-add/admin-trader-add.component';
 import { AdminPortfoliomanagerAddComponent } from './Components/admin-portfoliomanager-add/admin-portfoliomanager-add.component';
+import { RoutesModule } from './Routes/route-module';
 
 
 @NgModule({
