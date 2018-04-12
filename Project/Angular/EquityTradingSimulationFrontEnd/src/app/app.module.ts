@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgSwitch } from '@angular/common';
 
 
 import { AppComponent } from './app.component';
@@ -22,11 +23,12 @@ import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AdminStockManageComponent } from './Components/admin-stock-manage/admin-stock-manage.component';
 import{SearchComponent} from './Components/search/search.component';
-import {StocksService} from './Services/stocks.service';
+import {StocksService} from './Services/StocksList/stocks.service';
 import { RegisterComponent } from '../app/Components/register/register.component';
+
 import { AdminTraderAddComponent } from './Components/admin-trader-add/admin-trader-add.component';
 import { AdminPortfoliomanagerAddComponent } from './Components/admin-portfoliomanager-add/admin-portfoliomanager-add.component';
-
+import {RoutesModule} from './Routes/route-module';
 
 @NgModule({
 	declarations: [
@@ -35,14 +37,15 @@ import { AdminPortfoliomanagerAddComponent } from './Components/admin-portfoliom
 		LoginComponent,
 		AdminloginComponent,
 		AdminStockManageComponent,
-		BuyrequestComponent,SearchComponent, RegisterComponent, AdminTraderAddComponent, AdminPortfoliomanagerAddComponent
+		BuyrequestComponent, SearchComponent, RegisterComponent, AdminTraderAddComponent, AdminPortfoliomanagerAddComponent
 	],
 	imports: [
 		BrowserModule,
 		ReactiveFormsModule,
 		FormsModule,
 		HttpModule,
-		JsonpModule,
+		JsonpModule,RoutesModule,
+
 	],
 	providers: [
 		GlobalService,
