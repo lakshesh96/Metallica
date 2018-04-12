@@ -46,7 +46,7 @@ import { RoutesModule } from './Routes/route-module';
 		FormsModule,
 		HttpModule,
 		JsonpModule,
-		RoutesModule
+		RouterModule
 	],
 	providers: [
 		GlobalService,
