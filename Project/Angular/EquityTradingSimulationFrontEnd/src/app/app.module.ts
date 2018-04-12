@@ -32,6 +32,7 @@ import { AddPmAdminService } from './Services/add-pm-admin/add-pm-admin.service'
 import { PendingListService } from './Services/Pending/pending-list.service';
 import { BlockserviceService } from './Services/blockservice/blockservice.service';
 import { PendingOrdersComponent } from './Components/pending-orders/pending-orders.component';
+import { OrderService } from './Services/Order/order.service';
 
 
 
@@ -69,7 +70,8 @@ import { PendingOrdersComponent } from './Components/pending-orders/pending-orde
     AddTraderAdminService,
     AddPmAdminService,
     PendingListService,
-    BlockserviceService
+    BlockserviceService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })
