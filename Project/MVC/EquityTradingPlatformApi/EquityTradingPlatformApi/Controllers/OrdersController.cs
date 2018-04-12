@@ -10,17 +10,20 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using EquityTradingPlatformApi.Models;
 
+
 namespace EquityTradingPlatformApi.Controllers
 {
     public class OrdersController : ApiController
     {
         private ProjectContext db = new ProjectContext();
 
+
         // GET: api/Orders
         public IQueryable<Order> GetOrders()
         {
             return db.Orders;
         }
+
 
         // GET: api/Orders/5
         [ResponseType(typeof(Order))]
@@ -34,6 +37,7 @@ namespace EquityTradingPlatformApi.Controllers
 
             return Ok(order);
         }
+
 
         // PUT: api/Orders/5
         [ResponseType(typeof(void))]
@@ -70,22 +74,72 @@ namespace EquityTradingPlatformApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Orders
+
+        // POST: api/Trader/Orders
+        [Route("api/Trader/Orders")]
         [ResponseType(typeof(Order))]
-        public IHttpActionResult PostOrder(Order order)
+        public IHttpActionResult PostTraderOrder(Order order)
         {
-            if (!ModelState.IsValid)
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+
+            order.DateAdded = System.DateTime.Now;
+            order.OrderStatus = OrderStatus.Pending;
+
+            db.Orders.Add(order);
+            try
             {
-                return BadRequest(ModelState);
+                db.SaveChanges();
+                return Ok(order);
+            } catch(DbUpdateException e)
+            {
+                return Ok("UserId or StockId not found");
+            }
+        }
+
+
+        // POST: api/PM/Orders
+        [Route("api/PM/Orders")]
+        [ResponseType(typeof(Order))]
+        public IHttpActionResult PostPMOrder(Order order)
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+            bool PMIdFound = false;            
+
+            foreach(User u in db.Users)
+            {
+                if(u.Id == order.PMId && (u.Type == UserType.PortfolioManager || u.Type == UserType.Both))
+                {
+                    PMIdFound = true;
+                }
+            }
+
+            if (!PMIdFound)
+            {
+                return Ok("Incorrect PM Id");
             }
 
             order.DateAdded = System.DateTime.Now;
+            order.OrderStatus = OrderStatus.Pending;
 
             db.Orders.Add(order);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = order.Id }, order);
+            try
+            {
+                db.SaveChanges();
+                return Ok(order);
+            }
+            catch (DbUpdateException e)
+            {
+                return Ok("UserId or StockId not found");
+            }
         }
+
+
 
         // DELETE: api/Orders/5
         [ResponseType(typeof(Order))]
