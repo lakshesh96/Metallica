@@ -10,17 +10,19 @@ export class ListService {
   }
 
   reg:Regmodel;
-  url = "http://localhost:52705/api/Users";
+  url = "http://localhost:52705/api/Users/PutList";
   users:any[];
+  status:string;
 
   Add(r:Regmodel){
     console.log(r);
-    let b: any = {Name: r.Name, Password: r.Userpass.Password, UserName: r.Username, EmployeeId: r.Empid, Approved:false, Type: r.Type}
+    let b: any = [{Name: r.Name, Password: r.Userpass.Password, UserName: r.Username, EmployeeId: r.Empid, Approved:false, Type: r.Type}]
+    console.log("before service");
     console.log(b);
     this.globalService.PostMethod(b,this.url).subscribe(
-      response => response,
+      response => this.status = response,
       error => console.error(error),
-      () => console.log()
+      () => console.log(console.log(this.status + "Hello"))
     );
   }
 

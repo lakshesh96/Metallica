@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
     this.globalService.PostMethod(value,this.url).subscribe(
     response => {this.id=response.id;
       sessionStorage.setItem("UserId",this.id.toString());
+      console.log(sessionStorage.getItem("UserId"));
     },
     error => {console.error(error);
       this.loading = false;
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
   ); 
 
                     
-    console.log(value, valid);
+    //console.log(value, valid);
     
   }
  /* getData() {

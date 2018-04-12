@@ -6,7 +6,8 @@ import {GlobalService} from '../../Services/global.service';
 export class CurrentPositionService {
 
   CurrentS : CurrentPosition[];
-  url = "http://localhost:52705/api/Position/Approved";
+  //url = "http://localhost:52705/api/Position/Approved";
+  url = "http://localhost:52705/api/Position/Approved?userId=";
 
   constructor(private globalService:GlobalService) {
   //  this.CurrentS = [new CurrentPosition("Aayush", "TCS",   "tcs",500, 200, 250, 100000, ),
@@ -29,7 +30,7 @@ export class CurrentPositionService {
       () => console.log(this.CurrentS)
     ); */
 
-    return this.globalService.GetWithId(this.url,userid);
+    return this.globalService.GetMethod(this.url+userid);
   }
 
 }
