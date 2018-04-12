@@ -9,6 +9,7 @@ export class Blocks{
         public date:string,
         public order_type:string,
         public side:string,
+
     ){
 
     }

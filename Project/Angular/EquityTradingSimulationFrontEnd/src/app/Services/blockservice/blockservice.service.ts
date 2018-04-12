@@ -8,9 +8,12 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class BlockserviceService {
 
- private url:string="";
+ private url:string="http://localhost:52705/api/blocks";
   constructor(private http:Http) { }
 
+  get_data():Observable<any>{
+    return this.http.get(this.url).map(this.extractData);
+  }
 
 
 
