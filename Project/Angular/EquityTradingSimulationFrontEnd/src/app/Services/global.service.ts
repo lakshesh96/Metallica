@@ -24,9 +24,11 @@ export class GlobalService {
   constructor(private _http:Http) { }
 
   PostMethod(credentials,url):Observable<any>{
-    console.log(credentials);
+    //console.log(credentials);
     console.log(url);
     this._baseUrl = url;
+    console.log("At Post Service ->");
+    console.log(credentials);
     return this._http.post(this._baseUrl,credentials).map(this.extractData).catch(this.handleError);
   }
 
@@ -44,7 +46,7 @@ export class GlobalService {
   extractData(res:Response){
     let response = res.json();
     let body = response;
-    console.log(body);
+    //console.log(body);
     return body || {};
   }
 

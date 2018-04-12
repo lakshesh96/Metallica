@@ -5,9 +5,9 @@
     <div class="form-group" >
      
           <span  class="col-sm-2 col-form-label"><strong>Type Of User :</strong></span>
-          <input type="radio" formControlName="Type"  value="r1" id="portfolioManager"> Portfolio Manager
-          <input type="radio" formControlName="Type"  value="r2" id="trader" >Trader
-          <input type="radio" formControlName="Type"  value="r3" id="pmt">Portfolio Manager & Trader
+          <input type="radio" formControlName="Type"  value="r1" id="_portfolioManager"> Portfolio Manager
+          <input type="radio" formControlName="Type"  value="r2" id="_trader" >Trader
+          <input type="radio" formControlName="Type"  value="r3" id="_pmt">Portfolio Manager & Trader
        
         <div class="error" *ngIf="login.get('Type').hasError(('required')) && login.get('Type').touched"></div>
       </div>

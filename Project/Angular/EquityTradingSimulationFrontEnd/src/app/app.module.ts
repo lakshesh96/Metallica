@@ -6,6 +6,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 import {GlobalService} from "./Services/global.service";
 
+
+//Components
 import { AppComponent } from './app.component';
 import { BlockCreationComponent } from './Components/block-creation/block-creation.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -17,6 +19,10 @@ import { AdminStockManageComponent } from './Components/admin-stock-manage/admin
 import { SearchComponent } from './Components/search/search.component';
 import { AdminTraderAddComponent } from './Components/admin-trader-add/admin-trader-add.component';
 import { AdminPortfoliomanagerAddComponent } from './Components/admin-portfoliomanager-add/admin-portfoliomanager-add.component';
+import { PendingOrdersComponent } from './Components/pending-orders/pending-orders.component';
+import { CurrentPositionComponent } from './Components/current-position/current-position.component';
+
+//Services
 import { ExceltojsonService } from './Services/exceltojson/exceltojson.service';
 import { AdminstocksService } from './Services/adminstocks/adminstocks.service';
 import { StocksService } from './Services/StocksList/stocks.service';
@@ -26,6 +32,9 @@ import { AddTraderAdminService } from './Services/add-trader-admin/add-trader-ad
 import { AddPmAdminService } from './Services/add-pm-admin/add-pm-admin.service';
 import { PendingListService } from './Services/Pending/pending-list.service';
 import { BlockserviceService } from './Services/blockservice/blockservice.service';
+import{CurrentPositionService} from "../app/Services/current-position/current-position.service"
+
+import { OrderService } from './Services/Order/order.service';
 
 
 
@@ -41,7 +50,9 @@ import { BlockserviceService } from './Services/blockservice/blockservice.servic
     AdminStockManageComponent,
     SearchComponent,
     AdminTraderAddComponent,
-    AdminPortfoliomanagerAddComponent
+    AdminPortfoliomanagerAddComponent,
+    PendingOrdersComponent,
+    CurrentPositionComponent
     
   ],
   imports: [
@@ -62,7 +73,9 @@ import { BlockserviceService } from './Services/blockservice/blockservice.servic
     AddTraderAdminService,
     AddPmAdminService,
     PendingListService,
-    BlockserviceService
+    BlockserviceService,
+    CurrentPositionService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

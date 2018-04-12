@@ -191,6 +191,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BlocksController.cs" />
+    <Compile Include="Controllers\CurrentPositionsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\StocksController.cs" />
@@ -219,6 +220,26 @@
     <Compile Include="Migrations\201804120919044_Date added in Order Table.cs" />
     <Compile Include="Migrations\201804120919044_Date added in Order Table.Designer.cs">
       <DependentUpon>201804120919044_Date added in Order Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804120950032_removingFKforBlock.cs" />
+    <Compile Include="Migrations\201804120950032_removingFKforBlock.Designer.cs">
+      <DependentUpon>201804120950032_removingFKforBlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804120954363_DbChange.cs" />
+    <Compile Include="Migrations\201804120954363_DbChange.Designer.cs">
+      <DependentUpon>201804120954363_DbChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804120958465_DbChange2.cs" />
+    <Compile Include="Migrations\201804120958465_DbChange2.Designer.cs">
+      <DependentUpon>201804120958465_DbChange2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804121024132_Dbchange3.cs" />
+    <Compile Include="Migrations\201804121024132_Dbchange3.Designer.cs">
+      <DependentUpon>201804121024132_Dbchange3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804121301222_Block Table Update.cs" />
+    <Compile Include="Migrations\201804121301222_Block Table Update.Designer.cs">
+      <DependentUpon>201804121301222_Block Table Update.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -268,7 +289,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -314,6 +337,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804120919044_Date added in Order Table.resx">
       <DependentUpon>201804120919044_Date added in Order Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804120950032_removingFKforBlock.resx">
+      <DependentUpon>201804120950032_removingFKforBlock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804120954363_DbChange.resx">
+      <DependentUpon>201804120954363_DbChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804120958465_DbChange2.resx">
+      <DependentUpon>201804120958465_DbChange2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121024132_Dbchange3.resx">
+      <DependentUpon>201804121024132_Dbchange3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804121301222_Block Table Update.resx">
+      <DependentUpon>201804121301222_Block Table Update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

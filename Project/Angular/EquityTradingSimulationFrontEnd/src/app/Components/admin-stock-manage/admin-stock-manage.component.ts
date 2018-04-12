@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {Contains} from '../../Models/contains';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AddStockAdminService } from '../../Services/add-stock-admin/add-stock-admin.service';
@@ -10,10 +10,11 @@ import { AdminstocksService } from "../../Services/adminstocks/adminstocks.servi
   templateUrl: './admin-stock-manage.component.html',
   styleUrls: ['./admin-stock-manage.component.css']
 })
-export class AdminStockManageComponent implements OnInit {
+export class AdminStockManageComponent implements OnInit{
 
   stock:FormGroup;
-  list=[];
+  list:Contains[];
+  listnew:Contains[];
   //stocks: any[];
   constructor(public ser:AddStockAdminService,public stocksService:AdminstocksService){
     this.stock = new FormGroup({
@@ -22,9 +23,11 @@ export class AdminStockManageComponent implements OnInit {
       CurrentPrice: new FormControl('',[Validators.required,Validators.pattern("[0-9]*")]),
       VolumeAvailable: new FormControl('',[Validators.required,Validators.pattern("[0-9]*")])
     });
-    this.list= stocksService.stocks;
+  
   }
   
+
+
   onAdd({ value, valid }: { value: Contains, valid: boolean }){
     if(valid){
       var p =new Contains(value.Symbol,value.Name,value.CurrentPrice,value.VolumeAvailable);
@@ -37,8 +40,14 @@ export class AdminStockManageComponent implements OnInit {
 
 
   ngOnInit() {
-    //this.getP();
+    this.stocksService.getStocks().subscribe
+    (response => this.listnew = response,
+    error => console.error(error),
+    () => { console.info()}
+    //() => { console.info(this.listnew)}
+); 
   }
+
 
   //Section for excel to json
   result: any;
@@ -52,17 +61,19 @@ export class AdminStockManageComponent implements OnInit {
       this.AddP(this.result);
       for(var i in this.result){
         if(this.result[i].Symbol!=null && this.result[i].Name!=null && this.result[i].CurrentPrice!=null&&this.result[i].VolumeAvailable!=null)
-        {var p =new Contains(this.result[i].Symbol,this.result[i].Name,this.result[i].CurrentPrice,this.result[i].VolumeAvailable);
-        this.ser.list.push(p);
-        this.list=this.ser.list;}
+        {
+          var p =new Contains(this.result[i].Symbol,this.result[i].Name,this.result[i].CurrentPrice,this.result[i].VolumeAvailable);
+          this.ser.list.push(p);
+          this.list=this.ser.list;
+        }
       }
     })
     //console.log(this.result);
   }
 
-AddP(result)
-{
+  AddP(result)
+  {
     this.stocksService.AddStocks(result);
-}
+  }
 
 }

@@ -9,9 +9,23 @@ import { AddPmAdminService } from "../../Services/add-pm-admin/add-pm-admin.serv
 })
 export class AdminPortfoliomanagerAddComponent implements OnInit {
 
+  listapproved:any[];
+  listunapproved:any[];
+
   constructor(private addpmservice:AddPmAdminService) { }
 
   ngOnInit() {
+    this.addpmservice.getPMApproved().subscribe
+    (response => this.listapproved = response,
+    error => console.error(error),
+    () => { console.info(this.listapproved)}
+    );
+
+    this.addpmservice.getPMUnapproved().subscribe
+    (response => this.listunapproved = response,
+    error => console.error(error),
+    () => { console.info(this.listunapproved)}
+    );
   }
   public result: any;
   private xlsxToJsonService: ExceltojsonService = new ExceltojsonService();
