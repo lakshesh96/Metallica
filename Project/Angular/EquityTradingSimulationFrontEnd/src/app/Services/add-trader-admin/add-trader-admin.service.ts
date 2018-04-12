@@ -6,34 +6,35 @@ import 'rxjs/add/operator/catch';
 import { GlobalService } from "../global.service";
 
 @Injectable()
-export class AdminstocksService {
+export class AddTraderAdminService {
 
-  private _baseUrl: string = "http://localhost:52705/api/Stocks/PutList";
+  private _baseUrl: string = "http://localhost:52705/api/Users/PutList";
 
-  stocks:any;
+  traders:any;
 
   constructor(private _http: Http,private globalService:GlobalService) {
   }
 
-  getStocks()
+  getTraders()
   {
       this.globalService.GetMethod(this._baseUrl).subscribe
-          (response => this.stocks = response,
+          (response => this.traders = response,
           error => console.error(error),
-          () => { console.info(this.stocks)}
+          () => { console.info(this.traders)}
       ); 
   }
   
 
-  AddStocks(r:any)
+  AddTraders(r:any)
   {
-    alert("Stocks received at my service");
-    console.log(r+"ankitchutiya");
+    alert("Traders received at my service");
+    console.log(r+"traders");
     this.globalService.PostMethod(r,this._baseUrl).subscribe(
         response => response,
         error => console.error(error),
-        () => this.getStocks()
+        () => this.getTraders()
     );
     console.info(r);
   }
+
 }
