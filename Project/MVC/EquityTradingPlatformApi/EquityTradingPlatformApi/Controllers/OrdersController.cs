@@ -39,6 +39,7 @@ namespace EquityTradingPlatformApi.Controllers
                 var pendingOrders = from n in db.Orders
                         where (n.UserId == userId && n.OrderStatus == OrderStatus.Pending && n.BlockId == null)
                         select n;
+                
                 return Ok(pendingOrders.ToList());
             }
 

@@ -39,14 +39,17 @@ namespace EquityTradingPlatformApi.Exchange
                    this.block.BlockStatus = BlockStatus.Executed;
                     foreach (var item in this.orders)
                     {
-                        item.OrderStatus = OrderStatus.Executed;
-                        AddOrderFull(item);
+                        if (item.OrderType == OrderType.Market || CheckStopLimitValid(item) || CheckStopValid(item) || CheckLimitValid(item))
+                        {
+                           
+                            AddOrderFull(item);
+                        }
                     }
                     db.SaveChanges();
-
             }
                 else
                 {
+                this.block.BlockStatus = BlockStatus.Partial;
                     if (this.VolumeAvailable < this.totalQuantity && this.side==Side.Buy)
                     {//if volume available for stock is less than volume asked only for buy side
                         this.FillQuantity = this.VolumeAvailable;
@@ -84,13 +87,14 @@ namespace EquityTradingPlatformApi.Exchange
         }
         public void ChangeMarketPrice()
         {
+            double priceVariation = ((double)VolumeExecuted / ((double)this.stock.VolumeAvailable)) * 100;
             if (this.side == Side.Buy)
             {
-                this.stock.CurrentPrice += (VolumeExecuted / this.stock.VolumeAvailable) * 100;
+                this.stock.CurrentPrice += priceVariation;
             }
             else if(this.side == Side.Sell)
             {
-                this.stock.CurrentPrice -= (VolumeExecuted / this.stock.VolumeAvailable) * 100;
+                this.stock.CurrentPrice -= priceVariation;
             }
         }
         public bool CheckLimitValid(Order item)
@@ -143,6 +147,7 @@ namespace EquityTradingPlatformApi.Exchange
         public void AddOrderFull(Order item)
         {
             item.BlockId = null;
+            item.OrderStatus = OrderStatus.Executed;
             CurrentPosition currentPositionobject = new CurrentPosition();
             currentPositionobject.Date = System.DateTime.Now;
             currentPositionobject.PriceExecuted = this.stock.CurrentPrice;
@@ -161,6 +166,7 @@ namespace EquityTradingPlatformApi.Exchange
                 this.VolumeAvailable += item.Quantity;                
             }
             item.Quantity = 0;
+            
         }
         public void AddOrderPartial(Order item)
         {
@@ -183,7 +189,6 @@ namespace EquityTradingPlatformApi.Exchange
             db.CurrentPositions.Add(currentPositionobject);
             this.FillQuantity = 0;
             this.totalQuantity = 0;
-            
 
         }
     }
