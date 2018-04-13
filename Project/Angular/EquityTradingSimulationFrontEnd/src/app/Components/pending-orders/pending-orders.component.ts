@@ -11,10 +11,13 @@ export class PendingOrdersComponent implements OnInit
 {
   ListStocks:any[];
   divhide:boolean;
-  
+  pending:boolean;
+  partial:boolean;
 
   constructor(private PS:PendingListService) {
     this.getOrders();
+    this.pending=true;
+    this.partial=true;
    }
 
   ngOnInit()
@@ -51,6 +54,14 @@ export class PendingOrdersComponent implements OnInit
       element.OrderSide="Sell";
     if(element.OrderStatus==3)
       element.OrderStatus="Pending";
+
+  }
+  blocknew(orderid)
+  {
+    sessionStorage.setItem("OrderId",orderid);
+  }
+  blockexisting()
+  {
 
   }
   /*postdata()
