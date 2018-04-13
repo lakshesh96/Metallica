@@ -20,6 +20,7 @@ import { PortfoliomanagerComponent} from '../Components/portfoliomanager/portfol
 import { AuthGuardService } from '../Services/Auth-Guard/auth-guard.service';
 import {AdminAuthGuardService} from '../Services/Admin-Auth-Guard/admin-auth-guard.service';
 import {AuthGuardPortfolioService} from '../Services/Auth-Guard-PM/auth-guard-portfolio.service';
+import { AddstocksComponent } from '../Components/addstocks/addstocks.component';
 
 const AppRoutes:Routes = [
     { path:"Trader", component:TraderComponent,
@@ -41,6 +42,8 @@ const AppRoutes:Routes = [
         {path:"Register",component:RegisterComponent},
         {path:"Login",component:LoginComponent},
        // {path:"Blocks",component:BlockCreationComponent,canActivate: [AuthGuardPortfolioService]},
+        {path:"Add Stock",component:AddstocksComponent,canActivate: [AuthGuardPortfolioService]},
+       
         {path:"Buy",component:BuyrequestComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"CurrentPosition",component:CurrentPositionComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardPortfolioService]},

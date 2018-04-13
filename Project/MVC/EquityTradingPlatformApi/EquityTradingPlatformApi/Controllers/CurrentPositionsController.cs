@@ -29,9 +29,9 @@ namespace EquityTradingPlatformApi.Controllers
         private ProjectContext db = new ProjectContext();
 
 
-        private Stocks FetchStockObj(int id)
+        private Stocks FetchStockObj(int id, List<Stocks> stocks)
         {
-            foreach(Stocks s in db.Stocks)
+            foreach(Stocks s in stocks)
             {
                 if (s.Id == id)
                     return s;
@@ -39,9 +39,9 @@ namespace EquityTradingPlatformApi.Controllers
             return null;
         }
 
-        private User FetchUserObj(int id)
+        private User FetchUserObj(int id, List<User> users)
         {
-            foreach (User s in db.Users)
+            foreach (User s in users)
             {
                 if (s.Id == id)
                     return s;
@@ -66,24 +66,38 @@ namespace EquityTradingPlatformApi.Controllers
                 List<Order> currentUserOrderIds = getUserOrders.ToList();
 
                 List<CustomCurrentPos> returnPositions = new List<CustomCurrentPos>();
-                
+
                 //foreach (CurrentPosition currentPos in db.CurrentPositions)
+                List<Stocks> stockList = (from n in db.Stocks select n).ToList();
+                List<User> userList = (from n in db.Users select n).ToList();
+
+                
+
                 foreach (Order o in currentUserOrderIds)
                 {
                     foreach(CurrentPosition cp in db.CurrentPositions)
                     {
                         if (o.Id == cp.OrderId)
                         {
-                            Stocks s = FetchStockObj(o.StocksId);
-                            User u = FetchUserObj(o.UserId);
-
                             CustomCurrentPos currentPos = new CustomCurrentPos();
+
+                            Stocks s = FetchStockObj(o.StocksId, stockList);
+                            User u = FetchUserObj(o.UserId, userList);
 
                             currentPos.Trader_Name = u.Name;
                             currentPos.Stock_Name = s.Name;
                             currentPos.Symbol = s.Symbol;
-                            currentPos.Quantity = o.Quantity;
                             currentPos.Buying_Price = cp.PriceExecuted;
+
+                            if (o.OrderStatus == OrderStatus.Executed)
+                            {
+                                currentPos.Quantity = o.Quantity;
+                            }
+                            else if (o.OrderStatus == OrderStatus.Partial)
+                            {
+                                currentPos.Quantity = cp.VolumeExecuted;
+                            }
+
                             currentPos.Current_Price = s.CurrentPrice;
                             
                             currentPos.Total_Value = currentPos.Quantity * currentPos.Current_Price;
@@ -93,7 +107,7 @@ namespace EquityTradingPlatformApi.Controllers
                 }
                         
 
-                return Ok(false);
+                return Ok(returnPositions);
             }
 
 
