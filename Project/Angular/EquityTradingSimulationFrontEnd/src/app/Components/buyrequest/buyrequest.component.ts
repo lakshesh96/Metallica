@@ -1,65 +1,88 @@
 import { Component, OnInit } from '@angular/core';
-import {Buy} from '../../Models/buy';
-import {Stocks} from '../../Models/stocks';
-import { FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Stocks } from "../../Models/stocks";
+import { Sellmodel } from "../../Models/sell";
+import { Buy, OrderSide, OrderType } from '../../Models/buy';
 import { BuySellService } from "../../Services/buy-sell/buy-sell.service";
-import{Sellmodel} from "../../Models/sell"
+
+
 @Component({
-  selector: 'app-buyrequest',
+  selector: 'app-reactive-form',
   templateUrl: './buyrequest.component.html',
   styleUrls: ['./buyrequest.component.css']
 })
 export class BuyrequestComponent implements OnInit {
-buy:FormGroup;
-order:Stocks;
 
-  constructor(private bs:BuySellService) {
-   this.order = this.bs.buyorder;
-  }
+	order:Stocks;
+	placedOrder:Sellmodel;
+	buy: FormGroup;
+  	constructor(private BSservice:BuySellService) {
+		 this.order = this.BSservice.buyorder;
+	   }
 
-  ngOnInit() {
-    this.buy = new FormGroup({
-      Quantity: new FormControl('', [Validators.required]),
-      CurrentPrice:new FormControl('', [Validators.required]),
-      LimitPrice:new FormControl('', [Validators.required]),
-      StopLoss:new FormControl('',[Validators.required])
-      });
-  }
-  onSubmit({ value, valid }: { value:Sellmodel, valid: boolean }) {
-    console.log(value, valid);
-    }
-  Limit:boolean =true;
-  Stop:boolean =true;
-  
-  Toggle(value){
-    if(value=="Stop"){
-      this.Stop = false;
-      this.Limit =true;
-    }
-    else if(value=="Limit")
-      {
-        this.Limit = false;
-        this.Stop=true;
-      }
-    else if(value=="StopLimit"){
-      this.Limit = false;
-    this.Stop = false;}
-    else if(value=="Market"){
-      this.Limit = true;
-      this.Stop=true;
-    }
-  
-  else{
-  
-  }
-  
-  }
+	ngOnInit() {
+		this.buy = new FormGroup({
+			StocksId: new FormControl('', [Validators.required]),
+			Quantity: new FormControl('', [Validators.required]),
+			StopPrice: new FormControl('', [Validators.required]),
+			LimitPrice: new FormControl('', [Validators.required]),
+			OrderType: new FormControl('', [Validators.required])
+		}); 
+	}
 
-  Add(b){
-    this.bs.AddBuyOrder(b).subscribe(
-      response => response,
-      error => console.error(error),
-      ()=> alert("Buy Executed")
-  );
-  }
+	onSubmit({ value, valid }: { value: Buy, valid: boolean }) {
+		alert("Submitted");
+		value.OrderSide = OrderSide.Buy;
+		if(value.OrderType.toString() == "Market"){
+			console.log("Market");
+			value.StopPrice=0;
+			value.LimitPrice=0;
+		}
+		else if(value.OrderType.toString()=="Limit"){
+			console.log("Limit");
+			value.StopPrice=0;
+		}
+		else if(value.OrderType.toString() == "Stop"){
+			console.log("Stop");
+			value.LimitPrice=0;
+		}
+		value.BlockId = null;
+		value.PMId = null;
+		value.StocksId = this.order.Id;
+		value.UserId = +sessionStorage.getItem('UserId'); // pick from session variable
+		console.log(value, valid);
+
+		/* this.placedOrder = new Sellmodel(null,value.OrderType.toString(),value.OrderSide.toString(),value.Quantity,
+							this.order.Id,+sessionStorage.getItem('UserId'),null,value.LimitPrice,value.StopPrice,
+							null,null); */
+		console.log(value);
+
+		this.BSservice.AddBuyOrder(value).subscribe(
+			response => response,
+			error => console.error(error),
+			() => alert("success")
+		);
+	}
+	LimitFlag:boolean =true;
+	StopFlag:boolean =true;
+	Toggle(value){
+		if(value=="Stop"){
+		  this.StopFlag = false;
+		  this.LimitFlag =true;
+		}
+		else if(value=="Limit")
+		  {
+			this.LimitFlag = false;
+			this.StopFlag=true;
+		  }
+		else if(value=="StopLimit"){
+		  this.LimitFlag = false;
+		this.StopFlag = false;}
+		else if(value=="Market"){
+		  this.LimitFlag = true;
+		  this.StopFlag=true;
+		}
+	  
+	  }
+
 }

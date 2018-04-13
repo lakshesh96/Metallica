@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
     this.globalService.PostMethod(value,this.url).subscribe(
     response => {this.id=response.id;
       sessionStorage.setItem("UserId",this.id.toString());
+      console.log("hello"+this.id);
     },
     error => {console.error(error);
       this.loading = false;

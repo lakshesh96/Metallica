@@ -6,7 +6,7 @@ import { GlobalService } from "../../Services/global.service";
 @Injectable()
 export class BuySellService {
 
-  private _baseUrl: string = "http://localhost:52705/api/Traders/Orders";
+  private _baseUrl: string = "http://localhost:52705/api/Trader/Orders";
 
   constructor(private globalService:GlobalService) { }
 

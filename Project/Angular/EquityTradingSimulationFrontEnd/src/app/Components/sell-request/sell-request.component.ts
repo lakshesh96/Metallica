@@ -66,10 +66,6 @@ Toggle(value){
     this.Stop=true;
   }
 
-else{
-
-}
-
 }
 
 }
