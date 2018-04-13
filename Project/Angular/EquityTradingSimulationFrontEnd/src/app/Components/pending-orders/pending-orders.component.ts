@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PendingStocks} from '../../Models/pending-stocks';
 import {PendingListService} from '../../Services/Pending/pending-list.service';
-import { BlockserviceService } from '../../Services/blockservice/blockservice.service';
 
 @Component({
   selector: 'app-pending-orders',
@@ -11,26 +10,25 @@ import { BlockserviceService } from '../../Services/blockservice/blockservice.se
 export class PendingOrdersComponent implements OnInit 
 {
   ListStocks:any[];
-  divhide:boolean;
-  pendingblock:any[]=[];
-  partialblock:any[]=[];
-  pending:boolean;
-  partial:boolean;
+  divhide:boolean=true;
+  hidelimit:boolean=true;
+  hidestop:boolean=true;
+  a:string="Market";
+  usertype:boolean=true;
 
-  constructor(
-    private PS:PendingListService,
-  private bs:BlockserviceService
-) {
+  constructor(private PS:PendingListService) {
     this.getOrders();
-    this.pending=true;
-    this.partial=true;
+    if(sessionStorage.getItem('Type')=="Trader"){
+      this.usertype=false;
+    }else{
+      this.usertype=false;
+    }
    }
-
 
   ngOnInit()
   {
     
-    this.divhide=this.PS.divhide;
+    
   }
   getOrders()
   {
@@ -47,6 +45,23 @@ export class PendingOrdersComponent implements OnInit
       
       
   }
+
+  ToggleTextboxes(type){
+    if(type=="Market"){
+      this.hidelimit=true;
+      this.hidestop=true;
+    }else if(type=="Limit"){
+      this.hidelimit=false;
+      this.hidestop=true;
+    }else if(type=="Stop"){
+      this.hidelimit=true;
+      this.hidestop=false;
+    }else if(type=="StopLimit"){
+      this.hidelimit=false;
+      this.hidestop=false;
+    }
+  }
+
   fetchNameChanges(element)
   {
     if(element.OrderType==0)
@@ -55,35 +70,15 @@ export class PendingOrdersComponent implements OnInit
       element.OrderType="Limit";
     if(element.OrderType==2)
       element.OrderType="Stop";
+      if(element.OrderType==3)
+      element.OrderType="StopLimit";
     if(element.OrderSide==0)
-      element.OrderType="Buy";
+      element.OrderSide="Buy";
     if(element.OrderSide==1)
       element.OrderSide="Sell";
-    if(element.OrderStatus==3)
+    if(element.OrderStatus==2)
       element.OrderStatus="Pending";
 
-  }
-  blocknew(orderid)
-  {
-    sessionStorage.setItem("OrderId",orderid);
-    this.bs.createnewblock(orderid);
-    this.pendingblock=this.bs.pendingblock;
-
-  }
-  blockexisting(orderid)
-  {
-    sessionStorage.setItem("OrderId",orderid);
-    this.partialblock=this.bs.partialblock;
-
-  }
-
-  executepartial(partialid)
-  {
-  this.bs.executeblock(partialid);
-  }
-  executepending(pendingid)
-  {
-    this.bs.executeblock(pendingid);
   }
   /*postdata()
   {
@@ -96,23 +91,26 @@ export class PendingOrdersComponent implements OnInit
       );
   console.info(p);
   }*/
-  /*Put(Id:number,UserId:number,StocksId:number,OrderSide:number,OrderType:number,Quantity:number,LimitPrice:number,
-    StopPrice:number,DateAdded:string,OrderStatus:string, )
+
+
+  ModifyOrder(Id:number,UserId:number,StocksId:number,OrderSide:string,OrderType:string,Quantity:number,LimitPrice:number,
+    StopPrice:number,DateAdded:string,OrderStatus:string)
   {
       let pt:any={Id:Id,UserId:UserId,StocksId:StocksId,OrderSide:OrderSide,OrderType:OrderType,Quantity:Quantity,LimitPrice:LimitPrice,
-        StopPrice:StopPrice,DateAdded:DateAdded,typeoforder:typeoforder,OrderStatus:OrderStatus};
+        StopPrice:StopPrice,DateAdded:DateAdded,OrderStatus:OrderStatus};
          
-      alert(typeoforder);
-      this.PS.Put(pt).subscribe(
+      this.PS.PutOrder(pt).subscribe(
         response => response,
         error => console.error(error),
         () => this.getOrders()
     );
-  }*/
+  }
+
   Index(i)
   {
     this.PS.Index(i);
   }
+
   sort_CurPrice_ascending()
   {
    this.ListStocks.sort(function(obj1, obj2)

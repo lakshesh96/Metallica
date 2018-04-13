@@ -65,8 +65,8 @@ namespace EquityTradingPlatformApi.Controllers
                         UserId = o.UserId,
                         StocksId = o.StocksId
                     };
-
                     db.Blocks.Add(block);
+                    o.BlockId = block.Id;
                     try
                     {
                         db.SaveChanges();

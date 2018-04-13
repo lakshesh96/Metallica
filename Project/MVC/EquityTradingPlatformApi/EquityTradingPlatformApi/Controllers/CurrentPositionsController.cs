@@ -29,6 +29,26 @@ namespace EquityTradingPlatformApi.Controllers
         private ProjectContext db = new ProjectContext();
 
 
+        private Stocks FetchStockObj(int id)
+        {
+            foreach(Stocks s in db.Stocks)
+            {
+                if (s.Id == id)
+                    return s;
+            }
+            return null;
+        }
+
+        private User FetchUserObj(int id)
+        {
+            foreach (User s in db.Users)
+            {
+                if (s.Id == id)
+                    return s;
+            }
+            return null;
+        }
+
 
         // GET CURRENT POSITION FOR USER
         [Route("api/Position/Approved")]
@@ -54,17 +74,20 @@ namespace EquityTradingPlatformApi.Controllers
                                             {
                         if (o.Id == cp.OrderId)
                         {
-                            CustomCurrentPos currentPos = new CustomCurrentPos
-                            {
-                                Trader_Name = o.User.Name,
-                                Stock_Name = o.Stocks.Name,
-                                Symbol = o.Stocks.Symbol,
-                                Quantity = o.Quantity,
-                                Buying_Price = cp.PriceExecuted,
-                                Current_Price = o.Stocks.CurrentPrice,
-                            };
+                            Stocks s = FetchStockObj(o.StocksId);
+                            User u = FetchUserObj(o.UserId);
+
+                            CustomCurrentPos currentPos = new CustomCurrentPos();
+
+                            currentPos.Trader_Name = u.Name;
+                            currentPos.Stock_Name = s.Name;
+                            currentPos.Symbol = s.Symbol;
+                            currentPos.Quantity = o.Quantity;
+                            currentPos.Buying_Price = cp.PriceExecuted;
+                            currentPos.Current_Price = s.CurrentPrice;
+                            
                             currentPos.Total_Value = currentPos.Quantity * currentPos.Current_Price;
-                            return Ok(currentPos);
+                            returnPositions.Add(currentPos);
                         }
                     }
                 }
