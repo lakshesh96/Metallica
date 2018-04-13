@@ -20,6 +20,8 @@ export class PendingListService
 
 
   getPendingOrders(){
+    console.log("At Pending Service");
+    console.log(this.id);
     return this.globalService.GetMethod(this._baseUrl+this.id);
   }
 
