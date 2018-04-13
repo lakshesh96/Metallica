@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Admin} from '../../Models/admin';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import {GlobalService} from '../../Services/global.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-adminlogin',
@@ -14,7 +15,7 @@ export class AdminloginComponent implements OnInit {
   url = "http://localhost:52705/api/Admin";
   value2:string;
   id:string;
-  constructor(private globalService:GlobalService) { }
+  constructor(private globalService:GlobalService,private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
     this.admin = new FormGroup({
@@ -34,12 +35,12 @@ export class AdminloginComponent implements OnInit {
         sessionStorage.setItem("AdminLogin",response.response);
         },
       error => console.error(error),
-      () => console.log(),
+      () => {this.router.navigateByUrl('Admin/Stocks');},
     );
     console.log("I am here");
     console.log(this.value2);
     //console.log("hello");
-    sessionStorage.setItem("UserId",this.value2);
+    sessionStorage.setItem("AdminId",this.value2);
      
   }
 }
