@@ -42,12 +42,12 @@ namespace EquityTradingPlatformApi.Controllers
 
                 
 
-                foreach (Order o in pendingOrders)
-                {
-                    foreach (Stocks s in db.Stocks)
-                    {
-                        if (s.Id == o.Id)
-                        {
+                //foreach (Order o in pendingOrders)
+                //{
+                //    foreach (Stocks s in db.Stocks)
+                //    {
+                //        if (s.Id == o.Id)
+                //        {
 
                 //        }
                 //    }
