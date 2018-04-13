@@ -87,8 +87,17 @@ namespace EquityTradingPlatformApi.Controllers
                             currentPos.Trader_Name = u.Name;
                             currentPos.Stock_Name = s.Name;
                             currentPos.Symbol = s.Symbol;
-                            currentPos.Quantity = o.Quantity;
                             currentPos.Buying_Price = cp.PriceExecuted;
+
+                            if (o.OrderStatus == OrderStatus.Executed)
+                            {
+                                currentPos.Quantity = o.Quantity;
+                            }
+                            else if (o.OrderStatus == OrderStatus.Partial)
+                            {
+                                currentPos.Quantity = cp.VolumeExecuted;
+                            }
+
                             currentPos.Current_Price = s.CurrentPrice;
                             
                             currentPos.Total_Value = currentPos.Quantity * currentPos.Current_Price;
