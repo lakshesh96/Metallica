@@ -63,10 +63,10 @@ namespace EquityTradingPlatformApi.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOrder(int id, Order order)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
             if (id != order.Id)
             {

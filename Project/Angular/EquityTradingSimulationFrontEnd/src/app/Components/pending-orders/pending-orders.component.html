@@ -1,71 +1,18 @@
 <div class="container">
-  <br>
-  <div>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" #search (onchange)="Search(search.value)">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit" (click)="Search(search.value)">Search</button>
-    </form>
-  </div>
-  <br>
-
-  <div  class="col-md-12 col-sm-12">
-    <div class="form-group">
-        <label>Id</label>
-        <input  class="form-control" type="text" #id/>
-    </div>
-    <div class="form-group">
-        <label>User Id</label>
-        <input class="form-control" type="text" #user/>
-    </div>
-    <div  class="form-group">
-        <label>Stocks Id</label>
-        <input class="form-control" type="text" #stock/>
-    </div>
-    <div   class="form-group">
-        <label>Order Side</label>
-        <input class="form-control" type="text" #side/>
-    </div>
-    <div class="form-group">
-        <label>Order Type</label>
-        <input class="form-control" type="text" #type/>
-    </div>
-    <div class="form-group">
-        <label>Quantity</label>
-        <input class="form-control" type="text" #quantity/>
-    </div>
-    <div class="form-group">
-        <label>Limit Price</label>
-        <input class="form-control" type="text" #limit/>
-    </div>
-    <div class="form-group">
-        <label>Stop Price</label>
-        <input class="form-control" type="text" #stop/>
-    </div>
-    <div class="form-group">
-        <label>Date Added</label>
-        <input class="form-control" type="text" #date/>
-    </div>
-    <div class="form-group">
-        <label>Order Status</label>
-        <input class="form-control" type="text" #status/>
-    </div>
-    <div>
-        <input type="button" class="btn btn-default" value="Save Changes" (click)="Put(id.value,user.value,
-        stock.value,side.value,type.value,quantity.value,limit.value,stop.value,date.value,status.value)" />
-    </div>
-  </div>
+  
   <br>
   <div class="form-group col-lg-12 col-md-12 col-sm-12">
     <h3>Pending Orders</h3>
     <div>
-      <input type="button" class="btn btn-outline-primary" value="Show pending Order" (click)="getOrders()" />
+      <br>
+      <input type="button" class="btn btn-outline-primary" value="Update Pending Orders" (click)="getOrders()" />
     </div>
+    <br>
+    <br>
     <div class="table-responsive">
       <table class="table table-hover table-bordered">
         <thead>
-          <tr class="table-primary">
-            <th scope="col">Id</th>
-            <th scope="col">UserId</th>
+          <tr class="table-info">
             <th scope="col" >StocksId</th>
             <th scope="col">OrderSide</th>
             <th scope="col">OrderType</th>
@@ -75,12 +22,13 @@
             <th scope="col">DateAdded</th>
             <th scope="col">OrderStatus</th>
             <th scope="col">Action</th>
+            <div [hidden]="usertype">
+            <th scope="col">Create Block / Add to Existing </th>
+            </div>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let l of pending;let i=index">
-            <td>{{l.Id}}</td>
-            <td>{{l.UserId}}</td>
+          <tr *ngFor="let l of ListStocks;let i=index">
             <td>{{l.StocksId}}</td>
             <td>{{l.OrderSide}}</td>
             <td>{{l.OrderType}}</td>
@@ -91,12 +39,62 @@
             <td>{{l.OrderStatus}}</td>
             <td><input type="button" class="btn btn-warning" value="Modify" (click)="Index(l.Id);id.value=l.Id;user.value=l.UserId;stock.value=l.StocksId;
                 side.value=l.OrderSide;type.value=l.OrderType;quantity.value=l.Quantity;limit.value=l.LimitPrice;stop.value=l.StopPrice;date.value=l.DateAdded;
-                status.value=l.OrderStatus"/></td>
-             <td><input type="button" class="btn btn-outline-primary" value="Create Block" (click)="blocknew()" /></td>
-             <td><input type="button" class="btn btn-outline-primary" value="Add to Existing Block" (click)="blockexisting()" /></td>
+                status.value=l.OrderStatus; ToggleTextboxes(type.value); divhide=false;"/></td>
+                <div [hidden]="usertype">
+             <td><input type="button" class="btn btn-outline-primary" style="margin-top: 2px" value="Create Block" (click)="blocknew()" />
+             <input type="button" class="btn btn-outline-primary" style="margin-top: 2px" value="Add to Existing Block" (click)="blockexisting()" /></td>
+                </div>
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+  <br>
+  <div  class="col-md-12 col-sm-12" [hidden]="divhide">
+    <h3 class="jumbotron" style="text-align: center">Modify Order</h3>
+    <div class="form-group" [hidden]=true>
+        <label>Id</label>
+        <input  class="form-control" type="text" #id/>
+    </div>
+    <div class="form-group" [hidden]=true>
+        <label>User Id</label>
+        <input class="form-control" type="text" #user/>
+    </div>
+    <div  class="form-group" [hidden]=true>
+        <label>Stocks Id</label>
+        <input class="form-control" type="text" #stock/>
+    </div>
+    <div class="form-group">
+        <label>Order Side</label>
+        <input class="form-control" type="text" #side [disabled]=true/>
+    </div>
+    <div class="form-group">
+        <label>Order Type</label>
+        <input class="form-control" type="text" [disabled]=true #type/>
+    </div>
+    <div class="form-group">
+        <label>Quantity</label>
+        <input class="form-control" type="text" #quantity/>
+    </div>
+    <div class="form-group" [hidden]="hidelimit">
+        <label>Limit Price</label>
+        <input class="form-control" type="text" #limit/>
+    </div>
+    <div class="form-group" [hidden]="hidestop">
+        <label>Stop Price</label>
+        <input class="form-control" type="text" #stop/>
+    </div>
+    <div class="form-group" [hidden]=true>
+        <label>Date Added</label>
+        <input class="form-control" type="text" #date/>
+    </div>
+    <div class="form-group" [hidden]=true>
+        <label>Order Status</label>
+        <input class="form-control" type="text" #status/>
+    </div>
+    <div>
+        <input type="button" class="btn btn-default" value="Save Changes" (click)="ModifyOrder(id.value,user.value,
+        stock.value,side.value,type.value,quantity.value,limit.value,stop.value,date.value,status.value); divhide=true;" />
     </div>
   </div>
 </div>
