@@ -56,7 +56,8 @@ const AppRoutes:Routes = [
             {path:"PortfolioManager",component:AdminPortfoliomanagerAddComponent, canActivate: [AdminAuthGuardService]},
             {path:"Trader",component:AdminTraderAddComponent, canActivate: [AdminAuthGuardService]},
             {path:"",component:AdminloginComponent},
-            {path:"**",component:AdminloginComponent}
+            {path:"**",component:AdminloginComponent},
+            {path:"Register",component:RegisterComponent,canActivate: [AdminAuthGuardService]},
             ]
     },
    
