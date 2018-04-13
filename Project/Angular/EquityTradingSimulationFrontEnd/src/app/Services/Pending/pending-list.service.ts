@@ -17,11 +17,7 @@ export class PendingListService
   {
     this.getPendingOrders();
   }
-  // getProducts(): Observable<any[]>
-  // {
-  //   return this._http.get(this._baseUrl).
-  //   map(this.extractData).catch(this.handleError);
-  // }
+
 
   getPendingOrders(){
     return this.globalService.GetMethod(this._baseUrl+this.id);
