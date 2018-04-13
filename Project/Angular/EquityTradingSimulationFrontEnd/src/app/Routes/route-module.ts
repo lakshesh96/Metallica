@@ -15,11 +15,39 @@ import { Login } from '../Models/login';
 import { AuthGuardService } from '../Services/Auth-Guard/auth-guard.service';
 import { SellRequestComponent } from '../Components/sell-request/sell-request.component';
 import { AdminComponent } from '../Components/admin/admin.component';
+import { TraderComponent } from '../Components/trader/trader.component';
+import { PortfoliomanagerComponent} from '../Components/portfoliomanager/portfoliomanager.component';
 
 
 const AppRoutes:Routes = [
-    { path:"Login",component:LoginComponent},
-    {path:"Register",component:RegisterComponent},
+    { path:"Trader", component:TraderComponent,
+    children:[
+        {path:"Register",component:RegisterComponent},
+        {path:"Login",component:LoginComponent},
+        {path:"Blocks",component:BlockCreationComponent,canActivate: [AuthGuardService]},
+        {path:"Buy",component:BuyrequestComponent,canActivate: [AuthGuardService]},
+        {path:"CurrentPosition",component:CurrentPositionComponent,canActivate: [AuthGuardService]},
+        {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardService]},
+        {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardService]},
+        {path:"Sell/:id",component:SellRequestComponent},
+        {path:"",component:LoginComponent},
+        {path:"**",component:LoginComponent},
+        ]
+     },
+     { path:"Portfoliomanager", component:PortfoliomanagerComponent,
+    children:[
+        {path:"Register",component:RegisterComponent},
+        {path:"Login",component:LoginComponent},
+        {path:"Blocks",component:BlockCreationComponent,canActivate: [AuthGuardService]},
+        {path:"Buy",component:BuyrequestComponent,canActivate: [AuthGuardService]},
+        {path:"CurrentPosition",component:CurrentPositionComponent,canActivate: [AuthGuardService]},
+        {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardService]},
+        {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardService]},
+        {path:"Sell/:id",component:SellRequestComponent},
+        {path:"",component:LoginComponent},
+        {path:"**",component:LoginComponent}
+        ]
+     },
     {path:"Admin",component:AdminComponent,
         children:[
             {path:"Stocks",component:AdminStockManageComponent},
@@ -30,14 +58,10 @@ const AppRoutes:Routes = [
             {path:"**",component:AdminloginComponent}
             ]
     },
-    {path:"Blocks",component:BlockCreationComponent,canActivate: [AuthGuardService]},
-    {path:"Buy",component:BuyrequestComponent,canActivate: [AuthGuardService]},
-    {path:"CurrentPosition",component:CurrentPositionComponent,canActivate: [AuthGuardService]},
-    {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardService]},
-    {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardService]},
-    {path:"",component:RegisterComponent,canActivate: [AuthGuardService]},
-    {path:"**",component:LoginComponent,canActivate: [AuthGuardService]},
-    {path:"Sell/:id",component:SellRequestComponent}
+   
+    {path:"",component:RegisterComponent},
+    {path:"**",component:LoginComponent}
+   
 ]
 @NgModule({
 imports : [RouterModule.forRoot(AppRoutes)],
