@@ -44,9 +44,6 @@ namespace EquityTradingPlatformApi.Controllers
 
             //return null;
         }
-
-
-
         // GET: api/Orders/5
         [ResponseType(typeof(Order))]
         public IHttpActionResult GetOrder(int id)

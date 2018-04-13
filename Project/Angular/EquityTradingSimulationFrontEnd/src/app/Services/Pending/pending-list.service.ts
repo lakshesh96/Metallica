@@ -8,11 +8,10 @@ import {GlobalService} from '../../Services/global.service';
 @Injectable()
 export class PendingListService 
 {
-  private _baseUrl: string = "http://localhost:52705/api/Trader/PendingOrders";
+  private _baseUrl: string = "http://localhost:52705/api/Trader/PendingOrders?userId=";
   index :number;
   divhide:boolean=true;
-  ListStocks:any[];
-  
+  id = sessionStorage.getItem("UserId");
 
   constructor(private globalService:GlobalService)
   {
@@ -25,14 +24,17 @@ export class PendingListService
   // }
 
   getPendingOrders(){
-    this.globalService.GetMethod(this._baseUrl).subscribe
-    (response => this.ListStocks = response,
-    error => console.error(error),
-    () => { console.info(this.ListStocks) }
-);
+    return this.globalService.GetMethod(this._baseUrl+this.id);
   }
 
- 
+  extractData(res: Response)
+  {
+    let response = res.json();
+    let body = response;
+    console.log(body);
+    
+    return body || {};
+  }
   handleError(error: Response | any)
   {
     let errMsg: string;
