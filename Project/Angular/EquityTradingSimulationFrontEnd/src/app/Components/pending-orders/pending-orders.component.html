@@ -116,7 +116,7 @@
             <td>{{b.BlockStatus}}</td>
             <td>{{b.Side}}</td>
             <td>{{b.StockName}}</td>
-            <td><input type="button" value="Execute" class="btn btn-outline-primary" (click)="Executepending()" /></td>
+            <td><input type="button" value="Execute" class="btn btn-outline-primary" (click)="Executepending(b.Id)" /></td>
           </tr>
         </tbody>
       </table>
@@ -139,7 +139,7 @@
               <td>{{b.BlockStatus}}</td>
               <td>{{b.Side}}</td>
               <td>{{b.StockName}}</td>
-              <td><input type="button" value="Execute" class="btn btn-outline-primary" (click)="Executepartial()" /></td>
+              <td><input type="button" value="Execute" class="btn btn-outline-primary" (click)="Executepartial(b.Id)" /></td>
             </tr>
           </tbody>
         </table>

@@ -66,6 +66,7 @@ export class PendingOrdersComponent implements OnInit
   blocknew(orderid)
   {
     sessionStorage.setItem("OrderId",orderid);
+    this.bs.createnewblock(orderid);
     this.pendingblock=this.bs.pendingblock;
 
   }
@@ -74,6 +75,15 @@ export class PendingOrdersComponent implements OnInit
     sessionStorage.setItem("OrderId",orderid);
     this.partialblock=this.bs.partialblock;
 
+  }
+
+  executepartial(partialid)
+  {
+  this.bs.executeblock(partialid);
+  }
+  executepending(pendingid)
+  {
+    this.bs.executeblock(pendingid);
   }
   /*postdata()
   {

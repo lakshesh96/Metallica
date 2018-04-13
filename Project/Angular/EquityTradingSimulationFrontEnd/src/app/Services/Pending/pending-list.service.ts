@@ -11,11 +11,13 @@ export class PendingListService
   private _baseUrl: string = "http://localhost:52705/api/Trader/PendingOrders?userId=";
   index :number;
   divhide:boolean=true;
-  id = sessionStorage.getItem("UserId");
+  id:string;
 
   constructor(private globalService:GlobalService)
   {
     this.getPendingOrders();
+  this.id = sessionStorage.getItem("UserId");
+    
   }
 
 
