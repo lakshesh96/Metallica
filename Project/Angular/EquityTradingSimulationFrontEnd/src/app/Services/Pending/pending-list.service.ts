@@ -11,6 +11,8 @@ export class PendingListService
   private _baseUrl: string = "http://localhost:52705/api/Trader/PendingOrders";
   index :number;
   divhide:boolean=true;
+  ListStocks:any[];
+  
 
   constructor(private globalService:GlobalService)
   {
@@ -23,17 +25,14 @@ export class PendingListService
   // }
 
   getPendingOrders(){
-    return this.globalService.GetMethod(this._baseUrl);
+    this.globalService.GetMethod(this._baseUrl).subscribe
+    (response => this.ListStocks = response,
+    error => console.error(error),
+    () => { console.info(this.ListStocks) }
+);
   }
 
-  extractData(res: Response)
-  {
-    let response = res.json();
-    let body = response;
-    console.log(body);
-    
-    return body || {};
-  }
+ 
   handleError(error: Response | any)
   {
     let errMsg: string;

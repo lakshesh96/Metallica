@@ -56,6 +56,10 @@
   </div>
   <br>
   <div class="form-group col-lg-12 col-md-12 col-sm-12">
+    <h3>Pending Orders</h3>
+    <div>
+      <input type="button" class="btn btn-outline-primary" value="Show pending Order" (click)="getOrders()" />
+    </div>
     <div class="table-responsive">
       <table class="table table-hover table-bordered">
         <thead>
@@ -74,7 +78,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let l of ListStocks;let i=index">
+          <tr *ngFor="let l of pending;let i=index">
             <td>{{l.Id}}</td>
             <td>{{l.OrderType}}</td>
             <td>{{l.OrderSide}}</td>
@@ -88,6 +92,8 @@
             <td><input type="button" class="btn btn-warning" value="Modify" (click)="Index(l.Id);id.value=l.Id;name.value=l.Trader_Name;
              stock.value=l.Name;symbol.value=l.Symbol;quantity.value=l.Quantity;buy.value=l.Buying_Price;curr.value=l.CurrentPrice;total.value=l.Total_Value;
              type.value=l.typeoforder;side.value=l.side;"/></td>
+             <td><input type="button" class="btn btn-outline-primary" value="Create Block" (click)="blocknew()" /></td>
+             <td><input type="button" class="btn btn-outline-primary" value="Add to Existing Block" (click)="blockexisting()" /></td>
           </tr>
         </tbody>
       </table>

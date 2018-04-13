@@ -10,6 +10,7 @@ import {PendingListService} from '../../Services/Pending/pending-list.service';
 export class PendingOrdersComponent implements OnInit 
 {
   ListStocks:any[];
+  pending:any[]=[];
   divhide:boolean;
   
 
@@ -17,16 +18,11 @@ export class PendingOrdersComponent implements OnInit
 
   ngOnInit()
   {
-    this.getOrders();
     this.divhide=this.PS.divhide;
   }
   getOrders()
   {
-      this.PS.getPendingOrders().subscribe
-          (response => this.ListStocks = response,
-          error => console.error(error),
-          () => { console.info(this.ListStocks) }
-      ); 
+      this.pending=this.PS.ListStocks;
   }
   /*postdata()
   {
