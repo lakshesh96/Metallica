@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit {
     url:string="http://localhost:52705/api/Users/Login";
     id:number;
   constructor(private globalService:GlobalService,  private route: ActivatedRoute,private router: Router) { }
-
+UserId = null;
+x:boolean =true;
   ngOnInit() {
     this.login = new FormGroup({
       Type: new FormControl('', [Validators.required]),
@@ -27,6 +28,14 @@ export class LoginComponent implements OnInit {
       Password: new FormControl('', [Validators.required])
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.UserId = sessionStorage.getItem("UserId");
+   
+    if(this.UserId)
+    {
+        this.x=false;
+    }
+    else
+        this.x = true;
   }
   onSubmit({ value, valid }: { value: Login, valid: boolean }) {
     this.loading = true;
