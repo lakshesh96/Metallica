@@ -22,7 +22,6 @@ namespace EquityTradingPlatformApi.Controllers
             return db.Blocks;
         }
 
-
         // GET 
         [Route("api/Trader/ExecuteBlock")]
         public IHttpActionResult GetBlockExecution(int blockId)
@@ -36,8 +35,7 @@ namespace EquityTradingPlatformApi.Controllers
         }
 
 
-
-
+        
         // TYPE OF BLOCKS FOR UserId and BlockStatus
         [Route("api/Trader/Block")]
         public IHttpActionResult GetTraderPendingBlocks(int userId, string blockStatus)
@@ -49,6 +47,40 @@ namespace EquityTradingPlatformApi.Controllers
             return Ok(blocks.ToList());
         }
 
+
+
+
+        // ADD NEW BLOCK FROM ORDER ID
+        [Route("api/Trader/NewBlock")]
+        public IHttpActionResult PostNewBlock(int orderId)
+        {
+            foreach(Order o in db.Orders)
+            {
+                if (o.Id == orderId)
+                {
+                    Block block = new Block
+                    {
+                        BlockStatus = BlockStatus.Pending,
+                        Side = o.OrderSide,
+                        UserId = o.UserId,
+                        StocksId = o.StocksId
+                    };
+
+                    db.Blocks.Add(block);
+                    try
+                    {
+                        db.SaveChanges();
+                        return Ok(true);
+                    }
+                    catch(DbUpdateException e)
+                    {
+                        return Ok(false);
+                    }
+                    
+                }
+            }
+            return Ok(false);
+        }
 
 
 
@@ -64,6 +96,8 @@ namespace EquityTradingPlatformApi.Controllers
 
             return Ok(block);
         }
+
+
 
 
 

@@ -92,8 +92,8 @@
             <td><input type="button" class="btn btn-warning" value="Modify" (click)="Index(l.Id);id.value=l.Id;user.value=l.UserId;stock.value=l.StocksId;
                 side.value=l.OrderSide;type.value=l.OrderType;quantity.value=l.Quantity;limit.value=l.LimitPrice;stop.value=l.StopPrice;date.value=l.DateAdded;
                 status.value=l.OrderStatus"/></td>
-             <td><input type="button" class="btn btn-outline-primary" value="Create Block" (click)="blocknew(l.Id);pending=false" /></td>
-             <td><input type="button" class="btn btn-outline-primary" value="Add to Existing Block" (click)="blockexisting(l.Id);partial=true" /></td>
+             <td><input type="button" class="btn btn-outline-primary" value="Add to New Block" (click)="blocknew(l.Id);pending=false" /></td>
+             <td><input type="button" class="btn btn-outline-primary" value="Add to Existing Block" (click)="blockexisting(l.Id);partial=false" /></td>
           </tr>
         </tbody>
       </table>
