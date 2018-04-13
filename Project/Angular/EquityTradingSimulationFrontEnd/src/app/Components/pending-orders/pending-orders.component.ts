@@ -10,38 +10,37 @@ import {PendingListService} from '../../Services/Pending/pending-list.service';
 export class PendingOrdersComponent implements OnInit 
 {
   ListStocks:any[];
+  pending:any[]=[];
   divhide:boolean;
   
 
-  constructor(private PS:PendingListService) {
+  constructor(private PS:PendingListService) { 
     this.getOrders();
-   }
+  }
 
+  getOrders()
+{
+this.PS.getPendingOrders().subscribe
+(response => {this.ListStocks = response;
+this.ListStocks.forEach(element => {
+this.fetchNameChanges(element);
+});
+},
+error => console.error(error),
+() => { console.info(this.ListStocks) }
+);
+
+}
+fetchNameChanges(element)
+{
+if(element.OrderType==0)
+element.OrderType = "";
+} 
   ngOnInit()
   {
-    
     this.divhide=this.PS.divhide;
   }
-  getOrders()
-  {
-      this.PS.getPendingOrders().subscribe
-          (response => {this.ListStocks = response;
-            this.ListStocks.forEach(element => {
-              this.fetchNameChanges(element);
-            });
-          },
-          error => console.error(error),
-          () => { console.info(this.ListStocks) }
-      );
-
-      
-      
-  }
-  fetchNameChanges(element)
-  {
-    if(element.OrderType==0)
-     element.OrderType = "";
-  }
+ 
   /*postdata()
   {
       let p: any = {  };
