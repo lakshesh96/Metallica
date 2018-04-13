@@ -3,22 +3,27 @@ import {Http,Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map'; //
 import 'rxjs/add/operator/catch';
+import {GlobalService} from '../../Services/global.service';
 
 @Injectable()
 export class PendingListService 
 {
-  private _baseUrl: string = "";
+  private _baseUrl: string = "http://localhost:52705/api/Trader/PendingOrders";
   index :number;
   divhide:boolean=true;
 
-  constructor(private _http: Http)
+  constructor(private globalService:GlobalService)
   {
-
+    this.getPendingOrders();
   }
-  getProducts(): Observable<any[]>
-  {
-    return this._http.get(this._baseUrl).
-    map(this.extractData).catch(this.handleError);
+  // getProducts(): Observable<any[]>
+  // {
+  //   return this._http.get(this._baseUrl).
+  //   map(this.extractData).catch(this.handleError);
+  // }
+
+  getPendingOrders(){
+    return this.globalService.GetMethod(this._baseUrl);
   }
 
   extractData(res: Response)
@@ -51,7 +56,7 @@ export class PendingListService
       this.index=id;
       
   }
-  Put(list:number):Observable<number>
+  /*Put(list:number):Observable<number>
   {
       alert("service");
       return this._http.put(this._baseUrl +"/"+this.index,list).map(this.extractData);
@@ -61,7 +66,7 @@ export class PendingListService
     return this._http.post(this._baseUrl, Stocklist).
     map(this.extractData).catch(this.handleError);
     
-  }
+  }*/
   
   
 }

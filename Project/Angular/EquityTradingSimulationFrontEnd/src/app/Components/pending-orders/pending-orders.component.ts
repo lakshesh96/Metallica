@@ -22,13 +22,13 @@ export class PendingOrdersComponent implements OnInit
   }
   getOrders()
   {
-      this.PS.getProducts().subscribe
+      this.PS.getPendingOrders().subscribe
           (response => this.ListStocks = response,
           error => console.error(error),
           () => { console.info(this.ListStocks) }
       ); 
   }
-  postdata()
+  /*postdata()
   {
       let p: any = {  };
       alert();
@@ -38,8 +38,8 @@ export class PendingOrdersComponent implements OnInit
           () => this.getOrders()
       );
   console.info(p);
-  }
-  Put(Id:number,Trader_Name:string,Name:string,Symbol:number,Quantity:number,Buying_Price:number,CurrentPrice:number,
+  }*/
+  /*Put(Id:number,Trader_Name:string,Name:string,Symbol:number,Quantity:number,Buying_Price:number,CurrentPrice:number,
     Total_Value:number,typeoforder:string,side:string, )
   {
       let pt:any={Id:Id,Trader_Name:Trader_Name,Name:Name,Symbol:Symbol, Quantity:Quantity,Buying_Price:Buying_Price,
@@ -51,7 +51,7 @@ export class PendingOrdersComponent implements OnInit
         error => console.error(error),
         () => this.getOrders()
     );
-  }
+  }*/
   sort_stock_Name_ascending()
   {
    this.ListStocks.sort((a, b) => a.Name.localeCompare(b.Name));
