@@ -12,9 +12,22 @@ using EquityTradingPlatformApi.Models;
 
 namespace EquityTradingPlatformApi.Controllers
 {
+    class CustomCurrentPos
+    {
+        public string Trader_Name { get; set; }
+        public string Stock_Name { get; set; }
+        public string Symbol { get; set; }
+        public double Quantity { get; set; }
+        public double Buying_Price { get; set; }
+        public double Current_Price { get; set; }
+        public double Total_Value { get; set; }
+    }
+
+
     public class CurrentPositionsController : ApiController
     {
         private ProjectContext db = new ProjectContext();
+
 
 
         // GET CURRENT POSITION FOR USER
@@ -24,22 +37,40 @@ namespace EquityTradingPlatformApi.Controllers
         {
             var getUserOrders = from order in db.Orders
                                 where (order.UserId == userId && (order.OrderStatus == OrderStatus.Executed || order.OrderStatus == OrderStatus.Partial))
-                                select order.Id;
+                                select order;
 
             if (getUserOrders == null)
                 return Ok(false);
             else
             { 
-                List<int> currentUserOrderIds = getUserOrders.ToList();
+                List<Order> currentUserOrderIds = getUserOrders.ToList();
 
-                List<CurrentPosition> returnPositions = new List<CurrentPosition>();
+                List<CustomCurrentPos> returnPositions = new List<CustomCurrentPos>();
+                
+                //foreach (CurrentPosition currentPos in db.CurrentPositions)
+                foreach (Order o in currentUserOrderIds)
+                {
+                    foreach(CurrentPosition cp in db.CurrentPositions)
+                    {
+                        if (o.Id == cp.OrderId)
+                        {
+                            CustomCurrentPos currentPos = new CustomCurrentPos
+                            {
+                                Trader_Name = o.User.Name,
+                                Stock_Name = o.Stocks.Name,
+                                Symbol = o.Stocks.Symbol,
+                                Quantity = o.Quantity,
+                                Buying_Price = cp.PriceExecuted,
+                                Current_Price = o.Stocks.CurrentPrice,
+                            };
+                            currentPos.Total_Value = currentPos.Quantity * currentPos.Current_Price;
+                            return Ok(currentPos);
+                        }
+                    }
+                }
+                        
 
-                foreach (CurrentPosition currentPos in db.CurrentPositions)
-                    foreach (int id in currentUserOrderIds)
-                        if (currentPos.OrderId == id)
-                            returnPositions.Add(currentPos);
-
-                return Ok(returnPositions);
+                return Ok(false);
             }
 
 
