@@ -61,7 +61,7 @@ const AppRoutes:Routes = [
             ]
     },
    
-    {path:"",component:RegisterComponent},
+    {path:"",component:LoginComponent},
     {path:"**",component:LoginComponent}
    
 ]
