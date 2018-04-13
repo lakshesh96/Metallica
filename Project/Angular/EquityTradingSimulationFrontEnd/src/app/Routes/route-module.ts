@@ -13,6 +13,7 @@ import { CurrentPositionComponent } from '../Components/current-position/current
 import { PendingOrdersComponent } from '../Components/pending-orders/pending-orders.component';
 import { Login } from '../Models/login';
 import { AuthGuardService } from '../Services/Auth-Guard/auth-guard.service';
+import {AdminAuthGuardService} from '../Services/Admin-Auth-Guard/admin-auth-guard.service';
 import { SellRequestComponent } from '../Components/sell-request/sell-request.component';
 import { AdminComponent } from '../Components/admin/admin.component';
 import { TraderComponent } from '../Components/trader/trader.component';
@@ -50,10 +51,10 @@ const AppRoutes:Routes = [
      },
     {path:"Admin",component:AdminComponent,
         children:[
-            {path:"Stocks",component:AdminStockManageComponent},
+            {path:"Stocks",component:AdminStockManageComponent, canActivate: [AdminAuthGuardService]},
             {path:"AdminLogin",component:AdminloginComponent},
-            {path:"PortfolioManager",component:AdminPortfoliomanagerAddComponent},
-            {path:"Trader",component:AdminTraderAddComponent},
+            {path:"PortfolioManager",component:AdminPortfoliomanagerAddComponent, canActivate: [AdminAuthGuardService]},
+            {path:"Trader",component:AdminTraderAddComponent, canActivate: [AdminAuthGuardService]},
             {path:"",component:AdminloginComponent},
             {path:"**",component:AdminloginComponent}
             ]
