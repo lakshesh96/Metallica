@@ -34,13 +34,19 @@ export class LoginComponent implements OnInit {
     response => {this.id=response.id;
       console.log(response);
       sessionStorage.setItem("UserId",this.id.toString());
-      console.log("hello"+this.id);
+      sessionStorage.setItem("Type",value.Type);
       console.log(sessionStorage.getItem("UserId"));
     },
     error => {console.error(error);
       this.loading = false;
               },
-    ()=> this.router.navigateByUrl(this.returnUrl)
+    ()=> {
+      console.log(value.Type);
+      if(value.Type == "Trader")
+        this.router.navigateByUrl('Trader');
+      else if(value.Type == 'PortfolioManager')
+        this.router.navigateByUrl('Portfoliomanager');
+    }
   ); 
 
                     
