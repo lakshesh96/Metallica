@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary navbar-responsive">
     <a class="navbar-brand" href="#">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -14,6 +14,12 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/Search">Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/CurrentPosition">Current Position</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/PendingOrders">Pending Orders</a>
         </li>
 
       </ul>
@@ -33,17 +39,6 @@
     <router-outlet></router-outlet>
   </div>   
 
-<app-register></app-register>
-<app-adminlogin></app-adminlogin>
-<app-login></app-login>
-<app-admin-stock-manage></app-admin-stock-manage>
-<app-block-creation></app-block-creation>
-<app-search></app-search>
-<app-buyrequest></app-buyrequest>
-<app-admin-trader-add></app-admin-trader-add>
-<app-admin-portfoliomanager-add></app-admin-portfoliomanager-add>
-<app-pending-orders></app-pending-orders>
-<app-current-position></app-current-position>
-
+<app-addstocks></app-addstocks>
  
 

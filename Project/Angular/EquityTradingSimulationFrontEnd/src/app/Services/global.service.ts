@@ -25,7 +25,7 @@ export class GlobalService {
 
   PostMethod(credentials,url):Observable<any>{
     //console.log(credentials);
-    console.log(url);
+    //console.log(url);
     this._baseUrl = url;
     console.log("At Post Service ->");
     console.log(credentials);

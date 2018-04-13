@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Stocks} from '../../Models/stocks';
 import{StocksService} from '../../Services/StocksList/stocks.service';
+import { BuySellService } from "../../Services/buy-sell/buy-sell.service";
 
 @Component({
   selector: 'app-search',
@@ -11,13 +12,33 @@ export class SearchComponent implements OnInit
 {
   StockShow:Stocks[]
 
-  constructor(private SS:StocksService) { 
+  constructor(private SS:StocksService,private buysellservice:BuySellService) { 
     // this.StockShow=this.SS.StocksList;
     // console.log(this.StockShow);
+    this.DemoRefresh();
   }
+
+  DemoRefresh(){
+    this.SS.GetStocks().subscribe(
+      response => this.StockShow = response,
+      error => console.error(error),
+      () => console.log()
+    );
+  }
+
   getStocks(){
-    this.StockShow=this.SS.StocksList;
+    this.SS.GetStocks().subscribe(
+      response => this.StockShow = response,
+      error => console.error(error),
+      () => this.DemoRefresh()
+    );
+
+   // this.StockShow=this.SS.StocksList;
     console.log(this.StockShow);
+  }
+
+  Buy(s){
+    this.buysellservice.GetBuyOrder(s);
   }
 
   ngOnInit() 

@@ -5,8 +5,8 @@
     <div class="form-group" >
      
           <span  class="col-sm-2 col-form-label"><strong>Type Of User :</strong></span>
-          <input type="radio" formControlName="Type"  value="Trader" id="_portfolioManager"> Portfolio Manager
-          <input type="radio" formControlName="Type"  value="PortfolioManager" id="_trader" >Trader
+          <input type="radio" formControlName="Type"  value="PortfolioManager" id="_portfolioManager"> Portfolio Manager
+          <input type="radio" formControlName="Type"  value="Trader" id="_trader" >Trader
           <!-- <input type="radio" formControlName="Type"  value="r3" id="_pmt">Portfolio Manager & Trader -->
        
         <div class="error" *ngIf="login.get('Type').hasError(('required')) && login.get('Type').touched"></div>
@@ -14,9 +14,9 @@
       <div class="form-group">
       
       <span class="col-sm-2 col-form-label" ><strong>Username :</strong></span>
-      <input type="text" placeholder="Enter Username" id="username" formControlName="Username" >
+      <input type="text" placeholder="Enter Username" id="username" formControlName="UserName" >
     
-    <div class="error text-danger" *ngIf="login.get('Username').hasError(('required')) && login.get('Username').touched">Username is required</div>
+    <div class="error text-danger" *ngIf="login.get('UserName').hasError(('required')) && login.get('UserName').touched">Username is required</div>
       </div>
   <div class="form-group">  
     
