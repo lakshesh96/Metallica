@@ -33,8 +33,8 @@ export class CurrentPositionService {
       error => console.error(error),
       () => console.log(this.CurrentS)
     );
-  }
 
+  }
   GetStockDetails(id: number) {
     this.globalService.GetWithId(this.urlStocks, id).subscribe(
       response => {return response;},

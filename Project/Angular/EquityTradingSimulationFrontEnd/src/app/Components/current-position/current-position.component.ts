@@ -16,11 +16,13 @@ export class CurrentPositionComponent implements OnInit {
    }
 
   DemoRefresh(){
+    
     this.DS.GetPosition().subscribe(
       response => this.list = response,
       error => console.error(error),
-      () => console.log(this.list)
+      () => console.log(this.list +"Hello")
     );
+   
   }
 
   getPosition(){
