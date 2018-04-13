@@ -23,7 +23,7 @@ namespace EquityTradingPlatformApi.Controllers
         }
 
 
-        // GET
+        // GET 
         [Route("api/Trader/ExecuteBlock")]
         public IHttpActionResult GetBlockExecution(int blockId)
         {
@@ -34,6 +34,21 @@ namespace EquityTradingPlatformApi.Controllers
 
             return Ok(result);
         }
+
+
+
+
+        // TYPE OF BLOCKS FOR UserId and BlockStatus
+        [Route("api/Trader/Block")]
+        public IHttpActionResult GetTraderPendingBlocks(int userId, string blockStatus)
+        {
+            var blocks = from n in db.Blocks
+                         where n.BlockStatus.ToString() == blockStatus
+                         select n;
+
+            return Ok(blocks.ToList());
+        }
+
 
 
 
@@ -49,6 +64,8 @@ namespace EquityTradingPlatformApi.Controllers
 
             return Ok(block);
         }
+
+
 
         // PUT: api/Blocks/5
         [ResponseType(typeof(void))]
