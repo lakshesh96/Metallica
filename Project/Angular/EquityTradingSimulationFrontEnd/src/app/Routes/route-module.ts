@@ -40,7 +40,7 @@ const AppRoutes:Routes = [
     children:[
         {path:"Register",component:RegisterComponent},
         {path:"Login",component:LoginComponent},
-        {path:"Blocks",component:BlockCreationComponent,canActivate: [AuthGuardPortfolioService]},
+       // {path:"Blocks",component:BlockCreationComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"Buy",component:BuyrequestComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"CurrentPosition",component:CurrentPositionComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardPortfolioService]},
