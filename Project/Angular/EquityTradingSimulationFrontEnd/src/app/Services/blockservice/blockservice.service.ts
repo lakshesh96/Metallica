@@ -30,18 +30,21 @@ export class BlockserviceService {
 
 
   get_partialblock(){
-    this.gs.GetMethod(this.url+this.id+"&blockStatus=Partial").subscribe(
+    return this.gs.GetMethod(this.url+this.id+"&blockStatus=Partial");
+    
+    /*this.gs.GetMethod(this.url+this.id+"&blockStatus=Partial").subscribe(
       response => this.partialblock = response,
       error => console.error(error),
       () => console.log()
-    );
+    );*/
   }
   get_pendingblock(){
-    this.gs.GetMethod(this.url+this.id+"&blockStatus=Pending").subscribe(
+    return this.gs.GetMethod(this.url+this.id+"&blockStatus=Pending");
+    /*this.gs.GetMethod(this.url+this.id+"&blockStatus=Pending").subscribe(
       response => this.pendingblock = response,
       error => console.error(error),
       () => console.log()
-    );
+    );*/
   }
 
 
