@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PendingStocks} from '../../Models/pending-stocks';
 import {PendingListService} from '../../Services/Pending/pending-list.service';
+import { BlockserviceService } from '../../Services/blockservice/blockservice.service';
 
 @Component({
   selector: 'app-pending-orders',
@@ -11,11 +12,20 @@ export class PendingOrdersComponent implements OnInit
 {
   ListStocks:any[];
   divhide:boolean;
-  
+  pendingblock:any[]=[];
+  partialblock:any[]=[];
+  pending:boolean;
+  partial:boolean;
 
-  constructor(private PS:PendingListService) {
+  constructor(
+    private PS:PendingListService,
+  private bs:BlockserviceService
+) {
     this.getOrders();
+    this.pending=true;
+    this.partial=true;
    }
+
 
   ngOnInit()
   {
@@ -52,6 +62,28 @@ export class PendingOrdersComponent implements OnInit
     if(element.OrderStatus==3)
       element.OrderStatus="Pending";
 
+  }
+  blocknew(orderid)
+  {
+    sessionStorage.setItem("OrderId",orderid);
+    this.bs.createnewblock(orderid);
+    this.pendingblock=this.bs.pendingblock;
+
+  }
+  blockexisting(orderid)
+  {
+    sessionStorage.setItem("OrderId",orderid);
+    this.partialblock=this.bs.partialblock;
+
+  }
+
+  executepartial(partialid)
+  {
+  this.bs.executeblock(partialid);
+  }
+  executepending(pendingid)
+  {
+    this.bs.executeblock(pendingid);
   }
   /*postdata()
   {
