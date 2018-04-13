@@ -54,9 +54,8 @@ namespace EquityTradingPlatformApi.Controllers
         [Route("api/Trader/NewBlock")]
         public IHttpActionResult PostNewBlock(int orderId)
         {
-            
-            foreach (Order o in db.Orders)
-            {                
+            foreach(Order o in db.Orders)
+            {
                 if (o.Id == orderId)
                 {
                     Block block = new Block
@@ -67,20 +66,20 @@ namespace EquityTradingPlatformApi.Controllers
                         StocksId = o.StocksId
                     };
                     db.Blocks.Add(block);
-                    break;                  
+                    o.BlockId = block.Id;
+                    try
+                    {
+                        db.SaveChanges();
+                        return Ok(true);
+                    }
+                    catch(DbUpdateException e)
+                    {
+                        return Ok(false);
+                    }
+                    
                 }
             }
-            
-            try
-            {
-                db.SaveChanges();
-                return Ok(true);
-            }
-            catch (DbUpdateException e)
-            {
-                return Ok(false);
-            }
-            //return Ok(false);
+            return Ok(false);
         }
 
 
