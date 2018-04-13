@@ -27,10 +27,12 @@ namespace EquityTradingPlatformApi.Controllers
         [Route("api/Trader/ExecuteBlock")]
         public IHttpActionResult GetBlockExecution(int blockId)
         {
-            Exchange.Exchange exchange = new Exchange.Exchange(blockId);
-            exchange.FillBlock();
+            bool result = false;
 
-            return Ok("false");
+            Exchange.Exchange exchange = new Exchange.Exchange(blockId);
+            result = exchange.FillBlock();
+
+            return Ok(result);
         }
 
 
