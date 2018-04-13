@@ -8,9 +8,10 @@ import {GlobalService} from '../../Services/global.service';
 @Injectable()
 export class PendingListService 
 {
-  private _baseUrl: string = "http://localhost:52705/api/Trader/PendingOrders";
+  private _baseUrl: string = "http://localhost:52705/api/Trader/PendingOrders?userId=";
   index :number;
   divhide:boolean=true;
+  id = sessionStorage.getItem("UserId");
 
   constructor(private globalService:GlobalService)
   {
@@ -23,7 +24,7 @@ export class PendingListService
   // }
 
   getPendingOrders(){
-    return this.globalService.GetMethod(this._baseUrl);
+    return this.globalService.GetMethod(this._baseUrl+this.id);
   }
 
   extractData(res: Response)

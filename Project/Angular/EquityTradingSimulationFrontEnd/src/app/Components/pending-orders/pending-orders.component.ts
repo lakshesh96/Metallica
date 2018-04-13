@@ -13,20 +13,34 @@ export class PendingOrdersComponent implements OnInit
   divhide:boolean;
   
 
-  constructor(private PS:PendingListService) { }
+  constructor(private PS:PendingListService) {
+    this.getOrders();
+   }
 
   ngOnInit()
   {
-    this.getOrders();
+    
     this.divhide=this.PS.divhide;
   }
   getOrders()
   {
       this.PS.getPendingOrders().subscribe
-          (response => this.ListStocks = response,
+          (response => {this.ListStocks = response;
+            this.ListStocks.forEach(element => {
+              this.fetchNameChanges(element);
+            });
+          },
           error => console.error(error),
           () => { console.info(this.ListStocks) }
-      ); 
+      );
+
+      
+      
+  }
+  fetchNameChanges(element)
+  {
+    if(element.OrderType==0)
+     element.OrderType = "Market";
   }
   /*postdata()
   {
