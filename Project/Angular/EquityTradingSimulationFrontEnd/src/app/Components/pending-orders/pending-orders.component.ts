@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PendingStocks} from '../../Models/pending-stocks';
 import {PendingListService} from '../../Services/Pending/pending-list.service';
+import { BlockserviceService } from '../../Services/blockservice/blockservice.service';
 
 @Component({
   selector: 'app-pending-orders',
@@ -9,6 +10,10 @@ import {PendingListService} from '../../Services/Pending/pending-list.service';
 })
 export class PendingOrdersComponent implements OnInit 
 {
+  pendingblock:any[]=[];
+  partialblock:any[]=[];
+  pending:boolean;
+  partial:boolean;
   ListStocks:any[];
   divhide:boolean=true;
   hidelimit:boolean=true;
@@ -16,7 +21,8 @@ export class PendingOrdersComponent implements OnInit
   a:string="Market";
   usertype:boolean=true;
 
-  constructor(private PS:PendingListService) {
+  constructor(private PS:PendingListService,
+    private bs:BlockserviceService) {
     this.getOrders();
     if(sessionStorage.getItem('Type')=="Trader"){
       this.usertype=false;
@@ -24,6 +30,29 @@ export class PendingOrdersComponent implements OnInit
       this.usertype=false;
     }
    }
+
+   blocknew(orderid)
+  {
+    sessionStorage.setItem("OrderId",orderid);
+    this.bs.createnewblock(orderid);
+    this.pendingblock=this.bs.pendingblock;
+
+  }
+  blockexisting(orderid)
+  {
+    sessionStorage.setItem("OrderId",orderid);
+    this.partialblock=this.bs.partialblock;
+
+  }
+
+  executepartial(partialid)
+  {
+  this.bs.executeblock(partialid);
+  }
+  executepending(pendingid)
+  {
+    this.bs.executeblock(pendingid);
+  }
 
   ngOnInit()
   {
