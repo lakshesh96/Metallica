@@ -12,6 +12,7 @@ export class ListService {
   reg:Regmodel;
   url = "http://localhost:52705/api/Users/PutList";
   url1:string="http://localhost:52705/api/Users";
+  
   users:any[];
   status:string;
 

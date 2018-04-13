@@ -1,17 +1,26 @@
+export enum OrderType {
+	Market,
+	Limit,
+	Stop,
+	StopLimit
+}
+
+export enum OrderSide {
+	Buy,
+	Sell
+}
 export class Buy {
     constructor(
-        public Id:number,
-        public OrderType:string,
-        public OrderSide:string,
-        public Quantity:number,
-        public StockID:number,
-        public UserID:number,
-        public OrderStatus:string,
-        public LimitPrice:number,
-        public CurrentPrice:number,
-        public StopPrice:number,
-        public BlockID:number,
-        public PMId:number
+       public OrderType: OrderType,
+       public OrderSide: OrderSide,
+       public StocksId: number,
+       public Quantity: number,
+       public UserId: number,
+       public LimitPrice: number,
+       public StopPrice: number,
+       public BlockId: number,
+       public PMId: number,
+    
     ){}
 }
 
