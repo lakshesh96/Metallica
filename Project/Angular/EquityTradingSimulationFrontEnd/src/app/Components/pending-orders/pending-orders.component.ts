@@ -76,6 +76,15 @@ export class PendingOrdersComponent implements OnInit
     this.partialblock=this.bs.partialblock;
 
   }
+
+  executepartial(partialid)
+  {
+  this.bs.executeblock(partialid);
+  }
+  executepending(pendingid)
+  {
+    this.bs.executeblock(pendingid);
+  }
   /*postdata()
   {
       let p: any = {  };
