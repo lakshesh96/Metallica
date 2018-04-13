@@ -14,11 +14,12 @@ trader:any[]=[];
     
   ) { }
 
-showtraders(){
+showtraders()
+{
 this.users=this.listservice.users;
+this.trader=[];
 console.log(this.users);
-
-for (let i = 0; i < this.users.length; i++) {
+  for (let i = 0; i < this.users.length; i++) {
   
   const element = this.users[i];
   
@@ -30,6 +31,12 @@ for (let i = 0; i < this.users.length; i++) {
     
   }
 }
+}
+
+send(id:number)
+{
+sessionStorage.setItem("traderId", id.toString());
+
 }
 
   ngOnInit() {
