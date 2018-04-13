@@ -38,15 +38,17 @@ import { OrderService } from './Services/Order/order.service';
 import {SellService} from './Services/sell-service/sell.service';
 import {BuyService} from './Services/buy-service/buy.service';
 import{BuySellService} from './Services/buy-sell/buy-sell.service';
-
+import { AuthGuardService } from './Services/Auth-Guard/auth-guard.service';
+import {AdminAuthGuardService} from './Services/Admin-Auth-Guard/admin-auth-guard.service';
 
 
 import {LoginService} from './Services/login/login.service';
 
 
-import { AuthGuardService } from './Services/Auth-Guard/auth-guard.service';
 import { AdminComponent } from './Components/admin/admin.component';
 import { AddstocksComponent } from './Components/addstocks/addstocks.component';
+import { TraderComponent } from './Components/trader/trader.component';
+import { PortfoliomanagerComponent } from './Components/portfoliomanager/portfoliomanager.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { AddstocksComponent } from './Components/addstocks/addstocks.component';
     CurrentPositionComponent,
     SellRequestComponent,
     AdminComponent,
-    AddstocksComponent
+    AddstocksComponent,
+    TraderComponent,
+    PortfoliomanagerComponent
     
   ],
   imports: [
@@ -92,7 +96,8 @@ import { AddstocksComponent } from './Components/addstocks/addstocks.component';
 	AuthGuardService,
 	BuySellService,
 	BuyService,
-	SellService
+  SellService,
+  AdminAuthGuardService
   ],
   bootstrap: [AppComponent]
 })

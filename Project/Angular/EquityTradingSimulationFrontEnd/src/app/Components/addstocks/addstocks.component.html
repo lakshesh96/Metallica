@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container a">
     <h3>Add Stocks By Trader</h3>
     <div style="margin-bottom: 30px;margin-top: 30px;">
       <input type="button" class="btn btn-outline-primary" value="Show Traders" (click)=showtraders() />
@@ -15,7 +15,10 @@
         <tbody> 
           <tr *ngFor="let t of trader">
             <td>{{t.Name}}</td>
-            <td><input type="button" class="btn btn-outline-primary" value="Add Stocks" (click)=send(t.Id) /></td>
+            <td><a class="nav-link" routerLink="/Search">
+              <input type="button" class="btn btn-outline-primary" value="Add Stocks" (click)=send(t.Id) />
+            </a></td>
+            
           </tr>
         </tbody>
       </table>

@@ -13,20 +13,45 @@ export class PendingOrdersComponent implements OnInit
   divhide:boolean;
   
 
-  constructor(private PS:PendingListService) { }
+  constructor(private PS:PendingListService) {
+    this.getOrders();
+   }
 
   ngOnInit()
   {
-    this.getOrders();
+    
     this.divhide=this.PS.divhide;
   }
   getOrders()
   {
       this.PS.getPendingOrders().subscribe
-          (response => this.ListStocks = response,
+          (response => {this.ListStocks = response;
+            this.ListStocks.forEach(element => {
+              this.fetchNameChanges(element);
+            });
+          },
           error => console.error(error),
           () => { console.info(this.ListStocks) }
-      ); 
+      );
+
+      
+      
+  }
+  fetchNameChanges(element)
+  {
+    if(element.OrderType==0)
+     element.OrderType = "Market";
+    if(element.OrderType==1)
+      element.OrderType="Limit";
+    if(element.OrderType==2)
+      element.OrderType="Stop";
+    if(element.OrderSide==0)
+      element.OrderType="Buy";
+    if(element.OrderSide==1)
+      element.OrderSide="Sell";
+    if(element.OrderStatus==3)
+      element.OrderStatus="Pending";
+
   }
   /*postdata()
   {
@@ -39,11 +64,11 @@ export class PendingOrdersComponent implements OnInit
       );
   console.info(p);
   }*/
-  /*Put(Id:number,Trader_Name:string,Name:string,Symbol:number,Quantity:number,Buying_Price:number,CurrentPrice:number,
-    Total_Value:number,typeoforder:string,side:string, )
+  /*Put(Id:number,UserId:number,StocksId:number,OrderSide:number,OrderType:number,Quantity:number,LimitPrice:number,
+    StopPrice:number,DateAdded:string,OrderStatus:string, )
   {
-      let pt:any={Id:Id,Trader_Name:Trader_Name,Name:Name,Symbol:Symbol, Quantity:Quantity,Buying_Price:Buying_Price,
-        CurrentPrice:CurrentPrice,Total_Value:Total_Value,typeoforder:typeoforder,side:side};
+      let pt:any={Id:Id,UserId:UserId,StocksId:StocksId,OrderSide:OrderSide,OrderType:OrderType,Quantity:Quantity,LimitPrice:LimitPrice,
+        StopPrice:StopPrice,DateAdded:DateAdded,typeoforder:typeoforder,OrderStatus:OrderStatus};
          
       alert(typeoforder);
       this.PS.Put(pt).subscribe(
@@ -52,15 +77,6 @@ export class PendingOrdersComponent implements OnInit
         () => this.getOrders()
     );
   }*/
-  sort_stock_Name_ascending()
-  {
-   this.ListStocks.sort((a, b) => a.Name.localeCompare(b.Name));
-  }
-  sort_stock_Name_descending()
-  {
-    this.ListStocks.sort((a, b) => a.Name.localeCompare(b.Name));
-    this.ListStocks.reverse();
-  }
   Index(i)
   {
     this.PS.Index(i);
@@ -69,7 +85,7 @@ export class PendingOrdersComponent implements OnInit
   {
    this.ListStocks.sort(function(obj1, obj2)
    {
-     return obj1.CurrentPrice-obj2.CurrentPrice;
+     return obj1.Quantity-obj2.Quantity;
    })
   }
 
@@ -77,7 +93,7 @@ export class PendingOrdersComponent implements OnInit
   {
     this.ListStocks.sort(function(obj1, obj2)
     {
-      return obj2.CurrentPrice-obj1.CurrentPrice;
+      return obj2.Quantity-obj1.Quantity;
     })
   }
  
