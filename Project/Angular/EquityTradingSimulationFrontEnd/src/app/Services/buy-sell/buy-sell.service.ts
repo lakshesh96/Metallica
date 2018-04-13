@@ -7,6 +7,7 @@ import { GlobalService } from "../../Services/global.service";
 export class BuySellService {
 
   private _baseUrl: string = "http://localhost:52705/api/Trader/Orders";
+  private _baseUrl1: string = "http://localhost:52705/api/PM/Orders";
 
   constructor(private globalService:GlobalService) { }
 
@@ -35,5 +36,8 @@ export class BuySellService {
     return this.globalService.PostMethod(r,this._baseUrl);
   }
 
+  AddBuyPMOrder(r:any){
+    return this.globalService.PostMethod(r,this._baseUrl1);
+  }
 
 }

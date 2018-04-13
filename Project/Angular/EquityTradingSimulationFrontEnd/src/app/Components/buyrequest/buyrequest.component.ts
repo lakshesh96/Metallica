@@ -4,11 +4,6 @@ import { Stocks } from "../../Models/stocks";
 import { Sellmodel } from "../../Models/sell";
 import { Buy, OrderSide, OrderType } from '../../Models/buy';
 import { BuySellService } from "../../Services/buy-sell/buy-sell.service";
-<<<<<<< HEAD
-
-=======
-import{Sellmodel} from "../../Models/sell"
->>>>>>> 056cb8a482a21358dcc613e35638d889064f7c7d
 
 @Component({
   selector: 'app-reactive-form',
@@ -53,19 +48,34 @@ export class BuyrequestComponent implements OnInit {
 		value.BlockId = null;
 		value.PMId = null;
 		value.StocksId = this.order.Id;
-		value.UserId = +sessionStorage.getItem('UserId'); // pick from session variable
-		console.log(value, valid);
+		 // pick from session variable
+		
 
 		/* this.placedOrder = new Sellmodel(null,value.OrderType.toString(),value.OrderSide.toString(),value.Quantity,
 							this.order.Id,+sessionStorage.getItem('UserId'),null,value.LimitPrice,value.StopPrice,
 							null,null); */
 		console.log(value);
 
+		if(sessionStorage.getItem('traderId')!=null && (sessionStorage.getItem('Type') == "1" || sessionStorage.getItem('Type') == "2")) {
+			value.PMId = +sessionStorage.getItem('UserId');
+			value.UserId = +sessionStorage.getItem('traderId');
+			sessionStorage.removeItem('traderId');
+			console.log(value, valid);
+			this.BSservice.AddBuyPMOrder(value).subscribe(
+				response => response,
+				error => console.error(error),
+				() => alert("success")
+			);
+			
+		}else{
+			value.UserId = +sessionStorage.getItem('UserId');
+			console.log(value, valid);
 		this.BSservice.AddBuyOrder(value).subscribe(
 			response => response,
 			error => console.error(error),
 			() => alert("success")
 		);
+	}
 	}
 	LimitFlag:boolean =true;
 	StopFlag:boolean =true;

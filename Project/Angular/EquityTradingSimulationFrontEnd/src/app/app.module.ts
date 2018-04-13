@@ -92,19 +92,11 @@ import { PortfoliomanagerComponent } from './Components/portfoliomanager/portfol
     BlockserviceService,
     CurrentPositionService,
     OrderService,
-<<<<<<< HEAD
-	  LoginService,
-    AuthGuardService,
-    BuySellService,
-    SellService,
-    BuyService
-=======
 	LoginService,
 	AuthGuardService,
 	BuySellService,
 	BuyService,
 	SellService
->>>>>>> 056cb8a482a21358dcc613e35638d889064f7c7d
   ],
   bootstrap: [AppComponent]
 })

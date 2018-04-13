@@ -1,60 +1,67 @@
 <div class="container">
-<div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="border border-dark" style="padding: 20px;">
-       <form novalidate (ngSubmit)="onSubmit(sell)" [formGroup]="sell">
-          <div align="center"><legend><strong>Sell</strong></legend>
-          </div> 
-          <div>
-          <label><strong>Quantity :</strong></label>
-          <input type="number" class="form-control"  min="1" formControlName="Quantity" >
-          <!--<div class="error text-danger" *ngIf="sell.get('Quantity').hasError(('required')) && sell.get('Quantity').touched">Quantity is required</div>-->
-          </div>
-            <br>
+  
+    <div class="row"><h1>Sell Order</h1></div>
+      <div class="form-group">
+          <strong>Stock Name : </strong><label id="n" name="n">{{order.Name}}</label><br>
+          <strong>Quantity Held : </strong><label id="q" name="qty">{{order.VolumeAvailable}}</label><br><br><br>
+      </div>
+       
+    <form novalidate [formGroup]="sell" class="form-horizontal" >
+        <input type="number" name="StocksId" formControlName="StocksId" hidden required />			
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="Quantity">Quantity:</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" name="Quantity" formControlName="Quantity" required />
+              <!--<div *ngIf="emp.get('id').hasError(('required')) && emp.get('id').touched">Id is required</div>-->
+            </div>
+        </div>
+  
+        <div class=" form-group">
+           <label class="control-label col-sm-2">Order Type:</label>
+            <div class="container row">
+              <div class="col-md-6">
+                  <select formControlName="OrderType" class="custom-select" #s1>
+                    <option value="Market">Market</option>
+                    <option value="Limit">Limit</option>
+                    <option value="Stop">Stop</option>
+                    <option value="StopLimit">StopLimit</option>
+                  </select>
+              </div>
             <div>
-                <label><strong>Market Price: </strong></label>
-                <input type="text" class="form-control"  min="1" formControlName="MPrice" >
-            </div>
-            <br>
-          <div  class="container row" >
-            <div>
-              <select class="custom-select" style="width: 300px"  #Order >
-                  <option selected="">Select Order type</option>
-                  <option value ="Market">Market Price</option>
-                  <option value="Limit">Limit Price</option>
-                  <option value="Stop">Stop Price</option>
-                  <option value="StopLimit">Stop-Limit </option>
-                </select>
-                <br>
-            </div><div style="margin-left: 50px">
-                <button class="btn btn-outline-warning" (click)="Toggle(Order.value)">Set</button>
+              <input type="button" (click)="Toggle(s1.value); StopPrice.value=0; LimitPrice.value=0 " value="Set" class="btn btn-info"/>
             </div>
           </div>
-          <div>
-            <label [hidden]="Limit"> Enter Limit Price</label>
-            <br>
-            <input type="text" [hidden]="Limit" class="form-control">
-          </div>
-          <div>
-              <label [hidden]="Stop"> Enter Stop Price</label>
-              <br>
-              <input type="text" [hidden]="Stop" class="form-control">
-            </div>
+        </div>
           
-          <br>
-          <br>
-          <button type="submit" class="btn btn-outline-info"  (click)="Add(sell)">Create Order</button><br>
-          <div align="center"><legend><strong>Sell Order:</strong></legend>
-          <div class="form-group">
-            <label>
-            <strong>Stock Name : </strong><label id="n" name="n">{{model.Stock_Name}}</label><br>
-            <strong>Quantity Held : </strong><label id="q" name="qty">{{model.Quantity}}</label><br>
-            <strong>Average Price :</strong><label id="ap" name="avgprice">{{model.Price}}</label>' '<br>
-            <strong>Gain :</strong><label id="g" name="gain">''''</label>
-          </label>
-          </div></div>
-  </form>
-  </div>
-  </div> 
-</div>
+  
+        <div class="form-group" [hidden]="StopFlag">
+          <label class="control-label col-sm-2" for="StopPrice">Stop Price:</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" name="StopPrice" #StopPrice formControlName="StopPrice" required />
+               <!--<div *ngIf="emp.get('name').hasError('required') && emp.get('name').touched">
+                  Name is required.
+              </div>
+              <div *ngIf="emp.get('name').hasError('minlength') && emp.get('name').touched">
+              Minimum 4 characters needed for name.
+              </div>-->
+            </div>
+        </div>
+  
+        <div class="form-group" [hidden]="LimitFlag">
+          <label class="control-label col-sm-2" for="LimitPrice">Limit Price:</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" name="LimitPrice" #LimitPrice formControlName="LimitPrice" required />
+               <!--<div *ngIf="emp.get('email').hasError('required') && emp.get('email').touched">
+              Email is required.
+              </div>-->
+            </div>  
+        </div>
+  
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default"  (click)="onSubmit(sell)">Submit</button>
+            <button class="btn btn-default">Reset</button>
+          </div>
+        </div>
+     </form>
+   </div>
