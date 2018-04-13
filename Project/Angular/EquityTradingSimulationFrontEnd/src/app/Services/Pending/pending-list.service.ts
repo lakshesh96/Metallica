@@ -9,6 +9,7 @@ import {GlobalService} from '../../Services/global.service';
 export class PendingListService 
 {
   private _baseUrl: string = "http://localhost:52705/api/Trader/PendingOrders?userId=";
+  private _baseUrl1: string = "http://localhost:52705/api/Orders";
   index :number;
   divhide:boolean=true;
   id:string;
@@ -57,12 +58,14 @@ export class PendingListService
       this.index=id;
       
   }
-  /*Put(list:number):Observable<number>
+  PutOrder(order):Observable<number>
   {
-      alert("service");
-      return this._http.put(this._baseUrl +"/"+this.index,list).map(this.extractData);
+      console.log("in put pending service");
+      console.log(order);
+      return this.globalService.PutMethodWithUrl(order,this._baseUrl1+"/"+order.Id);
+      
   }
-  postdata(Stocklist: any): Observable<any>
+  /*postdata(Stocklist: any): Observable<any>
   {
     return this._http.post(this._baseUrl, Stocklist).
     map(this.extractData).catch(this.handleError);

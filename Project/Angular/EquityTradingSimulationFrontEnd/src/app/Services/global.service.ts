@@ -43,6 +43,12 @@ export class GlobalService {
     return this._http.put(this._baseUrl+"/"+data.id,data).map(this.extractData).catch(this.handleError);
   }
 
+  PutMethodWithUrl(data,url):Observable<any>{
+    
+    this._baseUrl = url;        
+    return this._http.put(this._baseUrl,data).map(this.extractData).catch(this.handleError);
+  }
+
   GetWithId(url,id):Observable<any[]>{
     this._baseUrl = url;
     return this._http.get(this._baseUrl+"/"+id).map(this.extractData).catch(this.handleError);
