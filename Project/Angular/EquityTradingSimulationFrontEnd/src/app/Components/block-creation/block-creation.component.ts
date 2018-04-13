@@ -11,7 +11,6 @@ import { StocksService } from '../../Services/StocksList/stocks.service';
 })
 export class BlockCreationComponent implements OnInit {
 
-  block:any[];
   order:any[];
   user:any[];
   stock:any[];
@@ -28,7 +27,6 @@ export class BlockCreationComponent implements OnInit {
   }
  getvalue()
  {
-     this.block=this.blockservice.block;
      this.order=this.orderservice.order;
      this.user=this.listservice.users;
      this.stock=this.stockservice.StocksList;
@@ -37,7 +35,6 @@ export class BlockCreationComponent implements OnInit {
   show()
   {
       console.log(this.user);
-      console.log(this.block);
       console.log(this.order);
       console.log(this.stock)
       

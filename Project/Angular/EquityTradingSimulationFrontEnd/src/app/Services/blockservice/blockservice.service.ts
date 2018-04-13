@@ -5,19 +5,30 @@ import { GlobalService } from '../global.service';
 
 @Injectable()
 export class BlockserviceService {
-  block:any[];
- private url:string="http://localhost:52705/api/blocks";
+  pendingblock:any[];
+  partialblock:any[];
+  id=sessionStorage.getItem("UserId");
+ private url:string="api/Trader/Block?userId=";
   constructor(private gs:GlobalService) { 
-    this.get_blockdata();
+    this.get_partialblock();
+    this.get_pendingblock();
   }
 
-  get_blockdata(){
-    this.gs.GetMethod(this.url).subscribe(
-      response => this.block = response,
+  get_partialblock(){
+    this.gs.GetMethod(this.url+this.id+"&blockStatus=Partial").subscribe(
+      response => this.partialblock = response,
       error => console.error(error),
       () => console.log()
     );
   }
+  get_pendingblock(){
+    this.gs.GetMethod(this.url+this.id+"&blockStatus=Pending").subscribe(
+      response => this.pendingblock = response,
+      error => console.error(error),
+      () => console.log()
+    );
+  }
+
 
 
 
