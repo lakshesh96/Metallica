@@ -33,8 +33,8 @@ const AppRoutes:Routes = [
         {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardService]},
         {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardService]},
         {path:"Sell/:id",component:SellRequestComponent},
-        {path:"",component:CurrentPositionComponent},
-        {path:"**",component:CurrentPositionComponent},
+        {path:"",component:LoginComponent},
+        {path:"**",component:RegisterComponent},
         ]
      },
      { path:"Portfoliomanager", component:PortfoliomanagerComponent,
@@ -49,8 +49,8 @@ const AppRoutes:Routes = [
         {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"Sell/:id",component:SellRequestComponent,canActivate: [AuthGuardPortfolioService]},
-        {path:"",component:CurrentPositionComponent},
-        {path:"**",component:CurrentPositionComponent}
+        {path:"",component:LoginComponent},
+        {path:"**",component:RegisterComponent}
         ]
      },
     {path:"Admin",component:AdminComponent,
@@ -64,7 +64,7 @@ const AppRoutes:Routes = [
             ]
     },
    
-    {path:"",component:LoginComponent},
+    {path:"",component:TraderComponent},
     {path:"**",component:LoginComponent}
    
 ]
