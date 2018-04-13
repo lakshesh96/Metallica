@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {PendingStocks} from '../../Models/pending-stocks';
 import {PendingListService} from '../../Services/Pending/pending-list.service';
 import { BlockserviceService } from '../../Services/blockservice/blockservice.service';
+import { GlobalService } from '../../Services/global.service';
+
 
 @Component({
   selector: 'app-pending-orders',
@@ -20,9 +22,9 @@ export class PendingOrdersComponent implements OnInit
   hidestop:boolean=true;
   a:string="Market";
   usertype:boolean=true;
-
+  stockname:string;
   constructor(private PS:PendingListService,
-    private bs:BlockserviceService) {
+    private bs:BlockserviceService,private gs:GlobalService) {
     this.getOrders();
     this.pending=true;
     this.partial=true;
@@ -31,7 +33,22 @@ export class PendingOrdersComponent implements OnInit
     }else{
       this.usertype=false;
     }
+
+    //this.getStockName();
    }
+
+  /* getStockName(){
+    
+            this.gs.GetWithId("http://localhost:52705/api/Stocks",this.pendingblock[0].StocksId).subscribe(
+              response => {this.stockname= response["Name"]; console.log(this.stockname); return this.stockname;},
+              error => console.error(error),
+              () => {return this.stockname;}
+            );
+
+
+            return this.stockname;
+           
+   }*/
 
    blocknew(orderid)
   {
