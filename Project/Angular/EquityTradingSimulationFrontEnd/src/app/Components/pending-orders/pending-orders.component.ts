@@ -40,7 +40,7 @@ export class PendingOrdersComponent implements OnInit
   fetchNameChanges(element)
   {
     if(element.OrderType==0)
-     element.OrderType = "Market";
+     element.OrderType = "";
   }
   /*postdata()
   {
