@@ -4,6 +4,7 @@ import {Stocks} from '../../Models/stocks';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { BuySellService } from "../../Services/buy-sell/buy-sell.service";
 import{Sellmodel} from "../../Models/sell"
+
 @Component({
   selector: 'app-buyrequest',
   templateUrl: './buyrequest.component.html',

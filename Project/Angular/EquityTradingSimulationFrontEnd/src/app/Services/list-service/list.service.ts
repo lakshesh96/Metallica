@@ -28,7 +28,7 @@ export class ListService {
   }
 
   GetUsers(){
-    this.globalService.GetMethod(this.url1).subscribe(
+    this.globalService.GetMethod(this.url).subscribe(
       response => this.users = response,
       error => console.error(error),
       () => console.log()
