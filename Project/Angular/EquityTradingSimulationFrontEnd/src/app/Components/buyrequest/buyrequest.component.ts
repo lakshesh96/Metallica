@@ -4,7 +4,11 @@ import { Stocks } from "../../Models/stocks";
 import { Sellmodel } from "../../Models/sell";
 import { Buy, OrderSide, OrderType } from '../../Models/buy';
 import { BuySellService } from "../../Services/buy-sell/buy-sell.service";
+<<<<<<< HEAD
 
+=======
+import{Sellmodel} from "../../Models/sell"
+>>>>>>> 056cb8a482a21358dcc613e35638d889064f7c7d
 
 @Component({
   selector: 'app-reactive-form',

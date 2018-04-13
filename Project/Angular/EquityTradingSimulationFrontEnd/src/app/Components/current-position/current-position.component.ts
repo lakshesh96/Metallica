@@ -36,6 +36,7 @@ export class CurrentPositionComponent implements OnInit {
 
   Sell(e){
     this.buysellservice.GetSellOrder(e);
+    
   }
 
 }

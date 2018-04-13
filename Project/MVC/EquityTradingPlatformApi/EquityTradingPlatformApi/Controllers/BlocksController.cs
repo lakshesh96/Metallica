@@ -22,6 +22,19 @@ namespace EquityTradingPlatformApi.Controllers
             return db.Blocks;
         }
 
+
+        // GET
+        [Route("api/Trader/ExecuteBlock")]
+        public IHttpActionResult GetBlockExecution(int blockId)
+        {
+            Exchange.Exchange exchange = new Exchange.Exchange(blockId);
+            exchange.FillBlock();
+
+            return Ok("false");
+        }
+
+
+
         // GET: api/Blocks/5
         [ResponseType(typeof(Block))]
         public IHttpActionResult GetBlock(int id)

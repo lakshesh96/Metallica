@@ -25,6 +25,25 @@ namespace EquityTradingPlatformApi.Controllers
         }
 
 
+
+        // GET PENDING ORDER FOR USERID
+        // GET: api/Trader/PendingOrders
+        [Route("api/Trader/PendingOrders")]
+        [ResponseType(typeof(IQueryable<Order>))]
+        public IHttpActionResult GetPendingOrders(int userId)
+        {
+            if (db.Users.Find(userId) == null)
+                return Ok("UserId not found");
+            else
+            {
+                var pendingOrders = from n in db.Orders
+                        where (n.UserId == userId && n.OrderStatus == OrderStatus.Pending && n.BlockId == null)
+                        select n;
+                return Ok(pendingOrders.ToList());
+            }
+
+            //return null;
+        }
         // GET: api/Orders/5
         [ResponseType(typeof(Order))]
         public IHttpActionResult GetOrder(int id)
@@ -37,6 +56,7 @@ namespace EquityTradingPlatformApi.Controllers
 
             return Ok(order);
         }
+
 
 
         // PUT: api/Orders/5
@@ -75,6 +95,7 @@ namespace EquityTradingPlatformApi.Controllers
         }
 
 
+        // ADD ORDER FOR TRADER
         // POST: api/Trader/Orders
         [Route("api/Trader/Orders")]
         [ResponseType(typeof(Order))]
@@ -100,6 +121,7 @@ namespace EquityTradingPlatformApi.Controllers
         }
 
 
+        // ADD ORDER FOR PM
         // POST: api/PM/Orders
         [Route("api/PM/Orders")]
         [ResponseType(typeof(Order))]

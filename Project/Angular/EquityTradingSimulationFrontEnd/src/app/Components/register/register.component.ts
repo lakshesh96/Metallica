@@ -27,7 +27,11 @@ export class RegisterComponent implements OnInit {
 */
 AddReg(item)
 {
+  console.log("Hi there");
+  console.log(item.value);
+  
   this.service.Add(item.value);
+  
 }
   ngOnInit() {
     this.register = new FormGroup({
@@ -44,6 +48,7 @@ AddReg(item)
     }
 
 onSubmit({ value, valid }: { value: Regmodel, valid: boolean }) {
+
 console.log(value, valid);
 }
 } 

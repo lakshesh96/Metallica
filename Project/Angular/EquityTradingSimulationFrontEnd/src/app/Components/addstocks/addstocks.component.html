@@ -1,0 +1,24 @@
+<div class="container a">
+    <h3>Add Stocks By Trader</h3>
+    <div style="margin-bottom: 30px;margin-top: 30px;">
+      <input type="button" class="btn btn-outline-primary" value="Show Traders" (click)=showtraders() />
+    </div>
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+              <th>Trader Name</th>
+              <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody> 
+          <tr *ngFor="let t of trader">
+            <td>{{t.Name}}</td>
+            <td><input type="button" class="btn btn-outline-primary" value="Add Stocks" (click)=send(t.Id) /></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

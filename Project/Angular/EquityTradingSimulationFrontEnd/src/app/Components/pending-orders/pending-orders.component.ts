@@ -13,22 +13,36 @@ export class PendingOrdersComponent implements OnInit
   divhide:boolean;
   
 
-  constructor(private PS:PendingListService) { }
+  constructor(private PS:PendingListService) {
+    this.getOrders();
+   }
 
   ngOnInit()
   {
-    this.getOrders();
+    
     this.divhide=this.PS.divhide;
   }
   getOrders()
   {
-      this.PS.getProducts().subscribe
-          (response => this.ListStocks = response,
+      this.PS.getPendingOrders().subscribe
+          (response => {this.ListStocks = response;
+            this.ListStocks.forEach(element => {
+              this.fetchNameChanges(element);
+            });
+          },
           error => console.error(error),
           () => { console.info(this.ListStocks) }
-      ); 
+      );
+
+      
+      
   }
-  postdata()
+  fetchNameChanges(element)
+  {
+    if(element.OrderType==0)
+     element.OrderType = "";
+  }
+  /*postdata()
   {
       let p: any = {  };
       alert();
@@ -38,8 +52,8 @@ export class PendingOrdersComponent implements OnInit
           () => this.getOrders()
       );
   console.info(p);
-  }
-  Put(Id:number,Trader_Name:string,Name:string,Symbol:number,Quantity:number,Buying_Price:number,CurrentPrice:number,
+  }*/
+  /*Put(Id:number,Trader_Name:string,Name:string,Symbol:number,Quantity:number,Buying_Price:number,CurrentPrice:number,
     Total_Value:number,typeoforder:string,side:string, )
   {
       let pt:any={Id:Id,Trader_Name:Trader_Name,Name:Name,Symbol:Symbol, Quantity:Quantity,Buying_Price:Buying_Price,
@@ -51,7 +65,7 @@ export class PendingOrdersComponent implements OnInit
         error => console.error(error),
         () => this.getOrders()
     );
-  }
+  }*/
   sort_stock_Name_ascending()
   {
    this.ListStocks.sort((a, b) => a.Name.localeCompare(b.Name));

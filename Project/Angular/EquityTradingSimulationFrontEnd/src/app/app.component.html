@@ -1,38 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/Blocks">Block-Creation</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/Buy">Buy</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/Search">Search</a>
-        </li>
 
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/Register"><i class="fa fa-user-circle"></i>Sign Up</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/Login"><i class="fa fa-sign-in" aria-hidden="true"></i>Log-In</a>
-        </li>
-      </ul>
-     
-    </div>
-
-  </nav>
   <div class="container body-content">
     <router-outlet></router-outlet>
   </div>   
 
-
+<app-addstocks></app-addstocks>
+<app-pending-orders></app-pending-orders>
  
 

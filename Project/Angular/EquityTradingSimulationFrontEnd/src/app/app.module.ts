@@ -45,6 +45,10 @@ import {LoginService} from './Services/login/login.service';
 
 
 import { AuthGuardService } from './Services/Auth-Guard/auth-guard.service';
+import { AdminComponent } from './Components/admin/admin.component';
+import { AddstocksComponent } from './Components/addstocks/addstocks.component';
+import { TraderComponent } from './Components/trader/trader.component';
+import { PortfoliomanagerComponent } from './Components/portfoliomanager/portfoliomanager.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,11 @@ import { AuthGuardService } from './Services/Auth-Guard/auth-guard.service';
     AdminPortfoliomanagerAddComponent,
     PendingOrdersComponent,
     CurrentPositionComponent,
-    SellRequestComponent
+    SellRequestComponent,
+    AdminComponent,
+    AddstocksComponent,
+    TraderComponent,
+    PortfoliomanagerComponent
     
   ],
   imports: [
@@ -84,11 +92,19 @@ import { AuthGuardService } from './Services/Auth-Guard/auth-guard.service';
     BlockserviceService,
     CurrentPositionService,
     OrderService,
+<<<<<<< HEAD
 	  LoginService,
     AuthGuardService,
     BuySellService,
     SellService,
     BuyService
+=======
+	LoginService,
+	AuthGuardService,
+	BuySellService,
+	BuyService,
+	SellService
+>>>>>>> 056cb8a482a21358dcc613e35638d889064f7c7d
   ],
   bootstrap: [AppComponent]
 })

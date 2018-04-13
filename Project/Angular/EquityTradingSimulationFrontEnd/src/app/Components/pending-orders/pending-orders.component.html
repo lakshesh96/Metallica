@@ -56,38 +56,44 @@
   </div>
   <br>
   <div class="form-group col-lg-12 col-md-12 col-sm-12">
+    <h3>Pending Orders</h3>
+    <div>
+      <input type="button" class="btn btn-outline-primary" value="Show pending Order" (click)="getOrders()" />
+    </div>
     <div class="table-responsive">
       <table class="table table-hover table-bordered">
         <thead>
           <tr class="table-primary">
             <th scope="col">Id</th>
-            <th scope="col">Trader_Name</th>
-            <th scope="col" ><i class="fa fa-arrow-up" (click)="sort_stock_Name_ascending()"></i>Stock Name<i class="fa fa-arrow-down" (click)="sort_stock_Name_descending()"></i></th>
-            <th scope="col">Symbol</th>
+            <th scope="col">Order Type</th>
+            <th scope="col" ><i class="fa fa-arrow-up" (click)="sort_stock_Name_ascending()"></i>Order Side<i class="fa fa-arrow-down" (click)="sort_stock_Name_descending()"></i></th>
+            <th scope="col">StocksId</th>
+            <th scope="col">OrderStatus</th>
             <th scope="col">Quantity</th>
-            <th scope="col">Buying Price</th>
-            <th scope="col"><i class="fa fa-arrow-up" (click)="sort_CurPrice_ascending()"></i>Current Price<i class="fa fa-arrow-down" (click)="sort_CurPrice_descending()"></i></th>
-            <th scope="col">Total Value</th>
-            <th scope="col">Type of Order</th>
-            <th scope="col">Side</th>
+            <th scope="col"><i class="fa fa-arrow-up" (click)="sort_CurPrice_ascending()"></i>UserId<i class="fa fa-arrow-down" (click)="sort_CurPrice_descending()"></i></th>
+            <th scope="col">LimitPrice</th>
+            <th scope="col">StopPrice</th>
+            <th scope="col">DateAdded</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let l of ListStocks;let i=index">
+          <tr *ngFor="let l of pending;let i=index">
             <td>{{l.Id}}</td>
-            <td>{{l.Trader_Name}}</td>
-            <td>{{l.Name}}</td>
-            <td>{{l.Symbol}}</td>
+            <td>{{l.OrderType}}</td>
+            <td>{{l.OrderSide}}</td>
+            <td>{{l.StocksId}}</td>
+            <td>{{l.OrderStatus}}</td>
             <td>{{l.Quantity}}</td>
-            <td>{{l.Buying_Price}}</td>
-            <td>{{l.CurrentPrice}}</td>
-            <td>{{l.Total_Value}}</td>
-            <td>{{l.typeoforder}}</td>
-            <td>{{l.side}}</td>
+            <td>{{l.UserId}}</td>
+            <td>{{l.LimitPrice}}</td>
+            <td>{{l.StopPrice}}</td>
+            <td>{{l.DateAdded}}</td>
             <td><input type="button" class="btn btn-warning" value="Modify" (click)="Index(l.Id);id.value=l.Id;name.value=l.Trader_Name;
              stock.value=l.Name;symbol.value=l.Symbol;quantity.value=l.Quantity;buy.value=l.Buying_Price;curr.value=l.CurrentPrice;total.value=l.Total_Value;
              type.value=l.typeoforder;side.value=l.side;"/></td>
+             <td><input type="button" class="btn btn-outline-primary" value="Create Block" (click)="blocknew()" /></td>
+             <td><input type="button" class="btn btn-outline-primary" value="Add to Existing Block" (click)="blockexisting()" /></td>
           </tr>
         </tbody>
       </table>
