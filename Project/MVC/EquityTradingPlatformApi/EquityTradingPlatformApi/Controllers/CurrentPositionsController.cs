@@ -14,6 +14,7 @@ namespace EquityTradingPlatformApi.Controllers
 {
     class CustomCurrentPos
     {
+        public int StockId { get; set; }
         public string Trader_Name { get; set; }
         public string Stock_Name { get; set; }
         public string Symbol { get; set; }
@@ -98,6 +99,7 @@ namespace EquityTradingPlatformApi.Controllers
                                 currentPos.Quantity = cp.VolumeExecuted;
                             }
 
+                            currentPos.StockId = s.Id;
                             currentPos.Current_Price = s.CurrentPrice;
                             
                             currentPos.Total_Value = currentPos.Quantity * currentPos.Current_Price;
