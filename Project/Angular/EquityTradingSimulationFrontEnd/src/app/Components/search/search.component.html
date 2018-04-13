@@ -29,7 +29,8 @@
         <td>{{s.Name}}</td>
         <td>{{s.Symbol}}</td>
         <td>{{s.CurrentPrice}}</td>
-        <td><button type="button" class="btn btn-warning" (click)="Buy(s)">Buy</button></td>
+        <td><a [routerLink]="['/Trader/Buy']" >  <button type="button" class="btn btn-warning" (click)="Buy(s)">Buy</button></a></td>
+     
       </tr>
     </tbody>
 </table>

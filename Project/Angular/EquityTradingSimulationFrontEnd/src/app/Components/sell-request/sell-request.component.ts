@@ -1,77 +1,99 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators} from '@angular/forms';
-import {SellService} from '../../Services/sell-service/sell.service';
-import { BuySellService } from "../../Services/buy-sell/buy-sell.service";
-import{CurrentPosition} from "../../Models/current-position";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Stocks } from "../../Models/stocks";
 import { Sellmodel } from "../../Models/sell";
-import { ActivatedRoute } from '@angular/router';
-
+import { Buy, OrderSide, OrderType } from '../../Models/buy';
+import { BuySellService } from "../../Services/buy-sell/buy-sell.service";
 @Component({
   selector: 'app-sell-request',
   templateUrl: './sell-request.component.html',
   styleUrls: ['./sell-request.component.css']
 })
 export class SellRequestComponent implements OnInit {
-  id ="";
-  sell:FormGroup;
-  checked = true;
-  model:CurrentPosition;
-  constructor(private service:SellService,private bs:BuySellService,private route: ActivatedRoute,) {
-    this.model = this.bs.sellorder; 
-   }
+  order:Stocks;
+	placedOrder:Sellmodel;
+	buy: FormGroup;
+  	constructor(private BSservice:BuySellService) {
+		 this.order = this.BSservice.buyorder;
+	   }
 
-  Add(sell){
-    /*this.model.Quantity=Quantity;
-    this.model.CurrentPrice=CurrentPrice;
-    this.model.LimitPrice=LimitPrice;
-    this.model.Target=Target;
-    this.model.StopLoss=StopLoss;
-    this.service.Add(this.model);*/
-    console.log(sell.value);
-  
-  }
-  ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.sell = new FormGroup({
-      Quantity: new FormControl('', [Validators.required]),
-      CurrentPrice:new FormControl('', [Validators.required]),
-      LimitPrice:new FormControl('', [Validators.required]),
-      StopLoss:new FormControl('',[Validators.required])
-      });
-  }
-  checkboxchanged()
-  {
-  console.log("hello");
-  this.checked = !this.checked;
-  }
-  onSubmit({ value, valid }: { value:Sellmodel, valid: boolean }) {
-  console.log(value, valid);
-  }
-Limit:boolean =true;
-Stop:boolean =true;
+	ngOnInit() {
+		this.buy = new FormGroup({
+			StocksId: new FormControl('', [Validators.required]),
+			Quantity: new FormControl('', [Validators.required]),
+			StopPrice: new FormControl('', [Validators.required]),
+			LimitPrice: new FormControl('', [Validators.required]),
+			OrderType: new FormControl('', [Validators.required])
+		}); 
+	}
 
-Toggle(value){
-  if(value=="Stop"){
-    this.Stop = false;
-    this.Limit =true;
-  }
-  else if(value=="Limit")
-    {
-      this.Limit = false;
-      this.Stop=true;
-    }
-  else if(value=="StopLimit"){
-    this.Limit = false;
-  this.Stop = false;}
-  else if(value=="Market"){
-    this.Limit = true;
-    this.Stop=true;
-  }
+	onSubmit({ value, valid }: { value: Buy, valid: boolean }) {
+		alert("Submitted");
+		value.OrderSide = OrderSide.Buy;
+		if(value.OrderType.toString() == "Market"){
+			console.log("Market");
+			value.StopPrice=0;
+			value.LimitPrice=0;
+		}
+		else if(value.OrderType.toString()=="Limit"){
+			console.log("Limit");
+			value.StopPrice=0;
+		}
+		else if(value.OrderType.toString() == "Stop"){
+			console.log("Stop");
+			value.LimitPrice=0;
+		}
+		value.BlockId = null;
+		value.PMId = null;
+		value.StocksId = this.order.Id;
+		 // pick from session variable
+		
 
-else{
+		/* this.placedOrder = new Sellmodel(null,value.OrderType.toString(),value.OrderSide.toString(),value.Quantity,
+							this.order.Id,+sessionStorage.getItem('UserId'),null,value.LimitPrice,value.StopPrice,
+							null,null); */
+		console.log(value);
 
-}
-
-}
-
+		/* if(sessionStorage.getItem('traderId')!=null && (sessionStorage.getItem('Type') == "1" || sessionStorage.getItem('Type') == "2")) {
+			value.PMId = +sessionStorage.getItem('UserId');
+			value.UserId = +sessionStorage.getItem('traderId');
+			sessionStorage.removeItem('traderId');
+			console.log(value, valid);
+			this.BSservice.AddBuyPMOrder(value).subscribe(
+				response => response,
+				error => console.error(error),
+				() => alert("success")
+			);
+			
+		}else{ */
+			value.UserId = +sessionStorage.getItem('UserId');
+			console.log(value, valid);
+		this.BSservice.AddBuyOrder(value).subscribe(
+			response => response,
+			error => console.error(error),
+			() => alert("success")
+		);
+	//}
+	}
+	LimitFlag:boolean =true;
+	StopFlag:boolean =true;
+	Toggle(value){
+		if(value=="Stop"){
+		  this.StopFlag = false;
+		  this.LimitFlag =true;
+		}
+		else if(value=="Limit")
+		  {
+			this.LimitFlag = false;
+			this.StopFlag=true;
+		  }
+		else if(value=="StopLimit"){
+		  this.LimitFlag = false;
+		this.StopFlag = false;}
+		else if(value=="Market"){
+		  this.LimitFlag = true;
+		  this.StopFlag=true;
+		}
+	  
+	  }
 }

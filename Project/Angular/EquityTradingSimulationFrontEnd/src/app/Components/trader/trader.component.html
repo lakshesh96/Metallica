@@ -6,23 +6,28 @@
   
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a class="nav-link" routerLink="Search">Search</a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link" routerLink="Buy">Buy</a>
+              </li> -->
+              <li class="nav-item">
+                  <a class="nav-link" routerLink="PendingOrders">Pending Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="CurrentPosition">Current Position</a>
+                  </li>
+                  
         <li class="nav-item">
           <a class="nav-link" routerLink="Blocks">Block-Creation</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="Buy">Buy</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="Search">Search</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="CurrentPosition">Current Position</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="PendingOrders">Pending Orders</a>
-        </li>
+       
+       
+       
 
       </ul>
+      <div [hidden]="!x">
       <ul class="nav navbar-nav navbar-right">
         <li class="nav-item">
             <a class="nav-link" routerLink="Register"><i class="fa fa-user-circle"></i>Sign Up</a>
@@ -31,6 +36,15 @@
             <a class="nav-link" routerLink="Login"><i class="fa fa-sign-in" aria-hidden="true"></i>Log-In</a>
         </li>
       </ul>
+    </div>
+
+    <div [hidden]="x">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="Register" (click)="Show()"><i class="fa fa-sign-out"></i>LogOut</a>
+            </li>
+          </ul>
+    </div>
      
     </div>
 

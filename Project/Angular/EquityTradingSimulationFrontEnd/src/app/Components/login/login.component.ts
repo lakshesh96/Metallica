@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit {
     url:string="http://localhost:52705/api/Users/Login";
     id:number;
   constructor(private globalService:GlobalService,  private route: ActivatedRoute,private router: Router) { }
-
+UserId = null;
+x:boolean =true;
   ngOnInit() {
     this.login = new FormGroup({
       Type: new FormControl('', [Validators.required]),
@@ -27,6 +28,14 @@ export class LoginComponent implements OnInit {
       Password: new FormControl('', [Validators.required])
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.UserId = sessionStorage.getItem("UserId");
+   
+    if(this.UserId)
+    {
+        this.x=false;
+    }
+    else
+        this.x = true;
   }
   onSubmit({ value, valid }: { value: Login, valid: boolean }) {
     this.loading = true;
@@ -34,12 +43,19 @@ export class LoginComponent implements OnInit {
     response => {this.id=response.id;
       console.log(response);
       sessionStorage.setItem("UserId",this.id.toString());
+      sessionStorage.setItem("Type",value.Type);
       console.log(sessionStorage.getItem("UserId"));
     },
     error => {console.error(error);
       this.loading = false;
               },
-    ()=> this.router.navigateByUrl(this.returnUrl)
+    ()=> {
+      console.log(value.Type);
+      if(value.Type == "Trader")
+        this.router.navigateByUrl('Trader');
+      else if(value.Type == 'PortfolioManager')
+        this.router.navigateByUrl('Portfoliomanager');
+    }
   ); 
 
                     

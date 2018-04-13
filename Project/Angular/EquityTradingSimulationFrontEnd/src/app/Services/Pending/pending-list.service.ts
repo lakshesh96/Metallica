@@ -12,15 +12,19 @@ export class PendingListService
   private _baseUrl1: string = "http://localhost:52705/api/Orders";
   index :number;
   divhide:boolean=true;
-  id = sessionStorage.getItem("UserId");
+  id:string;
 
   constructor(private globalService:GlobalService)
   {
     this.getPendingOrders();
+  this.id = sessionStorage.getItem("UserId");
+    
   }
 
 
   getPendingOrders(){
+    console.log("At Pending Service");
+    console.log(this.id);
     return this.globalService.GetMethod(this._baseUrl+this.id);
   }
 

@@ -12,9 +12,42 @@ using EquityTradingPlatformApi.Models;
 
 namespace EquityTradingPlatformApi.Controllers
 {
+    class CustomCurrentPos
+    {
+        public string Trader_Name { get; set; }
+        public string Stock_Name { get; set; }
+        public string Symbol { get; set; }
+        public double Quantity { get; set; }
+        public double Buying_Price { get; set; }
+        public double Current_Price { get; set; }
+        public double Total_Value { get; set; }
+    }
+
+
     public class CurrentPositionsController : ApiController
     {
         private ProjectContext db = new ProjectContext();
+
+
+        private Stocks FetchStockObj(int id)
+        {
+            foreach(Stocks s in db.Stocks)
+            {
+                if (s.Id == id)
+                    return s;
+            }
+            return null;
+        }
+
+        private User FetchUserObj(int id)
+        {
+            foreach (User s in db.Users)
+            {
+                if (s.Id == id)
+                    return s;
+            }
+            return null;
+        }
 
 
         // GET CURRENT POSITION FOR USER
@@ -24,22 +57,43 @@ namespace EquityTradingPlatformApi.Controllers
         {
             var getUserOrders = from order in db.Orders
                                 where (order.UserId == userId && (order.OrderStatus == OrderStatus.Executed || order.OrderStatus == OrderStatus.Partial))
-                                select order.Id;
+                                select order;
 
             if (getUserOrders == null)
                 return Ok(false);
             else
             { 
-                List<int> currentUserOrderIds = getUserOrders.ToList();
+                List<Order> currentUserOrderIds = getUserOrders.ToList();
 
-                List<CurrentPosition> returnPositions = new List<CurrentPosition>();
+                List<CustomCurrentPos> returnPositions = new List<CustomCurrentPos>();
+                
+                //foreach (CurrentPosition currentPos in db.CurrentPositions)
+                foreach (Order o in currentUserOrderIds)
+                {
+                    foreach(CurrentPosition cp in db.CurrentPositions)
+                    {
+                        if (o.Id == cp.OrderId)
+                        {
+                            Stocks s = FetchStockObj(o.StocksId);
+                            User u = FetchUserObj(o.UserId);
 
-                foreach (CurrentPosition currentPos in db.CurrentPositions)
-                    foreach (int id in currentUserOrderIds)
-                        if (currentPos.OrderId == id)
+                            CustomCurrentPos currentPos = new CustomCurrentPos();
+
+                            currentPos.Trader_Name = u.Name;
+                            currentPos.Stock_Name = s.Name;
+                            currentPos.Symbol = s.Symbol;
+                            currentPos.Quantity = o.Quantity;
+                            currentPos.Buying_Price = cp.PriceExecuted;
+                            currentPos.Current_Price = s.CurrentPrice;
+                            
+                            currentPos.Total_Value = currentPos.Quantity * currentPos.Current_Price;
                             returnPositions.Add(currentPos);
+                        }
+                    }
+                }
+                        
 
-                return Ok(returnPositions);
+                return Ok(false);
             }
 
 

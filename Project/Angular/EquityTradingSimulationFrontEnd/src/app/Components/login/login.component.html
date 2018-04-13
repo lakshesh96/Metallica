@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center" [hidden]="!x">
   <div style="width:50%;height:40%;padding:35px"class="border border-dark">
   <form novalidate (ngSubmit)="onSubmit(login)" [formGroup]="login">
     <legend><strong>Login</strong></legend>
@@ -31,3 +31,9 @@
   </form>
   </div>
   </div>
+<div class="container" [hidden]="x">
+  <div class="jumbotron" align="center">
+    <h1>You are Logged In</h1>
+    <i class="fa fa-smile-o" style="font-size:36px"></i>
+  </div>
+</div>

@@ -22,15 +22,64 @@ namespace EquityTradingPlatformApi.Controllers
             return db.Blocks;
         }
 
-
-        // GET
+        // GET 
         [Route("api/Trader/ExecuteBlock")]
         public IHttpActionResult GetBlockExecution(int blockId)
         {
-            Exchange.Exchange exchange = new Exchange.Exchange(blockId);
-            exchange.FillBlock();
+            bool result = false;
 
-            return Ok("false");
+            Exchange.Exchange exchange = new Exchange.Exchange(blockId);
+            result = exchange.FillBlock();
+
+            return Ok(result);
+        }
+
+
+        
+        // TYPE OF BLOCKS FOR UserId and BlockStatus
+        [Route("api/Trader/Block")]
+        public IHttpActionResult GetTraderPendingBlocks(int userId, string blockStatus)
+        {
+            var blocks = from n in db.Blocks
+                         where n.BlockStatus.ToString() == blockStatus
+                         select n;
+
+            return Ok(blocks.ToList());
+        }
+
+
+
+
+        // ADD NEW BLOCK FROM ORDER ID
+        [Route("api/Trader/NewBlock")]
+        public IHttpActionResult PostNewBlock(int orderId)
+        {
+            foreach(Order o in db.Orders)
+            {
+                if (o.Id == orderId)
+                {
+                    Block block = new Block
+                    {
+                        BlockStatus = BlockStatus.Pending,
+                        Side = o.OrderSide,
+                        UserId = o.UserId,
+                        StocksId = o.StocksId
+                    };
+                    db.Blocks.Add(block);
+                    o.BlockId = block.Id;
+                    try
+                    {
+                        db.SaveChanges();
+                        return Ok(true);
+                    }
+                    catch(DbUpdateException e)
+                    {
+                        return Ok(false);
+                    }
+                    
+                }
+            }
+            return Ok(false);
         }
 
 
@@ -47,6 +96,10 @@ namespace EquityTradingPlatformApi.Controllers
 
             return Ok(block);
         }
+
+
+
+
 
         // PUT: api/Blocks/5
         [ResponseType(typeof(void))]
