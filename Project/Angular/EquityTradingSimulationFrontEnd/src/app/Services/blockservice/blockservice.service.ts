@@ -10,20 +10,24 @@ export class BlockserviceService {
   id=sessionStorage.getItem("UserId");
   status:string;
  private url:string="http://localhost:52705/api/Trader/Block?userId=";
- private url1:string="http://localhost:52705/api/Trader/NewBlock?orderId="
+ private cr_url:string="http://localhost:52705/api/Trader/NewBlock?orderId="
+ private ex_url:string="http://localhost:52705/api/Trader/ExecuteBlock?blockId="
   constructor(private gs:GlobalService) { 
     this.get_partialblock();
     this.get_pendingblock();
+    
   }
 
   createnewblock(orderId)
   {
-    this.gs.PostMethod("", this.url+orderId).subscribe(
+    this.gs.PostMethod("", this.cr_url+orderId).subscribe(
       response => this.status = response,
       error => console.error(error),
       () => console.log(console.log(this.status+ "Hello"))
     );
   }
+
+
 
   get_partialblock(){
     this.gs.GetMethod(this.url+this.id+"&blockStatus=Partial").subscribe(
@@ -41,7 +45,14 @@ export class BlockserviceService {
   }
 
 
-
+ executeblock(exec_id)
+ {
+  this.gs.GetMethod(this.ex_url+exec_id).subscribe(
+    response => this.partialblock = response,
+    error => console.error(error),
+    () => console.log()
+  );
+ }
 
 
 }
