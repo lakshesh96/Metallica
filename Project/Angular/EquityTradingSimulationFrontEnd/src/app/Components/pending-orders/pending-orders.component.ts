@@ -24,6 +24,8 @@ export class PendingOrdersComponent implements OnInit
   constructor(private PS:PendingListService,
     private bs:BlockserviceService) {
     this.getOrders();
+    this.pending=true;
+    this.partial=true;
     if(sessionStorage.getItem('Type')=="Trader"){
       this.usertype=false;
     }else{
@@ -35,20 +37,30 @@ export class PendingOrdersComponent implements OnInit
   {
     sessionStorage.setItem("OrderId",orderid);
     this.bs.createnewblock(orderid);
-    this.pendingblock=this.bs.pendingblock;
-
+    this.bs.get_pendingblock().subscribe(
+      response => this.pendingblock = response,
+      error => console.error(error),
+      () => console.log(this.pendingblock)
+    )
+    
   }
   blockexisting(orderid)
   {
     sessionStorage.setItem("OrderId",orderid);
-    this.partialblock=this.bs.partialblock;
-
+    this.bs.get_partialblock().subscribe(
+      response => this.partialblock = response,
+      error => console.error(error),
+      () => console.log(this.partialblock)
+    )
+    
   }
 
   executepartial(partialid)
   {
   this.bs.executeblock(partialid);
   }
+
+
   executepending(pendingid)
   {
     this.bs.executeblock(pendingid);
