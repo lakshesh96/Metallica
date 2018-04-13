@@ -77,7 +77,7 @@ namespace EquityTradingPlatformApi.Controllers
                 foreach (Order o in currentUserOrderIds)
                 {
                     foreach(CurrentPosition cp in db.CurrentPositions)
-                    {
+                                            {
                         if (o.Id == cp.OrderId)
                         {
                             CustomCurrentPos currentPos = new CustomCurrentPos();

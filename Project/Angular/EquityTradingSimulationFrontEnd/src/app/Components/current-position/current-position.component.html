@@ -26,7 +26,7 @@
       <td>{{e.Current_Price}}</td>
       <td>{{e.Total_Value}}</td>
       <td>
-      <a class="nav-link" routerLink="/Sell/{{e.Id}}">Sell</a>
+        <a [routerLink]="['/Trader/Sell']" >  <button type="button" class="btn btn-warning" (click)="Sell(s)">Sell</button></a>
       </td>
     </tr> 
   </tbody>

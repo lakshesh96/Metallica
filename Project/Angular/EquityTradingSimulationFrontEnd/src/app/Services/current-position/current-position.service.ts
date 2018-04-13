@@ -1,24 +1,17 @@
 import { Injectable } from '@angular/core';
 import{CurrentPosition} from "../../Models/current-position"
 import {GlobalService} from '../../Services/global.service';
+import{Stocks} from "../../Models/stocks"
 
 @Injectable()
 export class CurrentPositionService {
 
   CurrentS : CurrentPosition[];
-  //url = "http://localhost:52705/api/Position/Approved";
-  url = "http://localhost:52705/api/Position/Approved?userId=";
 
+  url = "http://localhost:52705/api/Position/Approved?userId=";
+ 
   constructor(private globalService:GlobalService) {
-  //  this.CurrentS = [new CurrentPosition("Aayush", "TCS",   "tcs",500, 200, 250, 100000, ),
-  //                   new CurrentPosition("Ankit", "Infosys",   "Infi",500, 200, 250, 10000,),
-  //                   new CurrentPosition("Akshat", "Goa_Carbon",   "gc",   500, 200, 250, 10000, ),
-  //                   new CurrentPosition("Aditya", "TCS",   "tcs",   500, 200, 250, 10000, ),
-  //                   new CurrentPosition("Jatin", "IGL",   "Igl",   500, 200, 250, 10000, ),
-  //                   new CurrentPosition("Jaadu", "Emami",   "Emi",   500, 200, 250, 10000, ),
-  //                   new CurrentPosition("Saap", "ITC",   "ITC",   500, 200, 250, 10000, ),
-  //                   new CurrentPosition("Pankaj", "Sanofi",   "sfi",   500, 200, 250, 10000, ),    
-  //  ]
+
   this.GetPosition();
   }
 
@@ -29,8 +22,25 @@ export class CurrentPositionService {
       error => console.error(error),
       () => console.log(this.CurrentS)
     ); */
-
+    console.log(this.url);
+    console.log(userid);
     return this.globalService.GetMethod(this.url+userid);
   }
+
+/*   GetOrderDetails(id: number) {
+    this.globalService.GetWithId(this.urlOrder, id).subscribe(
+      response => {return response;},
+      error => console.error(error),
+      () => console.log(this.CurrentS)
+    );
+
+  }
+  GetStockDetails(id: number) {
+    this.globalService.GetWithId(this.urlStocks, id).subscribe(
+      response => {return response;},
+      error => console.error(error),
+      () => console.log(this.CurrentS)
+    );
+  } */
 
 }
