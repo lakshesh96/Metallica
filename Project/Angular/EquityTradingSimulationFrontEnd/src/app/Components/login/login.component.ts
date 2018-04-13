@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
     response => {this.id=response.id;
       console.log(response);
       sessionStorage.setItem("UserId",this.id.toString());
+      console.log("hello"+this.id);
       console.log(sessionStorage.getItem("UserId"));
     },
     error => {console.error(error);
