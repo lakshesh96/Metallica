@@ -20,6 +20,7 @@ import { PortfoliomanagerComponent} from '../Components/portfoliomanager/portfol
 import { AuthGuardService } from '../Services/Auth-Guard/auth-guard.service';
 import {AdminAuthGuardService} from '../Services/Admin-Auth-Guard/admin-auth-guard.service';
 import {AuthGuardPortfolioService} from '../Services/Auth-Guard-PM/auth-guard-portfolio.service';
+import { AddstocksComponent } from '../Components/addstocks/addstocks.component';
 
 const AppRoutes:Routes = [
     { path:"Trader", component:TraderComponent,
@@ -32,8 +33,8 @@ const AppRoutes:Routes = [
         {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardService]},
         {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardService]},
         {path:"Sell/:id",component:SellRequestComponent},
-        {path:"",component:CurrentPositionComponent},
-        {path:"**",component:LoginComponent},
+        {path:"",component:LoginComponent},
+        {path:"**",component:RegisterComponent},
         ]
      },
      { path:"Portfoliomanager", component:PortfoliomanagerComponent,
@@ -41,13 +42,15 @@ const AppRoutes:Routes = [
         {path:"Register",component:RegisterComponent},
         {path:"Login",component:LoginComponent},
        // {path:"Blocks",component:BlockCreationComponent,canActivate: [AuthGuardPortfolioService]},
+        {path:"Add Stock",component:AddstocksComponent,canActivate: [AuthGuardPortfolioService]},
+       
         {path:"Buy",component:BuyrequestComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"CurrentPosition",component:CurrentPositionComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"Sell/:id",component:SellRequestComponent,canActivate: [AuthGuardPortfolioService]},
-        {path:"",component:CurrentPositionComponent},
-        {path:"**",component:LoginComponent}
+        {path:"",component:LoginComponent},
+        {path:"**",component:RegisterComponent}
         ]
      },
     {path:"Admin",component:AdminComponent,
@@ -62,7 +65,7 @@ const AppRoutes:Routes = [
             ]
     },
    
-    {path:"",component:LoginComponent},
+    {path:"",component:TraderComponent},
     {path:"**",component:LoginComponent}
    
 ]

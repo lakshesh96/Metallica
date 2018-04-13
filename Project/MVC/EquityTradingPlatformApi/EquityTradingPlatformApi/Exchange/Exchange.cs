@@ -32,7 +32,7 @@ namespace EquityTradingPlatformApi.Exchange
                 if (this.totalQuantity == 0)    //check for no orders
                     return false;
 
-                this.FillQuantity = random.Next(1 * this.totalQuantity);      //Random filling within 2*totalquantity
+                this.FillQuantity = random.Next(2 * this.totalQuantity);      //Random filling within 2*totalquantity
                 if ((this.FillQuantity >= this.totalQuantity&&this.VolumeAvailable >=this.totalQuantity&&this.side==Side.Buy)||(this.side==Side.Sell&&this.FillQuantity>=this.totalQuantity) ) 
                 {//if Fully Filled (for both buy and sell)
                 this.VolumeExecuted=this.totalQuantity; 
