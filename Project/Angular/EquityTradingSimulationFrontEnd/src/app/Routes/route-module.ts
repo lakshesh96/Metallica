@@ -33,7 +33,7 @@ const AppRoutes:Routes = [
         {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardService]},
         {path:"Sell/:id",component:SellRequestComponent},
         {path:"",component:CurrentPositionComponent},
-        {path:"**",component:LoginComponent},
+        {path:"**",component:CurrentPositionComponent},
         ]
      },
      { path:"Portfoliomanager", component:PortfoliomanagerComponent,
@@ -47,7 +47,7 @@ const AppRoutes:Routes = [
         {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"Sell/:id",component:SellRequestComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"",component:CurrentPositionComponent},
-        {path:"**",component:LoginComponent}
+        {path:"**",component:CurrentPositionComponent}
         ]
      },
     {path:"Admin",component:AdminComponent,
