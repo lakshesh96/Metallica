@@ -14,44 +14,44 @@
         <input  class="form-control" type="text" #id/>
     </div>
     <div class="form-group">
-        <label>Trader_Name</label>
-        <input class="form-control" type="text" #name/>
+        <label>User Id</label>
+        <input class="form-control" type="text" #user/>
     </div>
     <div  class="form-group">
-        <label>Stock Name</label>
+        <label>Stocks Id</label>
         <input class="form-control" type="text" #stock/>
     </div>
     <div   class="form-group">
-        <label>Symbol</label>
-        <input class="form-control" type="text" #symbol/>
+        <label>Order Side</label>
+        <input class="form-control" type="text" #side/>
+    </div>
+    <div class="form-group">
+        <label>Order Type</label>
+        <input class="form-control" type="text" #type/>
     </div>
     <div class="form-group">
         <label>Quantity</label>
         <input class="form-control" type="text" #quantity/>
     </div>
     <div class="form-group">
-        <label>Buying Price</label>
-        <input class="form-control" type="text" #buy/>
+        <label>Limit Price</label>
+        <input class="form-control" type="text" #limit/>
     </div>
     <div class="form-group">
-        <label>Current Price</label>
-        <input class="form-control" type="text" #curr/>
+        <label>Stop Price</label>
+        <input class="form-control" type="text" #stop/>
     </div>
     <div class="form-group">
-        <label>Total Value</label>
-        <input class="form-control" type="text" #total/>
+        <label>Date Added</label>
+        <input class="form-control" type="text" #date/>
     </div>
     <div class="form-group">
-        <label>Type of Order</label>
-        <input class="form-control" type="text" #type/>
-    </div>
-    <div class="form-group">
-        <label>Side</label>
-        <input class="form-control" type="text" #side/>
+        <label>Order Status</label>
+        <input class="form-control" type="text" #status/>
     </div>
     <div>
-        <input type="button" class="btn btn-default" value="Save Changes" (click)="Put(id.value,name.value,
-        stock.value,symbol.value,quantity.value,buy.value,curr.value,total.value,type.value,side.value)" />
+        <input type="button" class="btn btn-default" value="Save Changes" (click)="Put(id.value,user.value,
+        stock.value,side.value,type.value,quantity.value,limit.value,stop.value,date.value,status.value)" />
     </div>
   </div>
   <br>
@@ -65,33 +65,33 @@
         <thead>
           <tr class="table-primary">
             <th scope="col">Id</th>
-            <th scope="col">Order Type</th>
-            <th scope="col" ><i class="fa fa-arrow-up" (click)="sort_stock_Name_ascending()"></i>Order Side<i class="fa fa-arrow-down" (click)="sort_stock_Name_descending()"></i></th>
-            <th scope="col">StocksId</th>
-            <th scope="col">OrderStatus</th>
-            <th scope="col">Quantity</th>
-            <th scope="col"><i class="fa fa-arrow-up" (click)="sort_CurPrice_ascending()"></i>UserId<i class="fa fa-arrow-down" (click)="sort_CurPrice_descending()"></i></th>
+            <th scope="col">UserId</th>
+            <th scope="col" >StocksId</th>
+            <th scope="col">OrderSide</th>
+            <th scope="col">OrderType</th>
+            <th scope="col"><i class="fa fa-arrow-up" (click)="sort_CurPrice_ascending()"></i>Quantity<i class="fa fa-arrow-down" (click)="sort_CurPrice_descending()"></i></th>
             <th scope="col">LimitPrice</th>
             <th scope="col">StopPrice</th>
             <th scope="col">DateAdded</th>
+            <th scope="col">OrderStatus</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let l of pending;let i=index">
             <td>{{l.Id}}</td>
-            <td>{{l.OrderType}}</td>
-            <td>{{l.OrderSide}}</td>
-            <td>{{l.StocksId}}</td>
-            <td>{{l.OrderStatus}}</td>
-            <td>{{l.Quantity}}</td>
             <td>{{l.UserId}}</td>
+            <td>{{l.StocksId}}</td>
+            <td>{{l.OrderSide}}</td>
+            <td>{{l.OrderType}}</td>
+            <td>{{l.Quantity}}</td>
             <td>{{l.LimitPrice}}</td>
             <td>{{l.StopPrice}}</td>
             <td>{{l.DateAdded}}</td>
-            <td><input type="button" class="btn btn-warning" value="Modify" (click)="Index(l.Id);id.value=l.Id;name.value=l.Trader_Name;
-             stock.value=l.Name;symbol.value=l.Symbol;quantity.value=l.Quantity;buy.value=l.Buying_Price;curr.value=l.CurrentPrice;total.value=l.Total_Value;
-             type.value=l.typeoforder;side.value=l.side;"/></td>
+            <td>{{l.OrderStatus}}</td>
+            <td><input type="button" class="btn btn-warning" value="Modify" (click)="Index(l.Id);id.value=l.Id;user.value=l.UserId;stock.value=l.StocksId;
+                side.value=l.OrderSide;type.value=l.OrderType;quantity.value=l.Quantity;limit.value=l.LimitPrice;stop.value=l.StopPrice;date.value=l.DateAdded;
+                status.value=l.OrderStatus"/></td>
              <td><input type="button" class="btn btn-outline-primary" value="Create Block" (click)="blocknew()" /></td>
              <td><input type="button" class="btn btn-outline-primary" value="Add to Existing Block" (click)="blockexisting()" /></td>
           </tr>
