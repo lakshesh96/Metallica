@@ -27,14 +27,13 @@ const AppRoutes:Routes = [
     children:[
         {path:"Register",component:RegisterComponent},
         {path:"Login",component:LoginComponent},
-        {path:"Blocks",component:BlockCreationComponent,canActivate: [AuthGuardService]},
         {path:"Buy",component:BuyrequestComponent,canActivate: [AuthGuardService]},
         {path:"CurrentPosition",component:CurrentPositionComponent,canActivate: [AuthGuardService]},
         {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardService]},
         {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardService]},
         {path:"Sell/:id",component:SellRequestComponent},
-        {path:"",component:LoginComponent},
-        {path:"**",component:RegisterComponent},
+        {path:"",component:CurrentPositionComponent},
+        {path:"**",component:LoginComponent},
         ]
      },
      { path:"Portfoliomanager", component:PortfoliomanagerComponent,
@@ -49,8 +48,8 @@ const AppRoutes:Routes = [
         {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"Sell/:id",component:SellRequestComponent,canActivate: [AuthGuardPortfolioService]},
-        {path:"",component:LoginComponent},
-        {path:"**",component:RegisterComponent}
+        {path:"",component:CurrentPositionComponent},
+        {path:"**",component:LoginComponent}
         ]
      },
     {path:"Admin",component:AdminComponent,
@@ -60,12 +59,11 @@ const AppRoutes:Routes = [
             {path:"PortfolioManager",component:AdminPortfoliomanagerAddComponent, canActivate: [AdminAuthGuardService]},
             {path:"Trader",component:AdminTraderAddComponent, canActivate: [AdminAuthGuardService]},
             {path:"",component:AdminloginComponent},
-            {path:"**",component:AdminloginComponent},
-            {path:"Register",component:RegisterComponent,canActivate: [AdminAuthGuardService]},
+            {path:"**",component:AdminloginComponent}
             ]
     },
    
-    {path:"",component:TraderComponent},
+    {path:"",component:LoginComponent},
     {path:"**",component:LoginComponent}
    
 ]
