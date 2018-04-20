@@ -6,6 +6,7 @@ export class AddStockAdminService {
 
   list=[];
   url = "http://localhost:52705/api/Stocks";
+  AzureUrl = "http://equitytrading.azurewebsites.net/api/Stocks";
 
   constructor(private globalService:GlobalService) { }
 
@@ -19,6 +20,9 @@ export class AddStockAdminService {
       error => console.error(error),
       () => console.log()
     ); */
-    return this.globalService.PostMethod(b,this.url);
+
+    //return this.globalService.PostMethod(b,this.url);
+    //Azure:
+    return this.globalService.PostMethod(b,this.AzureUrl);
   }
 }

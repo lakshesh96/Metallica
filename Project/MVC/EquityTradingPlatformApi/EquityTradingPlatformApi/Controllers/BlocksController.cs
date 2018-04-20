@@ -19,7 +19,7 @@ namespace EquityTradingPlatformApi.Controllers
         // GET: api/Blocks
         public IQueryable<Block> GetBlocks()
         {
-            return db.Blocks;
+            return db.Blocks; ;
         }
 
         // GET 

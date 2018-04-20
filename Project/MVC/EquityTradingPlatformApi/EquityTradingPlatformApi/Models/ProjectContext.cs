@@ -8,7 +8,7 @@ namespace EquityTradingPlatformApi.Models
 {
     public class ProjectContext:DbContext
     {
-        public ProjectContext():base("Equity_Trade")
+        public ProjectContext():base("Equity_Trade_Azure")
         {
             this.Configuration.LazyLoadingEnabled = false;
         }
