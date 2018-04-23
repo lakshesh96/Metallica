@@ -7,7 +7,8 @@ export class StocksService implements OnInit
 {
   //StocksList:Stocks[]=[];
   StocksList:any[];
-  url = "http://localhost:52705/api/Stocks";
+  //url = "http://localhost:52705/api/Stocks";
+  url = "api/Stocks";
 
   ngOnInit(){
     console.log("2.");

@@ -9,10 +9,15 @@ import { User } from "../../Models/user";
 @Injectable()
 export class AddTraderAdminService {
 
-  private _baseUrl: string = "http://localhost:52705/api/Users/PutList";
+  /*private _baseUrl: string = "http://localhost:52705/api/Users/PutList";
   private _baseUrl1: string = "http://localhost:52705/api/Trader/Approved";
   private _baseUrl2: string = "http://localhost:52705/api/Trader/Unapproved";
-  private _baseUrl3: string = "http://localhost:52705/api/Users/Approve?id=";
+  private _baseUrl3: string = "http://localhost:52705/api/Users/Approve?id=";*/
+
+  private Url:string = "api/Users/PutList";
+  private Url1:string = "api/Trader/Approved";
+  private Url2:string = "api/Trader/Unapproved";
+  private Url3:string = "api/Users/Approve?id=";
 
   traders:any;
 
@@ -27,7 +32,7 @@ export class AddTraderAdminService {
           () => { console.info(this.traders)}
       );  */
 
-      return this.globalService.GetMethod(this._baseUrl1);
+      return this.globalService.GetMethod(this.Url1);
   }
 
   getUnapprovedTraders()
@@ -38,7 +43,7 @@ export class AddTraderAdminService {
           () => { console.info(this.traders)}
       );  */
 
-      return this.globalService.GetMethod(this._baseUrl2);
+      return this.globalService.GetMethod(this.Url2);
   }
   
   ToggleTrader(r:User){
@@ -51,7 +56,7 @@ export class AddTraderAdminService {
     );
     console.info(r); */
     
-    return this.globalService.PostMethod(r,this._baseUrl3+r.Id);
+    return this.globalService.PostMethod(r,this.Url3+r.Id);
 
   }
 
@@ -66,7 +71,7 @@ export class AddTraderAdminService {
     );
     console.info(r); */
 
-    return this.globalService.PostMethod(r,this._baseUrl);
+    return this.globalService.PostMethod(r,this.Url);
   }
 
 }

@@ -6,8 +6,11 @@ import { GlobalService } from "../../Services/global.service";
 @Injectable()
 export class BuySellService {
 
-  private _baseUrl: string = "http://localhost:52705/api/Trader/Orders";
-  private _baseUrl1: string = "http://localhost:52705/api/PM/Orders";
+  /*private _baseUrl: string = "http://localhost:52705/api/Trader/Orders";
+  private _baseUrl1: string = "http://localhost:52705/api/PM/Orders";*/
+
+  private Url: string = "api/Trader/Orders";
+  private Url1: string = "api/PM/Orders";
 
   constructor(private globalService:GlobalService) { }
 
@@ -33,11 +36,11 @@ export class BuySellService {
     );
     console.info(r); */
 
-    return this.globalService.PostMethod(r,this._baseUrl);
+    return this.globalService.PostMethod(r,this.Url);
   }
 
   AddBuyPMOrder(r:any){
-    return this.globalService.PostMethod(r,this._baseUrl1);
+    return this.globalService.PostMethod(r,this.Url1);
   }
 
 }

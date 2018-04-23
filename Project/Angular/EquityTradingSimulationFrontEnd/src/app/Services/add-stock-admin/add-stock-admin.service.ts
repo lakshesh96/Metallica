@@ -6,7 +6,7 @@ export class AddStockAdminService {
 
   list=[];
   url = "http://localhost:52705/api/Stocks";
-  AzureUrl = "http://equitytrading.azurewebsites.net/api/Stocks";
+  AzureUrl = "api/Stocks";
 
   constructor(private globalService:GlobalService) { }
 

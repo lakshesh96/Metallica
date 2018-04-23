@@ -8,7 +8,8 @@ export class CurrentPositionService {
 
   CurrentS : CurrentPosition[];
 
-  url = "http://localhost:52705/api/Position/Approved?userId=";
+  //url = "http://localhost:52705/api/Position/Approved?userId=";
+  url = "api/Position/Approved?userId=";
  
   constructor(private globalService:GlobalService) {
 

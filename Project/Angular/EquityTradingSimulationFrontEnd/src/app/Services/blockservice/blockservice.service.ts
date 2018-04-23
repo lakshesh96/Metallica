@@ -9,9 +9,15 @@ export class BlockserviceService {
   partialblock:any[];
   id=sessionStorage.getItem("UserId");
   status:string;
- private url:string="http://localhost:52705/api/Trader/Block?userId=";
- private cr_url:string="http://localhost:52705/api/Trader/NewBlock?orderId="
- private ex_url:string="http://localhost:52705/api/Trader/ExecuteBlock?blockId="
+ 
+  /*private url:string="http://localhost:52705/api/Trader/Block?userId=";
+  private cr_url:string="http://localhost:52705/api/Trader/NewBlock?orderId="
+  private ex_url:string="http://localhost:52705/api/Trader/ExecuteBlock?blockId="*/
+
+  private url:string = "api/Trader/Block?userId=";
+  private cr_url:string = "api/Trader/NewBlock?orderId=";
+  private ex_url:string = "api/Trader/ExecuteBlock?blockId=";
+
   constructor(private gs:GlobalService) { 
     this.get_partialblock();
     this.get_pendingblock();

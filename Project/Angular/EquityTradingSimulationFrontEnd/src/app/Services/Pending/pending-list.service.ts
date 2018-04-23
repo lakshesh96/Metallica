@@ -8,8 +8,12 @@ import {GlobalService} from '../../Services/global.service';
 @Injectable()
 export class PendingListService 
 {
-  private _baseUrl: string = "http://localhost:52705/api/Trader/PendingOrders?userId=";
-  private _baseUrl1: string = "http://localhost:52705/api/Orders";
+  //private _baseUrl: string = "http://localhost:52705/api/Trader/PendingOrders?userId=";
+  //private _baseUrl1: string = "http://localhost:52705/api/Orders";
+  
+  private Url: string = "api/Trader/PendingOrders?userId=";
+  private Url1: string = "api/Orders";
+  
   index :number;
   divhide:boolean=true;
   id:string;
@@ -25,7 +29,7 @@ export class PendingListService
   getPendingOrders(){
     console.log("At Pending Service");
     console.log(this.id);
-    return this.globalService.GetMethod(this._baseUrl+this.id);
+    return this.globalService.GetMethod(this.Url+this.id);
   }
 
   extractData(res: Response)
@@ -62,7 +66,7 @@ export class PendingListService
   {
       console.log("in put pending service");
       console.log(order);
-      return this.globalService.PutMethodWithUrl(order,this._baseUrl1+"/"+order.Id);
+      return this.globalService.PutMethodWithUrl(order,this.Url1+"/"+order.Id);
       
   }
   /*postdata(Stocklist: any): Observable<any>
