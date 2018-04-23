@@ -17,26 +17,22 @@ export class BlockserviceService {
   private url:string = "api/Trader/Block?userId=";
   private cr_url:string = "api/Trader/NewBlock?orderId=";
   private ex_url:string = "api/Trader/ExecuteBlock?blockId=";
+  private AddToExisting_url:string="api/Trader/AddToBlock?orderId=";
 
   constructor(private gs:GlobalService) { 
-    this.get_partialblock();
-    this.get_pendingblock();
     
   }
 
   createnewblock(orderId)
   {
-    this.gs.PostMethod("", this.cr_url+orderId).subscribe(
-      response => this.status = response,
-      error => console.error(error),
-      () => console.log(console.log(this.status+ "Hello"))
-    );
+    return this.gs.PostMethod("",this.cr_url+orderId);
+    
   }
 
 
 
-  get_partialblock(){
-    return this.gs.GetMethod(this.url+this.id+"&blockStatus=Partial");
+  get_pendingblock(){
+    return this.gs.GetMethod(this.url+this.id+"&blockStatus=Pending");
     
     /*this.gs.GetMethod(this.url+this.id+"&blockStatus=Partial").subscribe(
       response => this.partialblock = response,
@@ -44,8 +40,8 @@ export class BlockserviceService {
       () => console.log()
     );*/
   }
-  get_pendingblock(){
-    return this.gs.GetMethod(this.url+this.id+"&blockStatus=Pending");
+  get_pendingAndPartialblock(){
+    return this.gs.GetMethod(this.url+this.id+"&blockStatus=PendingAndPartial");
     /*this.gs.GetMethod(this.url+this.id+"&blockStatus=Pending").subscribe(
       response => this.pendingblock = response,
       error => console.error(error),
@@ -63,6 +59,14 @@ export class BlockserviceService {
     () => console.log()
   );
  }
-
+ AddToBlock(orderId,blockId)
+ {
+   console.log("Went to add");
+    this.gs.PostMethod("",this.AddToExisting_url+orderId+"&blockId="+blockId).subscribe(
+    response => console.log(response+"Added"),
+    error => console.error(error),
+    () => console.log()
+  );
+ }
 
 }

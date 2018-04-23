@@ -1,0 +1,28 @@
+<div class="row container" >
+    <h3>Pending/Partial Blocks</h3>
+    <div class="table-responsive">
+      <table class="table table-hover table-responsive table-bordered table-striped">
+        <thead>
+          <tr>
+              <th>Block Id</th>
+              <th>Block Status</th>
+              <th>Block Side</th>
+              <th>Stock Name</th>
+              <th>Order Type</th>
+              <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let b of pendingBlocks;let i=index">
+            <td>{{b.Id}}</td>
+            <td >{{b.BlockStatus}}</td>
+            <td>{{b.Side}}</td>
+            <td>{{b.StocksId}}</td>
+            <td>{{b.Type}}</td>
+            <td><input type="button" value="Execute" class="btn btn-outline-primary" (click)="executepending(b.Id)" /></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

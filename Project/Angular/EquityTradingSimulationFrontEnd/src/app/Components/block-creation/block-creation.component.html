@@ -1,87 +1,28 @@
-<div class="container">
-  <h1 style="text-align: center; margin-bottom: 50px;">Block Creation</h1>
-  <div class="row">
-    <div class="col-md-6">
-      <label for="Stock Name"><h3>TCS</h3></label>
-      <p>Description About stock</p>
-      <input type="button" class="btn btn-outline-primary" (click)="getvalue()" value="Get" >
-      
-      <input type="button" class="btn btn-outline-primary" (click)="show()" value="Show" >
-    </div>
-    <div class="col-md-6">
-      <form>
-          <div class="form-group">
-              <label for="Block Size">Block Size</label>
-              <input type="text" class="form-control"> 
-          </div>
-          <input type="button"  class="btn btn-outline-primary" value="Add to New Block" (click)="newblock()" />
-          <input type="button"  class="btn btn-outline-primary" value="Add to Existing  Block" (click)="existingblock()" />
-      </form>
-      
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <h2 style="text-align: center; margin-top:50px;">Pending Blocks</h2>
-      <div class="table-responsive">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Trader Name</th>
+<div class="row container" >
+    <h3>Pending/Partial Blocks</h3>
+    <div class="table-responsive">
+      <table class="table table-hover table-responsive table-bordered table-striped">
+        <thead>
+          <tr>
+              <th>Block Id</th>
+              <th>Block Status</th>
+              <th>Block Side</th>
               <th>Stock Name</th>
-              <th>Stock Symbol</th>
-              <th>Size</th>
-              <th>Creation Date</th>
-              <th>Order type</th>
-              <th>Side</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let pending of blocks">
-              <td>{{pending.TraderName}}</td>
-              <td>{{pending.StockName}}</td>
-              <td>{{pending.Symbol}}</td>
-              <td>{{pending.Size}}</td>
-              <td>{{pending.Date}}</td>
-              <td>{{pending.OrderType}}</td>
-              <td>{{pending.OrderSide}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+              <th>Order Type</th>
+              <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let b of pendingBlocks;let i=index">
+            <td>{{b.Id}}</td>
+            <td >{{b.BlockStatus}}</td>
+            <td>{{b.Side}}</td>
+            <td>{{b.StocksId}}</td>
+            <td>{{b.Type}}</td>
+            <td><a [routerLink]="['/Trader/PendingBlocks']" ><input type="button" value="Add to this block" class="btn btn-outline-primary" (click)="AddToBlock({{b.Id}})" /></a></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  <div class="row">
-      <div class="col-md-12">
-      <h2 style="text-align: center; margin-top: 50px;">Partial Blocks</h2>
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Trader Name</th>
-                <th>Stock Name</th>
-                <th>Stock Symbol</th>
-                <th>Size</th>
-                <th>Volume Left</th>
-                <th>Creation Date</th>
-                <th>Order type</th>
-                <th>Side</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let partial of blocks">
-                <td>{{partial.TraderName}}</td>
-                <td>{{partial.StockName}}</td>
-                <td>{{partial.Symbol}}</td>
-                <td>{{partial.Size}}</td>
-                <td>{{partial.vol}}</td>
-                <td>{{partial.Date}}</td>
-                <td>{{partial.OrderType}}</td>
-                <td>{{partial.OrderSide}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-</div>
+  

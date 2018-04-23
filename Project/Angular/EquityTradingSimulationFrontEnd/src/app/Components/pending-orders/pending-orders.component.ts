@@ -52,23 +52,16 @@ export class PendingOrdersComponent implements OnInit
 
    blocknew(orderid)
   {
-    sessionStorage.setItem("OrderId",orderid);
-    this.bs.createnewblock(orderid);
-    this.bs.get_pendingblock().subscribe(
-      response => this.pendingblock = response,
+    var response ;
+    this.bs.createnewblock(orderid).subscribe(
+      response => response = response,
       error => console.error(error),
-      () => console.log(this.pendingblock)
-    )
-    
+      () => console.log(console.log(response+ " Hello"))
+    );;
   }
   blockexisting(orderid)
   {
     sessionStorage.setItem("OrderId",orderid);
-    this.bs.get_partialblock().subscribe(
-      response => this.partialblock = response,
-      error => console.error(error),
-      () => console.log(this.partialblock)
-    )
     
   }
 
