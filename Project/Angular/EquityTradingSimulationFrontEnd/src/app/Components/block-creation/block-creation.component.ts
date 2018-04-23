@@ -10,34 +10,31 @@ import { StocksService } from '../../Services/StocksList/stocks.service';
   styleUrls: ['./block-creation.component.css']
 })
 export class BlockCreationComponent implements OnInit {
-
-  order:any[];
-  user:any[];
-  stock:any[];
-  constructor(
-      private blockservice:BlockserviceService,
-      private orderservice:OrderService,
-      private listservice:ListService,
-      private stockservice:StocksService
-    ) { }
+  pendingBlocks=[];
+  OrderId:number;
+  constructor(public blockService:BlockserviceService) {
+    this.getPendingBlocks();
+   }
 
   ngOnInit() {
-   
-     
   }
- getvalue()
- {
-     this.order=this.orderservice.order;
-     this.user=this.listservice.users;
-     this.stock=this.stockservice.StocksList;
-     
- }
-  show()
+ AddtoBlock(BlockId)
   {
-      console.log(this.user);
-      console.log(this.order);
-      console.log(this.stock)
-      
+    this.OrderId= sessionStorage["OrderId"]
+    if(this.OrderId == null)
+      alert("Order not selected please try again")
+    else
+    {
+      this.blockService.AddToBlock(this.OrderId,BlockId);
+      this.getPendingBlocks();
+    }
+  }
+  getPendingBlocks(){
+    this.blockService.get_pendingblock().subscribe(
+      response => this.pendingBlocks= response,
+      error => console.error(error),
+      () => console.log(this.pendingBlocks)
+    );
   }
  
 }

@@ -40,13 +40,49 @@ namespace EquityTradingPlatformApi.Controllers
         [Route("api/Trader/Block")]
         public IHttpActionResult GetTraderPendingBlocks(int userId, string blockStatus)
         {
-            var blocks = from n in db.Blocks
-                         where n.BlockStatus.ToString() == blockStatus
-                         select n;
-
-            return Ok(blocks.ToList());
+            if(blockStatus.Equals("PartialAndPending"))
+            {
+                var blocks = from n in db.Blocks
+                             join m in db.Orders on n.Id equals m.BlockId
+                             where (n.BlockStatus == BlockStatus.Partial
+                             ||
+                             n.BlockStatus == BlockStatus.Pending)
+                             &
+                             m.UserId == userId
+                             select n;
+                return Ok(blocks.ToList());
+            }
+            //var userblocks = from n in db.
+            var userblocks = from n in db.Blocks
+                             join m in db.Orders on n.Id equals m.BlockId
+                             where n.BlockStatus.ToString() == blockStatus & m.UserId == userId
+                             select n;
+            return Ok(userblocks.ToList());
         }
 
+
+        [Route("api/Trader/AddToBlock")]
+        public IHttpActionResult AddtoBlocks(int orderId, int blockId)
+        {
+            var order = db.Orders.Find(orderId);
+            var block = db.Blocks.Find(blockId);
+            if (order.OrderSide == block.Side && order.OrderType == block.Type && order.StocksId == block.StocksId)
+            {
+                order.BlockId = blockId;
+                try
+                {
+                    db.SaveChanges();
+                    return Ok(true);
+                }
+                catch (Exception)
+                {
+                    return Ok(false);
+                }
+            }
+            else
+                return BadRequest();
+
+        }
 
 
 
