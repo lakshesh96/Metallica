@@ -11,8 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AdminloginComponent implements OnInit {
   admin:FormGroup;
-  //url = "http://localhost:52705/api/Users/Login";
-  url = "http://localhost:52705/api/Admin";
+  //url = "http://localhost:52705/api/Admin";
+  url:string = "api/Admin";
   value2:string;
   id:string;
   constructor(private globalService:GlobalService,private route: ActivatedRoute,private router: Router) { }

@@ -16,7 +16,9 @@ export class LoginComponent implements OnInit {
   model: any = {};
     loading = false;
     returnUrl: string;
-    url:string="http://localhost:52705/api/Users/Login";
+    //url:string="http://localhost:52705/api/Users/Login";
+    url:string = "api/Users/Login";
+
     id:number;
   constructor(private globalService:GlobalService,  private route: ActivatedRoute,private router: Router) { }
 UserId = null;
