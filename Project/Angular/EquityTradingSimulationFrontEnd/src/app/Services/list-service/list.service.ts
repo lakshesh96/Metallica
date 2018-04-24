@@ -14,7 +14,7 @@ export class ListService {
   /*url = "http://localhost:52705/api/Users/PutList";
   url1:string="http://localhost:52705/api/Users";*/
 
-  url = "api/Users/PutList";
+  url:string = "api/Users/PutList";
   url1:string="api/Users";
  
   
