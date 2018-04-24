@@ -19,7 +19,7 @@
             <td>{{b.Side}}</td>
             <td>{{b.StocksId}}</td>
             <td>{{b.Type}}</td>
-            <td><a [routerLink]="['/Trader/PendingBlocks']" ><input type="button" value="Add to this block" class="btn btn-outline-primary" (click)="AddToBlock({{b.Id}})" /></a></td>
+            <td><a [routerLink]="['/Trader/PendingBlocks']" ><input type="button" value="Add to this block" class="btn btn-outline-primary" (click)="AddToBlock(b.Id)" /></a></td>
           </tr>
         </tbody>
       </table>

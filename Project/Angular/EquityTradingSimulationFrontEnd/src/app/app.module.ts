@@ -42,7 +42,7 @@ import { AuthGuardService } from './Services/Auth-Guard/auth-guard.service';
 import {AdminAuthGuardService} from './Services/Admin-Auth-Guard/admin-auth-guard.service';
 import {AuthGuardPortfolioService} from './Services/Auth-Guard-PM/auth-guard-portfolio.service';
 import {LoginService} from './Services/login/login.service';
-import {AlertService} from './Services/alert.service';
+//import {AlertService} from './Services/alert.service';
 
 
 import { AdminComponent } from './Components/admin/admin.component';
@@ -103,7 +103,6 @@ import { BlockExComponent } from './Components/block-ex/block-ex.component';
   SellService,
   AdminAuthGuardService,
   AuthGuardPortfolioService,
-  AlertService
   ],
   bootstrap: [AppComponent]
 })

@@ -35,7 +35,7 @@ const AppRoutes:Routes = [
         {path:"Sell/:id",component:SellRequestComponent},
         {path:"",component:CurrentPositionComponent},
         {path:"PendingBlocks",component:BlockExComponent},
-        {path:"AddToBlocks",component:BlockCreationComponent}
+        {path:"AddToBlocks",component:BlockCreationComponent},
         {path:"**",component:LoginComponent},
         ]
      },
