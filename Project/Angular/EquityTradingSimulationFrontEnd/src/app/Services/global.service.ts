@@ -25,32 +25,32 @@ export class GlobalService {
   constructor(private _http:Http) { }
 
   PostMethod(credentials,url):Observable<any>{
-    this._baseUrl = this._baseUrl+url;
+    //this._baseUrl = this._baseUrl+url;
     console.log("At Post Service ->");
     console.log(credentials);
-    return this._http.post(this._baseUrl,credentials).map(this.extractData).catch(this.handleError);
+    return this._http.post(this._baseUrl+url,credentials).map(this.extractData).catch(this.handleError);
   }
 
   GetMethod(url):Observable<any[]>{
-    this._baseUrl = this._baseUrl+url;
-    return this._http.get(this._baseUrl).map(this.extractData).catch(this.handleError);
+    //this._baseUrl = this._baseUrl+url;
+    return this._http.get(this._baseUrl+url).map(this.extractData).catch(this.handleError);
   }
 
   PutMethod(data,url):Observable<any>{
     
-    this._baseUrl = this._baseUrl+url;        
-    return this._http.put(this._baseUrl+"/"+data.id,data).map(this.extractData).catch(this.handleError);
+    //this._baseUrl = this._baseUrl+url;        
+    return this._http.put(this._baseUrl+url+"/"+data.id,data).map(this.extractData).catch(this.handleError);
   }
 
   PutMethodWithUrl(data,url):Observable<any>{
     
-    this._baseUrl = this._baseUrl+url;        
-    return this._http.put(this._baseUrl,data).map(this.extractData).catch(this.handleError);
+    //this._baseUrl = this._baseUrl+url;        
+    return this._http.put(this._baseUrl+url,data).map(this.extractData).catch(this.handleError);
   }
 
   GetWithId(url,id):Observable<any[]>{
-    this._baseUrl = this._baseUrl+url;
-    return this._http.get(this._baseUrl+"/"+id).map(this.extractData).catch(this.handleError);
+    //this._baseUrl = this._baseUrl+url;
+    return this._http.get(this._baseUrl+url+"/"+id).map(this.extractData).catch(this.handleError);
   }
 
   extractData(res:Response){
