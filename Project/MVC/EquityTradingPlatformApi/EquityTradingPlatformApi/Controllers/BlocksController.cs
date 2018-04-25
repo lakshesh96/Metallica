@@ -40,7 +40,7 @@ namespace EquityTradingPlatformApi.Controllers
         [Route("api/Trader/Block")]
         public IHttpActionResult GetTraderPendingBlocks(int userId, string blockStatus)
         {
-            if(blockStatus.Equals("PartialAndPending"))
+            if(blockStatus.Equals("PendingAndPartial"))
             {
                 var blocks = from n in db.Blocks
                              join m in db.Orders on n.Id equals m.BlockId
