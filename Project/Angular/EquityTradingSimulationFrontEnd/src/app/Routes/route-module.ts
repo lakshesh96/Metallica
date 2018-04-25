@@ -24,6 +24,7 @@ import { AddstocksComponent } from '../Components/addstocks/addstocks.component'
 import { BlockExComponent } from '../Components/block-ex/block-ex.component';
 
 const AppRoutes:Routes = [
+	{path:"Register",component:RegisterComponent},
     { path:"Trader", component:TraderComponent,
     children:[
         {path:"Register",component:RegisterComponent},
