@@ -15,7 +15,7 @@ export class GlobalService {
 
   //private _baseUrl:string; // = "http://localhost:60061/api/Admin";
   private _baseUrl:string = "http://equitytrading.azurewebsites.net/";
-
+//private _baseUrl:string = "http://localhost:52705/";
   // login: Login[];
   // admin: Admin[];
   // stock: Stocks[];

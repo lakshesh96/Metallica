@@ -41,6 +41,7 @@ export class BlockserviceService {
     );*/
   }
   get_pendingAndPartialblock(){
+    console.log(this.id);
     return this.gs.GetMethod(this.url+this.id+"&blockStatus=PendingAndPartial");
     /*this.gs.GetMethod(this.url+this.id+"&blockStatus=Pending").subscribe(
       response => this.pendingblock = response,
@@ -54,7 +55,7 @@ export class BlockserviceService {
  {
    console.log("executed");
   this.gs.GetMethod(this.ex_url+exec_id).subscribe(
-    response => this.partialblock = response,
+    response => console.log(response),
     error => console.error(error),
     () => console.log()
   );
