@@ -29,7 +29,14 @@
         <td>{{s.Name}}</td>
         <td>{{s.Symbol}}</td>
         <td>{{s.CurrentPrice}}</td>
-        <td><a [routerLink]="['/Trader/Buy']" >  <button type="button" class="btn btn-warning" (click)="Buy(s)">Buy</button></a></td>
+        <td>
+			<div *ngIf="trader; else pm">
+				<a routerLink="/Trader/Buy"><button type="button" class="btn btn-warning" (click)="Buy(s)">Buy</button></a>
+			</div>
+			<ng-template #pm>
+				<a routerLink="/Portfoliomanager/SelectTrader"><button type="button" class="btn btn-warning" (click)="Buy(s)">Select Trader</button></a>
+			</ng-template>
+		</td>
      
       </tr>
     </tbody>

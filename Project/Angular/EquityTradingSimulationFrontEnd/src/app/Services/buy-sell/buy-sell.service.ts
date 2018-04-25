@@ -18,6 +18,7 @@ export class BuySellService {
   sellorder:CurrentPosition;
 
   GetBuyOrder(o:Stocks){
+	  console.log("Stock Info received for Buy order", o);
     this.buyorder = o;
   }
 

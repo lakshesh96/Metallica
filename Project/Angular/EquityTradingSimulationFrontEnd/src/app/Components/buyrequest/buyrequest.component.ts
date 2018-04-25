@@ -56,7 +56,7 @@ export class BuyrequestComponent implements OnInit {
 							null,null); */
 		console.log(value);
 
-		if(sessionStorage.getItem('traderId')!=null && (sessionStorage.getItem('Type') == "1" || sessionStorage.getItem('Type') == "2")) {
+		if(sessionStorage.getItem('traderId')!=null && (sessionStorage.getItem('Type') == "PortfolioManager")) {
 			value.PMId = +sessionStorage.getItem('UserId');
 			value.UserId = +sessionStorage.getItem('traderId');
 			sessionStorage.removeItem('traderId');

@@ -46,7 +46,7 @@ x:boolean =true;
       console.log(response);
       sessionStorage.setItem("UserId",this.id.toString());
       sessionStorage.setItem("Type",value.Type);
-      console.log(sessionStorage.getItem("UserId"));
+      //console.log(sessionStorage.getItem("UserId"));
     },
     error => {console.error(error);
       this.loading = false;

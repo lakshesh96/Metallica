@@ -50,6 +50,7 @@ import { TraderComponent } from './Components/trader/trader.component';
 import { PortfoliomanagerComponent } from './Components/portfoliomanager/portfoliomanager.component';
 import { AlertComponent } from './Components/alert/alert.component';
 import { BlockExComponent } from './Components/block-ex/block-ex.component';
+import { PmSelectTraderComponent } from './Components/pm-select-trader/pm-select-trader.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { BlockExComponent } from './Components/block-ex/block-ex.component';
     TraderComponent,
     PortfoliomanagerComponent,
     AlertComponent,
-    BlockExComponent
+    BlockExComponent,
+    PmSelectTraderComponent
     
   ],
   imports: [

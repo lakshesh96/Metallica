@@ -44,8 +44,7 @@ const AppRoutes:Routes = [
         {path:"Register",component:RegisterComponent},
         {path:"Login",component:LoginComponent},
        // {path:"Blocks",component:BlockCreationComponent,canActivate: [AuthGuardPortfolioService]},
-        {path:"Add Stock",component:AddstocksComponent,canActivate: [AuthGuardPortfolioService]},
-       
+        {path:"SelectTrader",component:AddstocksComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"Buy",component:BuyrequestComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"CurrentPosition",component:CurrentPositionComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardPortfolioService]},

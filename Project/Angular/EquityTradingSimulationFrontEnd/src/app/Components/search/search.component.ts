@@ -10,41 +10,39 @@ import { BuySellService } from "../../Services/buy-sell/buy-sell.service";
 })
 export class SearchComponent implements OnInit 
 {
-  StockShow:Stocks[]
+	StockShow:Stocks[];
+	
+	// sets search page based on TYPE i.e. trader or pm
+	trader: boolean = (sessionStorage.getItem('Type') == "Trader");
 
-  constructor(private SS:StocksService,private buysellservice:BuySellService) { 
-    // this.StockShow=this.SS.StocksList;
-    // console.log(this.StockShow);
-    this.DemoRefresh();
-  }
+	constructor(private SS: StocksService, private buysellservice: BuySellService) { 
+		this.DemoRefresh();
+	}
 
-  DemoRefresh(){
-    this.SS.GetStocks().subscribe(
-      response => this.StockShow = response,
-      error => console.error(error),
-      () => console.log()
-    );
-  }
+	DemoRefresh() {
+		this.SS.GetStocks().subscribe(
+			response => this.StockShow = response,
+			error => console.error(error),
+			() => console.log()
+		);
+	}
 
-  getStocks(){
-    this.SS.GetStocks().subscribe(
-      response => this.StockShow = response,
-      error => console.error(error),
-      () => this.DemoRefresh()
-    );
+	getStocks() {
+		this.SS.GetStocks().subscribe(
+			response => this.StockShow = response,
+			error => console.error(error),
+			() => this.DemoRefresh()
+		);
+		console.log(this.StockShow);
+	}
 
-   // this.StockShow=this.SS.StocksList;
-    console.log(this.StockShow);
-  }
+	Buy(s) {
+		this.buysellservice.GetBuyOrder(s);
+	}
 
-  Buy(s){
-    this.buysellservice.GetBuyOrder(s);
-  }
-
-  ngOnInit() 
-  {   
-    //this.StockShow=this.SS.StocksList;
-  }
+	ngOnInit() {
+	}
+	  
   sort_stock_Name_ascending()
   {
    this.StockShow.sort((a, b) => a.Name.localeCompare(b.Name));
