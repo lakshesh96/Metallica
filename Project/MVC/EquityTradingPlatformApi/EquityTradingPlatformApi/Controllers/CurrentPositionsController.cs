@@ -51,7 +51,7 @@ namespace EquityTradingPlatformApi.Controllers
         }
 
 
-        // GET CURRENT POSITION FOR USER
+        // GET CURRENT POSITION FOR USER ?userId
         [Route("api/Position/Approved")]
         [HttpGet]
         public IHttpActionResult GetCurrentPositionForUser(int userId)

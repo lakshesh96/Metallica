@@ -15,6 +15,8 @@ export class AdminloginComponent implements OnInit {
   url:string = "api/Admin";
   value2:string;
   id:string;
+  auth:string = "false";
+
   constructor(private globalService:GlobalService,private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
@@ -31,11 +33,18 @@ export class AdminloginComponent implements OnInit {
     //console.log(data);
     this.globalService.PostMethod(value,this.url).subscribe(
       response => {this.id=response.id;
-        console.log(response.response);
+        this.auth = response.response;
+        console.log("1"+this.auth);
         sessionStorage.setItem("AdminLogin",response.response);
         },
       error => console.error(error),
-      () => {this.router.navigateByUrl('Admin/Stocks');},
+      () => {
+        console.log("2"+this.auth);
+        if(this.auth == "true")
+          this.router.navigateByUrl('Admin/Stocks');
+        else
+          console.log("Not Logged in");
+      },
     );
     console.log("I am here");
     console.log(this.value2);
