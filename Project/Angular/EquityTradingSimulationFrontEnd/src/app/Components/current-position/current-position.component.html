@@ -19,9 +19,9 @@
 		<tr class="table-light" *ngFor = "let e of list">
 			<td>{{e.Stock_Name}} ({{e.Symbol}})</td>
 			<td>{{e.Quantity}}</td>
-			<td>{{e.Buying_Price}}</td>
-			<td>{{e.Current_Price}}</td>
-			<td>{{e.Total_Value}}</td>
+			<td>{{e.Buying_Price | number : '1.2-2' }}</td>
+			<td>{{e.Current_Price | number : '1.2-2' }}</td>
+			<td>{{e.Total_Value | number : '1.2-2' }}</td>
 			<td>
 				<a routerLink="/Trader/Sell" >  <button type="button" class="btn btn-warning" (click)="Sell(s)">Sell</button></a>
 			</td>
