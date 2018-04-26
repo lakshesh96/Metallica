@@ -142,7 +142,6 @@ namespace EquityTradingPlatformApi.Controllers
             {
                 return NotFound();
             }
-
             return Ok(currentPosition);
         }
 

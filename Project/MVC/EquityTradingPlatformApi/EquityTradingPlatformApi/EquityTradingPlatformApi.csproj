@@ -241,6 +241,10 @@
     <Compile Include="Migrations\201804121301222_Block Table Update.Designer.cs">
       <DependentUpon>201804121301222_Block Table Update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804261715588_new.cs" />
+    <Compile Include="Migrations\201804261715588_new.Designer.cs">
+      <DependentUpon>201804261715588_new.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Block.cs" />
@@ -354,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804121301222_Block Table Update.resx">
       <DependentUpon>201804121301222_Block Table Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804261715588_new.resx">
+      <DependentUpon>201804261715588_new.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
