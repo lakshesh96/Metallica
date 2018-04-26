@@ -90,14 +90,15 @@ namespace EquityTradingPlatformApi.Controllers
                             currentPos.Symbol = s.Symbol;
                             currentPos.Buying_Price = cp.PriceExecuted;
 
-                            if (o.OrderStatus == OrderStatus.Executed)
-                            {
-                                currentPos.Quantity = o.Quantity;
-                            }
-                            else if (o.OrderStatus == OrderStatus.Partial)
-                            {
-                                currentPos.Quantity = cp.VolumeExecuted;
-                            }
+                            // if (o.OrderStatus == OrderStatus.Executed)
+                            // {
+                            //     currentPos.Quantity = o.Quantity;
+                            // }
+                            // else if (o.OrderStatus == OrderStatus.Partial)
+                            // {
+                            //     currentPos.Quantity = cp.VolumeExecuted;
+                            // }
+							currentPos.Quantity = cp.VolumeExecuted;
 
                             currentPos.StockId = s.Id;
                             currentPos.Current_Price = s.CurrentPrice;
