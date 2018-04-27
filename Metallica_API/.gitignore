@@ -74,8 +74,3 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 .vs/
-*.ldf
-*.mdf
-/Project/MVC/EquityTradingPlatformApi/EquityTradingPlatformApi/App_Data/EquityTradingPlatformApi.Models.ProjectContext.mdf
-
-
