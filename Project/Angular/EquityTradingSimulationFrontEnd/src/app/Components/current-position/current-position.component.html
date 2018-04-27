@@ -1,35 +1,30 @@
 
-<div class="d1">
-    <h1> Current position</h1>
-<div class="d2">
-  <button style="margin-left:5px" class="btn btn-secondary my-2 my-sm-0" type="button" (click)="getPosition()">Get Current Position</button>         
-  <table class="table table-hover">
-    <thead>
-     <tr class="table-danger">
-      <th scope="col">Trader_Name</th>
-      <th scope="col">Stock_Name</th>
-      <th scope="col">Symbol</th>
-      <th scope="col">Volume_Brought</th>
-      <th scope="col">Buying Price</th>
-      <th scope="col">Current Price</th>
-      <th scope="col">Total Value</th>
-      <th scope="col">Action</th>
-      </tr>
-    </thead>
-    <tbody>     
-    <tr  class="table-light" *ngFor = "let e of list">
-      <td>{{e.Trader_Name}}</td>
-      <td>{{e.Stock_Name}}</td>
-      <td>{{e.Symbol}}</td>
-      <td>{{e.Quantity}}</td>
-      <td>{{e.Buying_Price}}</td>
-      <td>{{e.Current_Price}}</td>
-      <td>{{e.Total_Value}}</td>
-      <td>
-        <a [routerLink]="['/Trader/Sell']" >  <button type="button" class="btn btn-warning" (click)="Sell(s)">Sell</button></a>
-      </td>
-    </tr> 
-  </tbody>
-  </table> 
-  </div>
-  </div>
+
+<h1>Current Position</h1>
+
+<button class="btn btn-secondary" (click)="getPosition()">Get Current Position</button>        
+
+<table class="table table-hover">
+	<thead>
+		<tr class="table-danger">
+			<th>Stock (Symbol)</th>
+			<th>Volume Bought</th>
+			<th>Buying Price</th>
+			<th>Current Price</th>
+			<th>Total Value</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>     
+		<tr class="table-light" *ngFor = "let e of list">
+			<td>{{e.Stock_Name}} ({{e.Symbol}})</td>
+			<td>{{e.Quantity}}</td>
+			<td>{{e.Buying_Price | number : '1.2-2' }}</td>
+			<td>{{e.Current_Price | number : '1.2-2' }}</td>
+			<td>{{e.Total_Value | number : '1.2-2' }}</td>
+			<td>
+				<a routerLink="/Trader/Sell" >  <button type="button" class="btn btn-warning" (click)="Sell(s)">Sell</button></a>
+			</td>
+		</tr> 
+	</tbody>
+</table> 

@@ -4,7 +4,10 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class OrderService {
   order:any[];
-  private url:string="http://localhost:52705/api/Orders";
+  //private url:string="http://localhost:52705/api/Orders";
+  
+  private url:string="api/Orders";  
+
   constructor(private gs:GlobalService) { 
     this.get_orderdata();
   }

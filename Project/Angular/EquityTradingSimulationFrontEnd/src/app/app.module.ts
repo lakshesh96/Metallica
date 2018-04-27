@@ -42,7 +42,6 @@ import { AuthGuardService } from './Services/Auth-Guard/auth-guard.service';
 import {AdminAuthGuardService} from './Services/Admin-Auth-Guard/admin-auth-guard.service';
 import {AuthGuardPortfolioService} from './Services/Auth-Guard-PM/auth-guard-portfolio.service';
 import {LoginService} from './Services/login/login.service';
-import {AlertService} from './Services/alert.service';
 
 
 import { AdminComponent } from './Components/admin/admin.component';
@@ -51,6 +50,7 @@ import { TraderComponent } from './Components/trader/trader.component';
 import { PortfoliomanagerComponent } from './Components/portfoliomanager/portfoliomanager.component';
 import { AlertComponent } from './Components/alert/alert.component';
 import { BlockExComponent } from './Components/block-ex/block-ex.component';
+import { PmSelectTraderComponent } from './Components/pm-select-trader/pm-select-trader.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +72,8 @@ import { BlockExComponent } from './Components/block-ex/block-ex.component';
     TraderComponent,
     PortfoliomanagerComponent,
     AlertComponent,
-    BlockExComponent
+    BlockExComponent,
+    PmSelectTraderComponent
     
   ],
   imports: [
@@ -102,8 +103,7 @@ import { BlockExComponent } from './Components/block-ex/block-ex.component';
 	BuyService,
   SellService,
   AdminAuthGuardService,
-  AuthGuardPortfolioService,
-  AlertService
+  AuthGuardPortfolioService
   ],
   bootstrap: [AppComponent]
 })

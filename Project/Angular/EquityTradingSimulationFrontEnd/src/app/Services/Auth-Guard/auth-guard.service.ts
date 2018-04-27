@@ -7,7 +7,7 @@ export class AuthGuardService implements CanActivate {
     constructor(private router: Router) { }
  
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (sessionStorage.getItem('UserId')) {
+        if (sessionStorage.getItem('UserId') && sessionStorage.getItem('Type') == 'Trader') {
             return true;
         }
  

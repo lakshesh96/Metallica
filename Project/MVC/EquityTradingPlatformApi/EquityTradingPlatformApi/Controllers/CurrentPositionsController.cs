@@ -51,7 +51,7 @@ namespace EquityTradingPlatformApi.Controllers
         }
 
 
-        // GET CURRENT POSITION FOR USER
+        // GET CURRENT POSITION FOR USER ?userId
         [Route("api/Position/Approved")]
         [HttpGet]
         public IHttpActionResult GetCurrentPositionForUser(int userId)
@@ -90,14 +90,15 @@ namespace EquityTradingPlatformApi.Controllers
                             currentPos.Symbol = s.Symbol;
                             currentPos.Buying_Price = cp.PriceExecuted;
 
-                            if (o.OrderStatus == OrderStatus.Executed)
-                            {
-                                currentPos.Quantity = o.Quantity;
-                            }
-                            else if (o.OrderStatus == OrderStatus.Partial)
-                            {
-                                currentPos.Quantity = cp.VolumeExecuted;
-                            }
+                            // if (o.OrderStatus == OrderStatus.Executed)
+                            // {
+                            //     currentPos.Quantity = o.Quantity;
+                            // }
+                            // else if (o.OrderStatus == OrderStatus.Partial)
+                            // {
+                            //     currentPos.Quantity = cp.VolumeExecuted;
+                            // }
+							currentPos.Quantity = cp.VolumeExecuted;
 
                             currentPos.StockId = s.Id;
                             currentPos.Current_Price = s.CurrentPrice;
@@ -142,7 +143,6 @@ namespace EquityTradingPlatformApi.Controllers
             {
                 return NotFound();
             }
-
             return Ok(currentPosition);
         }
 

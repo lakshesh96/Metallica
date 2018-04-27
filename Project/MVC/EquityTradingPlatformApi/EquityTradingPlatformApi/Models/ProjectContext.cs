@@ -19,5 +19,6 @@ namespace EquityTradingPlatformApi.Models
         public DbSet<User> Users { get; set; }
         public DbSet<CurrentPosition> CurrentPositions { get; set; }
         public DbSet<Stocks> Stocks { get; set; }
+        public DbSet<TransactionHistory> TransactionHistory { get; set; }
     }
 }

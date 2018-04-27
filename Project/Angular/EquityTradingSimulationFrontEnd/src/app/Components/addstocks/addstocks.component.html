@@ -16,8 +16,8 @@
         <tbody> 
           <tr *ngFor="let t of trader">
             <td>{{t.Name}}</td>
-            <td><a class="nav-link" routerLink="Search">
-              <input type="button" class="btn btn-outline-primary" value="Add Stocks" (click)=send(t.Id) />
+            <td><a class="nav-link" routerLink="/Portfoliomanager/Buy">
+              <input type="button" class="btn btn-outline-primary" value="Create Buy Order" (click)=send(t.Id) />
             </a></td>
             
           </tr>

@@ -23,7 +23,8 @@
             <th scope="col">OrderStatus</th>
             <th scope="col">Action</th>
             <div [hidden]="usertype">
-            <th scope="col">Create Block / Add to Existing </th>
+            <th scope="col">Create Block </th>
+            <th scope = "col">Add to Existing</th>
             </div>
           </tr>
         </thead>
@@ -41,60 +42,15 @@
                 side.value=l.OrderSide;type.value=l.OrderType;quantity.value=l.Quantity;limit.value=l.LimitPrice;stop.value=l.StopPrice;date.value=l.DateAdded;
                 status.value=l.OrderStatus; ToggleTextboxes(type.value); divhide=false;"/></td>
                 <div [hidden]="usertype">
-             <td><input type="button" class="btn btn-outline-primary" style="margin-top: 2px" value="Create Block" (click)="blocknew(l.Id);pending=false" />
-             <input type="button" class="btn btn-outline-primary" style="margin-top: 2px" value="Add to Existing Block" (click)="blockexisting(l.Id);partial=false" /></td>
+                  <td><a [routerLink]="['/Trader/PendingBlocks']" >  <button type="button" class="btn btn-outline-primary" style="margin-top: 2px" (click)="blocknew(l.Id);pending=false">Add to New</button></a></td> 
+                  <td><a [routerLink]="['/Trader/AddToBlocks']" >  <button type="button" class="btn btn-outline-primary" style="margin-top: 2px" (click)="blockexisting(l.Id);partial=false">Add to Existing</button></a> </td>
                 </div>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-  <div class="row" [hidden]="pending">
-      <h3>Pending/Partial Blocks</h3>
-      <div class="table-responsive">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-                <th>Block Status</th>
-                <th>Block Side</th>
-                <th>Stock Name</th>
-                <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let b of pendingblock;let i=index">
-              <td>{{b.BlockStatus}}</td>
-              <td>{{b.Side}}</td>
-              <td>{{b.StockName}}</td>
-              <td><input type="button" value="Execute" class="btn btn-outline-primary" (click)="executepending(b.Id)" /></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="row" [hidden]="partial">
-        <h3>Partial Blocks</h3>
-        <div class="table-responsive">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                  <th>Block Status</th>
-                  <th>Block Side</th>
-                  <th>Stock Name</th>
-                  <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let b of partialblock;let i=index">
-                <td>{{b.BlockStatus}}</td>
-                <td>{{b.Side}}</td>
-                <td>{{b.StockName}}</td>
-                <td><input type="button" value="Execute" class="btn btn-outline-primary" (click)="executepartial(b.Id)" /></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+  
   <br>
   <div  class="col-md-12 col-sm-12" [hidden]="divhide">
     <h3 class="jumbotron" style="text-align: center">Modify Order</h3>

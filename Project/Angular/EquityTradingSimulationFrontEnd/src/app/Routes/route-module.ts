@@ -21,8 +21,10 @@ import { AuthGuardService } from '../Services/Auth-Guard/auth-guard.service';
 import {AdminAuthGuardService} from '../Services/Admin-Auth-Guard/admin-auth-guard.service';
 import {AuthGuardPortfolioService} from '../Services/Auth-Guard-PM/auth-guard-portfolio.service';
 import { AddstocksComponent } from '../Components/addstocks/addstocks.component';
+import { BlockExComponent } from '../Components/block-ex/block-ex.component';
 
 const AppRoutes:Routes = [
+	{path:"Register",component:RegisterComponent},
     { path:"Trader", component:TraderComponent,
     children:[
         {path:"Register",component:RegisterComponent},
@@ -33,6 +35,8 @@ const AppRoutes:Routes = [
         {path:"Search" ,component:SearchComponent,canActivate: [AuthGuardService]},
         {path:"Sell/:id",component:SellRequestComponent},
         {path:"",component:CurrentPositionComponent},
+        {path:"PendingBlocks",component:BlockExComponent},
+        {path:"AddToBlocks",component:BlockCreationComponent},
         {path:"**",component:LoginComponent},
         ]
      },
@@ -41,8 +45,7 @@ const AppRoutes:Routes = [
         {path:"Register",component:RegisterComponent},
         {path:"Login",component:LoginComponent},
        // {path:"Blocks",component:BlockCreationComponent,canActivate: [AuthGuardPortfolioService]},
-        {path:"Add Stock",component:AddstocksComponent,canActivate: [AuthGuardPortfolioService]},
-       
+        {path:"SelectTrader",component:AddstocksComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"Buy",component:BuyrequestComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"CurrentPosition",component:CurrentPositionComponent,canActivate: [AuthGuardPortfolioService]},
         {path:"PendingOrders",component:PendingOrdersComponent,canActivate: [AuthGuardPortfolioService]},

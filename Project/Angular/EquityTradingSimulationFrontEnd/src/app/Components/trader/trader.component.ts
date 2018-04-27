@@ -15,7 +15,7 @@ x:boolean=true;
    
     if(this.UserId)
     {
-      this.x=!this.x;
+      this.x=false;
      }
     
   }

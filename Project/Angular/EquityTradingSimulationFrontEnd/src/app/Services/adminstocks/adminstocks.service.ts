@@ -8,8 +8,11 @@ import { GlobalService } from "../global.service";
 @Injectable()
 export class AdminstocksService {
 
-  private _baseUrl: string = "http://localhost:52705/api/Stocks/PutList";
-  private _baseUrl1: string = "http://localhost:52705/api/Stocks";
+  /*private _baseUrl: string = "http://localhost:52705/api/Stocks/PutList";
+  private _baseUrl1: string = "http://localhost:52705/api/Stocks";*/
+
+  private Url: string = "api/Stocks/PutList";
+  private Url1: string = "api/Stocks";
 
   stocks:any;
 
@@ -18,13 +21,13 @@ export class AdminstocksService {
 
   getStocks()
   {
-      this.globalService.GetMethod(this._baseUrl1).subscribe
+      this.globalService.GetMethod(this.Url1).subscribe
           (response => this.stocks = response,
           error => console.error(error),
           () => { console.info()}
           //() => { console.info(this.stocks)}
       ); 
-      return this.globalService.GetMethod(this._baseUrl1);
+      return this.globalService.GetMethod(this.Url1);
   }
   
 
@@ -38,6 +41,6 @@ export class AdminstocksService {
         () => this.getStocks()
     );
     //console.info("AddStocks Service wala: "+r); */
-    return this.globalService.PostMethod(r,this._baseUrl);
+    return this.globalService.PostMethod(r,this.Url);
   }
 }

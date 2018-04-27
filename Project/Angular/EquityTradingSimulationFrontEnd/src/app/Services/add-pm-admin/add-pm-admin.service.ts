@@ -9,10 +9,15 @@ import {User  } from "../../Models/user";
 @Injectable()
 export class AddPmAdminService {
 
-  private _baseUrl: string = "http://localhost:52705/api/Users/PutList";
+  /*private _baseUrl: string = "http://localhost:52705/api/Users/PutList";
   private _baseUrl1: string = "http://localhost:52705/api/PM/Approved";
   private _baseUrl2: string = "http://localhost:52705/api/PM/Unapproved";
-  private _baseUrl3: string = "http://localhost:52705/api/Users/Approve?id=";
+  private _baseUrl3: string = "http://localhost:52705/api/Users/Approve?id=";*/
+
+  private Url:string = "api/Users/PutList";
+  private Url1:string = "api/PM/Approved";
+  private Url2:string = "api/PM/Unapproved";
+  private Url3:string = "api/Users/Approve?id=";
 
   pms:any;
 
@@ -26,7 +31,7 @@ export class AddPmAdminService {
           error => console.error(error),
           () => { console.info(this.pms)}
       );  */
-      return this.globalService.GetMethod(this._baseUrl1);
+      return this.globalService.GetMethod(this.Url1);
   }
 
   getPMUnapproved()
@@ -36,7 +41,7 @@ export class AddPmAdminService {
           error => console.error(error),
           () => { console.info(this.pms)}
       );  */
-      return this.globalService.GetMethod(this._baseUrl2);
+      return this.globalService.GetMethod(this.Url2);
     }
   
 
@@ -51,7 +56,7 @@ export class AddPmAdminService {
     );
     console.info(r); */
 
-    return this.globalService.PostMethod(r,this._baseUrl);
+    return this.globalService.PostMethod(r,this.Url);
   }
 
   TogglePM(r:User){
@@ -63,7 +68,7 @@ export class AddPmAdminService {
      );
      console.info(r); */
 
-     return this.globalService.PostMethod(r,this._baseUrl3+r.Id);
+     return this.globalService.PostMethod(r,this.Url3+r.Id);
    }
 
 

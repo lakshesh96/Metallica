@@ -15,12 +15,13 @@ export class PortfoliomanagerComponent implements OnInit {
    
     if(this.UserId)
     {
-      this.x=!this.x;
+      this.x=false;
      }
   }
   Show()
   {
-    sessionStorage.removeItem("UserId");
+	sessionStorage.removeItem("UserId");
+	sessionStorage.removeItem("Type");
     this.x=!this.x;
   }
 }
