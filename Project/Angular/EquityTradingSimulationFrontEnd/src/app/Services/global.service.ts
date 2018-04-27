@@ -14,6 +14,7 @@ import 'rxjs/add/operator/catch';
 export class GlobalService {
 
   private _baseUrl:string; // = "http://localhost:60061/api/Admin";
+  private AzureUrl = "http://equitytrading.azurewebsites.net/";
 
   // login: Login[];
   // admin: Admin[];
