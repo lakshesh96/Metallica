@@ -3,7 +3,7 @@ namespace Metallica.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -11,7 +11,7 @@ namespace Metallica.Migrations
                 "dbo.Commodities",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
                         Name = c.String(nullable: false),
                         Code = c.String(nullable: false),
                         CurrentPrice = c.Double(nullable: false),
@@ -22,7 +22,7 @@ namespace Metallica.Migrations
                 "dbo.CounterParties",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
                         Name = c.String(nullable: false),
                         Code = c.String(nullable: false),
                     })
@@ -32,7 +32,7 @@ namespace Metallica.Migrations
                 "dbo.Locations",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
                         Name = c.String(nullable: false),
                         Code = c.String(nullable: false),
                     })
@@ -42,7 +42,7 @@ namespace Metallica.Migrations
                 "dbo.Trades",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
                         Side = c.Int(nullable: false),
                         Status = c.Int(nullable: false),
                         UserId = c.Int(nullable: false),
@@ -52,22 +52,26 @@ namespace Metallica.Migrations
                         Price = c.Double(nullable: false),
                         Date = c.DateTime(nullable: false),
                         Quantity = c.Int(nullable: false),
+                        commodity_Id = c.Guid(),
+                        counterParty_Id = c.Guid(),
+                        location_Id = c.Guid(),
+                        user_Id = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Commodities", t => t.CommodityId, cascadeDelete: true)
-                .ForeignKey("dbo.CounterParties", t => t.CounterPartyId, cascadeDelete: true)
-                .ForeignKey("dbo.Locations", t => t.LocationId, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.CommodityId)
-                .Index(t => t.CounterPartyId)
-                .Index(t => t.LocationId);
+                .ForeignKey("dbo.Commodities", t => t.commodity_Id)
+                .ForeignKey("dbo.CounterParties", t => t.counterParty_Id)
+                .ForeignKey("dbo.Locations", t => t.location_Id)
+                .ForeignKey("dbo.Users", t => t.user_Id)
+                .Index(t => t.commodity_Id)
+                .Index(t => t.counterParty_Id)
+                .Index(t => t.location_Id)
+                .Index(t => t.user_Id);
             
             CreateTable(
                 "dbo.Users",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false, identity: true, defaultValueSql: "newsequentialid()"),
                         UserName = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
@@ -76,14 +80,14 @@ namespace Metallica.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Trades", "UserId", "dbo.Users");
-            DropForeignKey("dbo.Trades", "LocationId", "dbo.Locations");
-            DropForeignKey("dbo.Trades", "CounterPartyId", "dbo.CounterParties");
-            DropForeignKey("dbo.Trades", "CommodityId", "dbo.Commodities");
-            DropIndex("dbo.Trades", new[] { "LocationId" });
-            DropIndex("dbo.Trades", new[] { "CounterPartyId" });
-            DropIndex("dbo.Trades", new[] { "CommodityId" });
-            DropIndex("dbo.Trades", new[] { "UserId" });
+            DropForeignKey("dbo.Trades", "user_Id", "dbo.Users");
+            DropForeignKey("dbo.Trades", "location_Id", "dbo.Locations");
+            DropForeignKey("dbo.Trades", "counterParty_Id", "dbo.CounterParties");
+            DropForeignKey("dbo.Trades", "commodity_Id", "dbo.Commodities");
+            DropIndex("dbo.Trades", new[] { "user_Id" });
+            DropIndex("dbo.Trades", new[] { "location_Id" });
+            DropIndex("dbo.Trades", new[] { "counterParty_Id" });
+            DropIndex("dbo.Trades", new[] { "commodity_Id" });
             DropTable("dbo.Users");
             DropTable("dbo.Trades");
             DropTable("dbo.Locations");

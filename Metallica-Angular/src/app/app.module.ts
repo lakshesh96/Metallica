@@ -6,7 +6,7 @@ import {
   GoogleLoginProvider
 } from "angular5-social-login";
 
-
+// Import Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
 export function getAuthServiceConfigs() {
@@ -20,18 +20,30 @@ export function getAuthServiceConfigs() {
     )
   return config;
 }
+import { AddTradeComponent } from './components/add-trade/add-trade.component';
+import { EditTradeComponent } from './components/edit-trade/edit-trade.component';
+import { TradeDetailsComponent } from './components/trade-details/trade-details.component';
+
+// Import Services
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    SocialLoginModule
-  ],
-  providers: [{provide: AuthServiceConfig,
-    useFactory: getAuthServiceConfigs}],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		AddTradeComponent,
+		EditTradeComponent,
+        TradeDetailsComponent,
+        LoginComponent
+	],
+	imports: [
+        BrowserModule,
+        SocialLoginModule
+	],
+    providers: [{
+        provide: AuthServiceConfig,
+        useFactory: getAuthServiceConfigs
+    }],
+	bootstrap: [
+		AppComponent
+	]
 })
 export class AppModule { }
