@@ -1,24 +1,19 @@
-<nav class="navbar navbar-inverse">
-	<div class="container">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Metallica</a>
-		</div>
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="#">Trades</a></li>
-			<li><a href="#">Transfers</a></li>
-			<li><a href="#">Transport</a></li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-		</ul>
-	</div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	<a class="navbar-brand" href="#">Metallica</a>
+	<ul class="navbar-nav mr-auto">
+		<li class="nav-item"><a class="nav-link active" href="#">Trades</a></li>
+		<li class="nav-item"><a class="nav-link" href="#">Transfers</a></li>
+		<li class="nav-item"><a class="nav-link" href="#">Transports</a></li>
+	</ul>
+	<ul class="navbar-nav">
+		<li class="nav-item"><a class="nav-link" href="#">UserName</a></li>
+	</ul>
 </nav>
 
 <div class="container">
 	
-	<div class="row" style="background-color: aqua">
-		Price Ticker
-	</div>
+	<app-price-ticker></app-price-ticker>
+	
 
 	<div class="row" style="background-color: cadetblue">
 		Search
