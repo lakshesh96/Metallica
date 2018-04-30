@@ -10,7 +10,7 @@ namespace Metallica.Models
     public class Commodity
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] 
         public Guid Id { get; set; }
 
         [Required]
@@ -24,5 +24,7 @@ namespace Metallica.Models
         [Required]
         [Range(0,double.MaxValue,ErrorMessage ="Out Of Range")]
         public double CurrentPrice { get; set; }
+
+
     }
 }
