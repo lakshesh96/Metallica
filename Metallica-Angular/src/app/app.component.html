@@ -14,17 +14,29 @@
 	</div>
 </nav>
 
-
 <div class="container">
 	<div class="row" style="background-color: aqua"> Price Ticker </div>
 
 	<div class="row" style="background-color: cadetblue"> Search </div>
 
 	<div class="row" style="background-color: cornflowerblue">
-		<div class="col-lg-8" style="background-color: rgb(196, 222, 135)">
-			<app-trade-table></app-trade-table> 
-			<img style="float: right;" src="../assets/add.png" />
+        <div class="col-lg-8" style="background-color: burlywood">
+           
+            <app-trade-table></app-trade-table>
+            <img style="float: right;" src="../assets/add.png" />
+        </div>
+		<div class="col-lg-4" style="background-color: aqua" [hidden]= "hideAddTrade">
+			Add Trade
+			<app-add-trade></app-add-trade>
 		</div>
-		<div class="col-lg-4" style="background-color: aqua"> Details/Insert/Update </div>
+		<div class="col-lg-4" style="background-color: aqua" [hidden]= "hideEditTrade">
+			Edit Trade
+			<app-edit-trade></app-edit-trade>
+		</div>
+		<div class="col-lg-4" style="background-color: aqua" [hidden]= "hideTradeDetails">
+			Trade Details
+			<app-trade-details></app-trade-details>
+		</div>
 	</div>
+
 </div>
