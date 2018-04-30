@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
 	<div class="container">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="#">Metallica</a>
@@ -15,19 +15,16 @@
 </nav>
 
 <div class="container">
-	
-	<div class="row" style="background-color: aqua">
-		Price Ticker
-	</div>
+	<div class="row" style="background-color: aqua"> Price Ticker </div>
 
-	<div class="row" style="background-color: cadetblue">
-		Search
-	</div>
+	<div class="row" style="background-color: cadetblue"> Search </div>
 
 	<div class="row" style="background-color: cornflowerblue">
-		<div class="col-lg-8" style="background-color: burlywood">
-			Table
-		</div>
+        <div class="col-lg-8" style="background-color: burlywood">
+           
+            <app-trade-table></app-trade-table>
+            <img style="float: right;" src="../assets/add.png" />
+        </div>
 		<div class="col-lg-4" style="background-color: aqua" [hidden]= "hideAddTrade">
 			Add Trade
 			<app-add-trade></app-add-trade>
