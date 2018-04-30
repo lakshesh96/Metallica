@@ -8,6 +8,10 @@ namespace Metallica.Models
 {
     public class MetallicaContext:DbContext
     {
+        public MetallicaContext():base("Metallica")
+        {
+
+        }
         public DbSet<Commodity> Commodities { get; set; }
         public DbSet<CounterParty> CounterParties { get; set; }
         public DbSet<Location> Locations { get; set; }
