@@ -9,8 +9,8 @@ namespace Metallica.MQueue
 {
     public class TradeMQueue
     {
-        private string TradeQueueName = @".\Private$\Trade";
-        private Boolean SendMessage(Trade trade)
+        private string TradeQueueName = @".\Private$\GenericTrade";
+        private Boolean SendMessage(GenericTrade<Trade> trade)
             {
                 MessageQueue messageQueue = null;
                 if (!MessageQueue.Exists(TradeQueueName))
@@ -19,7 +19,7 @@ namespace Metallica.MQueue
                     messageQueue = new MessageQueue(TradeQueueName);
                 try
                 {
-                    messageQueue.Formatter = new XmlMessageFormatter(new Type[] { typeof(Trade) });
+                    messageQueue.Formatter = new XmlMessageFormatter(new Type[] { typeof(GenericTrade<Trade>) });
                     messageQueue.Send(trade);
                 }
                 catch
@@ -34,18 +34,20 @@ namespace Metallica.MQueue
             }
 
 
-            private Trade ReceiveMessage()
+            private GenericTrade<Trade> ReceiveMessage()
             {
                 if (!MessageQueue.Exists(TradeQueueName))
                     return null;
                 MessageQueue messageQueue = new MessageQueue(TradeQueueName);
-                Trade trade = null;
+                GenericTrade<Trade> trade = null;
                 try
                 {
-                    messageQueue.Formatter = new XmlMessageFormatter(new Type[] { typeof(Trade) });
-                    trade = (Trade)messageQueue.Receive().Body;
+                    messageQueue.Formatter = new XmlMessageFormatter(new Type[] { typeof(GenericTrade<Trade>) });
+                    trade = (GenericTrade<Trade>)messageQueue.Receive().Body;
                 }
-                catch { }
+                catch {
+                    return null;
+                }
                 finally
                 {
                     messageQueue.Close();
