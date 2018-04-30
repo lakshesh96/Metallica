@@ -28,8 +28,17 @@
 		<div class="col-lg-8" style="background-color: burlywood">
 			Table
 		</div>
-		<div class="col-lg-4" style="background-color: aqua">
-			Details/Insert/Update
+		<div class="col-lg-4" style="background-color: aqua" [hidden]= "hideAddTrade">
+			Add Trade
+			<app-add-trade></app-add-trade>
+		</div>
+		<div class="col-lg-4" style="background-color: aqua" [hidden]= "hideEditTrade">
+			Edit Trade
+			<app-edit-trade></app-edit-trade>
+		</div>
+		<div class="col-lg-4" style="background-color: aqua" [hidden]= "hideTradeDetails">
+			Trade Details
+			<app-trade-details></app-trade-details>
 		</div>
 	</div>
 
