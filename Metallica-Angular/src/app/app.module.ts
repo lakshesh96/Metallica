@@ -33,6 +33,7 @@ import { PriceTickerComponent } from './Components/price-ticker/price-ticker.com
 		AddTradeComponent,
 		EditTradeComponent,
         TradeDetailsComponent,
+        TradeTableComponent,
         LoginComponent,
         PriceTickerComponent
 	],
