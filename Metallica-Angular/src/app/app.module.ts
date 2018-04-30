@@ -25,6 +25,7 @@ import { EditTradeComponent } from './components/edit-trade/edit-trade.component
 import { TradeDetailsComponent } from './components/trade-details/trade-details.component';
 import { PriceTickerComponent } from './Components/price-ticker/price-ticker.component';
 
+
 // Import Services
 
 @NgModule({
