@@ -22,7 +22,7 @@ namespace Metallica.MQueue
                     messageQueue.Formatter = new XmlMessageFormatter(new Type[] { typeof(GenericTrade<Trade>) });
                     messageQueue.Send(trade);
                 }
-                catch
+                catch (Exception e)
                 {
                     return false;
                 }

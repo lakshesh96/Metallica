@@ -66,20 +66,23 @@ namespace Metallica.Models
         {
             tickerQueue.SendMessage(commodity);
         }
-        public void AddTradeNotification(Trade trade)
+        public void AddNotification(Trade trade)
         {
             GenericTrade<Trade> genericTrade = new GenericTrade<Trade>("Trade Added", trade);
             tradeQueue.SendMessage(genericTrade);
+            ChangePrice(trade, TypeOfFunction.Add);
         }
-        public void UpdateTradeNotification(Trade trade)
+        public void UpdateNotification(Trade trade)
         {
             GenericTrade<Trade> genericTrade = new GenericTrade<Trade>("Trade Updated", trade);
             tradeQueue.SendMessage(genericTrade);
+            ChangePrice(trade, TypeOfFunction.Update);
         }
-        public void DeleteTradeNotification(Trade trade)
+        public void DeleteNotification(Trade trade)
         {
             GenericTrade<Trade> genericTrade = new GenericTrade<Trade>("Trade Deleted", trade);
             tradeQueue.SendMessage(genericTrade);
+            ChangePrice(trade, TypeOfFunction.Delete);
         }
     }
 }
