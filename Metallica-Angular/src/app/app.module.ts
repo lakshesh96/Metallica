@@ -35,6 +35,7 @@ import { TradeFormModel } from './Models/trade-form';
 // Import Services
 import { GlobalService } from './Services/GlobalService/global.service';
 import { PriceTickerService } from './Services/PriceTickerService/price-ticker.service';
+import { MainComponent } from './Components/main/main.component';
 
 @NgModule({
 	declarations: [
@@ -45,7 +46,8 @@ import { PriceTickerService } from './Services/PriceTickerService/price-ticker.s
         TradeTableComponent,
         LoginComponent,
         PriceTickerComponent,
-        LoginOauthComponent
+        LoginOauthComponent,
+        MainComponent
 	],
 	imports: [
         BrowserModule,
