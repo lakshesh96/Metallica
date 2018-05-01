@@ -1,5 +1,6 @@
+<form></form>
 <div class="row border p-2 mt-2 shadow-sm bg-white">
-	
+
 	<div class="col-lg-2">
 		Trade Date
 		<angular2-date-picker [(ngModel)]="dateFrom" [settings]="settings" (onDateSelect)="onDateSelect($event)">
@@ -12,7 +13,7 @@
 		Commodity
 		<br />
 		<select>
-			<option *ngFor="let e of commodity" value="e">{{e}}</option>
+			<option *ngFor="let e of commodity" value="e.Id">{{e.Name}}</option>
 		</select>
 	</div>
 
@@ -30,7 +31,7 @@
 		Counterparty
 		<br />
 		<select>
-			<option *ngFor="let e of commodity" value="e">{{e}}</option>
+			<option *ngFor="let e of location" value="e.Id">{{e.Name}}</option>
 		</select>
 	</div>
 
@@ -38,7 +39,7 @@
 		Location
 		<br />
 		<select>
-			<option *ngFor="let e of commodity" value="e">{{e}}</option>
+			<option *ngFor="let e of counterParty" value="e.Id">{{e.Name}}</option>
 		</select>
 	</div>
 

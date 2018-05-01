@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { GlobalService } from './Services/GlobalService/global.service';
-
-export var referenceData;
 
 @Component({
 	selector: 'app-root',
@@ -23,6 +20,4 @@ export class AppComponent {
 	openPanel() {
 		this.hideRightBar = !this.hideRightBar;
 	}
-
-	constructor(public globalService: GlobalService) { }
 }

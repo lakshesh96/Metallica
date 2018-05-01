@@ -36,6 +36,7 @@ import { TradeFormModel } from './Models/trade-form';
 // Import Services
 import { GlobalService } from './Services/GlobalService/global.service';
 import { PriceTickerService } from './Services/PriceTickerService/price-ticker.service';
+import { ReferenceDataService } from './Services/ReferenceData/reference-data.service';
 import { SearchComponent } from './Components/search/search.component';
 
 @NgModule({
@@ -67,7 +68,8 @@ import { SearchComponent } from './Components/search/search.component';
 		}, 
 		TradeOperationService,
 		TradeTableService,
-		PriceTickerService
+		PriceTickerService,
+		ReferenceDataService
 	],
 	bootstrap: [
 		AppComponent

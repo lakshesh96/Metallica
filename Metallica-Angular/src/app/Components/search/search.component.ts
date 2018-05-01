@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ReferenceDataService } from '../../Services/ReferenceData/reference-data.service';
 
 @Component({
   selector: 'app-search',
@@ -8,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-	commodity: string[] = ["akul", "ishan", "rohan"];
+	commodity: any[];
+	location: any[];
+	counterParty: any[];
 
 	dateFrom: Date = new Date();
 	dateTo: Date = new Date();
@@ -21,7 +23,10 @@ export class SearchComponent implements OnInit {
 		closeOnSelect: true
     }
 	
-	constructor() { }
+	constructor(public referenceDataService: ReferenceDataService) { 
+		// this.commodity = referenceDataService.getReferenceData("Commodities");
+		// console.log("Search Commodity:", this.commodity);
+	}
 
 	ngOnInit() { }
 
