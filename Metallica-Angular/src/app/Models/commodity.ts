@@ -3,5 +3,6 @@ export class Commodity {
 	Name: string;
 	Code: string;
 	CurrentPrice: number;
+	Increase: boolean = true;
 	BasePrice: number;
 }

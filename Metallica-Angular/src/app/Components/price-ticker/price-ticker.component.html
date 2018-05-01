@@ -2,6 +2,10 @@
 	<div class="col" *ngFor="let e of commodityList">
 		<span class="border-bottom">{{e.Name}}</span>
 		<br />
-		<span>{{e.CurrentPrice}}</span>
+		<span>
+			{{e.CurrentPrice}}
+			<i class="fas fa-chevron-up" style="color: #0fbf0f" [hidden]="e.Increase"></i>
+			<i class="fas fa-chevron-down" style="color: #bf0f0f" [hidden]="!e.Increase"></i>
+		</span>
 	</div>
 </div>
