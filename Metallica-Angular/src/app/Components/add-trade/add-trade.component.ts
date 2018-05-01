@@ -31,6 +31,7 @@ export class AddTradeComponent {
 
   onSubmit({ value, valid }: { value: TradeFormModel, valid: boolean }) {
     console.log(value, valid);
+    this.DS.insert(value);
   }
 
   Add(date, commodity, side, counterparty, price, quantity, location){

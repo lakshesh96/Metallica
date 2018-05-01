@@ -61,6 +61,7 @@ import { PriceTickerService } from './Services/PriceTickerService/price-ticker.s
         	provide: AuthServiceConfig,
         	useFactory: getAuthServiceConfigs
 		}, 
+		TradeOperationService,
 		TradeTableService,
 		PriceTickerService
 	],
