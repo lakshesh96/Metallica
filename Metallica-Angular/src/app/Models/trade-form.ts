@@ -1,4 +1,4 @@
-export class TradeForm {
+export class TradeFormModel {
     constructor(
         public TradeDate: number,
         public Commodity: string,

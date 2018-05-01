@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import {TradeForm} from '../../models/trade-form'
+import {TradeFormModel} from '../../models/trade-form'
 
 @Injectable()
 export class TradeOperationService {
 
-  TradeList : TradeForm[];
+  TradeList : TradeFormModel[];
 
   constructor() {
     this.TradeList = [
-        new TradeForm(10,"Gold",true,"Australia",2100,1,"India"),
-        new TradeForm(12,"Copper",false,"US",1200,0,"India"),
-        new TradeForm(14,"Iron",true,"UK",200,1,"India")
+        new TradeFormModel(10,"Gold",true,"Australia",2100,1,"India"),
+        new TradeFormModel(12,"Copper",false,"US",1200,0,"India"),
+        new TradeFormModel(14,"Iron",true,"UK",200,1,"India")
     ];
   }
 
