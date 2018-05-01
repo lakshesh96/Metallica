@@ -12,6 +12,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
 import { TradeTableService } from "../app/Services/tradeTable/trade-table.service";
+import {TradeOperationService} from "./Services/TradeOperation/trade-operation-service.service"
 
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
@@ -55,7 +56,7 @@ import { TradeForm } from './Models/trade-form';
     providers: [{
         provide: AuthServiceConfig,
         useFactory: getAuthServiceConfigs
-    }, TradeTableService],
+    }, TradeTableService, TradeOperationService],
 	bootstrap: [
 		AppComponent
 	]
