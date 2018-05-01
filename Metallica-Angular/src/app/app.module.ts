@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from "@angular/http";
+import { JsonpModule } from "@angular/http";
 import {
   SocialLoginModule,
   AuthServiceConfig,
@@ -12,7 +14,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
 import { TradeTableService } from "../app/Services/tradeTable/trade-table.service";
-
+import { GlobalService } from "./Services/GlobalService/global.service";
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
       [
@@ -37,7 +39,7 @@ import { TradeForm } from './Models/trade-form';
 
 @NgModule({
 	declarations: [
-		AppComponent,
+    AppComponent,
 		AddTradeComponent,
 		EditTradeComponent,
         TradeDetailsComponent,
@@ -48,6 +50,8 @@ import { TradeForm } from './Models/trade-form';
 	],
 	imports: [
         BrowserModule,
+        HttpModule,
+        JsonpModule,
         SocialLoginModule,
         FormsModule,
         ReactiveFormsModule
@@ -55,7 +59,7 @@ import { TradeForm } from './Models/trade-form';
     providers: [{
         provide: AuthServiceConfig,
         useFactory: getAuthServiceConfigs
-    }, TradeTableService],
+    }, TradeTableService, GlobalService],
 	bootstrap: [
 		AppComponent
 	]

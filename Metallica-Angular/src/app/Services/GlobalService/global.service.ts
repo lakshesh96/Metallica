@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 // import {Admin} from '../Models/Admin';
 // import {Stocks} from '../Models/Login';
 // import {Contains} from '../Models/Login';
-
+import { TradeTable } from "../../Models/trade-table";
 
 @Injectable()
 export class GlobalService {
