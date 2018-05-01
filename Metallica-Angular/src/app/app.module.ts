@@ -23,7 +23,10 @@ export function getAuthServiceConfigs() {
 import { AddTradeComponent } from './components/add-trade/add-trade.component';
 import { EditTradeComponent } from './components/edit-trade/edit-trade.component';
 import { TradeDetailsComponent } from './components/trade-details/trade-details.component';
-import { TradeTableComponent } from "./Components/trade-table/trade-table.component";
+import { PriceTickerComponent } from './Components/price-ticker/price-ticker.component';
+import { TradeTableComponent } from './Components/trade-table/trade-table.component';
+
+
 // Import Services
 
 @NgModule({
@@ -33,7 +36,8 @@ import { TradeTableComponent } from "./Components/trade-table/trade-table.compon
 		EditTradeComponent,
         TradeDetailsComponent,
         TradeTableComponent,
-        LoginComponent
+        LoginComponent,
+        PriceTickerComponent
 	],
 	imports: [
         BrowserModule,
