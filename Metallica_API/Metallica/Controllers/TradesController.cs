@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Metallica.Layers;
 using Metallica.Models;
 using Metallica.MQueue;
 
@@ -55,7 +56,7 @@ namespace Metallica.Controllers
             try
             {
                 db.SaveChanges();
-                businessLayer.UpdateTradeNotification((trade));
+                businessLayer.UpdateNotification((trade));
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -84,7 +85,7 @@ namespace Metallica.Controllers
 
             db.Trades.Add(trade);
             db.SaveChanges();
-            businessLayer.AddTradeNotification((trade));
+            businessLayer.AddNotification((trade));
             return CreatedAtRoute("DefaultApi", new { id = trade.Id }, trade);
         }
         
@@ -99,7 +100,7 @@ namespace Metallica.Controllers
             }
 
             db.Trades.Remove(trade);
-            businessLayer.DeleteTradeNotification((trade));
+            businessLayer.DeleteNotification((trade));
             db.SaveChanges();
 
             return Ok(trade);

@@ -191,6 +191,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\RefDataController.cs" />
     <Compile Include="Controllers\TradesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -213,8 +214,12 @@
     <Compile Include="Migrations\201805010510295_BasePrice.Designer.cs">
       <DependentUpon>201805010510295_BasePrice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\GenericTrade.cs" />
-    <Compile Include="Models\BusinessLayer.cs" />
+    <Compile Include="Migrations\201805010558358_GUIDinTrade.cs" />
+    <Compile Include="Migrations\201805010558358_GUIDinTrade.Designer.cs">
+      <DependentUpon>201805010558358_GUIDinTrade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Custom_Classes\GenericTrade.cs" />
+    <Compile Include="Layers\BusinessLayer.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="MQueue\TradeMQueue.cs" />
     <Compile Include="MQueue\TickerMQueue.cs" />
@@ -227,7 +232,7 @@
     <Compile Include="Models\CounterParty.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\MetallicaContext.cs" />
-    <Compile Include="Models\RefData.cs" />
+    <Compile Include="Custom_Classes\RefData.cs" />
     <Compile Include="Models\Trade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -314,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805010510295_BasePrice.resx">
       <DependentUpon>201805010510295_BasePrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805010558358_GUIDinTrade.resx">
+      <DependentUpon>201805010558358_GUIDinTrade.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

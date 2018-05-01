@@ -1,12 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {
-  SocialLoginModule,
-  AuthServiceConfig,
-  GoogleLoginProvider
-} from "angular5-social-login";
-import {FormsModule} from '@angular/forms';
-import {ReactiveFormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpModule, JsonpModule } from '@angular/http';
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from "angular5-social-login";
+
 
 // Import Components
 import { AppComponent } from './app.component';
@@ -35,6 +33,8 @@ import { TradeForm } from './Models/trade-form';
 
 
 // Import Services
+import { GlobalService } from './Services/GlobalService/global.service';
+import { PriceTickerService } from './Services/PriceTickerService/price-ticker.service';
 
 @NgModule({
 	declarations: [
@@ -51,12 +51,19 @@ import { TradeForm } from './Models/trade-form';
         BrowserModule,
         SocialLoginModule,
         FormsModule,
-        ReactiveFormsModule
+		ReactiveFormsModule,
+		HttpModule,
+		JsonpModule
 	],
-    providers: [{
-        provide: AuthServiceConfig,
-        useFactory: getAuthServiceConfigs
-    }, TradeTableService, TradeOperationService],
+    providers: [
+		GlobalService,
+		{
+        	provide: AuthServiceConfig,
+        	useFactory: getAuthServiceConfigs
+		}, 
+		TradeTableService,
+		PriceTickerService
+	],
 	bootstrap: [
 		AppComponent
 	]

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Metallica.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Metallica.Models
+namespace Metallica.Custom_Classes
 {
     public class RefData
     {
