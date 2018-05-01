@@ -9,6 +9,8 @@ import {
 // Import Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
+import { TradeTableService } from "../app/Services/tradeTable/trade-table.service";
+
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
       [
@@ -25,6 +27,8 @@ import { EditTradeComponent } from './components/edit-trade/edit-trade.component
 import { TradeDetailsComponent } from './components/trade-details/trade-details.component';
 import { PriceTickerComponent } from './Components/price-ticker/price-ticker.component';
 import { TradeTableComponent } from './Components/trade-table/trade-table.component';
+import { LoginOauthComponent } from './Components/login-oauth/login-oauth.component';
+import { TradeForm } from './Models/trade-form';
 
 
 // Import Services
@@ -37,7 +41,8 @@ import { TradeTableComponent } from './Components/trade-table/trade-table.compon
         TradeDetailsComponent,
         TradeTableComponent,
         LoginComponent,
-        PriceTickerComponent
+        PriceTickerComponent,
+        LoginOauthComponent
 	],
 	imports: [
         BrowserModule,
@@ -46,7 +51,7 @@ import { TradeTableComponent } from './Components/trade-table/trade-table.compon
     providers: [{
         provide: AuthServiceConfig,
         useFactory: getAuthServiceConfigs
-    }],
+    }, TradeTableService],
 	bootstrap: [
 		AppComponent
 	]
