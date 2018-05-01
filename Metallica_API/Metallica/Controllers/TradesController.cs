@@ -9,13 +9,14 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Metallica.Models;
+using Metallica.MQueue;
 
 namespace Metallica.Controllers
 {
     public class TradesController : ApiController
     {
         private MetallicaContext db = new MetallicaContext();
-
+        private NotificationLayer notificationLayer = new NotificationLayer();
         // GET: api/Trades
         public IQueryable<Trade> GetTrades()
         {
@@ -54,6 +55,7 @@ namespace Metallica.Controllers
             try
             {
                 db.SaveChanges();
+                notificationLayer.UpdateTradeNotification((trade));
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -70,6 +72,7 @@ namespace Metallica.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+      
         // POST: api/Trades
         [ResponseType(typeof(Trade))]
         public IHttpActionResult PostTrade(Trade trade)
@@ -81,10 +84,10 @@ namespace Metallica.Controllers
 
             db.Trades.Add(trade);
             db.SaveChanges();
-
+            notificationLayer.AddTradeNotification((trade));
             return CreatedAtRoute("DefaultApi", new { id = trade.Id }, trade);
         }
-
+        
         // DELETE: api/Trades/5
         [ResponseType(typeof(Trade))]
         public IHttpActionResult DeleteTrade(Guid id)
@@ -96,11 +99,12 @@ namespace Metallica.Controllers
             }
 
             db.Trades.Remove(trade);
+            notificationLayer.DeleteTradeNotification((trade));
             db.SaveChanges();
 
             return Ok(trade);
         }
-
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing)

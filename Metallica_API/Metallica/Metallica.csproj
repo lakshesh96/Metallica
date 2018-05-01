@@ -209,7 +209,7 @@
     <Compile Include="Migrations\201805010425392_required.Designer.cs">
       <DependentUpon>201805010425392_required.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\GenericMessage.cs" />
+    <Compile Include="Models\GenericTrade.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="MQueue\TradeMQueue.cs" />
     <Compile Include="MQueue\TickerMQueue.cs" />

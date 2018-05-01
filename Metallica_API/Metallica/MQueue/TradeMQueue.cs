@@ -10,7 +10,7 @@ namespace Metallica.MQueue
     public class TradeMQueue
     {
         private string TradeQueueName = @".\Private$\GenericTrade";
-        private Boolean SendMessage(GenericTrade<Trade> trade)
+        public Boolean SendMessage(GenericTrade<Trade> trade)
             {
                 MessageQueue messageQueue = null;
                 if (!MessageQueue.Exists(TradeQueueName))
@@ -34,7 +34,7 @@ namespace Metallica.MQueue
             }
 
 
-            private GenericTrade<Trade> ReceiveMessage()
+            public GenericTrade<Trade> ReceiveMessage()
             {
                 if (!MessageQueue.Exists(TradeQueueName))
                     return null;
