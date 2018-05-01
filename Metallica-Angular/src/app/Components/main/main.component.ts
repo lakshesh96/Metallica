@@ -11,5 +11,17 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
   }
+  hideAddTrade: boolean = false;
+	hideEditTrade: boolean = true;
+	hideTradeDetails: boolean = true;
 
+	hideRightBar: boolean = false;
+
+	toggle_class() {
+		this.hideRightBar = !this.hideRightBar;
+	}
+
+	openPanel() {
+		this.hideRightBar = !this.hideRightBar;
+	}
 }

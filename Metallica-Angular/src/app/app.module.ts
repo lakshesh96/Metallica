@@ -39,6 +39,7 @@ import { PriceTickerService } from './Services/PriceTickerService/price-ticker.s
 import { ReferenceDataService } from './Services/ReferenceData/reference-data.service';
 import { SearchComponent } from './Components/search/search.component';
 import { MainComponent } from './Components/main/main.component';
+import { RoutesModule } from './Routes/RouteModule';
 
 @NgModule({
 	declarations: [
@@ -60,7 +61,8 @@ import { MainComponent } from './Components/main/main.component';
 		ReactiveFormsModule,
 		HttpModule,
 		JsonpModule,
-		AngularDateTimePickerModule
+		AngularDateTimePickerModule,
+		RoutesModule
 	],
     providers: [
 		GlobalService,
