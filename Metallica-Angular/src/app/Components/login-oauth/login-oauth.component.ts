@@ -20,7 +20,9 @@ export class LoginOauthComponent implements OnInit {
 	UserId = null;
 	x:boolean =true;
 
-  constructor() { }
+  constructor() {
+		
+	 }
 
   ngOnInit() {
     this.login = new FormGroup({

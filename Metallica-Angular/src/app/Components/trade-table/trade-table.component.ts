@@ -18,7 +18,12 @@ export class TradeTableComponent implements OnInit {
 
   getTrades()
   {
-    this.tradeService.getTrades(this.url);
+    
+    this.tradeService.getTrades().subscribe(
+      response => this.trades = response,
+      error => console.error(error),
+      () => { console.info(this.trades); }
+    );
   }
 
 }

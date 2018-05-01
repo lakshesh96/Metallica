@@ -7,19 +7,15 @@ import { TradeTable } from "../../Models/trade-table";
 @Injectable()
 export class TradeTableService {
 
-  constructor(private tradeService: GlobalService) { }
+  constructor(private globalService: GlobalService) { }
   trades : TradeTable[];
-
+  url : string = "/api/trades";
   ngOnInit() {
   }
 
-  getTrades(url)
+  getTrades()
   {
-    this.tradeService.GetMethod(url).subscribe
-        (response => this.trades = response,
-        error => console.error(error),
-        () => { console.info(this.trades), this.resetTable() }
-    );
+    return this.globalService.GetMethod(this.url);
   }
 
   resetTable()
