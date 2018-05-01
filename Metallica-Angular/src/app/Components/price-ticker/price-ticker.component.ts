@@ -13,10 +13,12 @@ export class PriceTickerComponent implements OnInit {
   	constructor(public priceTickerService: PriceTickerService) { }
 
 	ngOnInit() {
-		this.priceTickerService.GetCommodity().subscribe(
-			response => this.commodityList = response,
+		this.priceTickerService.GetFullCommodityList().subscribe(
+			response => this.commodityList = response["Commodities"],
 			error => console.error(error),
-			() => console.log("Price Ticker. Commodities Received:", this.commodityList)
+			() => {
+				console.log("Price Ticker. RefData.Commodities Received:", this.commodityList);
+			}
 		);
 	}
 }

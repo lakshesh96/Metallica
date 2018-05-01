@@ -6,9 +6,14 @@ export class PriceTickerService {
 
   	constructor(public globalService: GlobalService) { }
 
-	url = "api/RefData";
+	refDataUrl = "/api/RefData";
+	tickerNotifUrl = "/api/TickerNotification";
 
-	GetCommodity() {
-		return this.globalService.GetMethod(this.url);
+	GetFullCommodityList() {
+		return this.globalService.GetMethod(this.refDataUrl);
+	}
+
+	GetCommodityUpdates() {
+		return this.globalService.GetMethod(this.tickerNotifUrl);
 	}
 }

@@ -32,6 +32,7 @@ export class GlobalService {
 
 	GetMethod(url):Observable<any[]>{
 		//this._baseUrl = this._baseUrl+url;
+		console.log(this._baseUrl+url)
 		return this._http.get(this._baseUrl+url).map(this.extractData).catch(this.handleError);
 	}
 
