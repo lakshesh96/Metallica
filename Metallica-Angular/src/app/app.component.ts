@@ -15,4 +15,8 @@ export class AppComponent {
 	  toggle_class() {
 		  this.hideRightBar = !this.hideRightBar;
 	  }
+
+	  openPanel() {
+		this.hideRightBar = !this.hideRightBar;
+	  }
 }
