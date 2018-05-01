@@ -25,6 +25,7 @@ import { EditTradeComponent } from './components/edit-trade/edit-trade.component
 import { TradeDetailsComponent } from './components/trade-details/trade-details.component';
 import { PriceTickerComponent } from './Components/price-ticker/price-ticker.component';
 import { TradeTableComponent } from './Components/trade-table/trade-table.component';
+import { LoginOauthComponent } from './Components/login-oauth/login-oauth.component';
 
 
 // Import Services
@@ -37,7 +38,8 @@ import { TradeTableComponent } from './Components/trade-table/trade-table.compon
         TradeDetailsComponent,
         TradeTableComponent,
         LoginComponent,
-        PriceTickerComponent
+        PriceTickerComponent,
+        LoginOauthComponent
 	],
 	imports: [
         BrowserModule,
