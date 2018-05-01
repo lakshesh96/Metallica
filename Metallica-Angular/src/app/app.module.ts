@@ -1,19 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from "@angular/http";
-import { JsonpModule } from "@angular/http";
-import {
-  SocialLoginModule,
-  AuthServiceConfig,
-  GoogleLoginProvider
-} from "angular5-social-login";
-import {FormsModule} from '@angular/forms';
-import {ReactiveFormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpModule, JsonpModule } from '@angular/http';
+import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from "angular5-social-login";
+
 
 // Import Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
 import { TradeTableService } from "../app/Services/tradeTable/trade-table.service";
+import {TradeOperationService} from "./Services/TradeOperation/trade-operation-service.service"
+
 import { GlobalService } from "./Services/GlobalService/global.service";
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
@@ -32,10 +30,12 @@ import { TradeDetailsComponent } from './components/trade-details/trade-details.
 import { PriceTickerComponent } from './Components/price-ticker/price-ticker.component';
 import { TradeTableComponent } from './Components/trade-table/trade-table.component';
 import { LoginOauthComponent } from './Components/login-oauth/login-oauth.component';
-import { TradeForm } from './Models/trade-form';
+import { TradeFormModel } from './Models/trade-form';
 
 
 // Import Services
+import { GlobalService } from './Services/GlobalService/global.service';
+import { PriceTickerService } from './Services/PriceTickerService/price-ticker.service';
 
 @NgModule({
 	declarations: [
@@ -50,16 +50,22 @@ import { TradeForm } from './Models/trade-form';
 	],
 	imports: [
         BrowserModule,
-        HttpModule,
-        JsonpModule,
         SocialLoginModule,
         FormsModule,
-        ReactiveFormsModule
+		ReactiveFormsModule,
+		HttpModule,
+		JsonpModule
 	],
-    providers: [{
-        provide: AuthServiceConfig,
-        useFactory: getAuthServiceConfigs
-    }, TradeTableService, GlobalService],
+    providers: [
+		GlobalService,
+		{
+        	provide: AuthServiceConfig,
+        	useFactory: getAuthServiceConfigs
+		}, 
+		TradeOperationService,
+		TradeTableService,
+		PriceTickerService
+	],
 	bootstrap: [
 		AppComponent
 	]
