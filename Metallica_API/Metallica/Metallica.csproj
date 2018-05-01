@@ -197,7 +197,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805010423201_UNIQUEINITIAL.cs" />
+    <Compile Include="Migrations\201805010423201_UNIQUEINITIAL.Designer.cs">
+      <DependentUpon>201805010423201_UNIQUEINITIAL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805010424365_uniqueFinal.cs" />
+    <Compile Include="Migrations\201805010424365_uniqueFinal.Designer.cs">
+      <DependentUpon>201805010424365_uniqueFinal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805010425392_required.cs" />
+    <Compile Include="Migrations\201805010425392_required.Designer.cs">
+      <DependentUpon>201805010425392_required.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\GenericMessage.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="MQueue\TradeMQueue.cs" />
     <Compile Include="MQueue\TickerMQueue.cs" />
     <Compile Include="Migrations\201804300741198_initial.cs" />
@@ -211,7 +224,6 @@
     <Compile Include="Models\MetallicaContext.cs" />
     <Compile Include="Models\RefData.cs" />
     <Compile Include="Models\Trade.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -285,6 +297,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201804300741198_initial.resx">
       <DependentUpon>201804300741198_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805010423201_UNIQUEINITIAL.resx">
+      <DependentUpon>201805010423201_UNIQUEINITIAL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805010424365_uniqueFinal.resx">
+      <DependentUpon>201805010424365_uniqueFinal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805010425392_required.resx">
+      <DependentUpon>201805010425392_required.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

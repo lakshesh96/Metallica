@@ -14,6 +14,13 @@ namespace Metallica.Models
         public Guid Id { get; set; }
 
         [Required]
+        [Column(TypeName ="VARCHAR")]
+        [Index(IsUnique = true)]
+        [MaxLength(20)]
         public string UserName { get; set; }
+
+        [Required]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}", ErrorMessage ="Please provide atleast one number,one upper case letter and one special character, minimum 8 Characters.")]
+        public string Password { get; set; }
     }
 }
