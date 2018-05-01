@@ -218,8 +218,8 @@
     <Compile Include="Migrations\201805010558358_GUIDinTrade.Designer.cs">
       <DependentUpon>201805010558358_GUIDinTrade.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\GenericTrade.cs" />
-    <Compile Include="Models\BusinessLayer.cs" />
+    <Compile Include="Custom_Classes\GenericTrade.cs" />
+    <Compile Include="Layers\BusinessLayer.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="MQueue\TradeMQueue.cs" />
     <Compile Include="MQueue\TickerMQueue.cs" />
@@ -232,7 +232,7 @@
     <Compile Include="Models\CounterParty.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\MetallicaContext.cs" />
-    <Compile Include="Models\RefData.cs" />
+    <Compile Include="Custom_Classes\RefData.cs" />
     <Compile Include="Models\Trade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
