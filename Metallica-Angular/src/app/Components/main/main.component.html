@@ -28,13 +28,10 @@
 	<div class="row">
 		<div class="col-lg px-0 my-2 border border-top-0 shadow-sm bg-white">   
             <app-trade-table></app-trade-table>
-            <!-- <a href="#">
-				<span class="glyphicon glyphicon-plus-sign"></span>
-			  </a> -->
 			  <img src="../assets/add.png" />
 		</div>
 		
-		<div class="col-lg-4 border my-2 ml-2 shadow-sm bg-white" [hidden]="hideRightBar">
+		<div class="col-lg-4 border my-2 ml-2 px-0 shadow-sm bg-white" [hidden]="hideRightBar">
 			<app-add-trade [hidden]="hideAddTrade"></app-add-trade>
 			<app-edit-trade [hidden]="hideEditTrade"></app-edit-trade>
 			<app-trade-details [hidden]="hideTradeDetails"></app-trade-details>
