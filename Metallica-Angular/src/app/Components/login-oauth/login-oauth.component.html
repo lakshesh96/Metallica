@@ -2,7 +2,10 @@
   <div style="width:50%;height:40%;padding:35px"class="border border-dark">
   <form novalidate (ngSubmit)="onSubmit(login)" [formGroup]="login">
     <legend><strong>Login</strong></legend>
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{
+        'has-danger': login.controls.UserName.invalid && login.controls.UserName.invalid,
+        'has-success': login.controls.UserName.valid && login.controls.UserName.dirty
+        }">
       
       <span class="col-sm-2 col-form-label" ><strong>Username :</strong></span>
       <input type="text" placeholder="Enter Username" id="username" formControlName="UserName" >
@@ -10,15 +13,12 @@
     <div class="error text-danger" *ngIf="login.get('UserName').hasError(('required')) && login.get('UserName').touched">
       Username is required
     </div>
-    <div class="form-group"
+    <!-- <div class="form-group"
        [ngClass]="{
         'has-danger': login.controls.UserName.invalid && login.controls.UserName.invalid,
         'has-success': login.controls.UserName.valid && login.controls.UserName.dirty
         }">
-    </div>
-
-
-
+    </div> -->
 
       </div>
   <div class="form-group">  
