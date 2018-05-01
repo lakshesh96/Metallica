@@ -1,5 +1,5 @@
 <form novalidate (ngSubmit)="onSubmit(TradeForm)" [formGroup]="TradeForm">
-	<table class="table">
+	<table class="table mb-0">
 		<tr style="background-color:darkgray">
 			<th>ADD NEW TRADE</th>
 			<td align="right">
@@ -10,7 +10,9 @@
 
 		<tr>
 			<th class="align-middle">Date</th>
-			<td></td>
+			<td>
+				
+			</td>
 		</tr>
 		
 		<tr>
@@ -25,8 +27,14 @@
 		<tr>
 			<th class="align-middle">Side</th>
 			<td>
-				<input type="radio" formControlName="Side" value="buy">Buy
-				<input type="radio" formControlName="Side" value="sell">Sell
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" formControlName="Side" name="BuySide" value="buy">
+					<label class="form-check-label" for="BuySide">Buy</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" formControlName="Side" name="SellSide" value="sell">
+					<label class="form-check-label" for="SellSide">Sell</label>
+				</div>
 			</td>
 		</tr>
 
@@ -60,7 +68,7 @@
 		</tr>
 
 		<tr>
-			<th>Location</th>
+			<th class="align-middle">Location</th>
 			<td>
 				<select formControlName="Location" class="custom-select" >
 					<option value="Lo">London</option>
