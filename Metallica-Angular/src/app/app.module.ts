@@ -5,6 +5,8 @@ import {
   AuthServiceConfig,
   GoogleLoginProvider
 } from "angular5-social-login";
+import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 
 // Import Components
 import { AppComponent } from './app.component';
@@ -46,7 +48,9 @@ import { TradeForm } from './Models/trade-form';
 	],
 	imports: [
         BrowserModule,
-        SocialLoginModule
+        SocialLoginModule,
+        FormsModule,
+        ReactiveFormsModule
 	],
     providers: [{
         provide: AuthServiceConfig,
