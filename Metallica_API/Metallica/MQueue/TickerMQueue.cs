@@ -10,7 +10,7 @@ namespace Metallica.MQueue
     public class TickerMQueue
     {
         private string TickerQueueName = @".\Private$\Commodity";
-        private Boolean SendMessage(Commodity commodity)
+        public Boolean SendMessage(Commodity commodity)
         {
             MessageQueue messageQueue = null;
             if (!MessageQueue.Exists(TickerQueueName))
@@ -34,7 +34,7 @@ namespace Metallica.MQueue
         }
 
 
-        private Commodity ReceiveMessage()
+        public Commodity ReceiveMessage()
         {
             if (!MessageQueue.Exists(TickerQueueName))
                 return null;
