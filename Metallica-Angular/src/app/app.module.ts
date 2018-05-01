@@ -40,7 +40,7 @@ import { SearchComponent } from './Components/search/search.component';
 
 @NgModule({
 	declarations: [
-		AppComponent,
+    AppComponent,
 		AddTradeComponent,
 		EditTradeComponent,
         TradeDetailsComponent,

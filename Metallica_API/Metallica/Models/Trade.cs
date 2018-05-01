@@ -30,21 +30,21 @@ namespace Metallica.Models
         [Required]
         public Status Status { get; set; }
 
-        public User user { get; set; }
+        public virtual User User { get; set; }
 
         [Required]
         public Guid UserId { get; set; }
 
-        public Commodity commodity { get; set; }
+        public virtual Commodity Commodity { get; set; }
 
         [Required]
         public Guid CommodityId { get; set; }
 
-        public CounterParty counterParty { get; set; }
+        public virtual CounterParty CounterParty { get; set; }
         [Required]
         public Guid CounterPartyId { get; set; }
 
-        public Location location { get; set; }
+        public virtual Location Location { get; set; }
 
         [Required]
         public Guid LocationId { get; set; }

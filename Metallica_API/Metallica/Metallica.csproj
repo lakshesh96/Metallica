@@ -220,6 +220,14 @@
     </Compile>
     <Compile Include="Custom_Classes\GenericTrade.cs" />
     <Compile Include="Layers\BusinessLayer.cs" />
+    <Compile Include="Migrations\201805011001199_check.cs" />
+    <Compile Include="Migrations\201805011001199_check.Designer.cs">
+      <DependentUpon>201805011001199_check.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805011017048_check1.cs" />
+    <Compile Include="Migrations\201805011017048_check1.Designer.cs">
+      <DependentUpon>201805011017048_check1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs" />
     <Compile Include="MQueue\TradeMQueue.cs" />
     <Compile Include="MQueue\TickerMQueue.cs" />
@@ -322,6 +330,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805010558358_GUIDinTrade.resx">
       <DependentUpon>201805010558358_GUIDinTrade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805011001199_check.resx">
+      <DependentUpon>201805011001199_check.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805011017048_check1.resx">
+      <DependentUpon>201805011017048_check1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
