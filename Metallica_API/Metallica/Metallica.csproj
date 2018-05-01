@@ -209,6 +209,10 @@
     <Compile Include="Migrations\201805010425392_required.Designer.cs">
       <DependentUpon>201805010425392_required.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805010510295_BasePrice.cs" />
+    <Compile Include="Migrations\201805010510295_BasePrice.Designer.cs">
+      <DependentUpon>201805010510295_BasePrice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\GenericTrade.cs" />
     <Compile Include="Models\BusinessLayer.cs" />
     <Compile Include="Models\User.cs" />
@@ -307,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805010425392_required.resx">
       <DependentUpon>201805010425392_required.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805010510295_BasePrice.resx">
+      <DependentUpon>201805010510295_BasePrice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
