@@ -6,17 +6,18 @@ import { Component } from '@angular/core';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	  hideAddTrade: boolean = false;
-	  hideEditTrade: boolean = true;
-	  hideTradeDetails: boolean = true;
 
-	  hideRightBar: boolean = false;
+	hideAddTrade: boolean = false;
+	hideEditTrade: boolean = true;
+	hideTradeDetails: boolean = true;
 
-	  toggle_class() {
-		  this.hideRightBar = !this.hideRightBar;
-	  }
+	hideRightBar: boolean = false;
 
-	  openPanel() {
+	toggle_class() {
 		this.hideRightBar = !this.hideRightBar;
-	  }
+	}
+
+	openPanel() {
+		this.hideRightBar = !this.hideRightBar;
+	}
 }

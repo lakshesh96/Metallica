@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Commodity } from '../../Models/commodity';
 import { PriceTickerService } from '../../Services/PriceTickerService/price-ticker.service';
+import { ReferenceDataService } from '../../Services/ReferenceData/reference-data.service';
 
 @Component({
 	selector: 'app-price-ticker',
@@ -11,14 +12,20 @@ export class PriceTickerComponent implements OnInit {
 
 	commodityList: Commodity[] = [];
 
-  	constructor(public priceTickerService: PriceTickerService) { }
+  	constructor(public priceTickerService: PriceTickerService, public referenceDataService: ReferenceDataService) { 
+		//this.commodityList = referenceData["Commodities"];
+	}
 
 	ngOnInit() {
+		let data: any;
 		this.priceTickerService.GetFullCommodityList().subscribe(
-			response => this.commodityList = response["Commodities"],
+			response => data = response,
 			error => console.error(error),
 			() => {
-				console.log("Price Ticker. RefData.Commodities Received:", this.commodityList);
+				this.commodityList = data["Commodities"];
+				this.referenceDataService.setRefrenceData(data);
+				this.commodityList = this.referenceDataService.getReferenceData("Commodities");
+				console.log("Price Ticker. RefData[Commodities] Received:", this.commodityList);
 				this.updateTicker();
 			}
 		);

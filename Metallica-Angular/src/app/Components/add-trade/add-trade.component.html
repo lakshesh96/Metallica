@@ -21,13 +21,8 @@
     </tr>
     <tr>
         <td><label><strong>Commodity</strong></label></td>
-            <td><select formControlName="Commodity" class="custom-select" >
-                <option value="Al">Aluminium</option>
-                <option value="Zn">Zinc</option>
-                <option value="Cu">Copper</option>
-                <option value="Au">Gold</option>
-                <option value="Ag">Silver</option>
-                <option value="Fe">Iron</option>
+            <td><select *ngFor="let c of CommodityList" formControlName="Commodity" class="custom-select" >
+                <option value="{{c.Id}}">{{c.Name}}</option>
               </select></td>
     </tr>
 
