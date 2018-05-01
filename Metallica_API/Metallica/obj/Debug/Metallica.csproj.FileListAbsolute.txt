@@ -207,3 +207,6 @@ C:\Users\ishjain1\source\repos\Metallica\Metallica_API\Metallica\obj\Debug\Metal
 C:\Users\ishjain1\source\repos\Metallica\Metallica_API\Metallica\bin\System.Web.Cors.dll
 C:\Users\ishjain1\source\repos\Metallica\Metallica_API\Metallica\bin\System.Web.Http.Cors.dll
 C:\Users\ishjain1\source\repos\Metallica\Metallica_API\Metallica\bin\System.Web.Http.Cors.xml
+C:\Users\ishjain1\source\repos\Metallica\Metallica_API\Metallica\obj\Debug\Metallica.Migrations.UNIQUEINITIAL.resources
+C:\Users\ishjain1\source\repos\Metallica\Metallica_API\Metallica\obj\Debug\Metallica.Migrations.uniqueFinal.resources
+C:\Users\ishjain1\source\repos\Metallica\Metallica_API\Metallica\obj\Debug\Metallica.Migrations.required.resources
