@@ -7,7 +7,16 @@
   <th>Counterparty</th>
   <th>Location</th>
   <th></th>
-  <tr>
+  <tr *ngFor = "let t of trades;">
+    <td>{{t.Date}}</td>
+    <td>{{t.CommodityId}}</td>
+    <td>{{t.Side}}</td>
+	<td>{{t.Quantity}}</td>  
+	<td>{{t.Price}}</td>      
+	<td>{{t.CounterpartyId}}</td>      
+	<td>{{t.LocationId}}</td> 	
+  </tr>
+  <!-- <tr>
   <td>22/01/17</td>
   <td>Copper</td>
   <td>Buy</td>
@@ -46,5 +55,5 @@
 						<td>ABN</td>
 						<td>India</td>
 						<td><img src="../../../assets/delete.png" /></td>
-						</tr>
+						</tr> -->
 </table>

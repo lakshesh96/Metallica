@@ -38,7 +38,7 @@ import { PriceTickerService } from './Services/PriceTickerService/price-ticker.s
 
 @NgModule({
 	declarations: [
-		AppComponent,
+    AppComponent,
 		AddTradeComponent,
 		EditTradeComponent,
         TradeDetailsComponent,
