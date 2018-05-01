@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Commodity } from '../../Models/commodity';
+import { PriceTickerService } from '../../Services/PriceTickerService/price-ticker.service';
 
 @Component({
   selector: 'app-price-ticker',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PriceTickerComponent implements OnInit {
 
-  constructor() { }
+	commodityList: Commodity[] = [];
+  	constructor(public priceTickerService: PriceTickerService) { }
 
-  ngOnInit() {
-  }
-
+	ngOnInit() {
+		this.priceTickerService.GetFullCommodityList().subscribe(
+			response => this.commodityList = response["Commodities"],
+			error => console.error(error),
+			() => {
+				console.log("Price Ticker. RefData.Commodities Received:", this.commodityList);
+			}
+		);
+	}
 }
