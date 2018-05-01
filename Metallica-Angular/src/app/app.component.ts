@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 	styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	  hideAddTrade: boolean = true;
+	  hideAddTrade: boolean = false;
 	  hideEditTrade: boolean = true;
 	  hideTradeDetails: boolean = true;
 

@@ -1,25 +1,11 @@
 <div class="row border p-1 my-2 shadow-sm bg-white">
-	<div class="col">
-		<span class="border-bottom">Stock Name</span>
+	<div class="col" *ngFor="let e of commodityList">
+		<span class="border-bottom">{{e.Name}}</span>
 		<br />
-		<span>Stock Price</span>
-	</div>
-
-	<div class="col">
-		<span class="border-bottom">Stock Name</span>
-		<br />
-		<span>Stock Price</span>
-	</div>
-
-	<div class="col">
-		<span class="border-bottom">Stock Name</span>
-		<br />
-		<span>Stock Price</span>
-	</div>
-
-	<div class="col">
-		<span class="border-bottom">Stock Name</span>
-		<br />
-		<span>Stock Price</span>
+		<span>
+			{{e.CurrentPrice}}
+			<i class="fas fa-chevron-up" style="color: #0fbf0f" [hidden]="e.Increase"></i>
+			<i class="fas fa-chevron-down" style="color: #bf0f0f" [hidden]="!e.Increase"></i>
+		</span>
 	</div>
 </div>

@@ -33,21 +33,21 @@ namespace Metallica.Models
         public User user { get; set; }
 
         [Required]
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
 
         public Commodity commodity { get; set; }
 
         [Required]
-        public int CommodityId { get; set; }
+        public Guid CommodityId { get; set; }
 
         public CounterParty counterParty { get; set; }
         [Required]
-        public int CounterPartyId { get; set; }
+        public Guid CounterPartyId { get; set; }
 
         public Location location { get; set; }
 
         [Required]
-        public int LocationId { get; set; }
+        public Guid LocationId { get; set; }
 
         [Required]
         [Range(0,double.MaxValue,ErrorMessage ="Out of Range")]
@@ -59,8 +59,6 @@ namespace Metallica.Models
         [Required]
         [Range(0,int.MaxValue,ErrorMessage ="Out of Range")]
         public int Quantity { get; set; }
-
-
 
     }
 }

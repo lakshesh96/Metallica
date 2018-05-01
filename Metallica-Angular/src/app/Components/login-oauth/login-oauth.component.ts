@@ -10,7 +10,7 @@ import { FormControl, FormGroup, Validators} from '@angular/forms';
 export class LoginOauthComponent implements OnInit {
 
   login:FormGroup;
-	model: any = {};
+	//model: any = {};
 	loading = false;
   returnUrl: string;
   
@@ -24,12 +24,12 @@ export class LoginOauthComponent implements OnInit {
 
   ngOnInit() {
     this.login = new FormGroup({
-			Type: new FormControl('', [Validators.required]),
-			UserName: new FormControl('', [Validators.required]),
-			Password: new FormControl('', [Validators.required])
+			UserName: new FormControl('', [Validators.required,Validators.maxLength(20)]),
+      Password: new FormControl('', [Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/)])
+      
 		});
 		//this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-		this.UserId = sessionStorage.getItem("UserId");
+		//this.UserId = sessionStorage.getItem("UserId");
 
 		if(this.UserId) {
 			this.x=false;
@@ -40,7 +40,7 @@ export class LoginOauthComponent implements OnInit {
   }
 
   onSubmit({ value, valid }: { value: Login, valid: boolean }) {
-    
+    console.log(value,valid);
 	}
 
 }
