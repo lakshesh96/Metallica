@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from "angular5-social-login";
+import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 
 
 // Import Components
@@ -35,6 +36,7 @@ import { TradeFormModel } from './Models/trade-form';
 // Import Services
 import { GlobalService } from './Services/GlobalService/global.service';
 import { PriceTickerService } from './Services/PriceTickerService/price-ticker.service';
+import { SearchComponent } from './Components/search/search.component';
 
 @NgModule({
 	declarations: [
@@ -45,7 +47,8 @@ import { PriceTickerService } from './Services/PriceTickerService/price-ticker.s
         TradeTableComponent,
         LoginComponent,
         PriceTickerComponent,
-        LoginOauthComponent
+        LoginOauthComponent,
+        SearchComponent
 	],
 	imports: [
         BrowserModule,
@@ -53,7 +56,8 @@ import { PriceTickerService } from './Services/PriceTickerService/price-ticker.s
         FormsModule,
 		ReactiveFormsModule,
 		HttpModule,
-		JsonpModule
+		JsonpModule,
+		AngularDateTimePickerModule
 	],
     providers: [
 		GlobalService,
