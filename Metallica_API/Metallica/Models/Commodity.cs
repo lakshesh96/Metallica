@@ -25,6 +25,9 @@ namespace Metallica.Models
         [Range(0,double.MaxValue,ErrorMessage ="Out Of Range")]
         public double CurrentPrice { get; set; }
 
+        [Required]
+        [Range(0, double.MaxValue, ErrorMessage = "Out Of Range")]
+        public double BasePrice { get; set; }
 
     }
 }
