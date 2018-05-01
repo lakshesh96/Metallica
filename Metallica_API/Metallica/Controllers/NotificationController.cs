@@ -1,4 +1,5 @@
-﻿using Metallica.Models;
+﻿using Metallica.Custom_Classes;
+using Metallica.Models;
 using Metallica.MQueue;
 using System;
 using System.Collections.Generic;

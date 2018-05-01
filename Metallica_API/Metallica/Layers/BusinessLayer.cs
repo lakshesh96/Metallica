@@ -1,10 +1,12 @@
-﻿using Metallica.MQueue;
+﻿using Metallica.Custom_Classes;
+using Metallica.Models;
+using Metallica.MQueue;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Metallica.Models
+namespace Metallica.Layers
 {
     public enum TypeOfFunction
     {

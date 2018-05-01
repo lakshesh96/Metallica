@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Messaging;
 using Metallica.Models;
+using Metallica.Custom_Classes;
 
 namespace Metallica.MQueue
 {
     public class TradeMQueue
     {
-        private string TradeQueueName = @".\Private$\GenericTrade";
+        private string TradeQueueName = @".\Private$\GenericTrade"; 
         public Boolean SendMessage(GenericTrade<Trade> trade)
             {
                 MessageQueue messageQueue = null;
