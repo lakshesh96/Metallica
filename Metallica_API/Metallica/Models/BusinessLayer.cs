@@ -6,13 +6,14 @@ using System.Web;
 
 namespace Metallica.Models
 {
-    public class NotificationLayer
+    public class BusinessLayer
     {
         private TradeMQueue tradeQueue;
-        public NotificationLayer()
+        public BusinessLayer()
         {
            tradeQueue = new TradeMQueue();
         }
+        //public void ChangePrice(Trade trade,)
         public void AddTradeNotification(Trade trade)
         {
             GenericTrade<Trade> genericTrade = new GenericTrade<Trade>("Trade Added", trade);

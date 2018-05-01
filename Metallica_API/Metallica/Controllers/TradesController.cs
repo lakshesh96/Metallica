@@ -16,7 +16,7 @@ namespace Metallica.Controllers
     public class TradesController : ApiController
     {
         private MetallicaContext db = new MetallicaContext();
-        private NotificationLayer notificationLayer = new NotificationLayer();
+        private BusinessLayer businessLayer = new BusinessLayer();
         // GET: api/Trades
         public IQueryable<Trade> GetTrades()
         {
@@ -55,7 +55,7 @@ namespace Metallica.Controllers
             try
             {
                 db.SaveChanges();
-                notificationLayer.UpdateTradeNotification((trade));
+                businessLayer.UpdateTradeNotification((trade));
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -84,7 +84,7 @@ namespace Metallica.Controllers
 
             db.Trades.Add(trade);
             db.SaveChanges();
-            notificationLayer.AddTradeNotification((trade));
+            businessLayer.AddTradeNotification((trade));
             return CreatedAtRoute("DefaultApi", new { id = trade.Id }, trade);
         }
         
@@ -99,7 +99,7 @@ namespace Metallica.Controllers
             }
 
             db.Trades.Remove(trade);
-            notificationLayer.DeleteTradeNotification((trade));
+            businessLayer.DeleteTradeNotification((trade));
             db.SaveChanges();
 
             return Ok(trade);
