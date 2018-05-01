@@ -10,6 +10,7 @@ import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from "angul
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
 import { TradeTableService } from "../app/Services/tradeTable/trade-table.service";
+import {TradeOperationService} from "./Services/TradeOperation/trade-operation-service.service"
 
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(

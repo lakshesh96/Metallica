@@ -25,7 +25,7 @@ export class LoginOauthComponent implements OnInit {
   ngOnInit() {
     this.login = new FormGroup({
 			UserName: new FormControl('', [Validators.required,Validators.maxLength(20)]),
-      Password: new FormControl('', [Validators.required/*,Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}")*/])
+      Password: new FormControl('', [Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/)])
       
 		});
 		//this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
