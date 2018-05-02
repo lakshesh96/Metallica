@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Commodity } from '../../Models/commodity';
 import { PriceTickerService } from '../../Services/PriceTickerService/price-ticker.service';
 import { ReferenceDataService } from '../../Services/ReferenceData/reference-data.service';
+import { GlobalService } from '../../Services/GlobalService/global.service';
 
 @Component({
 	selector: 'app-price-ticker',
@@ -12,8 +13,9 @@ export class PriceTickerComponent implements OnInit {
 
 	commodityList: Commodity[] = [];
 
-  	constructor(public priceTickerService: PriceTickerService, public referenceDataService: ReferenceDataService) { 
-		//this.commodityList = referenceData["Commodities"];
+  	constructor(public priceTickerService: PriceTickerService, public globalService: GlobalService) { 
+		this.commodityList = this.globalService.getReferenceData("Commodities");
+		console.log(this.commodityList);
 	}
 
 	ngOnInit() {
@@ -22,9 +24,9 @@ export class PriceTickerComponent implements OnInit {
 			response => data = response,
 			error => console.error(error),
 			() => {
-				this.commodityList = data["Commodities"];
-				this.referenceDataService.setRefrenceData(data);
-				this.commodityList = this.referenceDataService.getReferenceData("Commodities");
+				//this.commodityList = data["Commodities"];
+				this.globalService.setReferenceData(data);
+				this.commodityList = this.globalService.getReferenceData("Commodities");
 				console.log("Price Ticker. RefData[Commodities] Received:", this.commodityList);
 				this.updateTicker();
 			}

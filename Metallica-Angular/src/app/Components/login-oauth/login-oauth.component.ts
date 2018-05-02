@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Login} from '../../Models/login';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
-import {GlobalService} from '../../Services/GlobalService/global.service';
+import { GlobalService } from '../../Services/GlobalService/global.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Headers} from '@angular/http';
 import { HttpParams } from '@angular/common/http';
@@ -29,7 +29,7 @@ export class LoginOauthComponent implements OnInit {
 	//headers = { 'Content-Type': 'application/x-www-form-urlencoded' } ;	
 	headers:Headers;
 
-	constructor(private globalService:GlobalService,  private route: ActivatedRoute, private router: Router) { }
+	constructor(private globalService:GlobalService, private route: ActivatedRoute, private router: Router) { }
 
 	ngOnInit() {
 		this.login = new FormGroup({
@@ -50,7 +50,8 @@ export class LoginOauthComponent implements OnInit {
 		try{
 			this.globalService.LoginPost(params,this.url,this.headers).subscribe(
 				response => {
-					this.AccessToken = response.access_token;			
+					this.AccessToken = response.access_token;	
+					console.log("Response Received", this.AccessToken);		
 					sessionStorage.setItem("AccessToken",this.AccessToken.toString());
 					if(this.AccessToken != null)
 						this.loadReferenceData();
@@ -70,8 +71,11 @@ export class LoginOauthComponent implements OnInit {
 
 
 	loadReferenceData() {
+		
 		this.globalService.GetMethod("/api/RefData").subscribe(
 			response => {
+				this.globalService.setReferenceData(response);
+				//sessionStorage.setItem("RefData", JSON.stringify(response));
 				console.log("Loaded reference data", response);
 				this.router.navigateByUrl('Main');
 			},
