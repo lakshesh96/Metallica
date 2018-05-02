@@ -22,7 +22,7 @@ export class TradeTableComponent implements OnInit {
     this.tradeService.getTrades().subscribe(
       response => this.trades = response,
       error => console.error(error),
-      () => { console.info(this.trades); }
+      () => { /*console.info(this.trades);*/ }
     );
   }
 
