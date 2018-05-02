@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 // import {Admin} from '../Models/Admin';
 // import {Stocks} from '../Models/Login';
 // import {Contains} from '../Models/Login';
-
+import { TradeTable } from "../../Models/trade-table";
 
 @Injectable()
 export class GlobalService {
@@ -32,7 +32,7 @@ export class GlobalService {
 
 	GetMethod(url):Observable<any[]>{
 		//this._baseUrl = this._baseUrl+url;
-		console.log(this._baseUrl+url)
+		console.log("GET:", this._baseUrl+url)
 		return this._http.get(this._baseUrl+url).map(this.extractData).catch(this.handleError);
 	}
 

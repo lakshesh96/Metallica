@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { TradeFormModel } from '../../Models/trade-form';
+import { Commodity } from '../../Models/commodity';
 import { TradeOperationService } from '../../Services/TradeOperation/trade-operation-service.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { TradeOperationService } from '../../Services/TradeOperation/trade-opera
 export class AddTradeComponent {
   TradeForm : FormGroup;
   TradeList: TradeFormModel[];
+  CommodityList: Commodity[];
 
   constructor(private DS : TradeOperationService) { }
       

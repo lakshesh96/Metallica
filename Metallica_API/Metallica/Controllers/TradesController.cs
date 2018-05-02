@@ -19,9 +19,9 @@ namespace Metallica.Controllers
         private MetallicaContext db = new MetallicaContext();
         private BusinessLayer businessLayer = new BusinessLayer();
         // GET: api/Trades
-        public IQueryable<Trade> GetTrades()
+        public IList<Trade> GetTrades()
         {
-            return db.Trades;
+            return db.Trades.ToList();
         }
 
         // GET: api/Trades/5
