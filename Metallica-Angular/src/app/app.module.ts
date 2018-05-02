@@ -40,6 +40,7 @@ import { SearchComponent } from './Components/search/search.component';
 import { MainComponent } from './Components/main/main.component';
 import { RoutesModule } from './Routes/RouteModule';
 import { SearchService } from './Services/Search/search.service';
+import { RegisterComponent } from './Components/register/register.component';
 
 @NgModule({
 	declarations: [
@@ -52,7 +53,8 @@ import { SearchService } from './Services/Search/search.service';
         PriceTickerComponent,
         LoginOauthComponent,
         SearchComponent,
-        MainComponent
+        MainComponent,
+        RegisterComponent
 	],
 	imports: [
     BrowserModule,
