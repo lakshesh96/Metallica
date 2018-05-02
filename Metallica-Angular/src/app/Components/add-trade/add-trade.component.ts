@@ -4,7 +4,8 @@ import { TradeTable } from '../../Models/trade-table';
 import { Commodity } from '../../Models/commodity';
 import { Location } from '../../Models/location';
 import { Counterparty } from '../../Models/counterparty';
-
+import {TradeOperationService} from '../../Services/TradeOperation/trade-operation-service.service';
+import { GlobalService } from '../../Services/GlobalService/global.service'
 
 @Component({
   selector: 'app-add-trade',
@@ -17,8 +18,14 @@ export class AddTradeComponent {
   LocationList: Location[];
   CounterpartyList: Counterparty[];
 
-  constructor() { }
-      
+  constructor(private TradeOperationService : TradeOperationService, private GlobalService : GlobalService) {
+   // this.CommodityList = GlobalService.getRefData("Commodities");
+   }
+
+  Add(item)
+  {
+    this.TradeOperationService.Add(item.value);
+  }
 
   ngOnInit() {
 
@@ -35,7 +42,6 @@ export class AddTradeComponent {
 
   onSubmit({ value, valid }: { value: TradeTable, valid: boolean }) {
     console.log(value, valid);
-   
   }
 
   // Add(date, commodity, side, counterparty, price, quantity, location){
