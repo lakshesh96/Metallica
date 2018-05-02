@@ -11,7 +11,7 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
 import { TradeTableService } from "../app/Services/tradeTable/trade-table.service";
-import {TradeOperationService} from "./Services/TradeOperation/trade-operation-service.service"
+//import {TradeOperationService} from "./Services/TradeOperation/trade-operation-service.service"
 
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
@@ -30,7 +30,6 @@ import { TradeDetailsComponent } from './components/trade-details/trade-details.
 import { PriceTickerComponent } from './Components/price-ticker/price-ticker.component';
 import { TradeTableComponent } from './Components/trade-table/trade-table.component';
 import { LoginOauthComponent } from './Components/login-oauth/login-oauth.component';
-import { TradeFormModel } from './Models/trade-form';
 
 
 // Import Services
@@ -41,6 +40,8 @@ import { SearchComponent } from './Components/search/search.component';
 import { MainComponent } from './Components/main/main.component';
 import { RoutesModule } from './Routes/RouteModule';
 import {AuthGuardService} from './Services/AuthGuard/auth-guard.service';
+import { SearchService } from './Services/Search/search.service';
+import { RegisterComponent } from './Components/register/register.component';
 
 @NgModule({
 	declarations: [
@@ -53,12 +54,13 @@ import {AuthGuardService} from './Services/AuthGuard/auth-guard.service';
         PriceTickerComponent,
         LoginOauthComponent,
         SearchComponent,
-        MainComponent
+        MainComponent,
+        RegisterComponent
 	],
 	imports: [
-        BrowserModule,
-        SocialLoginModule,
-        FormsModule,
+    BrowserModule,
+    SocialLoginModule,
+    FormsModule,
 		ReactiveFormsModule,
 		HttpModule,
 		JsonpModule,
@@ -71,10 +73,11 @@ import {AuthGuardService} from './Services/AuthGuard/auth-guard.service';
         	provide: AuthServiceConfig,
         	useFactory: getAuthServiceConfigs
 		}, 
-		TradeOperationService,
+		//TradeOperationService
 		TradeTableService,
 		PriceTickerService,
 		ReferenceDataService,
+		SearchService,
 		AuthGuardService
 	],
 	bootstrap: [

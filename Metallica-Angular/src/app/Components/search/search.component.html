@@ -1,50 +1,58 @@
-<form></form>
+<form [formGroup]="searchForm">
 <div class="row border p-2 mt-2 shadow-sm bg-white">
-
-	<div class="col-lg-2">
-		Trade Date
-		<angular2-date-picker [(ngModel)]="dateFrom" [settings]="settings" (onDateSelect)="onDateSelect($event)">
-		</angular2-date-picker>
-		<angular2-date-picker [(ngModel)]="dateTo" [settings]="settings" (onDateSelect)="onDateSelect($event)">
-		</angular2-date-picker>
-	</div>
-
-	<div class="col-lg-2">
-		Commodity
-		<br />
-		<select>
-			<option *ngFor="let e of commodity" value="e.Id">{{e.Name}}</option>
-		</select>
-	</div>
-
-	<div class="col-lg-2">
-		Side
-		<div class="radio">
-			<label><input type="radio" name="side">Buy</label>
-		</div>
-		<div class="radio">
-			<label><input type="radio" name="side">Sell</label>
+	<div class="col-lg-4 form-group my-auto">
+		<label class="h6 border-bottom pr-2 pl-1">Date</label>
+		<div class="row">
+			<div class="col-lg-6 pr-1">
+				<label class="mb-0">From</label>
+				<input type="date" class="form-control pr-1 mb-1" name="date" formControlName="dateFrom">
+			</div>
+			<div class="col-lg-6 pl-1">
+				<label class="mb-0">To</label>
+				<input type="date" class="form-control pr-1 mb-1" name="date" formControlName="dateTo">
+			</div>
 		</div>
 	</div>
 
-	<div class="col-lg-2">
-		Counterparty
-		<br />
-		<select>
-			<option *ngFor="let e of location" value="e.Id">{{e.Name}}</option>
+	<div class="col-lg-1 my-auto form-group">
+		<label class="h6 border-bottom pr-2 pl-1" for="side">Side</label>
+		<div class="form-check">
+			<input class="form-check-input" type="checkbox" id="buySide" value="buy" formControlName="buy">
+			<label class="form-check-label" for="buySide">Buy</label>
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="checkbox" id="sellSide" value="sell" formControlName="sell">
+			<label class="form-check-label" for="sellSide">Sell</label>
+		</div>
+	</div>
+
+	<div class="col-lg-2 form-group my-auto">
+		<label class="h6 border-bottom pr-2 pl-1" for="side">Commodity</label>
+		<select class="form-control" formControlName="commodity">
+			<option>Select Commodity</option>
+			<option *ngFor="let commodity of commodities" value="commodity.Id">{{commodity.Name}}</option>
 		</select>
 	</div>
 
-	<div class="col-lg-2">
-		Location
-		<br />
-		<select>
-			<option *ngFor="let e of counterParty" value="e.Id">{{e.Name}}</option>
+	<div class="col-lg-2 form-group my-auto">
+		<label class="h6 border-bottom pr-2 pl-1" for="side">Counterparty</label>
+		<select class="form-control" formControlName="counterParty">
+			<option>Select CounterParty</option>
+			<option *ngFor="let counterParty of counterParties" value="counterParty.Id">{{counterParty.Name}}</option>
 		</select>
 	</div>
 
-	<div class="col-lg-2">
-		<button>Clear</button>
-		<button>Search</button>
+	<div class="col-lg-2 form-group my-auto">
+		<label class="h6 border-bottom pr-2 pl-1" for="side">Location</label>
+		<select class="form-control" formControlName="location">
+			<option>Select Location</option>
+			<option *ngFor="let location of locations" value="location.Id">{{location.Name}}</option>
+		</select>
 	</div>
+	
+	<div class="col-lg-1 form-group my-auto">
+		<input type="button" class="btn btn-primary btn-sm btn-block" value="Search" (click)="onSubmit(searchForm)"/>
+		<input type="reset" class="btn btn-primary btn-sm btn-block" value="Clear" data-toggle="modal" data-target="#exampleModalCenter"/>
+	</div>	
 </div>
+</form>

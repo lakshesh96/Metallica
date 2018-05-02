@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Metallica.Custom_Classes;
+using Metallica.Layers;
 using Metallica.Models;
 
 namespace Metallica.Controllers
@@ -24,6 +25,14 @@ namespace Metallica.Controllers
         {
             RefData refData = new RefData();
             return Ok(refData);
+        }
+
+        [HttpPost]
+        [Route("api/Filter")]
+        public List<Trade> FilterTrades(FilterFields fields)
+        {
+            FilterLayer filterLayer = new FilterLayer(fields);
+            return filterLayer.GetTrades();
         }
        
     }

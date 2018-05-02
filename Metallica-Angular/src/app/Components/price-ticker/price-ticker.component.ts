@@ -39,7 +39,8 @@ export class PriceTickerComponent implements OnInit {
 			error => console.error(error),
 			() => {
 				console.log("Price Ticker. Notification Received:", commodity);
-				this.updateCommodityPrice(commodity);
+				if (commodity != null)
+					this.updateCommodityPrice(commodity);
 				//this.updateTicker();
 			}
 		);

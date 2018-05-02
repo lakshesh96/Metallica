@@ -7,21 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+	constructor() { }
 
-  ngOnInit() {
-  }
-  hideAddTrade: boolean = false;
+	ngOnInit() { }
+
+	searchData: any[];
+
+	hideAddTrade: boolean = false;
 	hideEditTrade: boolean = true;
 	hideTradeDetails: boolean = true;
 
-	hideRightBar: boolean = false;
+	hideRightBar: boolean = true;
 
-	toggle_class() {
-		this.hideRightBar = !this.hideRightBar;
+	addTrade() {
+		this.hideRightBar = false;
+		this.hideAddTrade = false;
 	}
 
-	openPanel() {
-		this.hideRightBar = !this.hideRightBar;
+	searchReceived(data) {
+		console.log("Received Search Result", data);
+		this.searchData = data;
 	}
 }

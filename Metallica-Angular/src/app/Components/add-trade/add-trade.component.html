@@ -1,6 +1,5 @@
 
 <form novalidate (ngSubmit)="onSubmit(TradeForm)" [formGroup]="TradeForm">
-<div class="container">
   <table>
     <tr style="background-color:darkgray">
       <td>
@@ -21,64 +20,46 @@
     </tr>
     <tr>
         <td><label><strong>Commodity</strong></label></td>
-            <td><select *ngFor="let c of CommodityList" formControlName="Commodity" class="custom-select" >
+            <td><select *ngFor="let c of CommodityList" formControlName="CommodityId" class="custom-select" >
                 <option value="{{c.Id}}">{{c.Name}}</option>
               </select></td>
     </tr>
 
     <tr>
         <td><label><strong>Side</strong></label></td>
-                <td><input type="radio"  formControlName="Side" value="buy">Buy
-                <input type="radio" class="col-sm-2"  formControlName="Side" value="sell">Sell
+                <td><input type="radio"  formControlName="Side" value="0">Buy
+                <input type="radio" class="col-sm-2"  formControlName="Side" value="1">Sell
                 </td>
     </tr>
 
     <tr>
         <td><label><strong>Counterparty</strong></label></td>
-           <td><select formControlName="Counterparty" class="custom-select" >
-              <option value="Lo">Lorem</option>
-              <option value="Ip">Ipsum</option>
-              <option value="Do">Dolor</option>
-              <option value="Da">Darvy</option>
-              <option value="Co">Coret</option>
-              <option value="Ve">Verty</option>
-              <option value="Ma">Marlo</option>
-              <option value="Tr">Tryna</option>
-              <option value="Li">Lipto</option>
-            </select></td> 
+            <td><select *ngFor="let cp of CounterpartyList" formControlName="CounterPartyId" class="custom-select" >
+                <option value="{{cp.Id}}">{{cp.Name}}</option>
+              </select></td>
     </tr>
 
      <tr>
         <td><label for="Price"><strong>Price</strong></label></td>
-        <td><input type="text" class="form-control" name="Price" formControlName="Price" readonly /></td>
+        <td><input type="text" class="form-control" name="Price" formControlName="Price" readonly /></td><td>USD</td>
      </tr>
 
       <tr>
           <td><label for="Quantity"><strong>Quantity</strong></label></td>
           <td><input type="number" min='1' class="form-control" name="Quantity" formControlName="Quantity" required />
             <div class="error text-danger" *ngIf="TradeForm.get('Quantity').hasError('required') && TradeForm.get('Quantity').touched">Quantity is required</div>
-          </td>  
+          </td><td>MT</td>  
       </tr>
       
         <tr>
-           <td><label><strong>Location</strong></label></td> 
-               <td><select formControlName="Location" class="custom-select" >
-                  <option value="Lo">London</option>
-                  <option value="Ny">New York</option>
-                  <option value="It">Italy</option>
-                  <option value="De">Denmark</option>
-                  <option value="La">Latvia</option>
-                  <option value="Si">Singapore</option>
-                  <option value="Sr">Srilanka</option>
-                  <option value="Sw">Switzerland</option>
-                  <option value="Ma">Mauritius</option>
-                  <option value="Ne">Netherlands</option>
-                </select></td> 
+            <td><label><strong>Location</strong></label></td>
+            <td><select *ngFor="let l of LocationList" formControlName="LocationId" class="custom-select" >
+                <option value="{{l.Id}}">{{l.Name}}</option>
+              </select></td>
         </tr>
         <tr><td></td>
          <td  align="right"><button type="button" class="btn">Cancel</button>
           <button type="submit" class="btn" [disabled]="!TradeForm.valid">Save</button></td>
         </tr>
      </table>
-   </div>
 </form>

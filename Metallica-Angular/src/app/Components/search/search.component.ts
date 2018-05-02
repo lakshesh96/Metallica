@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ReferenceDataService } from '../../Services/ReferenceData/reference-data.service';
+import { SearchService } from '../../Services/Search/search.service';
+import { TradeTableComponent } from '../trade-table/trade-table.component';
+
 
 @Component({
   selector: 'app-search',
@@ -8,31 +12,48 @@ import { ReferenceDataService } from '../../Services/ReferenceData/reference-dat
 })
 export class SearchComponent implements OnInit {
 
-	commodity: any[];
-	location: any[];
-	counterParty: any[];
+	@Output() searchEmit = new EventEmitter<any[]>();
 
-	dateFrom: Date = new Date();
-	dateTo: Date = new Date();
-    settings = {
-        bigBanner: false,
-		timePicker: true,
-		format: 'd MMM yy',
-        //format: 'yyyy-MM-ddTHH:mm:ss.sssZ',
-		defaultOpen: false,
-		closeOnSelect: true
-    }
+	searchForm = new FormGroup({
+		dateFrom: new FormControl(),
+		dateTo: new FormControl(),
+		buy: new FormControl(),
+		sell: new FormControl(),
+		commodity: new FormControl(),
+		counterParty: new FormControl(),
+		location: new FormControl()
+	});
+
+	commodities: any[];
+	locations: any[];
+	counterParties: any[];
 	
-	constructor(public referenceDataService: ReferenceDataService) { 
-		// this.commodity = referenceDataService.getReferenceData("Commodities");
-		// console.log("Search Commodity:", this.commodity);
-	}
+	constructor(public searchService: SearchService) { }
 
 	ngOnInit() { }
 
-	onDateSelect(ev) {
-		console.log(ev);
-		console.log(this.dateFrom);
-		console.log(this.dateTo);
+	onSubmit(data) {
+		if (data.value.dateFrom != null && data.value.dateTo != null) {
+			let dateFrom: Date = new Date(data.value.dateFrom);
+			let dateTo: Date = new Date(data.value.dateTo);
+
+			if (dateFrom > dateTo) {
+				alert("'From' Date cannot be greater than or equal to the 'To' Date");
+			}
+		} else {
+			data.value.dateFrom = null;
+			data.value.dateTo = null;
+		}
+		
+		console.log("Search object created:", data.value);
+		let trades: any[];
+		this.searchService.PerformSearch(data.value).subscribe(
+			response => trades = response,
+			error => console.error(error),
+			() => {
+				console.log("Search Data Received:", trades);
+				this.searchEmit.emit(trades);
+			}
+		);
 	}
 }
