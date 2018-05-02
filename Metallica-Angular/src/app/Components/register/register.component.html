@@ -68,7 +68,7 @@
               <div class="error text-danger" *ngIf="register.get('Userpass').get('ConfirmPassword').touched && register.get('Userpass').hasError('nomatch')">Password must match</div>
            </div>
           </div>
-          <button type="submit" class="btn btn-outline-success" [disabled]="!register.valid" >Register</button>
+          <button type="submit" class="btn btn-outline-success" [disabled]="!register.valid" (click)="AddUser(register)" >Register</button>
         </form>
       </div>
     </div>

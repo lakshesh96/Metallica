@@ -45,32 +45,61 @@ namespace Metallica.Layers
 
         public void FilterForDate()
         {
-            if(fields.DateTo != null)
+
+            try
             {
-                trades = trades.FindAll(a => a.Date <= DateTime.Parse(fields.DateTo));
+                if (fields.DateTo != null)
+                {
+                    trades = trades.FindAll(a => a.Date <= DateTime.Parse(fields.DateTo));
+                }
+                if (fields.DateFrom != null)
+                {
+                    trades = trades.FindAll(a => a.Date >= DateTime.Parse(fields.DateFrom));
+                }
             }
-            if(fields.DateFrom !=null)
+            catch (Exception)
             {
-                trades = trades.FindAll(a => a.Date >= DateTime.Parse(fields.DateFrom));
+                return;
             }
         }
 
         public void FilterForCommodity()
         {
-            if(fields.Commodity !=null)
-            trades = trades.FindAll(a => a.CommodityId == Guid.Parse(fields.Commodity));
+            try
+            {
+                if (fields.Commodity != null)
+                    trades = trades.FindAll(a => a.CommodityId == Guid.Parse(fields.Commodity));
+            }
+            catch(Exception)
+            {
+                return;
+            }
         }
 
         public void FilterForLocation()
         {
-            if (fields.Location != null)
-                trades = trades.FindAll(a => a.LocationId == Guid.Parse(fields.Location));
+            try
+            {
+                if (fields.Location != null)
+                    trades = trades.FindAll(a => a.LocationId == Guid.Parse(fields.Location));
+            }
+            catch(Exception)
+            {
+                return;
+            }
         }
 
         public void FilterForCounterParty()
         {
-            if (fields.CounterParty != null)
-                trades = trades.FindAll(a => a.CounterPartyId == Guid.Parse(fields.CounterParty));
+            try
+            {
+                if (fields.CounterParty != null)
+                    trades = trades.FindAll(a => a.CounterPartyId == Guid.Parse(fields.CounterParty));
+            }
+            catch(Exception)
+            {
+                return;
+            }
         }
     }
 }
