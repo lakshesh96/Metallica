@@ -41,16 +41,16 @@ import { PriceTickerService } from './Services/PriceTickerService/price-ticker.s
 		AppComponent,
 		AddTradeComponent,
 		EditTradeComponent,
-        TradeDetailsComponent,
-        TradeTableComponent,
-        LoginComponent,
-        PriceTickerComponent,
-        LoginOauthComponent
+    TradeDetailsComponent,
+    TradeTableComponent,
+    LoginComponent,
+    PriceTickerComponent,
+    LoginOauthComponent
 	],
 	imports: [
-        BrowserModule,
-        SocialLoginModule,
-        FormsModule,
+    BrowserModule,
+    SocialLoginModule,
+    FormsModule,
 		ReactiveFormsModule,
 		HttpModule,
 		JsonpModule

@@ -34,8 +34,8 @@ export class AddTradeComponent {
     this.DS.insert(value);
   }
 
-  Add(date, commodity, side, counterparty, price, quantity, location){
-    var p = { TradeDate: date, Commodity: commodity, Side: side, Counterparty: counterparty, Price: price, Quantity: quantity, Location: location }
-    this.DS.insert(p);
-  }
+  // Add(date, commodity, side, counterparty, price, quantity, location){
+  //   var p = { TradeDate: date, Commodity: commodity, Side: side, Counterparty: counterparty, Price: price, Quantity: quantity, Location: location }
+  //   this.DS.insert(p);
+  // }
 }
