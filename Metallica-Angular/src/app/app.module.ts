@@ -43,6 +43,7 @@ import { MainComponent } from './Components/main/main.component';
 import { RoutesModule } from './Routes/RouteModule';
 import { RegisterService } from './Services/Register/register.service';
 import { SearchService } from './Services/Search/search.service';
+import { AuthGuardService } from './Services/AuthGuard/auth-guard.service';
 
 @NgModule({
 	declarations: [
@@ -79,7 +80,8 @@ import { SearchService } from './Services/Search/search.service';
 		PriceTickerService,
 		ReferenceDataService,
 		SearchService,
-		RegisterService
+		RegisterService,
+		AuthGuardService
 	],
 	bootstrap: [
 		AppComponent
