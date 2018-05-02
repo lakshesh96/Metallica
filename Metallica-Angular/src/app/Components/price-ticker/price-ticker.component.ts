@@ -35,13 +35,16 @@ export class PriceTickerComponent implements OnInit {
 		console.log("Listening for Commodity Price Updates");
 		let commodity: any;
 		this.priceTickerService.GetCommodityUpdates().subscribe(
-			response => commodity = response,
+			response => {
+				commodity = response;
+				console.log("Notification");
+			},
 			error => console.error(error),
 			() => {
 				console.log("Price Ticker. Notification Received:", commodity);
 				if (commodity != null)
 					this.updateCommodityPrice(commodity);
-				//this.updateTicker();
+				this.updateTicker();
 			}
 		);
 	}
