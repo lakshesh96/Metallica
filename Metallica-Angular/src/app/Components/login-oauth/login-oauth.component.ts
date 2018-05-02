@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators} from '@angular/forms';
 import {GlobalService} from '../../Services/GlobalService/global.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Headers} from '@angular/http';
+import { HttpParams } from '@angular/common/http';
 
 
 @Component({
@@ -51,38 +52,30 @@ export class LoginOauthComponent implements OnInit {
 
   onSubmit({ value, valid }: { value: Login, valid: boolean }) {
 		this.loading = true;
-		let body = new URLSearchParams();
-		body.set('username', value.UserName);
-		body.set('password', value.Password);
-		body.set('grant_type', 'password');
-		//this.headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-		this.headers = new Headers();
-		this.headers.append('content-type', 'application/x-www-form-urlencoded');
-	// 	let options = {
-	// 		headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-	// };
-	
-		this.globalService.LoginPost(body,this.url,this.headers).subscribe(
+		let params = `username=${value.UserName}&password=${value.Password}&grant_type=password`;
+		this.headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+	try{
+		this.globalService.LoginPost(params,this.url,this.headers).subscribe(
 			response => {
-				console.log("Response received:");
-				console.log(response);
-				//if(!response.error){
-					this.AccessToken = response.access_token;
-				/*}
-				else{
-					alert("Authentication Failed");
-				}*/
-				console.log("Access Token:");				
-				console.log(this.AccessToken);
+				console.log("Response received");
+				this.AccessToken = response.access_token;			
 				sessionStorage.setItem("AccessToken",this.AccessToken.toString());
+				if(this.AccessToken != null){
+					this.router.navigateByUrl('Main');
+				}
 			},
 			error => {
-				console.error(error);
+				alert("Authentication Failed");
+			//console.error(error);
 				this.loading = false;
 			},
 			()=> {
 			}
-		); 
+		);
+	}
+		catch(Exception){
+			alert("Authentication Failed");
+		}
 		
 	}
 
