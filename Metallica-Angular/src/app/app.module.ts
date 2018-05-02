@@ -38,6 +38,8 @@ import { GlobalService } from './Services/GlobalService/global.service';
 import { PriceTickerService } from './Services/PriceTickerService/price-ticker.service';
 import { ReferenceDataService } from './Services/ReferenceData/reference-data.service';
 import { SearchComponent } from './Components/search/search.component';
+import { MainComponent } from './Components/main/main.component';
+import { RoutesModule } from './Routes/RouteModule';
 
 @NgModule({
 	declarations: [
@@ -49,7 +51,8 @@ import { SearchComponent } from './Components/search/search.component';
         LoginComponent,
         PriceTickerComponent,
         LoginOauthComponent,
-        SearchComponent
+        SearchComponent,
+        MainComponent
 	],
 	imports: [
         BrowserModule,
@@ -58,7 +61,8 @@ import { SearchComponent } from './Components/search/search.component';
 		ReactiveFormsModule,
 		HttpModule,
 		JsonpModule,
-		AngularDateTimePickerModule
+		AngularDateTimePickerModule,
+		RoutesModule
 	],
     providers: [
 		GlobalService,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ReferenceDataService } from '../../Services/ReferenceData/reference-data.service';
 
 @Component({
@@ -8,31 +9,36 @@ import { ReferenceDataService } from '../../Services/ReferenceData/reference-dat
 })
 export class SearchComponent implements OnInit {
 
-	commodity: any[];
-	location: any[];
-	counterParty: any[];
+	searchForm = new FormGroup({
+		dateFrom: new FormControl(),
+		dateTo: new FormControl(),
+		buy: new FormControl(),
+		sell: new FormControl(),
+		commodity: new FormControl(),
+		counterParty: new FormControl(),
+		location: new FormControl()
+	});
 
-	dateFrom: Date = new Date();
-	dateTo: Date = new Date();
-    settings = {
-        bigBanner: false,
-		timePicker: true,
-		format: 'd MMM yy',
-        //format: 'yyyy-MM-ddTHH:mm:ss.sssZ',
-		defaultOpen: false,
-		closeOnSelect: true
-    }
+	commodities: any[];
+	locations: any[];
+	counterParties: any[];
 	
-	constructor(public referenceDataService: ReferenceDataService) { 
-		// this.commodity = referenceDataService.getReferenceData("Commodities");
-		// console.log("Search Commodity:", this.commodity);
-	}
+	constructor() { }
 
 	ngOnInit() { }
 
-	onDateSelect(ev) {
-		console.log(ev);
-		console.log(this.dateFrom);
-		console.log(this.dateTo);
+	onSubmit(data) {
+		if (data.value.dateFrom != null && data.value.dateTo != null) {
+			let dateFrom: Date = new Date(data.value.dateFrom);
+			let dateTo: Date = new Date(data.value.dateTo);
+
+			if (dateFrom >= dateTo) {
+				alert("'From' Date cannot be greater than or equal to the 'To' Date");
+			}
+		} else {
+			data.value.dateFrom = null;
+			data.value.dateTo = null;
+		}
+		console.log(data.value);
 	}
 }
