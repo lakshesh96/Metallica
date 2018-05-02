@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TradeTableService } from "../../Services/tradeTable/trade-table.service";
 
 @Component({
@@ -8,22 +8,26 @@ import { TradeTableService } from "../../Services/tradeTable/trade-table.service
 })
 export class TradeTableComponent implements OnInit {
 
-  constructor(private tradeService: TradeTableService) { }
-  trades : any[];
-  url : string = "/api/trades";
+	@Input() trades: any[];
 
-  ngOnInit() {
-    this.getTrades();
-  }
+	constructor(private tradeService: TradeTableService) { }
+	//trades : any[];
+	url : string = "/api/trades";
 
-  getTrades()
-  {
-    
-    this.tradeService.getTrades().subscribe(
-      response => this.trades = response,
-      error => console.error(error),
-      () => { /*console.info(this.trades);*/ }
-    );
-  }
+	ngOnInit() {
+		this.getTrades();
+		//this.trades = this.searchResults;
+	}
 
+	getTrades() {
+		this.tradeService.getTrades().subscribe(
+			response => this.trades = response,
+			error => console.error(error),
+			() => { /*console.info(this.trades);*/ }
+		);
+	}
+
+	getSearchTrades(tradeList) {
+		this.trades = tradeList;
+	}
 }

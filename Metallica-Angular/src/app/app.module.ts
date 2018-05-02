@@ -39,6 +39,7 @@ import { ReferenceDataService } from './Services/ReferenceData/reference-data.se
 import { SearchComponent } from './Components/search/search.component';
 import { MainComponent } from './Components/main/main.component';
 import { RoutesModule } from './Routes/RouteModule';
+import { SearchService } from './Services/Search/search.service';
 import { RegisterComponent } from './Components/register/register.component';
 
 @NgModule({
@@ -56,9 +57,9 @@ import { RegisterComponent } from './Components/register/register.component';
         RegisterComponent
 	],
 	imports: [
-        BrowserModule,
-        SocialLoginModule,
-        FormsModule,
+    BrowserModule,
+    SocialLoginModule,
+    FormsModule,
 		ReactiveFormsModule,
 		HttpModule,
 		JsonpModule,
@@ -74,7 +75,8 @@ import { RegisterComponent } from './Components/register/register.component';
 		//TradeOperationService
 		TradeTableService,
 		PriceTickerService,
-		ReferenceDataService
+		ReferenceDataService,
+		SearchService
 	],
 	bootstrap: [
 		AppComponent

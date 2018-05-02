@@ -12,12 +12,14 @@ namespace Metallica.Layers
         List<Trade> trades;
         FilterFields fields;
         MetallicaContext db;
+
         public FilterLayer(FilterFields filterFields)
         {
             trades = new List<Trade>();
             db = new MetallicaContext();
             this.fields = filterFields;
         }
+
         public List<Trade> GetTrades()
         {
             FilterForSide();
@@ -27,21 +29,17 @@ namespace Metallica.Layers
             FilterForCounterParty();
             return trades;
         }
+
         public void FilterForSide()
         {
-            if (fields.Side == FilterSide.Buy)
-            {
-                trades = (from n in db.Trades where n.Side == Side.Buy select n).ToList();
-            }
-            else if (fields.Side == FilterSide.Sell)
-            {
-                trades = (from n in db.Trades where n.Side == Side.Sell select n).ToList();
-            }
-            else
-            {
+            if (fields.Buy == true && fields.Sell == true)
                 trades = (from n in db.Trades select n).ToList();
-            }
+            else if (fields.Buy == true)
+                trades = (from n in db.Trades where n.Side == Side.Buy select n).ToList();
+            else if (fields.Sell == true)
+                trades = (from n in db.Trades where n.Side == Side.Sell select n).ToList();
         }
+
         public void FilterForDate()
         {
             if(fields.DateTo != null)
@@ -53,16 +51,19 @@ namespace Metallica.Layers
                 trades = trades.FindAll(a => a.Date >= DateTime.Parse(fields.DateFrom));
             }
         }
+
         public void FilterForCommodity()
         {
             if(fields.Commodity !=null)
             trades = trades.FindAll(a => a.CommodityId == Guid.Parse(fields.Commodity));
         }
+
         public void FilterForLocation()
         {
             if (fields.Location != null)
                 trades = trades.FindAll(a => a.LocationId == Guid.Parse(fields.Location));
         }
+
         public void FilterForCounterParty()
         {
             if (fields.CounterParty != null)

@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ReferenceDataService } from '../../Services/ReferenceData/reference-data.service';
+import { SearchService } from '../../Services/Search/search.service';
+import { TradeTableComponent } from '../trade-table/trade-table.component';
+
 
 @Component({
   selector: 'app-search',
@@ -8,6 +11,8 @@ import { ReferenceDataService } from '../../Services/ReferenceData/reference-dat
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+
+	@Output() searchEmit = new EventEmitter<any[]>();
 
 	searchForm = new FormGroup({
 		dateFrom: new FormControl(),
@@ -23,7 +28,7 @@ export class SearchComponent implements OnInit {
 	locations: any[];
 	counterParties: any[];
 	
-	constructor() { }
+	constructor(public searchService: SearchService) { }
 
 	ngOnInit() { }
 
@@ -32,13 +37,23 @@ export class SearchComponent implements OnInit {
 			let dateFrom: Date = new Date(data.value.dateFrom);
 			let dateTo: Date = new Date(data.value.dateTo);
 
-			if (dateFrom >= dateTo) {
+			if (dateFrom > dateTo) {
 				alert("'From' Date cannot be greater than or equal to the 'To' Date");
 			}
 		} else {
 			data.value.dateFrom = null;
 			data.value.dateTo = null;
 		}
+		
 		console.log(data.value);
+		let trades: any[];
+		this.searchService.PerformSearch(data.value).subscribe(
+			response => trades = response,
+			error => console.error(error),
+			() => {
+				console.log(trades);
+				this.searchEmit.emit(trades);
+			}
+		);
 	}
 }
