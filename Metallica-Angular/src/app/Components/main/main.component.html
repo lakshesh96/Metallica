@@ -8,7 +8,7 @@
 		</ul>
 		<ul class="navbar-nav">
 			<a class="navbar-brand" href="#">
-				<img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+				<img src="" width="30" height="30" alt="">
 			</a>
       <li class="nav-item"><a class="nav-link" href="#">UserName</a></li>
       <li class="nav-item"><a class="nav-link" href="#">LogOut</a></li>
@@ -17,17 +17,11 @@
 </nav>
 
 <div class="container">
-		
 	<app-price-ticker></app-price-ticker>
-	
-
-	
-			<app-search></app-search>
-	
-
+	<app-search (searchEmit)="searchReceived($event)"></app-search>
 	<div class="row">
 		<div class="col-lg px-0 my-2 border border-top-0 shadow-sm bg-white">   
-            <app-trade-table></app-trade-table>
+            <app-trade-table [trades]="searchData" (tradeIdEmit)="tradeIdReceive($event)"></app-trade-table>
 			  <img src="../assets/add.png" (click)="addTrade()" style="position: absolute; right: 1%; bottom: -20px;"/>
 		</div>
 		

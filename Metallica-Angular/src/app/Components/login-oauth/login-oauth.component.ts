@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Login} from '../../Models/login';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
+import {GlobalService} from '../../Services/GlobalService/global.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import {Headers} from '@angular/http';
+import { HttpParams } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-login-oauth',
@@ -14,13 +19,17 @@ export class LoginOauthComponent implements OnInit {
 	loading = false;
   returnUrl: string;
   
-	url:string = "api/OAuth";
+	url:string = "/token";
 
-	id:number;
 	UserId = null;
 	x:boolean =true;
 
-  constructor() {
+	AccessToken:string;
+	//headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+	//headers = { 'Content-Type': 'application/x-www-form-urlencoded' } ;	
+	headers:Headers;
+
+  constructor(private globalService:GlobalService,  private route: ActivatedRoute, private router: Router) {
 		
 	 }
 
@@ -42,7 +51,32 @@ export class LoginOauthComponent implements OnInit {
   }
 
   onSubmit({ value, valid }: { value: Login, valid: boolean }) {
-    console.log(value,valid);
+		this.loading = true;
+		let params = `username=${value.UserName}&password=${value.Password}&grant_type=password`;
+		this.headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+	try{
+		this.globalService.LoginPost(params,this.url,this.headers).subscribe(
+			response => {
+				console.log("Response received");
+				this.AccessToken = response.access_token;			
+				sessionStorage.setItem("AccessToken",this.AccessToken.toString());
+				if(this.AccessToken != null){
+					this.router.navigateByUrl('Main');
+				}
+			},
+			error => {
+				alert("Authentication Failed");
+			//console.error(error);
+				this.loading = false;
+			},
+			()=> {
+			}
+		);
+	}
+		catch(Exception){
+			alert("Authentication Failed");
+		}
+		
 	}
 
 }

@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace Metallica.Controllers
 {
+    [Authorize]
     public class NotificationController : ApiController
     {
         TradeMQueue tradeQueue = new TradeMQueue();

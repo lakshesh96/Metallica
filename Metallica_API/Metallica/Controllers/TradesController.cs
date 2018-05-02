@@ -14,6 +14,7 @@ using Metallica.MQueue;
 
 namespace Metallica.Controllers
 {
+    [Authorize]
     public class TradesController : ApiController
     {
         private MetallicaContext db = new MetallicaContext();

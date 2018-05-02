@@ -14,6 +14,7 @@ using Metallica.Models;
 
 namespace Metallica.Controllers
 {
+    [Authorize]
     public class RefDataController : ApiController
     {
         private MetallicaContext db = new MetallicaContext();

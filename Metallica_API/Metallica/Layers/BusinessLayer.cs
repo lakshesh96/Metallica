@@ -28,7 +28,7 @@ namespace Metallica.Layers
         public void ChangePrice(Trade trade,TypeOfFunction type)
         {
             Commodity commodity = context.Commodities.Find(trade.CommodityId);
-            double priceVariation = (commodity.CurrentPrice / commodity.BasePrice) * 10;
+            double priceVariation = ((commodity.CurrentPrice*trade.Quantity) / (commodity.BasePrice*100)) ;
             if(trade.Side == Side.Buy)
             {
 
