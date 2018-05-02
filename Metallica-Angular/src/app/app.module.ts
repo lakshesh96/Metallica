@@ -39,6 +39,7 @@ import { ReferenceDataService } from './Services/ReferenceData/reference-data.se
 import { SearchComponent } from './Components/search/search.component';
 import { MainComponent } from './Components/main/main.component';
 import { RoutesModule } from './Routes/RouteModule';
+import { RegisterComponent } from './Components/register/register.component';
 
 @NgModule({
 	declarations: [
@@ -51,7 +52,8 @@ import { RoutesModule } from './Routes/RouteModule';
         PriceTickerComponent,
         LoginOauthComponent,
         SearchComponent,
-        MainComponent
+        MainComponent,
+        RegisterComponent
 	],
 	imports: [
         BrowserModule,
