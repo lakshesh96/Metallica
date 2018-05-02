@@ -10,7 +10,7 @@ import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from "angul
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
 import { TradeTableService } from "../app/Services/tradeTable/trade-table.service";
-import {TradeOperationService} from "./Services/TradeOperation/trade-operation-service.service"
+//import {TradeOperationService} from "./Services/TradeOperation/trade-operation-service.service"
 
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
@@ -29,7 +29,6 @@ import { TradeDetailsComponent } from './components/trade-details/trade-details.
 import { PriceTickerComponent } from './Components/price-ticker/price-ticker.component';
 import { TradeTableComponent } from './Components/trade-table/trade-table.component';
 import { LoginOauthComponent } from './Components/login-oauth/login-oauth.component';
-import { TradeFormModel } from './Models/trade-form';
 
 
 // Import Services
@@ -61,7 +60,7 @@ import { PriceTickerService } from './Services/PriceTickerService/price-ticker.s
         	provide: AuthServiceConfig,
         	useFactory: getAuthServiceConfigs
 		}, 
-		TradeOperationService,
+		//TradeOperationService
 		TradeTableService,
 		PriceTickerService
 	],

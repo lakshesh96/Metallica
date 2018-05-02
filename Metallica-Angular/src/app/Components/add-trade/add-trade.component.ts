@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
-import { TradeFormModel } from '../../Models/trade-form';
+import { TradeTable } from '../../Models/trade-table';
 import { Commodity } from '../../Models/commodity';
-import { TradeOperationService } from '../../Services/TradeOperation/trade-operation-service.service';
+import { Location } from '../../Models/location';
+import { Counterparty } from '../../Models/counterparty';
+
 
 @Component({
   selector: 'app-add-trade',
@@ -11,33 +13,29 @@ import { TradeOperationService } from '../../Services/TradeOperation/trade-opera
 })
 export class AddTradeComponent {
   TradeForm : FormGroup;
-  TradeList: TradeFormModel[];
   CommodityList: Commodity[];
+  LocationList: Location[];
+  CounterpartyList: Counterparty[];
 
-  constructor(private DS : TradeOperationService) { }
+  constructor() { }
       
 
   ngOnInit() {
-    this.TradeList = this.DS.TradeList;
 
-    this.TradeForm = new FormGroup({
+      this.TradeForm = new FormGroup({
       Date: new FormControl(),
-      Commodity:new FormControl('', [Validators.required]),
+      CommodityId:new FormControl('', [Validators.required]),
       Side:new FormControl(),
-      Counterparty:new FormControl('', [Validators.required]),
+      CounterPartyId:new FormControl('', [Validators.required]),
       Price:new FormControl(),
       Quantity:new FormControl('', [Validators.required]),
-      Location:new FormControl('', [Validators.required])
+      LocationId:new FormControl('', [Validators.required])
     });
   }
 
-  onSubmit({ value, valid }: { value: TradeFormModel, valid: boolean }) {
+  onSubmit({ value, valid }: { value: TradeTable, valid: boolean }) {
     console.log(value, valid);
-    this.DS.insert(value);
+   
   }
 
-  Add(date, commodity, side, counterparty, price, quantity, location){
-    var p = { TradeDate: date, Commodity: commodity, Side: side, Counterparty: counterparty, Price: price, Quantity: quantity, Location: location }
-    this.DS.insert(p);
-  }
 }
