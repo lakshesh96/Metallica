@@ -49,6 +49,11 @@ export class GlobalService {
 		return this._http.post(this._baseUrl+url,credentials,{headers:header}).map(this.extractData).catch(this.handleError);
 	}
 
+	PostRegister(credentials,url):Observable<any>{
+		console.log("Global Service: RegisterPOST:", this._baseUrl+url, "Data:", credentials);
+		return this._http.post(this._baseUrl+url,credentials).map(this.extractData).catch(this.handleError);
+	}
+
 	extractData(res:Response){
 		let response = res.json();
 		let body = response;
