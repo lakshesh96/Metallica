@@ -40,6 +40,7 @@ import { ReferenceDataService } from './Services/ReferenceData/reference-data.se
 import { SearchComponent } from './Components/search/search.component';
 import { MainComponent } from './Components/main/main.component';
 import { RoutesModule } from './Routes/RouteModule';
+import {AuthGuardService} from './Services/AuthGuard/auth-guard.service';
 
 @NgModule({
 	declarations: [
@@ -73,7 +74,8 @@ import { RoutesModule } from './Routes/RouteModule';
 		TradeOperationService,
 		TradeTableService,
 		PriceTickerService,
-		ReferenceDataService
+		ReferenceDataService,
+		AuthGuardService
 	],
 	bootstrap: [
 		AppComponent

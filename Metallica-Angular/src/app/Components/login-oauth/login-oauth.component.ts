@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Login} from '../../Models/login';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
+import {GlobalService} from '../../Services/GlobalService/global.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import {Headers} from '@angular/http';
+
 
 @Component({
   selector: 'app-login-oauth',
@@ -14,13 +18,17 @@ export class LoginOauthComponent implements OnInit {
 	loading = false;
   returnUrl: string;
   
-	url:string = "api/OAuth";
+	url:string = "/token";
 
-	id:number;
 	UserId = null;
 	x:boolean =true;
 
-  constructor() {
+	AccessToken:string;
+	//headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+	//headers = { 'Content-Type': 'application/x-www-form-urlencoded' } ;	
+	headers:Headers;
+
+  constructor(private globalService:GlobalService,  private route: ActivatedRoute, private router: Router) {
 		
 	 }
 
@@ -42,7 +50,40 @@ export class LoginOauthComponent implements OnInit {
   }
 
   onSubmit({ value, valid }: { value: Login, valid: boolean }) {
-    console.log(value,valid);
+		this.loading = true;
+		let body = new URLSearchParams();
+		body.set('username', value.UserName);
+		body.set('password', value.Password);
+		body.set('grant_type', 'password');
+		//this.headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+		this.headers = new Headers();
+		this.headers.append('content-type', 'application/x-www-form-urlencoded');
+	// 	let options = {
+	// 		headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+	// };
+	
+		this.globalService.LoginPost(body,this.url,this.headers).subscribe(
+			response => {
+				console.log("Response received:");
+				console.log(response);
+				//if(!response.error){
+					this.AccessToken = response.access_token;
+				/*}
+				else{
+					alert("Authentication Failed");
+				}*/
+				console.log("Access Token:");				
+				console.log(this.AccessToken);
+				sessionStorage.setItem("AccessToken",this.AccessToken.toString());
+			},
+			error => {
+				console.error(error);
+				this.loading = false;
+			},
+			()=> {
+			}
+		); 
+		
 	}
 
 }
