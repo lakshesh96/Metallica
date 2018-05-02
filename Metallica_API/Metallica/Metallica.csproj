@@ -222,6 +222,8 @@
     <Compile Include="Controllers\RefDataController.cs" />
     <Compile Include="Controllers\TradesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Custom_Classes\FilterFields.cs" />
+    <Compile Include="Layers\FilterLayer.cs" />
     <Compile Include="Migrations\201805010423201_UNIQUEINITIAL.cs" />
     <Compile Include="Migrations\201805010423201_UNIQUEINITIAL.Designer.cs">
       <DependentUpon>201805010423201_UNIQUEINITIAL.cs</DependentUpon>
