@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-	constructor() { }
+	constructor(private router: Router) { }
 
 	ngOnInit() { }
 
@@ -27,5 +28,12 @@ export class MainComponent implements OnInit {
 	searchReceived(data) {
 		console.log("Received Search Result", data);
 		this.searchData = data;
+	}
+
+	logOut(){
+		sessionStorage.removeItem("AccessToken");
+		console.log("LoggedOut");
+		this.router.navigateByUrl('Login');
+
 	}
 }
