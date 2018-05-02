@@ -11,6 +11,7 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
 import { TradeTableService } from "../app/Services/tradeTable/trade-table.service";
+
 //import {TradeOperationService} from "./Services/TradeOperation/trade-operation-service.service"
 
 export function getAuthServiceConfigs() {
@@ -30,6 +31,7 @@ import { TradeDetailsComponent } from './components/trade-details/trade-details.
 import { PriceTickerComponent } from './Components/price-ticker/price-ticker.component';
 import { TradeTableComponent } from './Components/trade-table/trade-table.component';
 import { LoginOauthComponent } from './Components/login-oauth/login-oauth.component';
+import { RegisterComponent } from './Components/register/register.component';
 
 
 // Import Services
@@ -39,6 +41,8 @@ import { ReferenceDataService } from './Services/ReferenceData/reference-data.se
 import { SearchComponent } from './Components/search/search.component';
 import { MainComponent } from './Components/main/main.component';
 import { RoutesModule } from './Routes/RouteModule';
+import { RegisterService } from './Services/Register/register.service';
+import { SearchService } from './Services/Search/search.service';
 
 @NgModule({
 	declarations: [
@@ -74,7 +78,8 @@ import { RoutesModule } from './Routes/RouteModule';
 		TradeTableService,
 		PriceTickerService,
 		ReferenceDataService,
-		SearchService
+		SearchService,
+		RegisterService
 	],
 	bootstrap: [
 		AppComponent
