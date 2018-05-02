@@ -45,13 +45,13 @@ export class SearchComponent implements OnInit {
 			data.value.dateTo = null;
 		}
 		
-		console.log(data.value);
+		console.log("Search object created:", data.value);
 		let trades: any[];
 		this.searchService.PerformSearch(data.value).subscribe(
 			response => trades = response,
 			error => console.error(error),
 			() => {
-				console.log(trades);
+				console.log("Search Data Received:", trades);
 				this.searchEmit.emit(trades);
 			}
 		);

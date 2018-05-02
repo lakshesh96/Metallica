@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import {Headers} from '@angular/http';
+import {HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -25,8 +27,8 @@ export class GlobalService {
 
 	PostMethod(credentials,url):Observable<any>{
 		//this._baseUrl = this._baseUrl+url;
-		console.log("At Post Service ->");
-		console.log(credentials);
+		// console.log("At Post Service ->");
+		// console.log(credentials);
 		return this._http.post(this._baseUrl+url,credentials).map(this.extractData).catch(this.handleError);
 	}
 
@@ -51,10 +53,19 @@ export class GlobalService {
 		return this._http.get(this._baseUrl+url+"/"+id).map(this.extractData).catch(this.handleError);
 	}
 
+	LoginPost(credentials,url,header):Observable<any>{
+		//this._baseUrl = this._baseUrl+url;
+		console.log("At Post Service ->");
+		console.log(credentials);
+		console.log(header);
+		return this._http.post(this._baseUrl+url,credentials,{headers:header}).map(this.extractData).catch(this.handleError);
+		//return this._http.post(this._baseUrl+url,credentials, {headers: new HttpHeaders().set}).map(this.extractData).catch(this.handleError);
+	}
+
 	extractData(res:Response){
 		let response = res.json();
 		let body = response;
-		//console.log(body);
+		console.log("Body", body);
 		return body || {};
 	}
 

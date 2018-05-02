@@ -38,6 +38,9 @@ namespace Metallica.Layers
                 trades = (from n in db.Trades where n.Side == Side.Buy select n).ToList();
             else if (fields.Sell == true)
                 trades = (from n in db.Trades where n.Side == Side.Sell select n).ToList();
+            else
+                trades = (from n in db.Trades select n).ToList();
+
         }
 
         public void FilterForDate()
