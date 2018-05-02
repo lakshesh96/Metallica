@@ -22,5 +22,15 @@ namespace Metallica.Models
         [Required]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}", ErrorMessage ="Please provide atleast one number,one upper case letter and one special character, minimum 8 Characters.")]
         public string Password { get; set; }
+
+        [Required]
+        public string Email { get; set; }
+
+        [Required]
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
+
     }
 }

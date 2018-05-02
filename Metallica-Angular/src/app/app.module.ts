@@ -11,6 +11,7 @@ import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
 import { TradeTableService } from "../app/Services/tradeTable/trade-table.service";
+
 //import {TradeOperationService} from "./Services/TradeOperation/trade-operation-service.service"
 
 export function getAuthServiceConfigs() {
@@ -30,6 +31,7 @@ import { TradeDetailsComponent } from './components/trade-details/trade-details.
 import { PriceTickerComponent } from './Components/price-ticker/price-ticker.component';
 import { TradeTableComponent } from './Components/trade-table/trade-table.component';
 import { LoginOauthComponent } from './Components/login-oauth/login-oauth.component';
+import { RegisterComponent } from './Components/register/register.component';
 
 
 
@@ -40,10 +42,14 @@ import { ReferenceDataService } from './Services/ReferenceData/reference-data.se
 import { SearchComponent } from './Components/search/search.component';
 import { MainComponent } from './Components/main/main.component';
 import { RoutesModule } from './Routes/RouteModule';
-import {AuthGuardService} from './Services/AuthGuard/auth-guard.service';
+import { RegisterService } from './Services/Register/register.service';
 import { SearchService } from './Services/Search/search.service';
+<<<<<<< HEAD
 import { RegisterComponent } from './Components/register/register.component';
 import {TradeOperationService} from './Services/TradeOperation/trade-operation-service.service';
+=======
+import { AuthGuardService } from './Services/AuthGuard/auth-guard.service';
+>>>>>>> f08dc1346aa66c6981e30f81c115ce70c87fb6e3
 
 @NgModule({
 	declarations: [
@@ -80,6 +86,7 @@ import {TradeOperationService} from './Services/TradeOperation/trade-operation-s
 		PriceTickerService,
 		ReferenceDataService,
 		SearchService,
+		RegisterService,
 		AuthGuardService
 	],
 	bootstrap: [

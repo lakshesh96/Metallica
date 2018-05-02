@@ -4,18 +4,17 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 @Injectable()
 export class AuthGuardService implements CanActivate{
 
-  constructor(private router:Router) { }
+	constructor(private router:Router) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
-    if (sessionStorage.getItem('AccessToken')) {
-      console.log("At Auth Guard:");
-      console.log(sessionStorage.getItem('AccessToken'));
-      return true;
-    }
-  
-    this.router.navigate(['Main'], { queryParams: { returnUrl: state.url }});
-      return false;
-  }
+	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+		if (sessionStorage.getItem('AccessToken')) {
+			console.log("At Auth Guard, Token Received:", sessionStorage.getItem('AccessToken'));
+			return true;
+		}
+
+		this.router.navigate(['Main'], { queryParams: { returnUrl: state.url }});
+		return false;
+	}
   
 
 }

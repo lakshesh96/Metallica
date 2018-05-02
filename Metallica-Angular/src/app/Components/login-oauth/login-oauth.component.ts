@@ -14,11 +14,11 @@ import { HttpParams } from '@angular/common/http';
 })
 export class LoginOauthComponent implements OnInit {
 
-  login:FormGroup;
+	login:FormGroup;
 	//model: any = {};
 	loading = false;
-  returnUrl: string;
-  
+	returnUrl: string;
+
 	url:string = "/token";
 
 	UserId = null;
@@ -29,54 +29,57 @@ export class LoginOauthComponent implements OnInit {
 	//headers = { 'Content-Type': 'application/x-www-form-urlencoded' } ;	
 	headers:Headers;
 
-  constructor(private globalService:GlobalService,  private route: ActivatedRoute, private router: Router) {
-		
-	 }
+	constructor(private globalService:GlobalService,  private route: ActivatedRoute, private router: Router) { }
 
-  ngOnInit() {
-    this.login = new FormGroup({
+	ngOnInit() {
+		this.login = new FormGroup({
 			UserName: new FormControl('', [Validators.required,Validators.maxLength(20)]),
-      Password: new FormControl('', [Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/)])
-      
+			Password: new FormControl('', [Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/)])
 		});
-		//this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-		//this.UserId = sessionStorage.getItem("UserId");
 
-		if(this.UserId) {
+		if(this.UserId) 
 			this.x=false;
-			//this.navigate(sessionStorage.getItem("Type"));
-		}
 		else
 			this.x = true;
-  }
+	}
 
-  onSubmit({ value, valid }: { value: Login, valid: boolean }) {
+	onSubmit({ value, valid }: { value: Login, valid: boolean }) {
 		this.loading = true;
 		let params = `username=${value.UserName}&password=${value.Password}&grant_type=password`;
 		this.headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-	try{
-		this.globalService.LoginPost(params,this.url,this.headers).subscribe(
-			response => {
-				console.log("Response received");
-				this.AccessToken = response.access_token;			
-				sessionStorage.setItem("AccessToken",this.AccessToken.toString());
-				if(this.AccessToken != null){
-					this.router.navigateByUrl('Main');
-				}
-			},
-			error => {
-				alert("Authentication Failed");
-			//console.error(error);
-				this.loading = false;
-			},
-			()=> {
-			}
-		);
-	}
+		try{
+			this.globalService.LoginPost(params,this.url,this.headers).subscribe(
+				response => {
+					this.AccessToken = response.access_token;			
+					sessionStorage.setItem("AccessToken",this.AccessToken.toString());
+					if(this.AccessToken != null)
+						this.loadReferenceData();
+						//this.router.navigateByUrl('Main');
+				},
+				error => {
+					alert("Authentication Failed");
+					this.loading = false;
+				},
+				()=> { }
+			);
+		}
 		catch(Exception){
 			alert("Authentication Failed");
 		}
-		
+	}
+
+
+	loadReferenceData() {
+		this.globalService.GetMethod("/api/RefData").subscribe(
+			response => {
+				console.log("Loaded reference data", response);
+				this.router.navigateByUrl('Main');
+			},
+			error => console.error(error),
+			() => {
+				
+			}
+		);
 	}
 
 }

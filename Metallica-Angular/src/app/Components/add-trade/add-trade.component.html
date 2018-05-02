@@ -1,58 +1,6 @@
-<style>
-    .dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    }
-    .dropdown {
-    position: relative;
-    display: inline-block;
-    }
-    .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    }
-    .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    }
-    .dropdown-content a:hover {background-color: #ddd}
-    .dropdown:hover .dropdown-content {
-    display: block;
-    }
-    .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-    }
-    </style> 
-    <script>
-    /* When the user clicks on the button, 
-    toggle between hiding and showing the dropdown content */
-    function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-    }
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-    var openDropdown = dropdowns[i];
-    if (openDropdown.classList.contains('show')) {
-    openDropdown.classList.remove('show');
-    }
-    }
-    }
-    }
-    </script> 
+
 <form novalidate (ngSubmit)="onSubmit(TradeForm)" [formGroup]="TradeForm">
+<div class="container">
   <table>
     <tr style="background-color:darkgray">
       <td>
@@ -73,7 +21,7 @@
     </tr>
     <tr>
         <td><label><strong>Commodity</strong></label></td>
-            <!-- <td><select *ngFor="let c of CommodityList" formControlName="CommodityId" class="custom-select" >
+            <td><select *ngFor="let c of CommodityList" formControlName="Commodity" class="custom-select" >
                 <option value="{{c.Id}}">{{c.Name}}</option>
               </select></td> -->
         <td>
@@ -87,8 +35,8 @@
 
     <tr>
         <td><label><strong>Side</strong></label></td>
-                <td><input type="radio"  formControlName="Side" value="0">Buy
-                <input type="radio" class="col-sm-2"  formControlName="Side" value="1">Sell
+                <td><input type="radio"  formControlName="Side" value="buy">Buy
+                <input type="radio" class="col-sm-2"  formControlName="Side" value="sell">Sell
                 </td>
     </tr>
 
@@ -105,14 +53,14 @@
 
      <tr>
         <td><label for="Price"><strong>Price</strong></label></td>
-        <td><input type="number" class="form-control" name="Price" formControlName="Price"  /></td><td>USD</td>
+        <td><input type="text" class="form-control" name="Price" formControlName="Price" readonly /></td>
      </tr>
 
       <tr>
           <td><label for="Quantity"><strong>Quantity</strong></label></td>
           <td><input type="number" min='1' class="form-control" name="Quantity" formControlName="Quantity" required />
             <div class="error text-danger" *ngIf="TradeForm.get('Quantity').hasError('required') && TradeForm.get('Quantity').touched">Quantity is required</div>
-          </td><td>MT</td>  
+          </td>  
       </tr>
       
         <tr>
@@ -130,4 +78,5 @@
           <button type="submit" class="btn" (click)="Add(TradeForm)">Save</button></td>
         </tr>
      </table>
+   </div>
 </form>

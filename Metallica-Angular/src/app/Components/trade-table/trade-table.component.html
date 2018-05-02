@@ -15,7 +15,7 @@
 		<span *ngIf="trade.Side == 1">Sell</span>
 	</td>
 	<td>{{trade.Quantity}}</td>  
-	<td>{{trade.Price}}</td>      
+	<td>{{trade.Price | currency:'INR':2}}</td>      
 	<td>{{trade.CounterParty.Name}} | {{trade.CounterParty.Code}}</td>      
 	<td>{{trade.Location.Name}} | {{trade.Location.Code}}</td> 	
 	<td><img src="../../../assets/delete.png" /></td>

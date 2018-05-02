@@ -6,10 +6,6 @@ import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-// import {Login} from '../Models/Login';
-// import {Admin} from '../Models/Admin';
-// import {Stocks} from '../Models/Login';
-// import {Contains} from '../Models/Login';
 import { TradeTable } from "../../Models/trade-table";
 
 @Injectable()
@@ -17,63 +13,53 @@ export class GlobalService {
 
 	//private _baseUrl:string; // = "http://localhost:60061/api/Admin";
 	private _baseUrl:string = "http://localhost:51811";
-	// login: Login[];
-	// admin: Admin[];
-	// stock: Stocks[];
-	// new_stock: Contains[];
+	
+	headers:Headers = new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")});
 
 	constructor(private _http:Http) { }
 
 
 	PostMethod(credentials,url):Observable<any>{
-		//this._baseUrl = this._baseUrl+url;
-		// console.log("At Post Service ->");
-		// console.log(credentials);
-		return this._http.post(this._baseUrl+url,credentials).map(this.extractData).catch(this.handleError);
+		console.log("Global Service: POST:", this._baseUrl+url, "Data:", credentials, "Header:", this.headers);
+		return this._http.post(this._baseUrl+url,credentials,{headers:this.headers}).map(this.extractData).catch(this.handleError);
 	}
 
 	GetMethod(url):Observable<any[]>{
-		//this._baseUrl = this._baseUrl+url;
-		console.log("GET:", this._baseUrl+url)
-		return this._http.get(this._baseUrl+url).map(this.extractData).catch(this.handleError);
+		console.log("Global Service: GET:", this._baseUrl+url, "Header:", this.headers);
+		return this._http.get(this._baseUrl+url,{headers:this.headers}).map(this.extractData).catch(this.handleError);
 	}
 
 	PutMethod(data,url):Observable<any>{
-		//this._baseUrl = this._baseUrl+url;        
-		return this._http.put(this._baseUrl+url+"/"+data.id,data).map(this.extractData).catch(this.handleError);
+		console.log("Global Service: PUT:", this._baseUrl+url+"/"+data.id, "Data:", data, "Header:", this.headers);
+		return this._http.put(this._baseUrl+url+"/"+data.id,data,{headers:this.headers}).map(this.extractData).catch(this.handleError);
 	}
 
 	PutMethodWithUrl(data,url):Observable<any>{
-		//this._baseUrl = this._baseUrl+url;        
-		return this._http.put(this._baseUrl+url,data).map(this.extractData).catch(this.handleError);
+		console.log("Global Service: PUT:", this._baseUrl+url+"/"+data.id, "Data:", data, "Header:", this.headers);
+		return this._http.put(this._baseUrl+url,data,{headers:this.headers}).map(this.extractData).catch(this.handleError);
 	}
 
 	GetWithId(url,id):Observable<any[]>{
-		//this._baseUrl = this._baseUrl+url;
-		return this._http.get(this._baseUrl+url+"/"+id).map(this.extractData).catch(this.handleError);
+		console.log("Global Service: GET:", this._baseUrl+url+"/"+id, "Header:", this.headers);
+		return this._http.get(this._baseUrl+url+"/"+id,{headers:this.headers}).map(this.extractData).catch(this.handleError);
 	}
 
 	LoginPost(credentials,url,header):Observable<any>{
-		//this._baseUrl = this._baseUrl+url;
-		console.log("At Post Service ->");
-		console.log(credentials);
-		console.log(header);
+		console.log("Global Service: POST:", this._baseUrl+url, "Data:", credentials, "Header:", this.headers);
 		return this._http.post(this._baseUrl+url,credentials,{headers:header}).map(this.extractData).catch(this.handleError);
-		//return this._http.post(this._baseUrl+url,credentials, {headers: new HttpHeaders().set}).map(this.extractData).catch(this.handleError);
+	}
+
+	PostRegister(credentials,url):Observable<any>{
+		console.log("Global Service: RegisterPOST:", this._baseUrl+url, "Data:", credentials);
+		return this._http.post(this._baseUrl+url,credentials).map(this.extractData).catch(this.handleError);
 	}
 
 	extractData(res:Response){
 		let response = res.json();
 		let body = response;
-		console.log("Body", body);
+		//console.log("Body", body);
 		return body || {};
 	}
-
-	extractBlocks()
-	{
-
-	}
-
 
 	handleError(error: Response | any) {
 		let errMsg: string;

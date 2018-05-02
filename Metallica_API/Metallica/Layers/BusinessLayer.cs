@@ -38,7 +38,10 @@ namespace Metallica.Layers
                 }
                 else if(type==TypeOfFunction.Delete)
                 {
-                    commodity.CurrentPrice -= priceVariation;
+                    if(priceVariation>commodity.CurrentPrice)
+                        commodity.CurrentPrice = 0;
+                    else
+                        commodity.CurrentPrice -= priceVariation;
                 }
                 else
                 {
@@ -49,7 +52,10 @@ namespace Metallica.Layers
             {
                 if (type == TypeOfFunction.Add)
                 {
-                    commodity.CurrentPrice -= priceVariation;
+                    if (priceVariation > commodity.CurrentPrice)
+                        commodity.CurrentPrice = 0;
+                    else
+                        commodity.CurrentPrice -= priceVariation;
                 }
                 else if (type == TypeOfFunction.Delete)
                 {
@@ -57,7 +63,10 @@ namespace Metallica.Layers
                 }
                 else
                 {
-                    commodity.CurrentPrice -= priceVariation;
+                    if (priceVariation > commodity.CurrentPrice)
+                        commodity.CurrentPrice = 0;
+                    else
+                        commodity.CurrentPrice -= priceVariation;
                 }
             }
             UpdateTickerNotification(commodity);

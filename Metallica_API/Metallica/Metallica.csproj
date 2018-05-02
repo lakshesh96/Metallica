@@ -221,6 +221,7 @@
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\RefDataController.cs" />
     <Compile Include="Controllers\TradesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Custom_Classes\FilterFields.cs" />
     <Compile Include="Layers\FilterLayer.cs" />
@@ -253,6 +254,10 @@
     <Compile Include="Migrations\201805011017048_check1.cs" />
     <Compile Include="Migrations\201805011017048_check1.Designer.cs">
       <DependentUpon>201805011017048_check1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805020936584_UserRegistration.cs" />
+    <Compile Include="Migrations\201805020936584_UserRegistration.Designer.cs">
+      <DependentUpon>201805020936584_UserRegistration.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs" />
     <Compile Include="MQueue\TradeMQueue.cs" />
@@ -363,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805011017048_check1.resx">
       <DependentUpon>201805011017048_check1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805020936584_UserRegistration.resx">
+      <DependentUpon>201805020936584_UserRegistration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
