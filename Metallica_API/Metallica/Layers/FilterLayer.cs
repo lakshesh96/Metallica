@@ -29,18 +29,12 @@ namespace Metallica.Layers
         }
         public void FilterForSide()
         {
-            if (fields.Side == FilterSide.Buy)
-            {
-                trades = (from n in db.Trades where n.Side == Side.Buy select n).ToList();
-            }
-            else if (fields.Side == FilterSide.Sell)
-            {
-                trades = (from n in db.Trades where n.Side == Side.Sell select n).ToList();
-            }
-            else
-            {
+            if (fields.Buy == true && fields.Sell == true)
                 trades = (from n in db.Trades select n).ToList();
-            }
+            else if (fields.Buy == true)
+                trades = (from n in db.Trades where n.Side == Side.Buy select n).ToList();
+            else if (fields.Sell == true)
+                trades = (from n in db.Trades where n.Side == Side.Sell select n).ToList();
         }
         public void FilterForDate()
         {

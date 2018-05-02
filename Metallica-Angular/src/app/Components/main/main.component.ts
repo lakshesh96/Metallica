@@ -11,6 +11,8 @@ export class MainComponent implements OnInit {
 
 	ngOnInit() { }
 
+	searchData: any[];
+
 	hideAddTrade: boolean = false;
 	hideEditTrade: boolean = true;
 	hideTradeDetails: boolean = true;
@@ -20,5 +22,10 @@ export class MainComponent implements OnInit {
 	addTrade() {
 		this.hideRightBar = false;
 		this.hideAddTrade = false;
+	}
+
+	searchReceived(data) {
+		console.log("Received Search Result", data);
+		this.searchData = data;
 	}
 }

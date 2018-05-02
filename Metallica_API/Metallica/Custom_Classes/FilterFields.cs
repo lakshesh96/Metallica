@@ -5,12 +5,6 @@ using System.Web;
 
 namespace Metallica.Custom_Classes
 {
-    public enum FilterSide
-    {
-        Buy,
-        Sell,
-        Both
-    }
     public class FilterFields
     {
         public string DateFrom { get; set; }
@@ -18,6 +12,7 @@ namespace Metallica.Custom_Classes
         public string Commodity { get; set; }
         public string Location { get; set; }
         public string CounterParty { get; set; }
-        public FilterSide Side { get; set; }
+        public bool Buy { get; set; }
+        public bool Sell { get; set; }
     }
 }
