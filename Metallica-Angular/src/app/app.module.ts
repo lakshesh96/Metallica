@@ -32,6 +32,7 @@ import { TradeTableComponent } from './Components/trade-table/trade-table.compon
 import { LoginOauthComponent } from './Components/login-oauth/login-oauth.component';
 
 
+
 // Import Services
 import { GlobalService } from './Services/GlobalService/global.service';
 import { PriceTickerService } from './Services/PriceTickerService/price-ticker.service';
@@ -42,6 +43,7 @@ import { RoutesModule } from './Routes/RouteModule';
 import {AuthGuardService} from './Services/AuthGuard/auth-guard.service';
 import { SearchService } from './Services/Search/search.service';
 import { RegisterComponent } from './Components/register/register.component';
+import {TradeOperationService} from './Services/TradeOperation/trade-operation-service.service';
 
 @NgModule({
 	declarations: [
@@ -73,7 +75,7 @@ import { RegisterComponent } from './Components/register/register.component';
         	provide: AuthServiceConfig,
         	useFactory: getAuthServiceConfigs
 		}, 
-		//TradeOperationService
+		TradeOperationService,
 		TradeTableService,
 		PriceTickerService,
 		ReferenceDataService,

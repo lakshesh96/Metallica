@@ -8,11 +8,9 @@ export class TradeOperationService {
 
   constructor() { }
 
-  insert(p) {
-      this.TradeList.push(p);
-  }
+  reg:TradeTable;
 
-  remove(p){
-    this.TradeList.splice(p,1);
+  Add(r:TradeTable){
+    console.log(r);
   }
 }
