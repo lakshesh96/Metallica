@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TradeTableService } from "../../Services/tradeTable/trade-table.service";
+import {  } from 'events';
 
 @Component({
   selector: 'app-trade-table',
@@ -9,6 +10,7 @@ import { TradeTableService } from "../../Services/tradeTable/trade-table.service
 export class TradeTableComponent implements OnInit {
 
 	@Input() trades: any[];
+	@Output() tradeIdEmit = new EventEmitter<String>(); 
 
 	constructor(private tradeService: TradeTableService) { }
 	//trades : any[];
@@ -29,5 +31,9 @@ export class TradeTableComponent implements OnInit {
 
 	getSearchTrades(tradeList) {
 		this.trades = tradeList;
+	}
+
+	sendTradeId(id) {
+		this.tradeIdEmit.emit(id);
 	}
 }
