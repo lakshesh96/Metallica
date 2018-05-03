@@ -5,6 +5,7 @@ import { GlobalService } from '../../Services/GlobalService/global.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Headers} from '@angular/http';
 import { HttpParams } from '@angular/common/http';
+import {Md5} from 'ts-md5/dist/md5';
 
 
 @Component({
@@ -45,7 +46,9 @@ export class LoginOauthComponent implements OnInit {
 
 	onSubmit({ value, valid }: { value: Login, valid: boolean }) {
 		this.loading = true;
-		let params = `username=${value.UserName}&password=${value.Password}&grant_type=password`;
+		let hashPass = Md5.hashStr(value.Password);
+		let params = `username=${value.UserName}&password=${hashPass}&grant_type=password`;
+		console.log("At Login: " + params);
 		this.headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 		try{
 			this.globalService.LoginPost(params,this.url,this.headers).subscribe(

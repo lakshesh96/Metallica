@@ -26,8 +26,15 @@ namespace Metallica.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Users.Add(user);
-            db.SaveChanges();
+            try
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
 
             return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
         }
