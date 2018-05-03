@@ -17,35 +17,41 @@
 
     <tr>
         <td><label  for="TradeDate"><strong>Date</strong></label></td>
-        <td><input type="date"></td>
-    </tr>
-    <tr>
-        <td><label><strong>Commodity</strong></label></td>
-            <td><select *ngFor="let c of CommodityList" formControlName="Commodity" class="custom-select" >
-                <option value="{{c.Id}}">{{c.Name}}</option>
-              </select></td> -->
-        <td>
-            
-            <select id="myDropdown" class="dropdown-content">
-                <option>Select Commodity</option>
-                <option *ngFor="let Commodity of CommodityList" value="Commodity.Id">{{Commodity.Name}}</option>
-            </select>
+        <td><strong>{{ date | date:'mediumDate' }}</strong>
+            <input type="text" hidden formControlName="Date" [(ngModel)]="dateString">
         </td>
     </tr>
 
     <tr>
+            <td><label><strong>Commodity</strong></label></td>
+            <td>
+            <select id="CommodityDropdown" class="dropdown-content" (change)="onChange($event)"  formControlName="CommodityId">
+                <option>Select Commodity</option>
+                <option *ngFor="let Commodity of CommodityList" [value]="Commodity.Id">{{Commodity.Name}}</option>
+            </select>
+            </td>
+        </tr>
+        <tr [hidden]=true>
+                <td><label><strong>User Id</strong></label></td>
+                <td>
+                    <input type="text" class="form-control"  formControlName="UserId" [(ngModel)]="Userid" />
+                    <input type="text" class="form-control"  formControlName="Status" [(ngModel)]="status"/>
+                </td>
+        </tr>
+        
+    <tr>
         <td><label><strong>Side</strong></label></td>
                 <td><input type="radio"  formControlName="Side" value="buy">Buy
-                <input type="radio" class="col-sm-2"  formControlName="Side" value="sell">Sell
+                <input type="radio" class="col-sm-2" formControlName="Side" value="sell">Sell
                 </td>
     </tr>
 
     <tr>
         <td><label><strong>Counterparty</strong></label></td>
         <td>
-        <select id="myDropdown" class="dropdown-content">
+        <select id="CounterPartyDropdown" class="dropdown-content" formControlName="CounterPartyId">
             <option>Select Counterparty</option>
-            <option *ngFor="let counterParty of CounterPartyList" value="counterParty.Id">{{counterParty.Name}}</option>
+            <option *ngFor="let counterParty of CounterPartyList" [value]="counterParty.Id">{{counterParty.Name}}</option>
         </select>
         </td>
     </tr>
@@ -53,7 +59,7 @@
 
      <tr>
         <td><label for="Price"><strong>Price</strong></label></td>
-        <td><input type="text" class="form-control" name="Price" formControlName="Price" readonly /></td>
+        <td><input type="text" class="form-control" [(ngModel)]="price" formControlName="Price" disabled="true" /></td>
      </tr>
 
       <tr>
@@ -66,16 +72,16 @@
         <tr>
             <td><label><strong>Location</strong></label></td>
             <td>
-              <select id="myDropdown" class="dropdown-content">
+              <select id="LocationDropdown" class="dropdown-content"  formControlName="LocationId">
                  <option>Select Location</option>
-                <option *ngFor="let location of LocationList" value="location.Id">{{location.Name}}</option>                
+                <option *ngFor="let location of LocationList" [value]="location.Id">{{location.Name}}</option>                
               </select>
             </td>
         </tr>
 
         <tr><td></td>
          <td  align="right"><button type="button" class="btn">Cancel</button>
-          <button type="submit" class="btn" (click)="Add(TradeForm)">Save</button></td>
+          <button type="submit" class="btn" (click)="AddTrade(TradeForm)">Save</button></td>
         </tr>
      </table>
    </div>

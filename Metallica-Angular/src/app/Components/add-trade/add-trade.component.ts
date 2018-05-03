@@ -12,20 +12,31 @@ import { GlobalService } from '../../Services/GlobalService/global.service'
   templateUrl: './add-trade.component.html',
   styleUrls: ['./add-trade.component.css']
 })
-export class AddTradeComponent {
+export class AddTradeComponent implements OnInit {
   TradeForm : FormGroup;
   CommodityList: Commodity[];
   LocationList: Location[];
-  CounterpartyList: Counterparty[];
-
-  constructor(private TradeOperationService : TradeOperationService, private GlobalService : GlobalService) {
-   // this.CommodityList = GlobalService.getRefData("Commodities");
-   }
-
-  Add(item)
-  {
-    this.TradeOperationService.Add(item.value);
+  CounterPartyList: Counterparty[];
+  Userid: string;
+  status: number=0;
+  price: number;
+  date: Date = new Date();
+  dateString: string;
+  onChange(event){
+    let commodityId = event.target.value;
+    this.CommodityList.forEach(element => {
+      if (element.Id == commodityId)
+        this.price=element.CurrentPrice;
+    });
   }
+  constructor(private TradeOperationService : TradeOperationService, private GlobalService : GlobalService) {
+   this.CommodityList = GlobalService.getReferenceData("Commodities");
+   this.LocationList=GlobalService.getReferenceData("Locations");
+   this.CounterPartyList=GlobalService.getReferenceData("CounterParties");
+   this.Userid=GlobalService.getReferenceData("UserId");
+   this.dateString=this.date.toISOString();
+  }
+
 
   ngOnInit() {
 
@@ -34,9 +45,11 @@ export class AddTradeComponent {
       CommodityId:new FormControl('', [Validators.required]),
       Side:new FormControl(),
       CounterPartyId:new FormControl('', [Validators.required]),
-      Price:new FormControl(),
+      Price:new FormControl(''),
       Quantity:new FormControl('', [Validators.required]),
-      LocationId:new FormControl('', [Validators.required])
+      LocationId:new FormControl('', [Validators.required]),
+      UserId: new FormControl('',[Validators.required]),
+      Status: new FormControl('',[Validators.required])
     });
   }
 
@@ -44,8 +57,11 @@ export class AddTradeComponent {
     console.log(value, valid);
   }
 
-  // Add(date, commodity, side, counterparty, price, quantity, location){
-  //   var p = { TradeDate: date, Commodity: commodity, Side: side, Counterparty: counterparty, Price: price, Quantity: quantity, Location: location }
-  //   this.DS.insert(p);
-  // }
+  AddTrade(item){
+    console.log("Hi there");
+    console.log(item.value);
+    this.TradeOperationService.Add(item.value);
+  }
+
+  
 }
