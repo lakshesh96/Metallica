@@ -12,8 +12,8 @@ const AppRoutes:Routes = [
 	{ path: "Register", component: RegisterComponent},
     {path:"Login",component:LoginOauthComponent},
     {path:"Main",component:MainComponent,canActivate: [AuthGuardService]},
-    {path:"",component:LoginOauthComponent},
-    {path:"**",component:LoginOauthComponent}
+    {path:"",component:MainComponent,canActivate: [AuthGuardService]},
+    {path:"**",component:MainComponent,canActivate: [AuthGuardService]}
    
    
 ];
