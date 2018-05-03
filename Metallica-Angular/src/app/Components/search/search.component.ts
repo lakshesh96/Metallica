@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ReferenceDataService } from '../../Services/ReferenceData/reference-data.service';
 import { SearchService } from '../../Services/Search/search.service';
 import { TradeTableComponent } from '../trade-table/trade-table.component';
+import { GlobalService } from '../../Services/GlobalService/global.service';
 
 
 @Component({
@@ -28,7 +29,11 @@ export class SearchComponent implements OnInit {
 	locations: any[];
 	counterParties: any[];
 	
-	constructor(public searchService: SearchService) { }
+	constructor(public searchService: SearchService, public globalService: GlobalService) { 
+		this.commodities = globalService.getReferenceData("Commodities");
+		this.locations = globalService.getReferenceData("Locations");
+		this.counterParties = globalService.getReferenceData("CounterParties");
+	}
 
 	ngOnInit() { }
 
@@ -39,7 +44,11 @@ export class SearchComponent implements OnInit {
 
 			if (dateFrom > dateTo) {
 				alert("'From' Date cannot be greater than or equal to the 'To' Date");
+				return;
 			}
+
+			data.value.dateFrom = dateFrom.toISOString();
+			data.value.dateTo = dateTo.toISOString();
 		} else {
 			data.value.dateFrom = null;
 			data.value.dateTo = null;
