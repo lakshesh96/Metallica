@@ -25,7 +25,9 @@ export class TradeTableComponent implements OnInit {
 		this.tradeService.getTrades().subscribe(
 			response => this.trades = response,
 			error => console.error(error),
-			() => { /*console.info(this.trades);*/ }
+			() => {
+				//this.updateNewTrades();
+			}
 		);
 	}
 
@@ -36,4 +38,39 @@ export class TradeTableComponent implements OnInit {
 	sendTradeId(id) {
 		this.tradeIdEmit.emit(id);
 	}
+
+	updateNewTrades() {
+		console.log("Listening for New Trade Updates");
+		let newTrade: any;
+		this.tradeService.GetTradeUpdates().subscribe(
+			response => {
+				newTrade = response;
+				//console.log("Notification");
+			},
+			error => console.error(error),
+			() => {
+				console.log("New Trades. Notification Received:", newTrade);
+				if (newTrade != null && newTrade["Text"] == "Trade Added")
+					this.addToTradeTable(newTrade["Object"]);
+				else if (newTrade != null && newTrade["Text"] == "Trade Updated")
+					this.updateTradeTable(newTrade["Object"]);
+				else if (newTrade != null && newTrade["Text"] == "Trade Deleted")
+					this.deleteFromTable(newTrade["Object"]);
+				this.updateNewTrades();
+			}
+		);
+	}
+
+	addToTradeTable(newTrade) {
+		this.trades.unshift(newTrade);
+	}
+	
+	updateTradeTable(trade) {
+		this.trades.map((findTrade) => findTrade.Id == trade.Id ? trade : findTrade);
+	}
+
+	deleteFromTable(trade) {
+		this.trades = this.trades.filter((findTrade) => { return findTrade.Id != trade.Id });
+	}
 }
+

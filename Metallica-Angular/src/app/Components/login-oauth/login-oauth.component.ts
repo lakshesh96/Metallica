@@ -55,7 +55,6 @@ export class LoginOauthComponent implements OnInit {
 					sessionStorage.setItem("AccessToken",this.AccessToken.toString());
 					if(this.AccessToken != null)
 						this.loadReferenceData();
-						//this.router.navigateByUrl('Main');
 				},
 				error => {
 					alert("Authentication Failed");
@@ -71,12 +70,9 @@ export class LoginOauthComponent implements OnInit {
 
 
 	loadReferenceData() {
-		
 		this.globalService.GetMethod("/api/RefData").subscribe(
 			response => {
 				this.globalService.setReferenceData(response);
-				//sessionStorage.setItem("RefData", JSON.stringify(response));
-				console.log("Loaded reference data", response);
 				this.router.navigateByUrl('Main');
 			},
 			error => console.error(error),

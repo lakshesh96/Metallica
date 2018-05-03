@@ -15,23 +15,10 @@ export class PriceTickerComponent implements OnInit {
 
   	constructor(public priceTickerService: PriceTickerService, public globalService: GlobalService) { 
 		this.commodityList = this.globalService.getReferenceData("Commodities");
-		console.log(this.commodityList);
+		this.updateTicker();
 	}
 
-	ngOnInit() {
-		let data: any;
-		this.priceTickerService.GetFullCommodityList().subscribe(
-			response => data = response,
-			error => console.error(error),
-			() => {
-				//this.commodityList = data["Commodities"];
-				this.globalService.setReferenceData(data);
-				this.commodityList = this.globalService.getReferenceData("Commodities");
-				console.log("Price Ticker. RefData[Commodities] Received:", this.commodityList);
-				this.updateTicker();
-			}
-		);
-	}
+	ngOnInit() { }
 
 	updateTicker() {
 		console.log("Listening for Commodity Price Updates");
@@ -39,7 +26,7 @@ export class PriceTickerComponent implements OnInit {
 		this.priceTickerService.GetCommodityUpdates().subscribe(
 			response => {
 				commodity = response;
-				console.log("Notification");
+				//console.log("Notification");
 			},
 			error => console.error(error),
 			() => {

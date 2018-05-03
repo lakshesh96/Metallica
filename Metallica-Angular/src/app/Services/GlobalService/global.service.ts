@@ -14,20 +14,15 @@ export class GlobalService {
 	//private _baseUrl:string; // = "http://localhost:60061/api/Admin";
 	private _baseUrl:string = "http://localhost:51811";
 	
-	ReferenceData: any[] = [];
-
 	//headers:Headers = new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")});
 	constructor(private _http:Http) { }
 
 	setReferenceData(data) {
-		localStorage.setItem("RefData", data);
-		this.ReferenceData = data; 
+		localStorage.setItem("RefData", JSON.stringify(data));
 	}
 
 	getReferenceData(type) {
-		console.log(this.ReferenceData);
-		//return localStorage.getItem("RefData");
-		return this.ReferenceData[type];
+		return JSON.parse(localStorage.getItem("RefData"))[type];
 	}
 
 	PostMethod(credentials,url):Observable<any>{
