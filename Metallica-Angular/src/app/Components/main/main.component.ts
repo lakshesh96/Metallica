@@ -38,7 +38,7 @@ export class MainComponent implements OnInit {
 
 	logOut(){
 		sessionStorage.removeItem("AccessToken");
-		sessionStorage.removeItem("RefData");
+		localStorage.removeItem("RefData");
 		console.log("LoggedOut");
 		this.router.navigateByUrl('Login');
 
