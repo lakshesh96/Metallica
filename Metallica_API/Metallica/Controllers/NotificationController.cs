@@ -18,7 +18,7 @@ namespace Metallica.Controllers
         [Route("api/TradeNotification")]
         public IHttpActionResult GetTradeNotification()
         {
-            GenericTrade<Trade> genericTrade = tradeQueue.ReceiveMessage();
+            TradeQueueMessage<Trade> genericTrade = tradeQueue.ReceiveMessage();
             return Ok(genericTrade);
         }
 

@@ -5,14 +5,14 @@ using System.Web;
 
 namespace Metallica.Custom_Classes
 {
-    public class GenericTrade<Type>
+    public class TradeQueueMessage<Type>
     {
         public string Text;
         public Type Object;
 
-        public GenericTrade() { }
+        public TradeQueueMessage() { }
 
-        public GenericTrade(string text,Type Object)
+        public TradeQueueMessage(string text,Type Object)
         {
             this.Text = text;
             this.Object = Object;

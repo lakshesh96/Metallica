@@ -11,7 +11,7 @@ namespace Metallica.MQueue
     public class TradeMQueue
     {
         private string TradeQueueName = @".\Private$\GenericTrade"; 
-        public Boolean SendMessage(GenericTrade<Trade> trade)
+        public Boolean SendMessage(TradeQueueMessage<Trade> tradeMessage)
             {
                 MessageQueue messageQueue = null;
                 if (!MessageQueue.Exists(TradeQueueName))
@@ -20,8 +20,8 @@ namespace Metallica.MQueue
                     messageQueue = new MessageQueue(TradeQueueName);
                 try
                 {
-                    messageQueue.Formatter = new XmlMessageFormatter(new Type[] { typeof(GenericTrade<Trade>) });
-                    messageQueue.Send(trade);
+                    messageQueue.Formatter = new XmlMessageFormatter(new Type[] { typeof(TradeQueueMessage<Trade>) });
+                    messageQueue.Send(tradeMessage);
                 }
                 catch (Exception e)
                 {
@@ -35,16 +35,16 @@ namespace Metallica.MQueue
             }
 
 
-            public GenericTrade<Trade> ReceiveMessage()
+            public TradeQueueMessage<Trade> ReceiveMessage()
             {
                 if (!MessageQueue.Exists(TradeQueueName))
                     return null;
                 MessageQueue messageQueue = new MessageQueue(TradeQueueName);
-                GenericTrade<Trade> trade = null;
+                TradeQueueMessage<Trade> tradeMessage = null;
                 try
                 {
-                    messageQueue.Formatter = new XmlMessageFormatter(new Type[] { typeof(GenericTrade<Trade>) });
-                    trade = (GenericTrade<Trade>)messageQueue.Receive().Body;
+                    messageQueue.Formatter = new XmlMessageFormatter(new Type[] { typeof(TradeQueueMessage<Trade>) });
+                    tradeMessage = (TradeQueueMessage<Trade>)messageQueue.Receive().Body;
                 }
                 catch {
                     return null;
@@ -53,7 +53,7 @@ namespace Metallica.MQueue
                 {
                     messageQueue.Close();
                 }
-                return trade;
+                return tradeMessage;
             }
     }
 }

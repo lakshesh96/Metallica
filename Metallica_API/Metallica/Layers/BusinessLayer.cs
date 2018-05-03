@@ -79,20 +79,20 @@ namespace Metallica.Layers
         }
         public void AddNotification(Trade trade)
         {
-            GenericTrade<Trade> genericTrade = new GenericTrade<Trade>("Trade Added", trade);
-            tradeQueue.SendMessage(genericTrade);
+            TradeQueueMessage<Trade> tradeMessage = new TradeQueueMessage<Trade>("Trade Added", trade);
+            tradeQueue.SendMessage(tradeMessage);
             ChangePrice(trade, TypeOfFunction.Add);
         }
         public void UpdateNotification(Trade trade)
         {
-            GenericTrade<Trade> genericTrade = new GenericTrade<Trade>("Trade Updated", trade);
-            tradeQueue.SendMessage(genericTrade);
+            TradeQueueMessage<Trade> tradeMessage = new TradeQueueMessage<Trade>("Trade Updated", trade);
+            tradeQueue.SendMessage(tradeMessage);
             ChangePrice(trade, TypeOfFunction.Update);
         }
         public void DeleteNotification(Trade trade)
         {
-            GenericTrade<Trade> genericTrade = new GenericTrade<Trade>("Trade Deleted", trade);
-            tradeQueue.SendMessage(genericTrade);
+            TradeQueueMessage<Trade> tradeMessage = new TradeQueueMessage<Trade>("Trade Deleted", trade);
+            tradeQueue.SendMessage(tradeMessage);
             ChangePrice(trade, TypeOfFunction.Delete);
         }
     }
