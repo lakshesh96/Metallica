@@ -11,7 +11,7 @@ import { RegisterService } from '../../Services/Register/register.service';
 })
 export class RegisterComponent implements OnInit {
   register : FormGroup;
-  constructor(private service: RegisterService) { }
+  constructor(private registerService: RegisterService) { }
 
   ngOnInit() {
     this.register = new FormGroup({
@@ -32,6 +32,6 @@ export class RegisterComponent implements OnInit {
 AddUser(item) {
   console.log("Hi there");
   console.log(item.value);
-  this.service.Add(item.value);
+  this.registerService.Add(item.value);
 }
 }

@@ -259,6 +259,18 @@
     <Compile Include="Migrations\201805020936584_UserRegistration.Designer.cs">
       <DependentUpon>201805020936584_UserRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805030655364_PasswordCheckRemove.cs" />
+    <Compile Include="Migrations\201805030655364_PasswordCheckRemove.Designer.cs">
+      <DependentUpon>201805030655364_PasswordCheckRemove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805030656066_PasswordCheckRemove1.cs" />
+    <Compile Include="Migrations\201805030656066_PasswordCheckRemove1.Designer.cs">
+      <DependentUpon>201805030656066_PasswordCheckRemove1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805030714414_PasswordLength.cs" />
+    <Compile Include="Migrations\201805030714414_PasswordLength.Designer.cs">
+      <DependentUpon>201805030714414_PasswordLength.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs" />
     <Compile Include="MQueue\TradeMQueue.cs" />
     <Compile Include="MQueue\TickerMQueue.cs" />
@@ -371,6 +383,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805020936584_UserRegistration.resx">
       <DependentUpon>201805020936584_UserRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805030655364_PasswordCheckRemove.resx">
+      <DependentUpon>201805030655364_PasswordCheckRemove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805030656066_PasswordCheckRemove1.resx">
+      <DependentUpon>201805030656066_PasswordCheckRemove1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805030714414_PasswordLength.resx">
+      <DependentUpon>201805030714414_PasswordLength.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
