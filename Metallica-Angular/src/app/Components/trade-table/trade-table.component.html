@@ -7,7 +7,7 @@
   <th>Counterparty</th>
   <th>Location</th>
   <th></th>
-  <tr *ngFor = "let trade of trades;">
+  <tr *ngFor = "let trade of trades;" (click)="detailRequest(trade)">
     <td>{{trade.Date}}</td>
     <td>{{trade.Commodity.Name}} | {{trade.Commodity.Code}}</td>
     <td>

@@ -23,14 +23,12 @@
 	<app-search (searchEmit)="searchReceived($event)"></app-search>
 	<div class="row">
 		<div class="col-lg px-0 my-2 border border-top-0 shadow-sm bg-white">   
-            <app-trade-table [trades]="searchData" (tradeIdEmit)="tradeIdReceive($event)"></app-trade-table>
+            <app-trade-table [trades]="searchData" (tradeEmit)="tradeReceive($event)"></app-trade-table>
 			  <img src="../assets/add.png" (click)="addTrade()" style="position: absolute; right: 1%; bottom: -20px;"/>
 		</div>
 		
 		<div class="col-lg-4 border my-2 ml-2 px-0 shadow-sm bg-white" [hidden]="hideRightBar">
-			<app-add-trade [hidden]="hideAddTrade"></app-add-trade>
-			<app-edit-trade [hidden]="hideEditTrade"></app-edit-trade>
-			<app-trade-details [hidden]="hideTradeDetails"></app-trade-details>
+			<router-outlet></router-outlet>
 		</div>
 	</div>
 </div>

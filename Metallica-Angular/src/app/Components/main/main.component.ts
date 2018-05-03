@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from '../../Services/GlobalService/global.service';
+import { TradeResolverService } from '../../Services/TradeResolver/trade-resolver.service';
 
 @Component({
   selector: 'app-main',
@@ -10,7 +11,7 @@ import { GlobalService } from '../../Services/GlobalService/global.service';
 export class MainComponent implements OnInit {
 
 	UserName:string;
-	constructor(private router: Router, private globalService: GlobalService) { 
+	constructor(private router: Router, private globalService: GlobalService,private tradeResolver:TradeResolverService) { 
 		this.UserName = globalService.getUserData("Name");
 	}
 
@@ -42,5 +43,10 @@ export class MainComponent implements OnInit {
 		console.log("LoggedOut");
 		this.router.navigateByUrl('Login');
 
+	}
+	tradeReceive(trade)
+	{
+		this.tradeResolver.trade=trade;
+		this.router.navigateByUrl("/Main/Details");
 	}
 }

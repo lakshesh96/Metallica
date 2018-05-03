@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-trade.component.css']
 })
 export class EditTradeComponent implements OnInit {
-
-  constructor() { }
+trade=null;
+  constructor() {
+    console.log(this.trade);
+   }
 
   ngOnInit() {
   }
