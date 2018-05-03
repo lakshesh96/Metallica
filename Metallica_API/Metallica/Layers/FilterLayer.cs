@@ -30,7 +30,7 @@ namespace Metallica.Layers
             return trades;
         }
 
-        public void FilterForSide()
+        private void FilterForSide()
         {
             if (fields.Buy == true && fields.Sell == true)
                 trades = (from n in db.Trades select n).ToList();
@@ -43,7 +43,7 @@ namespace Metallica.Layers
 
         }
 
-        public void FilterForDate()
+        private void FilterForDate()
         {
 
             try
@@ -63,7 +63,7 @@ namespace Metallica.Layers
             }
         }
 
-        public void FilterForCommodity()
+        private void FilterForCommodity()
         {
             try
             {
@@ -76,7 +76,7 @@ namespace Metallica.Layers
             }
         }
 
-        public void FilterForLocation()
+        private void FilterForLocation()
         {
             try
             {
@@ -89,7 +89,7 @@ namespace Metallica.Layers
             }
         }
 
-        public void FilterForCounterParty()
+        private void FilterForCounterParty()
         {
             try
             {
