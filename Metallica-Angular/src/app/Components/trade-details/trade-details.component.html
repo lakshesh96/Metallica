@@ -1,3 +1,62 @@
-<p>
-  trade-details works!
-</p>
+
+<form novalidate (ngSubmit)="onSubmit(TradeForm)" [formGroup]="TradeForm">
+  <div class="container">
+    <table>
+      <tr style="background-color:darkgray">
+        <td>
+          <strong>TRADE ID:</strong>
+        </td>
+        <td align="right"><a href="#">
+          <img src="../../../assets/edit.png">
+          </a>
+          <a href="#">
+          <img src="../../../assets/delete.png">
+          </a>
+        </td>
+      </tr>
+  
+      <tr>
+          <td><label  for="TradeDate"><strong>Date</strong></label></td>
+          <td><strong></strong>
+          </td>
+      </tr>
+  
+      <tr>
+              <td><label><strong>Commodity</strong></label></td>
+              <td>
+              </td>
+          </tr>
+        
+      <tr>
+          <td><label><strong>Side</strong></label></td>
+                  <td>
+                  </td>
+      </tr>
+  
+      <tr>
+          <td><label><strong>Counterparty</strong></label></td>
+          <td>
+          </td>
+      </tr>
+  
+  
+       <tr>
+          <td><label for="Price"><strong>Price</strong></label></td>
+          <td></td>
+       </tr>
+  
+        <tr>
+            <td><label for="Quantity"><strong>Quantity</strong></label></td>
+            <td>
+            </td>  
+        </tr>
+        
+          <tr>
+              <td><label><strong>Location</strong></label></td>
+              <td>
+               
+              </td>
+          </tr>
+       </table>
+     </div>
+  </form>

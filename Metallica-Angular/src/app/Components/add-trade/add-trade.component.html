@@ -26,7 +26,6 @@
             <td><label><strong>Commodity</strong></label></td>
             <td>
             <select id="CommodityDropdown" class="dropdown-content" (change)="onChange($event)"  formControlName="CommodityId">
-                <option>Select Commodity</option>
                 <option *ngFor="let Commodity of CommodityList" [value]="Commodity.Id">{{Commodity.Name}}</option>
             </select>
             </td>
@@ -50,7 +49,6 @@
         <td><label><strong>Counterparty</strong></label></td>
         <td>
         <select id="CounterPartyDropdown" class="dropdown-content" formControlName="CounterPartyId">
-            <option>Select Counterparty</option>
             <option *ngFor="let counterParty of CounterPartyList" [value]="counterParty.Id">{{counterParty.Name}}</option>
         </select>
         </td>
@@ -73,7 +71,6 @@
             <td><label><strong>Location</strong></label></td>
             <td>
               <select id="LocationDropdown" class="dropdown-content"  formControlName="LocationId">
-                 <option>Select Location</option>
                 <option *ngFor="let location of LocationList" [value]="location.Id">{{location.Name}}</option>                
               </select>
             </td>
