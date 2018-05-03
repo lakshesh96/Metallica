@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-trade-details',
@@ -7,6 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TradeDetailsComponent {
 
-  constructor() { }
+	tradeForm: FormGroup;
+
+	disabled: boolean = true;
+  	constructor() { 
+		this.disabled = true;
+
+		this.tradeForm = new FormGroup({
+			quantity: new FormControl({value: '', disabled:true})
+		});
+	}
 
 }

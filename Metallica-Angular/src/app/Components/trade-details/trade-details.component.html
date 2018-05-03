@@ -1,62 +1,69 @@
+<form [formGroup]="tradeForm">
+  	<table>
+      	<tr style="background-color:darkgray">
+        	<th>TRADE ID:</th>
+        	<td align="right">
+				<a href="#"><img src="../../../assets/edit.png"></a>
+				<a href="#"><img src="../../../assets/delete.png"></a>
+        	</td>
+		</tr>
+  
+      	<tr>
+			<th><label for="tradeDate">Date</label></th>
+			<td>
+				<input type="text" [hidden]="!details" disabled>
+				<input type="date" [hidden]="details">
+			</td>
+      	</tr>
+  
+		<tr>
+			<th><label for="commodity">Commodity</label></th>
+			<td>
+				<select [disabled]="details">
+					<option *ngFor=""></option>
+				</select>
+			</td>
+		</tr>
 
-<form novalidate (ngSubmit)="onSubmit(TradeForm)" [formGroup]="TradeForm">
-  <div class="container">
-    <table>
-      <tr style="background-color:darkgray">
-        <td>
-          <strong>TRADE ID:</strong>
-        </td>
-        <td align="right"><a href="#">
-          <img src="../../../assets/edit.png">
-          </a>
-          <a href="#">
-          <img src="../../../assets/delete.png">
-          </a>
-        </td>
-      </tr>
+		<tr>
+			<th><label for="side">Side</label></th>
+			<td>
+				<input type="radio" formControlName="side">
+				<input type="radio" formControlName="side">
+			</td>
+		</tr>
   
-      <tr>
-          <td><label  for="TradeDate"><strong>Date</strong></label></td>
-          <td><strong></strong>
-          </td>
-      </tr>
+		<tr>
+			<th><label for="counterparty">CounterParty</label></th>
+			<td>
+				<select formControlName="counterparty">
+					<option *ngFor=""></option>
+				</select>
+			</td>
+		</tr>
   
-      <tr>
-              <td><label><strong>Commodity</strong></label></td>
-              <td>
-              </td>
-          </tr>
+		<tr>
+			<th><label for="price">Price</label></th>
+			<td>
+				<input formControlName="price">
+			</td>
+		</tr>
+  
+		<tr>
+			<th><label for="quantity">Quantity</label></th>
+			<td>
+				<input formControlName="quantity">
+			</td>
+		</tr>
         
-      <tr>
-          <td><label><strong>Side</strong></label></td>
-                  <td>
-                  </td>
-      </tr>
-  
-      <tr>
-          <td><label><strong>Counterparty</strong></label></td>
-          <td>
-          </td>
-      </tr>
-  
-  
-       <tr>
-          <td><label for="Price"><strong>Price</strong></label></td>
-          <td></td>
-       </tr>
-  
-        <tr>
-            <td><label for="Quantity"><strong>Quantity</strong></label></td>
-            <td>
-            </td>  
-        </tr>
-        
-          <tr>
-              <td><label><strong>Location</strong></label></td>
-              <td>
-               
-              </td>
-          </tr>
-       </table>
-     </div>
-  </form>
+		<tr>
+			<th><label for="location">Location</label></th>
+			<td>
+				<select [disabled]="details">
+					<option *ngFor=""></option>
+				</select>
+			</td>
+		</tr>
+
+	</table>
+</form>
