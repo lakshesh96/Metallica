@@ -20,10 +20,13 @@ export class GlobalService {
 	constructor(private _http:Http) { }
 
 	setReferenceData(data) {
+		localStorage.setItem("RefData", data);
 		this.ReferenceData = data; 
 	}
 
 	getReferenceData(type) {
+		console.log(this.ReferenceData);
+		//return localStorage.getItem("RefData");
 		return this.ReferenceData[type];
 	}
 

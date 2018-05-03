@@ -29,24 +29,24 @@
 	<div class="col-lg-2 form-group my-auto">
 		<label class="h6 border-bottom pr-2 pl-1" for="side">Commodity</label>
 		<select class="form-control" formControlName="commodity">
-			<option>Select Commodity</option>
-			<option *ngFor="let commodity of commodities" value="commodity.Id">{{commodity.Name}}</option>
+			<option></option>
+			<option *ngFor="let commodity of commodities" [value]="commodity.Id">{{commodity.Name}}</option>
 		</select>
 	</div>
 
 	<div class="col-lg-2 form-group my-auto">
 		<label class="h6 border-bottom pr-2 pl-1" for="side">Counterparty</label>
 		<select class="form-control" formControlName="counterParty">
-			<option>Select CounterParty</option>
-			<option *ngFor="let counterParty of counterParties" value="counterParty.Id">{{counterParty.Name}}</option>
+			<option></option>
+			<option *ngFor="let counterParty of counterParties" [value]="counterParty.Id">{{counterParty.Name}}</option>
 		</select>
 	</div>
 
 	<div class="col-lg-2 form-group my-auto">
 		<label class="h6 border-bottom pr-2 pl-1" for="side">Location</label>
 		<select class="form-control" formControlName="location">
-			<option>Select Location</option>
-			<option *ngFor="let location of locations" value="location.Id">{{location.Name}}</option>
+			<option></option>
+			<option *ngFor="let location of locations" [value]="location.Id">{{location.Name}}</option>
 		</select>
 	</div>
 	
