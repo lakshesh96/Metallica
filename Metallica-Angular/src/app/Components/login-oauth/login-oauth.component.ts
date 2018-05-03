@@ -30,7 +30,13 @@ export class LoginOauthComponent implements OnInit {
 	//headers = { 'Content-Type': 'application/x-www-form-urlencoded' } ;	
 	headers:Headers;
 
-	constructor(private globalService:GlobalService, private route: ActivatedRoute, private router: Router) { }
+	constructor(private globalService:GlobalService, private route: ActivatedRoute, private router: Router) { 
+		if(sessionStorage.getItem("AccessToken"))
+		{
+			alert("You are already Logged in");
+			this.router.navigateByUrl('Main');
+		}
+	}
 
 	ngOnInit() {
 		this.login = new FormGroup({
