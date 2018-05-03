@@ -57,6 +57,10 @@ namespace Metallica.Layers
                     trades = trades.FindAll(a => a.Date >= DateTime.Parse(fields.DateFrom));
                 }
             }
+            catch(FormatException)
+            {
+                return;
+            }
             catch (Exception)
             {
                 return;
@@ -69,6 +73,10 @@ namespace Metallica.Layers
             {
                 if (fields.Commodity != null)
                     trades = trades.FindAll(a => a.CommodityId == Guid.Parse(fields.Commodity));
+            }
+            catch(FormatException)
+            {
+                return;
             }
             catch(Exception)
             {
@@ -83,6 +91,10 @@ namespace Metallica.Layers
                 if (fields.Location != null)
                     trades = trades.FindAll(a => a.LocationId == Guid.Parse(fields.Location));
             }
+            catch(FormatException)
+            {
+                return;
+            }
             catch(Exception)
             {
                 return;
@@ -95,6 +107,10 @@ namespace Metallica.Layers
             {
                 if (fields.CounterParty != null)
                     trades = trades.FindAll(a => a.CounterPartyId == Guid.Parse(fields.CounterParty));
+            }
+            catch(FormatException)
+            {
+                return;
             }
             catch(Exception)
             {
