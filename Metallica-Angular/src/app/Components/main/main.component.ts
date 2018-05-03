@@ -20,6 +20,8 @@ export class MainComponent implements OnInit {
 
 	hideRightBar: boolean = true;
 
+	UserName: string = sessionStorage.getItem("UserName");
+
 	addTrade() {
 		this.hideRightBar = false;
 		this.hideAddTrade = false;

@@ -55,6 +55,7 @@ export class LoginOauthComponent implements OnInit {
 					sessionStorage.setItem("AccessToken",this.AccessToken.toString());
 					if(this.AccessToken != null)
 						this.loadReferenceData();
+						sessionStorage.setItem("UserName",value.UserName);
 				},
 				error => {
 					alert("Authentication Failed");
