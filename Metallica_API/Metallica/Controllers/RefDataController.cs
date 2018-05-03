@@ -20,10 +20,10 @@ namespace Metallica.Controllers
         private MetallicaContext db = new MetallicaContext();
 
         // GET: api/RefData
-        [Route("api/RefData")]
-        public  IHttpActionResult GetRefData()
+        [Route("api/RefData/{username}")]
+        public  IHttpActionResult GetRefData(string username)
         {
-            RefData refData = new RefData();
+            RefData refData = new RefData(username);
             return Ok(refData);
         }
 

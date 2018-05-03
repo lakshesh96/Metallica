@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GlobalService } from '../../Services/GlobalService/global.service';
 
 @Component({
   selector: 'app-main',
@@ -8,7 +9,10 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
 
-	constructor(private router: Router) { }
+	UserName:string;
+	constructor(private router: Router, private globalService: GlobalService) { 
+		this.UserName = globalService.getReferenceData("Name");
+	}
 
 	ngOnInit() { }
 
@@ -20,7 +24,7 @@ export class MainComponent implements OnInit {
 
 	hideRightBar: boolean = true;
 
-	UserName: string = sessionStorage.getItem("UserName");
+	
 
 	addTrade() {
 		this.hideRightBar = false;

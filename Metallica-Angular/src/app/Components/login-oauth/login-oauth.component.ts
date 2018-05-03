@@ -54,8 +54,8 @@ export class LoginOauthComponent implements OnInit {
 					console.log("Response Received", this.AccessToken);		
 					sessionStorage.setItem("AccessToken",this.AccessToken.toString());
 					if(this.AccessToken != null)
-						this.loadReferenceData();
-						sessionStorage.setItem("UserName",value.UserName);
+						this.loadReferenceData(value.UserName);
+						//sessionStorage.setItem("UserName",value.UserName);
 				},
 				error => {
 					alert("Authentication Failed");
@@ -70,9 +70,9 @@ export class LoginOauthComponent implements OnInit {
 	}
 
 
-	loadReferenceData() {
-		
-		this.globalService.GetMethod("/api/RefData").subscribe(
+	loadReferenceData(username) {
+		//let username = sessionStorage.getItem("UserName");
+		this.globalService.GetMethod("/api/RefData/"+ username).subscribe(
 			response => {
 				this.globalService.setReferenceData(response);
 				//sessionStorage.setItem("RefData", JSON.stringify(response));
