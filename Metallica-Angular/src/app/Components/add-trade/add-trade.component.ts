@@ -33,7 +33,7 @@ export class AddTradeComponent implements OnInit {
    this.CommodityList = GlobalService.getReferenceData("Commodities");
    this.LocationList=GlobalService.getReferenceData("Locations");
    this.CounterPartyList=GlobalService.getReferenceData("CounterParties");
-   this.Userid=GlobalService.getReferenceData("UserId");
+   this.Userid=GlobalService.getUserData("UserId");
    this.dateString=this.date.toISOString();
   }
 

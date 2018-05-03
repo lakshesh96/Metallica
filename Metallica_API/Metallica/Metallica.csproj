@@ -224,6 +224,8 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Custom_Classes\FilterFields.cs" />
+    <Compile Include="Custom_Classes\OnLoadData.cs" />
+    <Compile Include="Custom_Classes\UserDetails.cs" />
     <Compile Include="Layers\FilterLayer.cs" />
     <Compile Include="Migrations\201805010423201_UNIQUEINITIAL.cs" />
     <Compile Include="Migrations\201805010423201_UNIQUEINITIAL.Designer.cs">

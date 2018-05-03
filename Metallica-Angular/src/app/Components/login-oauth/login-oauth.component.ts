@@ -76,6 +76,7 @@ export class LoginOauthComponent implements OnInit {
 	loadReferenceData(username) {
 		this.globalService.GetMethod("/api/RefData/" + username).subscribe(
 			response => {
+				console.log(response);
 				this.globalService.setReferenceData(response);
 				this.router.navigateByUrl('Main');
 			},

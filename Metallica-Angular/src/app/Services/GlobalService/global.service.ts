@@ -18,7 +18,12 @@ export class GlobalService {
 	constructor(private _http:Http) { }
 
 	setReferenceData(data) {
-		localStorage.setItem("RefData", JSON.stringify(data));
+    localStorage.setItem("RefData", JSON.stringify(data.RefData));
+    localStorage.setItem("UserDetails",JSON.stringify(data.UserDetails));
+	}
+
+  getUserData(type) {
+		return JSON.parse(localStorage.getItem("UserDetails"))[type];
 	}
 
 	getReferenceData(type) {

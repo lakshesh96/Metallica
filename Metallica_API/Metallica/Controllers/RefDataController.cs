@@ -21,10 +21,12 @@ namespace Metallica.Controllers
 
         // GET: api/RefData
         [Route("api/RefData/{username}")]
-        public  IHttpActionResult GetRefData(string username)
+        public  IHttpActionResult GetOnLoadData(string username)
         {
-            RefData refData = new RefData(username);
-            return Ok(refData);
+            RefData refData = new RefData();
+            UserDetails userDetails = new UserDetails(username);
+            OnLoadData onLoadData = new OnLoadData(refData, userDetails);
+            return Ok(onLoadData);
         }
 
         [HttpPost]

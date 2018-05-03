@@ -11,7 +11,7 @@ export class MainComponent implements OnInit {
 
 	UserName:string;
 	constructor(private router: Router, private globalService: GlobalService) { 
-		this.UserName = globalService.getReferenceData("Name");
+		this.UserName = globalService.getUserData("Name");
 	}
 
 	ngOnInit() { }
