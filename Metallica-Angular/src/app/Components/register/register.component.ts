@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { Register } from '../../Models/register';
 import { RegisterService } from '../../Services/Register/register.service';
-import {openpgp} from 'openpgp';
+//import {openpgp} from 'openpgp';
 //var openpgp = require('openpgp');
 //openpgp.initWorker({ path:'openpgp.worker.js' })
 
