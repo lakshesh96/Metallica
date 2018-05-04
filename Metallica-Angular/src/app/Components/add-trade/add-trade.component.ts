@@ -29,39 +29,39 @@ export class AddTradeComponent implements OnInit {
         this.price=element.CurrentPrice;
     });
   }
-  constructor(private TradeOperationService : TradeOperationService, private GlobalService : GlobalService) {
-   this.CommodityList = GlobalService.getReferenceData("Commodities");
-   this.LocationList=GlobalService.getReferenceData("Locations");
-   this.CounterPartyList=GlobalService.getReferenceData("CounterParties");
-   this.Userid=GlobalService.getUserData("UserId");
-   this.dateString=this.date.toISOString();
-  }
+	constructor(private TradeOperationService : TradeOperationService, private GlobalService : GlobalService) {
+		this.CommodityList = GlobalService.getReferenceData("Commodities");
+		this.LocationList=GlobalService.getReferenceData("Locations");
+		this.CounterPartyList=GlobalService.getReferenceData("CounterParties");
+		this.Userid=GlobalService.getUserData("UserId");
+		this.dateString=this.date.toISOString();
+	}
 
 
-  ngOnInit() {
+	ngOnInit() {
+		this.TradeForm = new FormGroup({
+			Date: new FormControl(),
+			CommodityId:new FormControl('', [Validators.required]),
+			Side:new FormControl(),
+			CounterPartyId:new FormControl('', [Validators.required]),
+			'Price':new FormControl(''),
+			Quantity:new FormControl('', [Validators.required]),
+			LocationId:new FormControl('', [Validators.required]),
+			UserId: new FormControl('',[Validators.required]),
+			Status: new FormControl('',[Validators.required])
+		});
+		this.TradeForm.get('Price').disable();
+	}
 
-      this.TradeForm = new FormGroup({
-      Date: new FormControl(),
-      CommodityId:new FormControl('', [Validators.required]),
-      Side:new FormControl(),
-      CounterPartyId:new FormControl('', [Validators.required]),
-      Price:new FormControl(''),
-      Quantity:new FormControl('', [Validators.required]),
-      LocationId:new FormControl('', [Validators.required]),
-      UserId: new FormControl('',[Validators.required]),
-      Status: new FormControl('',[Validators.required])
-    });
-  }
+	onSubmit({ value, valid }: { value: TradeTable, valid: boolean }) {
+		console.log(value, valid);
+	}
 
-  onSubmit({ value, valid }: { value: TradeTable, valid: boolean }) {
-    console.log(value, valid);
-  }
-
-  AddTrade(item){
-    console.log("Hi there");
-    console.log(item.value);
-    this.TradeOperationService.Add(item.value);
-  }
+	AddTrade(item){
+		console.log("Hi there");
+		console.log(item.value);
+		this.TradeOperationService.Add(item.value);
+	}
 
   
 }

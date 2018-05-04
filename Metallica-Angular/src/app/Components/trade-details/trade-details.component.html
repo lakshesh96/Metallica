@@ -18,8 +18,8 @@
 		<tr>
 			<th><label for="commodity">Commodity</label></th>
 			<td>
-				<select formControlName="Commodity" [(ngModel)]="trade.Commodity">
-					<option *ngFor="let c of commodities" [ngValue]="c">{{c.Name}}</option>
+				<select formControlName="CommodityId">
+					<option *ngFor="let c of commodities" [value]="c.Id">{{c.Name}}</option>
 				</select>
 			</td>
 		</tr>
@@ -27,16 +27,16 @@
 		<tr>
 			<th><label for="side">Side</label></th>
 			<td>
-				<input type="radio" formControlName="Side" [(ngModel)]="trade.Side" value="buy">Buy
-                <input type="radio" formControlName="Side" [(ngModel)]="trade.Side" value="sell">Sell
+				<input type="radio" formControlName="Side" [value]="0">Buy
+                <input type="radio" formControlName="Side" [value]="1">Sell
 			</td>
 		</tr>
   
 		<tr>
 			<th><label for="counterparty">CounterParty</label></th>
 			<td>
-				<select formControlName="CounterParty" [(ngModel)]="trade.CounterParty">
-					<option *ngFor="let cp of counterParties" [ngValue]="cp">{{cp.Name}}</option>
+				<select id="abc" formControlName="CounterPartyId">
+					<option *ngFor="let cp of counterParties" [value]="cp.Id">{{cp.Name}}</option>
 				</select>
 			</td>
 		</tr>
@@ -58,8 +58,8 @@
 		<tr>
 			<th><label for="location">Location</label></th>
 			<td>
-				<select formControlName="Location" [(ngModel)]="trade.Location">
-					<option *ngFor="let l of locations" [value]="l">{{l.Name}}</option>
+				<select formControlName="LocationId" >
+					<option *ngFor="let l of locations" [value]="l.Id">{{l.Name}}</option>
 				</select>
 			</td>
 		</tr>

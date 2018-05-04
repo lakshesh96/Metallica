@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class TradeTableComponent implements OnInit {
 
 	@Input() trades: any[];
-	@Output() tradeEmit = new EventEmitter<string>(); 
+	@Output() tradeEmit = new EventEmitter<TradeTable>(); 
 
 	constructor(private tradeService: TradeTableService,public router:Router) { }
 	//trades : any[];
@@ -71,7 +71,7 @@ export class TradeTableComponent implements OnInit {
 	deleteFromTable(trade) {
 		this.trades = this.trades.filter((findTrade) => { return findTrade.Id != trade.Id });
 	}
-	detailRequest(trade)
+	detailRequest(trade:TradeTable)
 	{
 		this.tradeEmit.emit(trade);
 	}
