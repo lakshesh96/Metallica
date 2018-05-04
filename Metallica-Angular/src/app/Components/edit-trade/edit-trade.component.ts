@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class EditTradeComponent implements OnInit {
 trade=null;
   constructor(private route:ActivatedRoute) {
-    this.trade = this.route.snapshot.params["trade"];
+    this.route.data.subscribe(Response=>this.trade = Response.trade);
     console.log(this.trade);
    }
 
