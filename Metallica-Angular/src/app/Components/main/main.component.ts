@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { GlobalService } from '../../Services/GlobalService/global.service';
 import { TradeResolverService } from '../../Services/TradeResolver/trade-resolver.service';
 import { TradeOperationService } from '../../Services/TradeOperation/trade-operation-service.service';
+declare var $:any;
 
 @Component({
   selector: 'app-main',
@@ -31,6 +32,7 @@ export class MainComponent implements OnInit {
 	addTrade() {
 		this.hideRightBar = false;
 		this.hideAddTrade = false;
+		this.router.navigateByUrl('/Main/Add');
 	}
 
 	searchReceived(data) {
@@ -41,7 +43,7 @@ export class MainComponent implements OnInit {
 	logOut(){
 		sessionStorage.removeItem("AccessToken");
 		localStorage.removeItem("RefData");
-		console.log("LoggedOut");
+		// console.log("LoggedOut");
 		this.router.navigateByUrl('Login');
 
 	}

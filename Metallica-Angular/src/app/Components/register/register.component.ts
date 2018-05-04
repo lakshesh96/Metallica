@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { Register } from '../../Models/register';
 import { RegisterService } from '../../Services/Register/register.service';
+declare var $:any;
 
 
 @Component({

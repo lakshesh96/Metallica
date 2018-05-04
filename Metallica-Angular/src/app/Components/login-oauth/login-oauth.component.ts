@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {Headers} from '@angular/http';
 import { HttpParams } from '@angular/common/http';
 import {Md5} from 'ts-md5/dist/md5';
+declare var $:any;
 
 
 @Component({
@@ -67,7 +68,7 @@ export class LoginOauthComponent implements OnInit {
 						//sessionStorage.setItem("UserName",value.UserName);
 				},
 				error => {
-					alert("Authentication Failed");
+					$("#LoginFailModal").modal();
 					this.loading = false;
 				},
 				()=> { }
