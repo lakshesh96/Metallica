@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-trade',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditTradeComponent implements OnInit {
 trade=null;
-  constructor() {
+  constructor(private route:ActivatedRoute) {
+    this.trade = this.route.snapshot.params["trade"];
     console.log(this.trade);
    }
 
