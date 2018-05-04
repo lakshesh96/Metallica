@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from '../../Services/GlobalService/global.service';
-import { TradeResolverService } from '../../Services/TradeResolver/trade-resolver.service';
 import { TradeOperationService } from '../../Services/TradeOperation/trade-operation-service.service';
 
 @Component({

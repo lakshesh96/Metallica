@@ -26,7 +26,6 @@ export function getAuthServiceConfigs() {
   return config;
 }
 import { AddTradeComponent } from './components/add-trade/add-trade.component';
-import { EditTradeComponent } from './components/edit-trade/edit-trade.component';
 import { TradeDetailsComponent } from './components/trade-details/trade-details.component';
 import { PriceTickerComponent } from './Components/price-ticker/price-ticker.component';
 import { TradeTableComponent } from './Components/trade-table/trade-table.component';
@@ -46,13 +45,11 @@ import { RegisterService } from './Services/Register/register.service';
 import { SearchService } from './Services/Search/search.service';
 import {TradeOperationService} from './Services/TradeOperation/trade-operation-service.service';
 import { AuthGuardService } from './Services/AuthGuard/auth-guard.service';
-import { TradeResolverService } from './Services/TradeResolver/trade-resolver.service';
 
 @NgModule({
 	declarations: [
     AppComponent,
 		AddTradeComponent,
-		EditTradeComponent,
         TradeDetailsComponent,
         TradeTableComponent,
         LoginComponent,
@@ -85,7 +82,6 @@ import { TradeResolverService } from './Services/TradeResolver/trade-resolver.se
 		SearchService,
 		RegisterService,
 		AuthGuardService,
-		TradeResolverService
 	],
 	bootstrap: [
 		AppComponent
