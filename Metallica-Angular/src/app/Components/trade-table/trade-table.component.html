@@ -1,18 +1,13 @@
-<table class="table table-fixed">
-<thead >
-	<tr>
-		<th class="col-xs-8">Trade Date</th>
-		<th class="col-xs-8">Commodity</th>
-		<th class="col-xs-8">Side</th>
-		<th class="col-xs-8">Qty(MT)</th>
-		<th class="col-xs-8">Price(/MT)</th>
-		<th class="col-xs-8">Counterparty</th>
-		<th class="col-xs-8">Location</th>
-		<th class="col-xs-8"></th>
-	</tr>
-</thead>
-<tbody>
-  <tr *ngFor = "let trade of trades;">
+<table class="table ">
+  <th>Trade Date</th>
+  <th>Commodity</th>
+  <th>Side</th>
+  <th>Qty(MT)</th>
+  <th>Price(/MT)</th>
+  <th>Counterparty</th>
+  <th>Location</th>
+  <th></th>
+  <tr *ngFor = "let trade of trades;" (click)="detailRequest(trade)">
     <td>{{trade.Date}}</td>
     <td>{{trade.Commodity.Name}} | {{trade.Commodity.Code}}</td>
     <td>
@@ -25,7 +20,6 @@
 	<td>{{trade.Location.Name}} | {{trade.Location.Code}}</td> 	
 	<td><img src="../../../assets/delete.png" /></td>
   </tr>
-</tbody>
   <!-- <tr>
   <td>22/01/17</td>
   <td>Copper</td>

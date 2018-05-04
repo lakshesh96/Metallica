@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-trade',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-trade.component.css']
 })
 export class EditTradeComponent implements OnInit {
-
-  constructor() { }
+trade=null;
+  constructor(private route:ActivatedRoute) {
+    this.trade = this.route.snapshot.params["trade"];
+    console.log(this.trade);
+   }
 
   ngOnInit() {
   }

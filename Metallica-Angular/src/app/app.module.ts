@@ -46,6 +46,7 @@ import { RegisterService } from './Services/Register/register.service';
 import { SearchService } from './Services/Search/search.service';
 import {TradeOperationService} from './Services/TradeOperation/trade-operation-service.service';
 import { AuthGuardService } from './Services/AuthGuard/auth-guard.service';
+import { TradeResolverService } from './Services/TradeResolver/trade-resolver.service';
 
 @NgModule({
 	declarations: [
@@ -83,7 +84,8 @@ import { AuthGuardService } from './Services/AuthGuard/auth-guard.service';
 		ReferenceDataService,
 		SearchService,
 		RegisterService,
-		AuthGuardService
+		AuthGuardService,
+		TradeResolverService
 	],
 	bootstrap: [
 		AppComponent
