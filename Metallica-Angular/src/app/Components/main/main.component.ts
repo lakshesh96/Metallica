@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from '../../Services/GlobalService/global.service';
-import { TradeResolverService } from '../../Services/TradeResolver/trade-resolver.service';
 import { TradeOperationService } from '../../Services/TradeOperation/trade-operation-service.service';
 
 @Component({
@@ -48,6 +47,8 @@ export class MainComponent implements OnInit {
 	tradeReceive(trade)
 	{
 		this.tradeService.trade=trade;
-		this.router.navigateByUrl("/Main/Details");
+		console.log("Hello");
+		this.router.navigateByUrl("/Main");
+		this.router.navigateByUrl("/Main/Details/");
 	}
 }
