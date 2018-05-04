@@ -25,7 +25,7 @@ export class MainComponent implements OnInit {
 
 	hideRightBar: boolean = true;
 
-	
+	trade;
 
 	addTrade() {
 		this.hideRightBar = false;
@@ -46,6 +46,7 @@ export class MainComponent implements OnInit {
 	}
 	tradeReceive(trade)
 	{
+		this.trade = trade;
 		this.tradeResolver.trade=trade;
 		this.router.navigateByUrl("/Main/Details");
 	}
