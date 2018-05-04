@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from '../../Services/GlobalService/global.service';
 import { TradeOperationService } from '../../Services/TradeOperation/trade-operation-service.service';
+declare var $:any;
 import { TradeTable } from '../../Models/trade-table';
 
 @Component({
@@ -30,6 +31,7 @@ export class MainComponent implements OnInit {
 		this.hideRightBar = false;
 		this.hideDetails = true;
 		this.hideAddTrade = false;
+		this.router.navigateByUrl('/Main/Add');
 	}
 
 	searchReceived(data) {
@@ -40,7 +42,7 @@ export class MainComponent implements OnInit {
 	logOut(){
 		sessionStorage.removeItem("AccessToken");
 		localStorage.removeItem("RefData");
-		console.log("LoggedOut");
+		// console.log("LoggedOut");
 		this.router.navigateByUrl('Login');
 
 	}
