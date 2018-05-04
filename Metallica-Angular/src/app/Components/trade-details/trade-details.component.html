@@ -11,16 +11,15 @@
       	<tr>
 			<th><label for="tradeDate">Date</label></th>
 			<td>
-				<input type="text" [hidden]="!details" disabled>
-				<input type="date" [hidden]="details">
+				<input type="date" formControlName="Date" [ngModel] ="trade.Date | date:'yyyy-MM-dd'">
 			</td>
       	</tr>
   
 		<tr>
 			<th><label for="commodity">Commodity</label></th>
 			<td>
-				<select [disabled]="details">
-					<option *ngFor=""></option>
+				<select formControlName="Commodity" [(ngModel)]="trade.Commodity">
+					<option *ngFor="let c of commodities" [ngValue]="c">{{c.Name}}</option>
 				</select>
 			</td>
 		</tr>
@@ -28,16 +27,16 @@
 		<tr>
 			<th><label for="side">Side</label></th>
 			<td>
-				<input type="radio" formControlName="side">
-				<input type="radio" formControlName="side">
+				<input type="radio" formControlName="Side" [(ngModel)]="trade.Side" value="buy">Buy
+                <input type="radio" formControlName="Side" [(ngModel)]="trade.Side" value="sell">Sell
 			</td>
 		</tr>
   
 		<tr>
 			<th><label for="counterparty">CounterParty</label></th>
 			<td>
-				<select formControlName="counterparty">
-					<option *ngFor=""></option>
+				<select formControlName="CounterParty" [(ngModel)]="trade.CounterParty">
+					<option *ngFor="let cp of counterParties" [ngValue]="cp">{{cp.Name}}</option>
 				</select>
 			</td>
 		</tr>
@@ -45,25 +44,31 @@
 		<tr>
 			<th><label for="price">Price</label></th>
 			<td>
-				<input formControlName="price">
+				<input formControlName="Price" [(ngModel)]="trade.Price">
 			</td>
 		</tr>
   
 		<tr>
 			<th><label for="quantity">Quantity</label></th>
 			<td>
-				<input formControlName="quantity">
+				<input formControlName="Quantity" [(ngModel)]="trade.Quantity"> 
 			</td>
 		</tr>
         
 		<tr>
 			<th><label for="location">Location</label></th>
 			<td>
-				<select [disabled]="details">
-					<option *ngFor=""></option>
+				<select formControlName="Location" [(ngModel)]="trade.Location">
+					<option *ngFor="let l of locations" [value]="l">{{l.Name}}</option>
 				</select>
 			</td>
 		</tr>
-
+		<tr>
+			<th></th>
+			<td>
+				<input type="button" class="btn" value="Submit" (click)="onSubmit(tradeForm.value)"/>
+				<input type="button" class="btn" value="Edit" (click)="onEditClick()" />
+			</td>
+		</tr>
 	</table>
 </form>

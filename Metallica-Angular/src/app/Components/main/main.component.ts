@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalService } from '../../Services/GlobalService/global.service';
-import { TradeResolverService } from '../../Services/TradeResolver/trade-resolver.service';
 import { TradeOperationService } from '../../Services/TradeOperation/trade-operation-service.service';
 declare var $:any;
 
@@ -27,7 +26,7 @@ export class MainComponent implements OnInit {
 
 	hideRightBar: boolean = true;
 
-	
+	trade;
 
 	addTrade() {
 		this.hideRightBar = false;
@@ -49,7 +48,6 @@ export class MainComponent implements OnInit {
 	}
 	tradeReceive(trade)
 	{
-		this.tradeService.trade=trade;
-		this.router.navigateByUrl("/Main/Details");
+		this.trade = trade;
 	}
 }
