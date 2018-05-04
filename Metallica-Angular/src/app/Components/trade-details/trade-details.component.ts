@@ -14,7 +14,7 @@ import { Counterparty } from '../../Models/counterparty';
 })
 export class TradeDetailsComponent implements OnInit {
 
-	@Input() trade;
+	@Input() trade: any;
 
 	tradeForm: FormGroup;
 	commodities: any = [];
@@ -22,8 +22,6 @@ export class TradeDetailsComponent implements OnInit {
 	counterParties: any = [];
 
 	details: boolean = false;
-
-	//trade: any = new Object();
 
   	constructor(public globalService: GlobalService) { 
 		this.commodities = globalService.getReferenceData("Commodities");
@@ -54,18 +52,7 @@ export class TradeDetailsComponent implements OnInit {
 	}
 
 	ngOnInit() { 
-		// this.trade.CommodityId = "18c70d50-0f4d-e811-b2c3-94c69105a31f";
-		// this.trade.Commodity = this.commodities.find(x => x.Id === "18c70d50-0f4d-e811-b2c3-94c69105a31f");
-		// this.trade.CounterPartyId = "4cd25540-5b4c-e811-821a-94c69105a2da";
-		// this.trade.CounterParty = this.counterParties.find(x => x.Id === "4cd25540-5b4c-e811-821a-94c69105a2da");
-		// this.trade.LocationId = "4cffd948-5b4c-e811-821a-94c69105a2da";
-		// this.trade.Location = this.locations.find(x => x.Id === "4cffd948-5b4c-e811-821a-94c69105a2da");
-		// this.trade.Price = 100;
-		// this.trade.Quantity = 100;
-		// this.trade.Side = "buy";
-		// this.trade.Status = 0;
-		// this.trade.UserId = 0;
-		// this.trade.Date = new Date();
+		this.trade.Commodity = this.commodities.find(x => x.Id === "18c70d50-0f4d-e811-b2c3-94c69105a31f");
 		console.log(this.trade);
 	}
 

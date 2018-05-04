@@ -1,14 +1,15 @@
-<table class="table ">
+<div class="table-responsive">
+<table class="table table-hover">
   <th>Trade Date</th>
   <th>Commodity</th>
   <th>Side</th>
   <th>Qty(MT)</th>
   <th>Price(/MT)</th>
-  <th>Counterparty</th>
+  <th>CounterParty</th>
   <th>Location</th>
   <th></th>
   <tr *ngFor = "let trade of trades;" (click)="detailRequest(trade)">
-    <td>{{trade.Date}}</td>
+    <td>{{trade.Date | date: 'mediumDate'}}</td>
     <td>{{trade.Commodity.Name}} | {{trade.Commodity.Code}}</td>
     <td>
 		<span *ngIf="trade.Side == 0">Buy</span>
@@ -21,3 +22,4 @@
 	<td><img src="../../../assets/delete.png" /></td>
   </tr>
 </table>
+</div>

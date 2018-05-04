@@ -20,8 +20,7 @@ export class MainComponent implements OnInit {
 	searchData: any[];
 
 	hideAddTrade: boolean = false;
-	hideEditTrade: boolean = true;
-	hideTradeDetails: boolean = true;
+	hideDetails: boolean = true;
 
 	hideRightBar: boolean = true;
 
@@ -29,6 +28,7 @@ export class MainComponent implements OnInit {
 
 	addTrade() {
 		this.hideRightBar = false;
+		this.hideDetails = true;
 		this.hideAddTrade = false;
 	}
 
@@ -46,6 +46,10 @@ export class MainComponent implements OnInit {
 	}
 	tradeReceive(trade)
 	{
+		this.hideRightBar = false;
+		this.hideDetails = false;
+		this.hideAddTrade = true;
 		this.trade = trade;
+		console.log(trade);
 	}
 }
