@@ -48,7 +48,5 @@ export class MainComponent implements OnInit {
 	tradeReceive(trade)
 	{
 		this.trade = trade;
-		this.tradeResolver.trade=trade;
-		this.router.navigateByUrl("/Main/Details");
 	}
 }
