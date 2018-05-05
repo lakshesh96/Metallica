@@ -111,7 +111,6 @@ export class LoginOauthComponent implements OnInit {
 
 	throwAlert(title,body,bodyDetails,alertSource){
 		this.alertHidden = false;
-		console.log("2 at Parent");
 		this.title = title;
 		this.body = body;
 		this.bodyDetails = bodyDetails;
@@ -121,7 +120,6 @@ export class LoginOauthComponent implements OnInit {
 	}
 
 	closeAlertRoute(value){
-		console.log("3");
 		if(value)
 			this.router.navigateByUrl('Main');
 	}
