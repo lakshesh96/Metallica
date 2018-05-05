@@ -79,11 +79,16 @@ export class TradeTableComponent implements OnInit {
 	}
 	
 	updateTradeTable(trade) {
-		this.trades.map((findTrade) => findTrade.Id == trade.Id ? trade : findTrade);
+		console.log(trade);
+		console.log("At Update",this.trades);
+		let index:number = this.trades.findIndex(a=>a.Id == trade.Id);
+		this.trades[index] = trade;
+		console.log("After Update",this.trades);
 	}
 
 	deleteFromTable(trade) {
 		this.trades = this.trades.filter((findTrade) => { return findTrade.Id != trade.Id });
+		console.log("delete");
 	}
 	detailRequest(trade:TradeTable)
 	{

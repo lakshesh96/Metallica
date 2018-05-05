@@ -8,7 +8,7 @@
   <th>CounterParty</th>
   <th>Location</th>
   <th></th>
-  <tr *ngFor = "let trade of trades;" (click)="detailRequest(trade)">
+  <tr *ngFor = "let trade of trades" (click)="detailRequest(trade)">
     <td>{{trade.Date | date: 'mediumDate'}}</td>
     <td>{{trade.Commodity.Name}} | {{trade.Commodity.Code}}</td>
     <td>

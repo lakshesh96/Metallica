@@ -6,6 +6,7 @@ import { GlobalService } from '../../Services/GlobalService/global.service';
 import { Commodity } from '../../Models/commodity';
 import { Location } from '../../Models/location';
 import { Counterparty } from '../../Models/counterparty';
+import { TradeOperationService } from '../../Services/TradeOperation/trade-operation-service.service';
 
 @Component({
   selector: 'app-trade-details',
@@ -25,7 +26,7 @@ export class TradeDetailsComponent implements OnInit,OnChanges {
 
 	details: boolean = false;
 
-  	constructor(public globalService: GlobalService) { 
+  	constructor(public globalService: GlobalService,public tradeService:TradeOperationService) { 
 		this.commodities = globalService.getReferenceData("Commodities");
 		this.counterParties = globalService.getReferenceData("CounterParties");
 		this.locations = globalService.getReferenceData("Locations");
@@ -80,11 +81,17 @@ export class TradeDetailsComponent implements OnInit,OnChanges {
 		this.tradeForm.get('UserId').enable();
 		this.tradeForm.get('Status').enable();
 	}
+	onDeleteClick() {
+		console.log(this.trade);
+		this.tradeService.Delete(this.trade);
+	}
 
 	onSubmit(trade) {
+		trade["Id"]=this.trade.Id;
 		trade["Status"] = this.trade.Status;
 		trade["UserId"] = this.trade.UserId;
 		console.log(trade);
+		this.tradeService.Edit(trade);
 	}
 
 }

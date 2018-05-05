@@ -48,9 +48,9 @@ export class GlobalService {
 	}
  
 	PutMethod(data,url):Observable<any>{
-		console.log("Global Service: PUT:", this._baseUrl+url+"/"+data.id, "Data:", data, "Header:", new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")}));
+		console.log("Global Service: PUT:", this._baseUrl+url+"/"+data.Id, "Data:", data, "Header:", new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")}));
 		return this._http.put(
-			this._baseUrl+url+"/"+data.id,
+			this._baseUrl+url+"/"+data.Id,
 			data,
 			{headers: new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")})}
 		).map(this.extractData).catch(this.handleError);
@@ -76,6 +76,10 @@ export class GlobalService {
 		return this._http.post(this._baseUrl+url,credentials).map(this.extractData).catch(this.handleError);
 	}
 
+	Delete(id,url):Observable<any>{
+		console.log("Global Service: Delete",this._baseUrl+url,"Data:",id,"Header:", {headers: new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")})});
+		return this._http.delete(this._baseUrl+url+"/"+id,{headers: new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")})}).map(this.extractData).catch(this.handleError);
+	}
 	extractData(res:Response){
 		let response = res.json();
 		let body = response;
