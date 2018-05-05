@@ -31,7 +31,6 @@ export class MainComponent implements OnInit {
 		this.hideRightBar = false;
 		this.hideDetails = true;
 		this.hideAddTrade = false;
-		this.router.navigateByUrl('/Main/Add');
 	}
 
 	searchReceived(data) {
