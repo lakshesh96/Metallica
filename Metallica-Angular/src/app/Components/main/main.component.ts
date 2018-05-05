@@ -4,6 +4,7 @@ import { GlobalService } from '../../Services/GlobalService/global.service';
 import { TradeOperationService } from '../../Services/TradeOperation/trade-operation-service.service';
 declare var $:any;
 import { TradeTable } from '../../Models/trade-table';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-main',
@@ -11,6 +12,15 @@ import { TradeTable } from '../../Models/trade-table';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+
+	//Alert Modal Variables
+	title:string;
+	body:string;
+	bodyDetails:string;
+	alertSource:string;
+	alertHidden:boolean = true;
+	parentSubject:Subject<any> = new Subject();
+
 
 	UserName:string;
 	constructor(private router: Router, private globalService: GlobalService,private tradeService:TradeOperationService) { 
@@ -39,10 +49,10 @@ export class MainComponent implements OnInit {
 	}
 
 	logOut(){
+		this.throwAlert("Successfully Logged Out","User session has been deleted!","Press OK to continue","Success");
 		sessionStorage.removeItem("AccessToken");
 		localStorage.removeItem("RefData");
 		// console.log("LoggedOut");
-		this.router.navigateByUrl('Login');
 
 	}
 	tradeReceive(trade)
@@ -52,5 +62,22 @@ export class MainComponent implements OnInit {
 		this.hideAddTrade = true;
 		this.trade = trade;
 		//console.log(trade);
+	}
+
+	throwAlert(title,body,bodyDetails,alertSource){
+		this.alertHidden = false;
+		console.log("2 at Parent");
+		this.title = title;
+		this.body = body;
+		this.bodyDetails = bodyDetails;
+		this.alertSource = alertSource;
+		this.parentSubject.next();
+		//$("#LoginModal").modal();
+	}
+
+	closeAlertRoute(value){
+		console.log("3");
+		if(value)
+			this.router.navigateByUrl('Login');
 	}
 }
