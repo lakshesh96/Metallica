@@ -45,6 +45,7 @@ import { RegisterService } from './Services/Register/register.service';
 import { SearchService } from './Services/Search/search.service';
 import {TradeOperationService} from './Services/TradeOperation/trade-operation-service.service';
 import { AuthGuardService } from './Services/AuthGuard/auth-guard.service';
+import { AlertModalComponent } from './Components/alert-modal/alert-modal.component';
 
 @NgModule({
 	declarations: [
@@ -57,7 +58,8 @@ import { AuthGuardService } from './Services/AuthGuard/auth-guard.service';
         LoginOauthComponent,
         SearchComponent,
         MainComponent,
-        RegisterComponent
+        RegisterComponent,
+        AlertModalComponent,
 	],
 	imports: [
     BrowserModule,
