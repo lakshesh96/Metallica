@@ -13,14 +13,12 @@ export class TradeOperationService {
   url:string="/api/Trades";
   status:string;
   Add(trade:TradeTable){
-    console.log(trade);
-    console.log("before service");
+    console.log("before Add service",trade);
     //console.log(userModel);
     this.globalService.PostMethod(trade,this.url).subscribe(
       response => this.status = response,
       error => console.error(error),
       () => {
-        //console.log(console.log(this.status + "Hello"))
         alert("Trade Created Successfully");
       }
     );
