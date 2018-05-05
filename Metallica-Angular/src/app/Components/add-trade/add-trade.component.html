@@ -57,7 +57,7 @@
 
      <tr>
         <td><label for="Price"><strong>Price</strong></label></td>
-        <td><input type="text" class="form-control" [(ngModel)]="price" formControlName="Price" /></td>
+        <td>{{price|currency:'INR':3}}<input type="text" class="form-control" [(ngModel)]="price" hidden formControlName="Price" /></td>
      </tr>
 
       <tr>
@@ -78,7 +78,7 @@
 
         <tr><td></td>
          <td  align="right"><button type="button" class="btn">Cancel</button>
-          <button type="submit" class="btn" (click)="AddTrade(TradeForm)">Save</button></td>
+          <button type="submit" class="btn" (click)="AddTrade(TradeForm)">Add Trade</button></td>
         </tr>
      </table>
    </div>

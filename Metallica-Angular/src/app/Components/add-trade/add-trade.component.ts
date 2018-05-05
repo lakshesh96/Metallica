@@ -44,13 +44,13 @@ export class AddTradeComponent implements OnInit {
 			CommodityId:new FormControl('', [Validators.required]),
 			Side:new FormControl(),
 			CounterPartyId:new FormControl('', [Validators.required]),
-			'Price':new FormControl(''),
+			Price:new FormControl({disable:true}),
 			Quantity:new FormControl('', [Validators.required]),
 			LocationId:new FormControl('', [Validators.required]),
 			UserId: new FormControl('',[Validators.required]),
 			Status: new FormControl('',[Validators.required])
 		});
-		this.TradeForm.get('Price').disable();
+		//this.TradeForm.get('Price').disable();
 	}
 
 	onSubmit({ value, valid }: { value: TradeTable, valid: boolean }) {
@@ -58,8 +58,7 @@ export class AddTradeComponent implements OnInit {
 	}
 
 	AddTrade(item){
-		console.log("Hi there");
-		console.log(item.value);
+		console.log("Hi there at add",item.value);
 		this.TradeOperationService.Add(item.value);
 	}
 

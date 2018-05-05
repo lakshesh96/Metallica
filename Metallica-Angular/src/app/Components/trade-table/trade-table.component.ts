@@ -3,6 +3,7 @@ import { TradeTableService } from "../../Services/tradeTable/trade-table.service
 import {  } from 'events';
 import { TradeTable } from '../../Models/trade-table';
 import { Router } from '@angular/router';
+import { SearchService } from '../../Services/Search/search.service';
 
 @Component({
   selector: 'app-trade-table',
@@ -14,17 +15,28 @@ export class TradeTableComponent implements OnInit {
 	@Input() trades: any[];
 	@Output() tradeEmit = new EventEmitter<TradeTable>(); 
 
-	constructor(private tradeService: TradeTableService,public router:Router) { }
+	constructor(private tradeService: TradeTableService,public router:Router,public searchService:SearchService) { }
 	//trades : any[];
 	url : string = "/api/trades";
 
 	ngOnInit() {
-		this.getTrades();
+		let search:any;
+		search = new Object({
+			dateTo: new Date(),
+			dateFrom: new Date(),
+			buy: null,
+			sell: null,
+			commodity: null,
+			counterParty: null,
+			location: null
+		});
+		search.dateFrom.setDate(search.dateFrom.getDate()-2);
+		this.getTrades(search);
 		//this.trades = this.searchResults;
 	}
 
-	getTrades() {
-		this.tradeService.getTrades().subscribe(
+	getTrades(search) {
+		this.searchService.PerformSearch(search).subscribe(
 			response => this.trades = response,
 			error => console.error(error),
 			() => {
