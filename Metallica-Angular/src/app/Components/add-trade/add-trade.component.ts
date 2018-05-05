@@ -8,27 +8,21 @@ import {TradeOperationService} from '../../Services/TradeOperation/trade-operati
 import { GlobalService } from '../../Services/GlobalService/global.service'
 
 @Component({
-  selector: 'app-add-trade',
-  templateUrl: './add-trade.component.html',
-  styleUrls: ['./add-trade.component.css']
+	selector: 'app-add-trade',
+	templateUrl: './add-trade.component.html',
+	styleUrls: ['./add-trade.component.css']
 })
 export class AddTradeComponent implements OnInit {
-  TradeForm : FormGroup;
-  CommodityList: Commodity[];
-  LocationList: Location[];
-  CounterPartyList: Counterparty[];
-  Userid: string;
-  status: number=0;
-  price: number;
-  date: Date = new Date();
-  dateString: string;
-  onChange(event){
-    let commodityId = event.target.value;
-    this.CommodityList.forEach(element => {
-      if (element.Id == commodityId)
-        this.price=element.CurrentPrice;
-    });
-  }
+	TradeForm : FormGroup;
+	CommodityList: Commodity[];
+	LocationList: Location[];
+	CounterPartyList: Counterparty[];
+	Userid: string;
+	status: number=0;
+	price: number;
+	date: Date = new Date();
+	dateString: string;
+
 	constructor(private TradeOperationService : TradeOperationService, private GlobalService : GlobalService) {
 		this.CommodityList = GlobalService.getReferenceData("Commodities");
 		this.LocationList=GlobalService.getReferenceData("Locations");
@@ -36,7 +30,6 @@ export class AddTradeComponent implements OnInit {
 		this.Userid=GlobalService.getUserData("UserId");
 		this.dateString=this.date.toISOString();
 	}
-
 
 	ngOnInit() {
 		this.TradeForm = new FormGroup({
@@ -50,7 +43,6 @@ export class AddTradeComponent implements OnInit {
 			UserId: new FormControl('',[Validators.required]),
 			Status: new FormControl('',[Validators.required])
 		});
-		//this.TradeForm.get('Price').disable();
 	}
 
 	onSubmit({ value, valid }: { value: TradeTable, valid: boolean }) {
@@ -58,9 +50,14 @@ export class AddTradeComponent implements OnInit {
 	}
 
 	AddTrade(item){
-		console.log("Hi there at add",item.value);
 		this.TradeOperationService.Add(item.value);
 	}
 
-  
+	changePriceOnCommoditySelection(event){
+		let commodityId = event.target.value;
+		this.CommodityList.forEach(element => {
+			if (element.Id == commodityId)
+				this.price=element.CurrentPrice;
+		});
+	}  
 }

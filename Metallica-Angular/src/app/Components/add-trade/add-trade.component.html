@@ -25,7 +25,7 @@
     <tr>
             <td><label><strong>Commodity</strong></label></td>
             <td>
-            <select id="CommodityDropdown" class="dropdown-content" (change)="onChange($event)"  formControlName="CommodityId">
+            <select id="CommodityDropdown" class="dropdown-content" (change)="changePriceOnCommoditySelection($event)"  formControlName="CommodityId">
                 <option *ngFor="let Commodity of CommodityList" [value]="Commodity.Id">{{Commodity.Name}}</option>
             </select>
             </td>

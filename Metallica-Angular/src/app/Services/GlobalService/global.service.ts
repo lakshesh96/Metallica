@@ -46,7 +46,7 @@ export class GlobalService {
 			{headers: new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")})}
 		).map(this.extractData).catch(this.handleError);
 	}
-
+ 
 	PutMethod(data,url):Observable<any>{
 		console.log("Global Service: PUT:", this._baseUrl+url+"/"+data.id, "Data:", data, "Header:", new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")}));
 		return this._http.put(
@@ -79,7 +79,7 @@ export class GlobalService {
 	extractData(res:Response){
 		let response = res.json();
 		let body = response;
-		//console.log("Body", body);
+		console.log("Body", body);
 		return body || {};
 	}
 

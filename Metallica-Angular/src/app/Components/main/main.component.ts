@@ -51,6 +51,6 @@ export class MainComponent implements OnInit {
 		this.hideDetails = false;
 		this.hideAddTrade = true;
 		this.trade = trade;
-		console.log(trade);
+		//console.log(trade);
 	}
 }

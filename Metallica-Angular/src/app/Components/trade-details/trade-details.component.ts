@@ -54,16 +54,17 @@ export class TradeDetailsComponent implements OnInit,OnChanges {
 	}
 
 	ngOnInit() { 
-		console.log(this.trade);
+		this.trade = new TradeTable();
 	}
 	
 	ngOnChanges(){
-		console.log(this.trade);
-		this.tradeForm.controls["CommodityId"].setValue(this.trade.CommodityId);
-		this.tradeForm.controls["CounterPartyId"].setValue(this.trade.CounterPartyId);
-		this.tradeForm.controls["LocationId"].setValue(this.trade.LocationId);
-		this.tradeForm.controls["Side"].setValue(this.trade.Side);
-
+		if (this.trade != null) {
+			console.log("Trade Details:", this.trade);
+			this.tradeForm.controls["CommodityId"].setValue(this.trade.CommodityId);
+			this.tradeForm.controls["CounterPartyId"].setValue(this.trade.CounterPartyId);
+			this.tradeForm.controls["LocationId"].setValue(this.trade.LocationId);
+			this.tradeForm.controls["Side"].setValue(this.trade.Side);
+		}
 	}
 	
 

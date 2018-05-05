@@ -6,22 +6,22 @@ import { Router } from '@angular/router';
 @Injectable()
 export class TradeOperationService {
 
-  TradeList : TradeTable[];
-  constructor(private globalService: GlobalService,private router:Router) { }
+	TradeList: TradeTable[];
+	constructor(private globalService: GlobalService,private router:Router) { }
 
-  trade:TradeTable;
-  url:string="/api/Trades";
-  status:string;
-  Add(trade:TradeTable){
-    console.log("before Add service",trade);
-    //console.log(userModel);
-    this.globalService.PostMethod(trade,this.url).subscribe(
-      response => this.status = response,
-      error => console.error(error),
-      () => {
-        alert("Trade Created Successfully");
-      }
-    );
-  }
+	trade: TradeTable;
+	url: string = "/api/Trades";
+	status;
+
+	Add(trade:TradeTable) {
+		console.log("Adding Trade:",trade);
+		this.globalService.PostMethod(trade,this.url).subscribe(
+			response => this.status = response,
+			error => console.error(error),
+			() => {
+				console.log("Trade Added Successfully. Response:", this.status);
+			}
+		);
+	}
 }
 

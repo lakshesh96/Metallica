@@ -3,7 +3,7 @@ import { Counterparty } from "./counterparty";
 
 export class TradeTable {
 	Id : string;
-	Date : DateTimeFormat;
+	Date : Date;
 	Status : Status;
 	UserId : number;
 	CommodityId : number;
