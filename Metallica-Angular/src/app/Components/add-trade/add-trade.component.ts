@@ -37,8 +37,8 @@ export class AddTradeComponent implements OnInit {
 			CommodityId:new FormControl('', [Validators.required]),
 			Side:new FormControl(),
 			CounterPartyId:new FormControl('', [Validators.required]),
-			Price:new FormControl({disable:true}),
-			Quantity:new FormControl('', [Validators.required]),
+			Price:new FormControl(''),
+			Quantity:new FormControl('', [Validators.required,Validators.pattern(/^[1-9]{1}[0-9]{0,3}$/)]),
 			LocationId:new FormControl('', [Validators.required]),
 			UserId: new FormControl('',[Validators.required]),
 			Status: new FormControl('',[Validators.required])

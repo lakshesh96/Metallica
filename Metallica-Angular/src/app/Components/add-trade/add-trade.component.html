@@ -1,7 +1,6 @@
 
 <form novalidate (ngSubmit)="onSubmit(TradeForm)" [formGroup]="TradeForm">
-<div class="container">
-  <table>
+<table class="table">
     <tr style="background-color:darkgray">
       <td>
         <strong>ADD NEW TRADE</strong>
@@ -28,6 +27,7 @@
             <select id="CommodityDropdown" class="dropdown-content" (change)="changePriceOnCommoditySelection($event)"  formControlName="CommodityId">
                 <option *ngFor="let Commodity of CommodityList" [value]="Commodity.Id">{{Commodity.Name}}</option>
             </select>
+            <div class="error text-danger" *ngIf="TradeForm.get('CommodityId').hasError('required')">Commodity is required</div>
             </td>
         </tr>
         <tr [hidden]=true>
@@ -42,6 +42,7 @@
         <td><label><strong>Side</strong></label></td>
                 <td><input type="radio"  formControlName="Side" value="buy">Buy
                 <input type="radio" class="col-sm-2" formControlName="Side" value="sell">Sell
+                <div class="error text-danger" *ngIf="TradeForm.get('Side').hasError('required')">Side is required</div>
                 </td>
     </tr>
 
@@ -51,6 +52,7 @@
         <select id="CounterPartyDropdown" class="dropdown-content" formControlName="CounterPartyId">
             <option *ngFor="let counterParty of CounterPartyList" [value]="counterParty.Id">{{counterParty.Name}}</option>
         </select>
+        <div class="error text-danger" *ngIf="TradeForm.get('CounterPartyId').hasError('required')">Counter Party is required</div>
         </td>
     </tr>
 
@@ -64,6 +66,7 @@
           <td><label for="Quantity"><strong>Quantity</strong></label></td>
           <td><input type="number" min='1' class="form-control" name="Quantity" formControlName="Quantity" required />
             <div class="error text-danger" *ngIf="TradeForm.get('Quantity').hasError('required') && TradeForm.get('Quantity').touched">Quantity is required</div>
+            <div class="error text-danger" *ngIf="TradeForm.get('Quantity').hasError('pattern')">Quantity Should be numerical and between 1-9999</div>
           </td>  
       </tr>
       
@@ -71,15 +74,15 @@
             <td><label><strong>Location</strong></label></td>
             <td>
               <select id="LocationDropdown" class="dropdown-content"  formControlName="LocationId">
-                <option *ngFor="let location of LocationList" [value]="location.Id">{{location.Name}}</option>                
+                <option *ngFor="let location of LocationList" [value]="location.Id">{{location.Name}}</option>             
+                <div class="error text-danger" *ngIf="TradeForm.get('LocationId').hasError('required')">Location is required</div>   
               </select>
             </td>
         </tr>
 
         <tr><td></td>
          <td  align="right"><button type="button" class="btn">Cancel</button>
-          <button type="submit" class="btn" (click)="AddTrade(TradeForm)">Add Trade</button></td>
+          <button type="submit" class="btn" (click)="AddTrade(TradeForm)" [disabled]="!TradeForm.valid">Add Trade</button></td>
         </tr>
      </table>
-   </div>
 </form>
