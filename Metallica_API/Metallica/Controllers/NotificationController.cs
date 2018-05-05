@@ -13,12 +13,17 @@ namespace Metallica.Controllers
     [Authorize]
     public class NotificationController : ApiController
     {
+        MetallicaContext db = new MetallicaContext();
+
         TradeMQueue tradeQueue = new TradeMQueue();
         TickerMQueue tickerQueue = new TickerMQueue();
         [Route("api/TradeNotification")]
         public IHttpActionResult GetTradeNotification()
         {
             TradeQueueMessage<Trade> genericTrade = tradeQueue.ReceiveMessage();
+
+            genericTrade.Object = db.Trades.Find(genericTrade.Object.Id);
+
             return Ok(genericTrade);
         }
 

@@ -79,7 +79,7 @@ export class GlobalService {
 	extractData(res:Response){
 		let response = res.json();
 		let body = response;
-		console.log("Body", body);
+		//console.log("Body", body);
 		return body || {};
 	}
 

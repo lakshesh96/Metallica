@@ -26,10 +26,8 @@ export class PriceTickerComponent implements OnInit {
 		this.priceTickerService.GetCommodityUpdates().subscribe(
 			response => {
 				commodity = response;
-				console.log("Notification: ", response);
 			},
 			error => console.error(error),
-			//complete => console.log("Notification done");
 			() => {
 				console.log("Price Ticker. Notification Received:", commodity);
 				if (commodity != null) 
@@ -40,12 +38,10 @@ export class PriceTickerComponent implements OnInit {
 	}
 
 	updateCommodityPrice(commodity: any) {
-		console.log("Updating ticker price for", commodity);
 		this.commodityList.forEach(element => {
 			if (element.Id == commodity.Id) {
 				element.Increase = element.CurrentPrice >= commodity.CurrentPrice;
 				element.CurrentPrice = commodity.CurrentPrice;
-				console.log("Change in price", element.CurrentPrice);
 			}
 		});
 	}

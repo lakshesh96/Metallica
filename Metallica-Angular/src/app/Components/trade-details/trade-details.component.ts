@@ -67,7 +67,6 @@ export class TradeDetailsComponent implements OnInit,OnChanges {
 		}
 	}
 	
-
 	onEditClick() {
 		console.log(this.trade);
 		this.details = false;

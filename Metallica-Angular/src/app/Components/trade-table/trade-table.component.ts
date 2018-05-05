@@ -40,7 +40,7 @@ export class TradeTableComponent implements OnInit {
 			response => this.trades = response,
 			error => console.error(error),
 			() => {
-				//this.updateNewTrades();
+				this.updateNewTrades();
 			}
 		);
 	}
@@ -56,11 +56,11 @@ export class TradeTableComponent implements OnInit {
 		this.tradeService.GetTradeUpdates().subscribe(
 			response => {
 				newTrade = response;
-				//console.log("Notification");
+				//console.log("Notification Received:", response);
 			},
 			error => console.error(error),
 			() => {
-				console.log("New Trades. Notification Received:", newTrade);
+				console.log("New Trades. Notification Received. Type:", newTrade["Text"], newTrade);
 				if (newTrade != null && newTrade["Text"] == "Trade Added")
 					this.addToTradeTable(newTrade["Object"]);
 				else if (newTrade != null && newTrade["Text"] == "Trade Updated")
@@ -73,7 +73,9 @@ export class TradeTableComponent implements OnInit {
 	}
 
 	addToTradeTable(newTrade) {
+		console.log("Notif: New Trade Added", newTrade, "Before Adding:", this.trades);
 		this.trades.unshift(newTrade);
+		console.log("Notif: New Trade Added", newTrade, "After Adding:", this.trades);
 	}
 	
 	updateTradeTable(trade) {
