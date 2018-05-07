@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27428.2002
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallica", "Metallica\Metallica.csproj", "{C422C616-6C20-4C7B-8F82-0F2E0B53C0C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metallica_Test", "Metallica_Test\Metallica_Test.csproj", "{A103B1A6-1A9A-4B37-AFBB-85C5B92AF37B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C422C616-6C20-4C7B-8F82-0F2E0B53C0C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C422C616-6C20-4C7B-8F82-0F2E0B53C0C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C422C616-6C20-4C7B-8F82-0F2E0B53C0C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A103B1A6-1A9A-4B37-AFBB-85C5B92AF37B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A103B1A6-1A9A-4B37-AFBB-85C5B92AF37B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A103B1A6-1A9A-4B37-AFBB-85C5B92AF37B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A103B1A6-1A9A-4B37-AFBB-85C5B92AF37B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
