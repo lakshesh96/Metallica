@@ -56,6 +56,7 @@ namespace Metallica.Controllers
 
             try
             {
+                trade.Price = db.Commodities.Find(trade.CommodityId).CurrentPrice;
                 db.SaveChanges();
                 businessLayer.UpdateNotification((trade));
             }
@@ -83,6 +84,8 @@ namespace Metallica.Controllers
             {
                 return BadRequest(ModelState);
             }
+            trade.Date = System.DateTime.Now;
+            trade.Price = db.Commodities.Find(trade.CommodityId).CurrentPrice;
 
             db.Trades.Add(trade);
             db.SaveChanges();
