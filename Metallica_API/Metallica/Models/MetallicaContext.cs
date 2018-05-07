@@ -6,12 +6,9 @@ using System.Web;
 
 namespace Metallica.Models
 {
-    public class MetallicaContext:DbContext
+    public class MetallicaContext:DbContext //Context Class
     {
-        public MetallicaContext():base("Metallica")
-        {
-            // this.Configuration.LazyLoadingEnabled = false;
-        }
+        public MetallicaContext():base("Metallica"){} //Base Constructor
         public DbSet<Commodity> Commodities { get; set; }
         public DbSet<CounterParty> CounterParties { get; set; }
         public DbSet<Location> Locations { get; set; }

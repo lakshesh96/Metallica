@@ -9,7 +9,6 @@ using Metallica.Models;
 
 namespace Metallica.Provider
 {
-    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)

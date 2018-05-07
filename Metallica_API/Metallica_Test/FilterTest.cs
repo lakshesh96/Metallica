@@ -13,7 +13,7 @@ namespace Metallica_Test
         [TestMethod]
         public void Test_Filter()
         {
-            FilterFields testFeilds = new FilterFields();
+            FilterCriteria testFeilds = new FilterCriteria();
             testFeilds.DateFrom = "2018-04-16";
             testFeilds.DateTo = "2018-04-16";
             testFeilds.Commodity = "Ishan";

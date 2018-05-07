@@ -37,7 +37,7 @@ namespace Metallica.Controllers
             }
 
             return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
-        }
+        } //User Login
 
 
 

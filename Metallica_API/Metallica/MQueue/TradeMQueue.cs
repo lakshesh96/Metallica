@@ -32,7 +32,7 @@ namespace Metallica.MQueue
                     messageQueue.Close();
                 }
             return true;
-            }
+            } //Send TradeMessage to Queue
 
 
             public TradeQueueMessage<Trade> ReceiveMessage()
@@ -54,6 +54,6 @@ namespace Metallica.MQueue
                     messageQueue.Close();
                 }
                 return trade;
-            }
+            }   // Recieve Trade Message From Queue
     }
 }

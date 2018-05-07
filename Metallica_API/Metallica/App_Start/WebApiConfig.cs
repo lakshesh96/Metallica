@@ -14,7 +14,7 @@ namespace Metallica
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-            var cors = new EnableCorsAttribute("*", "*", "*");
+            var cors = new EnableCorsAttribute("*", "*", "*"); //Enable CORS for all URLs
             config.EnableCors(cors);
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

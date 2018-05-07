@@ -10,14 +10,14 @@ namespace Metallica.Layers
     public class FilterLayer
     {
         List<Trade> trades;
-        FilterFields fields;
+        FilterCriteria filterCriteria;
         MetallicaContext db;
 
-        public FilterLayer(FilterFields filterFields)
+        public FilterLayer(FilterCriteria filterCriteria)
         {
             trades = new List<Trade>();
             db = new MetallicaContext();
-            this.fields = filterFields;
+            this.filterCriteria = filterCriteria;
         }
 
         public List<Trade> GetTrades()
@@ -28,33 +28,33 @@ namespace Metallica.Layers
             FilterForLocation();
             FilterForCounterParty();
             return trades;
-        }
+        } //Get list of Filtered Trades
 
         private void FilterForSide()
         {
-            if (fields.Buy == true && fields.Sell == true)
+            if (filterCriteria.Buy == true && filterCriteria.Sell == true)
                 trades = (from n in db.Trades select n).ToList();
-            else if (fields.Buy == true)
+            else if (filterCriteria.Buy == true)
                 trades = (from n in db.Trades where n.Side == Side.Buy select n).ToList();
-            else if (fields.Sell == true)
+            else if (filterCriteria.Sell == true)
                 trades = (from n in db.Trades where n.Side == Side.Sell select n).ToList();
             else
                 trades = (from n in db.Trades select n).ToList();
 
-        }
+        }   //Filter For Buy/Sell
 
         private void FilterForDate()
         {
 
             try
             {
-                if (fields.DateTo != null)
+                if (filterCriteria.DateTo != null)
                 {
-                    trades = trades.FindAll(a => a.Date <= DateTime.Parse(fields.DateTo));
+                    trades = trades.FindAll(a => a.Date <= DateTime.Parse(filterCriteria.DateTo));
                 }
-                if (fields.DateFrom != null)
+                if (filterCriteria.DateFrom != null)
                 {
-                    trades = trades.FindAll(a => a.Date >= DateTime.Parse(fields.DateFrom));
+                    trades = trades.FindAll(a => a.Date >= DateTime.Parse(filterCriteria.DateFrom));
                 }
             }
             catch(FormatException)
@@ -65,14 +65,14 @@ namespace Metallica.Layers
             {
                 return;
             }
-        }
+        }   //Filter between range of dates
 
         private void FilterForCommodity()
         {
             try
             {
-                if (fields.Commodity != null)
-                    trades = trades.FindAll(a => a.CommodityId == Guid.Parse(fields.Commodity));
+                if (filterCriteria.Commodity != null)
+                    trades = trades.FindAll(a => a.CommodityId == Guid.Parse(filterCriteria.Commodity));
             }
             catch(FormatException)
             {
@@ -82,14 +82,14 @@ namespace Metallica.Layers
             {
                 return;
             }
-        }
+        }   //Filter for selected commodity
 
         private void FilterForLocation()
         {
             try
             {
-                if (fields.Location != null)
-                    trades = trades.FindAll(a => a.LocationId == Guid.Parse(fields.Location));
+                if (filterCriteria.Location != null)
+                    trades = trades.FindAll(a => a.LocationId == Guid.Parse(filterCriteria.Location));
             }
             catch(FormatException)
             {
@@ -99,14 +99,14 @@ namespace Metallica.Layers
             {
                 return;
             }
-        }
+        }   //Filter for Location       
 
         private void FilterForCounterParty()
         {
             try
             {
-                if (fields.CounterParty != null)
-                    trades = trades.FindAll(a => a.CounterPartyId == Guid.Parse(fields.CounterParty));
+                if (filterCriteria.CounterParty != null)
+                    trades = trades.FindAll(a => a.CounterPartyId == Guid.Parse(filterCriteria.CounterParty));
             }
             catch(FormatException)
             {
@@ -116,6 +116,6 @@ namespace Metallica.Layers
             {
                 return;
             }
-        }
+        }   //Filter for Counter Parties
     }
 }

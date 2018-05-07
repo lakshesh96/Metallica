@@ -17,6 +17,7 @@ namespace Metallica.Controllers
 
         TradeMQueue tradeQueue = new TradeMQueue();
         TickerMQueue tickerQueue = new TickerMQueue();
+
         [Route("api/TradeNotification")]
         public IHttpActionResult GetTradeNotification()
         {
@@ -25,13 +26,13 @@ namespace Metallica.Controllers
             genericTrade.Object = db.Trades.Find(genericTrade.Object.Id);
 
             return Ok(genericTrade);
-        }
+        } // Get trade message from Queue
 
         [Route("api/TickerNotification")]
         public IHttpActionResult GetTickerNotification()
         {
             Commodity commodity = tickerQueue.ReceiveMessage();
             return Ok(commodity);
-        }
+        }   //Recieve ticker message from Queue
     }
 }

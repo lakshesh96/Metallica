@@ -21,7 +21,7 @@ namespace Metallica.Controllers
 
         // GET: api/RefData
         [Route("api/RefData/{username}")]
-        public  IHttpActionResult GetOnLoadData(string username)
+        public  IHttpActionResult GetOnLoadData(string username) // Get On Load Data (Reference Data and User Data)
         {
             RefData refData = new RefData();
             UserDetails userDetails = new UserDetails(username);
@@ -31,9 +31,9 @@ namespace Metallica.Controllers
 
         [HttpPost]
         [Route("api/Filter")]
-        public List<Trade> FilterTrades(FilterFields fields)
+        public List<Trade> FilterTrades(FilterCriteria criteria) //Filter Trades based on criteria recieved
         {
-            FilterLayer filterLayer = new FilterLayer(fields);
+            FilterLayer filterLayer = new FilterLayer(criteria);
             return filterLayer.GetTrades();
         }
        

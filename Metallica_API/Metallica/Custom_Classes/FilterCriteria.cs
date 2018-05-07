@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Metallica.Custom_Classes
 {
-    public class FilterFields
+    public class FilterCriteria
     {
         public string DateFrom { get; set; }
         public string DateTo { get; set; }

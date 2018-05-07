@@ -222,8 +222,7 @@
     <Compile Include="Controllers\RefDataController.cs" />
     <Compile Include="Controllers\TradesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Custom_Classes\FilterFields.cs" />
+    <Compile Include="Custom_Classes\FilterCriteria.cs" />
     <Compile Include="Custom_Classes\OnLoadData.cs" />
     <Compile Include="Custom_Classes\UserDetails.cs" />
     <Compile Include="Layers\FilterLayer.cs" />

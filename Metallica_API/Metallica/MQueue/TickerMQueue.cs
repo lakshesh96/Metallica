@@ -31,7 +31,7 @@ namespace Metallica.MQueue
                 messageQueue.Close();
             }
             return true;
-        }
+        } //Send Message to Queue
 
 
         public Commodity ReceiveMessage()
@@ -51,7 +51,7 @@ namespace Metallica.MQueue
                 messageQueue.Close();
             }
             return commodity;
-        }
+        }   //Recieve Message from Queue
 
     }
 }

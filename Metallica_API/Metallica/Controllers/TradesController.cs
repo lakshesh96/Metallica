@@ -19,24 +19,6 @@ namespace Metallica.Controllers
     {
         private MetallicaContext db = new MetallicaContext();
         private BusinessLayer businessLayer = new BusinessLayer();
-        // GET: api/Trades
-        public IList<Trade> GetTrades()
-        {
-            return db.Trades.ToList();
-        }
-
-        // GET: api/Trades/5
-        [ResponseType(typeof(Trade))]
-        public IHttpActionResult GetTrade(Guid id)
-        {
-            Trade trade = db.Trades.Find(id);
-            if (trade == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(trade);
-        }
 
         // PUT: api/Trades/5
         [ResponseType(typeof(void))]
@@ -72,7 +54,7 @@ namespace Metallica.Controllers
                 }
             }
             return StatusCode(HttpStatusCode.NoContent);
-        }
+        } //Update a trade
 
       
         // POST: api/Trades
@@ -100,12 +82,12 @@ namespace Metallica.Controllers
                 return BadRequest(e.ToString());
             }
             return CreatedAtRoute("DefaultApi", new { id = trade.Id }, trade);
-        }
+        }   //Add a trade
         
         // DELETE: api/Trades/5
         [HttpPost]
         [Route("api/Trades/Remove")]
-        [ResponseType(typeof(Trade))]
+        [ResponseType(typeof(Trade))] 
         public IHttpActionResult RemoveTrade(Trade trade)
         {
             Guid id = (from n in db.Trades where n.Id == trade.Id select n.Id).FirstOrDefault();
@@ -130,7 +112,7 @@ namespace Metallica.Controllers
                 return BadRequest(e.ToString());
             }
             return Ok(trade);
-        }
+        } //Remove a trade
        
         protected override void Dispose(bool disposing)
         {
