@@ -20,6 +20,7 @@ export class MainComponent implements OnInit {
 	alertSource: string;
 	alertHidden: boolean = true;
 	parentSubject: Subject<any> = new Subject();
+	rowHighlightToggle:number;
 
 
 	UserName:string;
@@ -47,6 +48,7 @@ export class MainComponent implements OnInit {
 		this.hideRightBar = true;
 		this.hideDetails = true;
 		this.hideAddTrade = true;
+		this.rowHighlightToggle = -1;
 	}
 
 	searchReceived(data) {

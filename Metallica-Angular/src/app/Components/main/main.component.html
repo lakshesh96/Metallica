@@ -28,8 +28,8 @@
 	<app-search (searchEmit)="searchReceived($event)"></app-search>
 	<div class="row">
 		<div class="col-lg px-0 my-2 border border-top-0 shadow-sm bg-white" id="tradeTable">   
-            <app-trade-table [trades]="searchData" (tradeEmit)="tradeReceive($event)"></app-trade-table>
-			  <img src="../assets/add.png" (click)="openTradeAddForm()" style="position: fixed; right: 25px; bottom: 25px; cursor: pointer;" [hidden]="hideAddButton"/>
+            <app-trade-table [trades]="searchData" [rowHighlightToggle]="rowHighlightToggle" (tradeEmit)="tradeReceive($event)"></app-trade-table>
+			  <img src="../assets/add.png" (click)="openTradeAddForm()" style="z-index:1; position: fixed; right: 25px; bottom: 25px; cursor: pointer;" [hidden]="hideAddButton"/>
 		</div>
 		
 		<div class="col-lg-4 mt-lg-2 mb-2 ml-lg-2 px-0" [hidden]="hideRightBar">

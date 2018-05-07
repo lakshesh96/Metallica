@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { TradeTableService } from "../../Services/tradeTable/trade-table.service";
 import {  } from 'events';
 import { TradeTable } from '../../Models/trade-table';
@@ -11,18 +11,23 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './trade-table.component.html',
   styleUrls: ['./trade-table.component.css']
 })
-export class TradeTableComponent implements OnInit {
+export class TradeTableComponent implements OnInit,OnChanges {
 
 	@Input() trades: any[];
-	@Output() tradeEmit = new EventEmitter<TradeTable>(); 
+	@Output() tradeEmit = new EventEmitter<TradeTable>();
+	@Input() rowHighlightToggle:number;
 
 	constructor(private tradeService: TradeTableService,public router:Router,public searchService:SearchService, private toastr: ToastrService) { }
 	
 	selectedRow: number;
 	url : string = "/api/trades";
 
-	ngOnChange() {
+	ngOnChanges() {
 		console.log("Hello");
+		if(this.rowHighlightToggle != null && this.rowHighlightToggle == -1)
+		{
+			this.selectedRow = -1;
+		}
 	}
 
 	ngOnInit() {
