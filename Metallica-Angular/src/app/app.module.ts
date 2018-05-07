@@ -14,6 +14,11 @@ import { TradeTableService } from "../app/Services/tradeTable/trade-table.servic
 
 //import {TradeOperationService} from "./Services/TradeOperation/trade-operation-service.service"
 
+//Toast Modules
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
       [
@@ -69,7 +74,10 @@ import { AlertModalComponent } from './Components/alert-modal/alert-modal.compon
 		HttpModule,
 		JsonpModule,
 		AngularDateTimePickerModule,
-		RoutesModule
+		RoutesModule,
+		CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
 	],
     providers: [
 		GlobalService,
