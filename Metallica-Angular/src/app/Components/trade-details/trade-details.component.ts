@@ -110,6 +110,7 @@ export class TradeDetailsComponent implements OnInit,OnChanges {
 	onDeleteClick() {
 		console.log(this.trade);
 		this.tradeService.Delete(this.trade);
+		this.closeTab();
 	}
 
 	onSubmit(trade) {
