@@ -2,13 +2,13 @@
 	<div class="mt-5 d-flex justify-content-center border rounded">
 		<form class="form-signin" novalidate (ngSubmit)="onSubmit(login)" [formGroup]="login" autocomplete="off">
 			<div class="text-center mb-3">
-				<!--<img class="mb-4" src="../assets/logo.png" alt="Logo" height="120">-->
-				<h1 class="py-2 display-1">Metallica</h1>
-				<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+				<img _ngcontent-c8="" alt="Logo" class="" height="120" src="../assets/logo.png" style="width: 310px;margin-bottom: -25px;">
+				<!-- <h1 class="py-2 display-1">Metallica</h1> -->
+				<h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
 			</div>
 
 			<div class="form-label-group">
-				<input type="email" id="inputEmail" class="form-control" placeholder="Email address" formControlName="UserName" required>
+				<input type="email" id="inputEmail" class="form-control" placeholder="Email address" formControlName="UserName" required [class.is-invalid]="login.get('UserName').hasError(('required')) && login.get('UserName').touched">
 				<label for="inputEmail">Username</label>
 				<div class="error text-danger" *ngIf="login.get('UserName').hasError(('required')) && login.get('UserName').touched">
 					Username is required
@@ -16,10 +16,9 @@
 			</div>
 
 			<div class="form-label-group">
-				<input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="Password" required>
+				<input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="Password" [class.is-invalid]="login.get('Password').hasError(('required')) && login.get('Password').touched" required>
 				<label for="inputPassword">Password</label>
 				<div class="error text-danger" *ngIf="login.get('Password').hasError('pattern')">
-					Password wrong
 				</div>
 			</div>
 
@@ -27,7 +26,6 @@
 				<button class="btn btn-lg btn-primary btn-block" style="pointer-events: none;" type="submit" [hidden]="login.valid" [disabled]="!login.valid">Sign in</button>
 			</span>
 			<button class="btn btn-lg btn-primary btn-block" type="submit" [hidden]="!login.valid" [disabled]="!login.valid">Sign in</button>
-
 			<p class="my-3 text-center"><a class="nav-link" routerLink="/Register">New User? Register Here!</a></p>
 		</form>
 	</div>

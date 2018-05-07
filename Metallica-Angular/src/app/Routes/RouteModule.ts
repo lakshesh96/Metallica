@@ -12,6 +12,7 @@ import { AddTradeComponent } from '../components/add-trade/add-trade.component';
 const AppRoutes:Routes = [
 	{ path: "Register", component: RegisterComponent},
     {path:"Login",component:LoginOauthComponent},
+    {path:"GoogleLogin",component:LoginComponent},
     {path:"Main",component:MainComponent,canActivate: [AuthGuardService],},
     {path:"",component:MainComponent,canActivate: [AuthGuardService]},
     {path:"**",component:MainComponent,canActivate: [AuthGuardService]}
