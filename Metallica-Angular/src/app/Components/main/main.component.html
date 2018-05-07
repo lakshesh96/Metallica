@@ -27,12 +27,12 @@
 	<app-price-ticker></app-price-ticker>
 	<app-search (searchEmit)="searchReceived($event)"></app-search>
 	<div class="row">
-		<div class="col-xl px-0 my-2 border border-top-0 shadow-sm bg-white" id="tradeTable">   
+		<div class="col-lg px-0 my-2 border border-top-0 shadow-sm bg-white" id="tradeTable">   
             <app-trade-table [trades]="searchData" (tradeEmit)="tradeReceive($event)"></app-trade-table>
 			  <img src="../assets/add.png" (click)="openTradeAddForm()" style="position: fixed; right: 25px; bottom: 25px; cursor: pointer;" [hidden]="hideAddButton"/>
 		</div>
 		
-		<div class="col-xl-4 mt-xl-2 mb-2 ml-xl-2 px-0" [hidden]="hideRightBar">
+		<div class="col-lg-4 mt-lg-2 mb-2 ml-lg-2 px-0" [hidden]="hideRightBar">
 			<app-add-trade [hidden]="hideAddTrade" (closeForm)="closeRightTab()"></app-add-trade>
 			<app-trade-details [trade]="trade" (closeForm)="closeRightTab()" [hidden]="hideDetails"></app-trade-details>
 		</div>
