@@ -6,13 +6,15 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from "angular5-social-login";
 import { AngularDateTimePickerModule } from 'angular2-datetimepicker';
 
-
 // Import Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
-import { TradeTableService } from "../app/Services/tradeTable/trade-table.service";
-
-//import {TradeOperationService} from "./Services/TradeOperation/trade-operation-service.service"
+import { AddTradeComponent } from './components/add-trade/add-trade.component';
+import { TradeDetailsComponent } from './components/trade-details/trade-details.component';
+import { PriceTickerComponent } from './Components/price-ticker/price-ticker.component';
+import { TradeTableComponent } from './Components/trade-table/trade-table.component';
+import { LoginOauthComponent } from './Components/login-oauth/login-oauth.component';
+import { RegisterComponent } from './Components/register/register.component';
 
 //Toast Modules
 import { CommonModule } from '@angular/common';
@@ -30,12 +32,7 @@ export function getAuthServiceConfigs() {
     )
   return config;
 }
-import { AddTradeComponent } from './components/add-trade/add-trade.component';
-import { TradeDetailsComponent } from './components/trade-details/trade-details.component';
-import { PriceTickerComponent } from './Components/price-ticker/price-ticker.component';
-import { TradeTableComponent } from './Components/trade-table/trade-table.component';
-import { LoginOauthComponent } from './Components/login-oauth/login-oauth.component';
-import { RegisterComponent } from './Components/register/register.component';
+
 
 
 
@@ -51,6 +48,8 @@ import { SearchService } from './Services/Search/search.service';
 import {TradeOperationService} from './Services/TradeOperation/trade-operation-service.service';
 import { AuthGuardService } from './Services/AuthGuard/auth-guard.service';
 import { AlertModalComponent } from './Components/alert-modal/alert-modal.component';
+import { TradeTableService } from "../app/Services/tradeTable/trade-table.service";
+;
 
 @NgModule({
 	declarations: [
