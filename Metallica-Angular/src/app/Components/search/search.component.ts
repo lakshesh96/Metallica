@@ -5,7 +5,6 @@ import { SearchService } from '../../Services/Search/search.service';
 import { TradeTableComponent } from '../trade-table/trade-table.component';
 import { GlobalService } from '../../Services/GlobalService/global.service';
 
-
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -54,13 +53,11 @@ export class SearchComponent implements OnInit {
 			data.value.dateTo = null;
 		}
 		
-		console.log("Search object created:", data.value);
 		let trades: any[];
 		this.searchService.PerformSearch(data.value).subscribe(
 			response => trades = response,
 			error => console.error(error),
 			() => {
-				console.log("Search Data Received:", trades);
 				this.searchEmit.emit(trades);
 			}
 		);

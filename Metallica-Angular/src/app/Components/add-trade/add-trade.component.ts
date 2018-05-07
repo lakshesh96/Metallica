@@ -40,11 +40,6 @@ export class AddTradeComponent implements OnInit {
 		});
 	}
 
-	// onSubmit({ value, valid }: { value: TradeTable, valid: boolean }) {
-	// 	value["Price"] = this.price;
-	// 	console.log(value, valid);
-	// }
-
 	AddTrade(item){
 		item.value["Price"] = this.price;
 		item.value["Status"] = 0;

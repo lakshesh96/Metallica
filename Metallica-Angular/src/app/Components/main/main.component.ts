@@ -19,11 +19,10 @@ export class MainComponent implements OnInit {
 	bodyDetails: string;
 	alertSource: string;
 	alertHidden: boolean = true;
-	parentSubject: Subject<any> = new Subject();
+	
 	rowHighlightToggle:number;
-
-
 	UserName:string;
+
 	constructor(private router: Router, private globalService: GlobalService,private tradeService:TradeOperationService) { 
 		this.UserName = globalService.getUserData("Name");
 	}
@@ -52,7 +51,6 @@ export class MainComponent implements OnInit {
 	}
 
 	searchReceived(data) {
-		console.log("Received Search Result:", data);
 		this.searchData = data;
 	}
 
@@ -60,7 +58,6 @@ export class MainComponent implements OnInit {
 		this.throwAlert("Successfully Logged Out", "User session has been deleted!", "Press OK to continue", "Success");
 		sessionStorage.removeItem("AccessToken");
 		localStorage.removeItem("RefData");
-		// console.log("LoggedOut");
 	}
 
 	tradeReceive(trade) {
@@ -68,7 +65,6 @@ export class MainComponent implements OnInit {
 		this.hideDetails = false;
 		this.hideAddTrade = true;
 		this.trade = trade;
-		//console.log(trade);
 	}
 
 	throwAlert(title,body,bodyDetails,alertSource) {
@@ -77,8 +73,6 @@ export class MainComponent implements OnInit {
 		this.body = body;
 		this.bodyDetails = bodyDetails;
 		this.alertSource = alertSource;
-		this.parentSubject.next();
-		//$("#LoginModal").modal();
 	}
 
 	closeAlertRoute(value) {

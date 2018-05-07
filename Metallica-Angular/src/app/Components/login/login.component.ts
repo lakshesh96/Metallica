@@ -4,7 +4,6 @@ import {
     GoogleLoginProvider
 } from 'angular5-social-login';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,12 +15,9 @@ export class LoginComponent implements OnInit {
   public socialSignIn() {
     let socialPlatformProvider;
     socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-    
-    
     this.socialAuthService.signIn(socialPlatformProvider).then(
       (userData) => {
-        console.log(" sign in data : " , userData);
-            
+        //console.log(" sign in data : " , userData);
       }
     );
   }

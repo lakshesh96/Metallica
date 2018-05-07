@@ -6,8 +6,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {Headers} from '@angular/http';
 import { HttpParams } from '@angular/common/http';
 import {Md5} from 'ts-md5/dist/md5';
-import { throws } from 'assert';
-import { Subject } from 'rxjs/Subject';
 declare var $:any;
 
 
@@ -19,7 +17,6 @@ declare var $:any;
 export class LoginOauthComponent implements OnInit {
 
 	login:FormGroup;
-	//model: any = {};
 	loading = false;
 	returnUrl: string;
 
@@ -28,9 +25,7 @@ export class LoginOauthComponent implements OnInit {
 	UserId = null;
 	x:boolean =true;
 
-	AccessToken:string;
-	//headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-	//headers = { 'Content-Type': 'application/x-www-form-urlencoded' } ;	
+	AccessToken:string;	
 	headers:Headers;
 
 	//Alert Modal Variables
@@ -39,7 +34,6 @@ export class LoginOauthComponent implements OnInit {
 	bodyDetails:string;
 	alertSource:string;
 	alertHidden:boolean = true;
-	parentSubject:Subject<any> = new Subject();
 
 	constructor(private globalService:GlobalService, private route: ActivatedRoute, private router: Router) { 
 		
@@ -67,7 +61,6 @@ export class LoginOauthComponent implements OnInit {
 		this.loading = true;
 		let hashPass = Md5.hashStr(value.Password);
 		let params = `username=${value.UserName}&password=${hashPass}&grant_type=password`;
-		console.log("");
 		this.headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 		try {
 			this.globalService.LoginPost(params,this.url,this.headers).subscribe(
@@ -91,7 +84,6 @@ export class LoginOauthComponent implements OnInit {
 	loadReferenceData(username) {
 		this.globalService.GetMethod("/api/RefData/" + username).subscribe(
 			response => {
-				console.log(response);
 				this.globalService.setReferenceData(response);
 				this.throwAlert("Successfully Logged In","Welcome "+ username,"","Success");
 			},
@@ -106,8 +98,6 @@ export class LoginOauthComponent implements OnInit {
 		this.body = body;
 		this.bodyDetails = bodyDetails;
 		this.alertSource = alertSource;
-		this.parentSubject.next();
-		//$("#LoginModal").modal();
 	}
 
 	closeAlertRoute(value) {

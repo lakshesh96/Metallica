@@ -10,10 +10,8 @@ import { TradeTable } from "../../Models/trade-table";
 @Injectable()
 export class GlobalService {
 
-	//private _baseUrl:string; // = "http://localhost:60061/api/Admin";
 	private _baseUrl:string = "http://localhost:51811";
 	
-	//headers:Headers = new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")});
 	constructor(private _http:Http) { }
 
 	setReferenceData(data) {
@@ -30,7 +28,6 @@ export class GlobalService {
 	}
 
 	PostMethod(credentials,url):Observable<any>{
-		console.log("Global Service: POST:", this._baseUrl+url, "Data:", credentials, "Header:", new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")}));
 		return this._http.post(
 			this._baseUrl+url,
 			credentials,
@@ -39,7 +36,6 @@ export class GlobalService {
 	}
 
 	GetMethod(url):Observable<any[]>{
-		console.log("Global Service: GET:", this._baseUrl+url, "Header:", new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")}));
 		return this._http.get(
 			this._baseUrl+url,
 			{headers: new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")})}
@@ -47,7 +43,6 @@ export class GlobalService {
 	}
  
 	PutMethod(data,url):Observable<any>{
-		console.log("Global Service: PUT:", this._baseUrl+url+"/"+data.Id, "Data:", data, "Header:", new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")}));
 		return this._http.put(
 			this._baseUrl+url+"/"+data.Id,
 			data,
@@ -55,28 +50,15 @@ export class GlobalService {
 		).map(this.extractData).catch(this.handleError);
 	}
 
-	// PutMethodWithUrl(data,url):Observable<any>{
-	// 	console.log("Global Service: PUT:", this._baseUrl+url+"/"+data.id, "Data:", data, "Header:", this.headers);
-	// 	return this._http.put(this._baseUrl+url,data,{headers:this.headers}).map(this.extractData).catch(this.handleError);
-	// }
-
-	 /*GetWithId(url,id):Observable<any[]>{
-	 	console.log("Global Service: GET:", this._baseUrl+url+"/"+id, "Header:", new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")}));
-	 	return this._http.get(this._baseUrl+url+"/"+id,{headers: new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")})}).map(this.extractData).catch(this.handleError);
-	 }*/
-
 	LoginPost(credentials, url, header):Observable<any>{
-		console.log("Global Service: POST:", this._baseUrl+url, "Data:", credentials, "Header:", header);
 		return this._http.post(this._baseUrl+url,credentials,{headers:header}).map(this.extractData).catch(this.handleError);
 	}
 
 	PostRegister(credentials, url):Observable<any>{
-		console.log("Global Service: RegisterPOST:", this._baseUrl+url, "Data:", credentials);
 		return this._http.post(this._baseUrl+url,credentials).map(this.extractData).catch(this.handleError);
 	}
 
 	Delete(id, url):Observable<any>{
-		console.log("Global Service: Delete", this._baseUrl+url, "Data:", id, "Header:", {headers: new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")})});
 		return this._http.delete(this._baseUrl+url+"/"+id,{headers: new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")})}).map(this.extractData).catch(this.handleError);
 	}
 

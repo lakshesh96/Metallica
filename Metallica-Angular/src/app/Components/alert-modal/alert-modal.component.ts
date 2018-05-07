@@ -23,9 +23,6 @@ export class AlertModalComponent implements OnInit, OnChanges {
 	constructor() { }
 
 	ngOnInit() {
-		// this.parentSubject.subscribe(event => {
-		// 	this.throwAlert();
-		// });
 	}
 
 	ngOnChanges(){

@@ -16,13 +16,10 @@ const AppRoutes:Routes = [
     {path:"Main",component:MainComponent,canActivate: [AuthGuardService],},
     {path:"",component:MainComponent,canActivate: [AuthGuardService]},
     {path:"**",component:MainComponent,canActivate: [AuthGuardService]}
-   
-   
 ];
 @NgModule({
 	imports : [RouterModule.forRoot(AppRoutes)],
 	exports :[RouterModule] 
 })
 export class RoutesModule{
-
 }

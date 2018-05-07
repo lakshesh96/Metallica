@@ -22,7 +22,6 @@ export class PriceTickerComponent implements OnInit {
 	ngOnInit() { }
 
 	updateTicker() {
-		console.log("Listening for Commodity Price Updates");
 		let commodity: any;
 		this.priceTickerService.GetCommodityUpdates().subscribe(
 			response => {
@@ -30,7 +29,6 @@ export class PriceTickerComponent implements OnInit {
 			},
 			error => console.error(error),
 			() => {
-				console.log("Price Ticker. Notification Received:", commodity);
 				if (commodity != null) 
 					this.updateCommodityPrice(commodity);
 				this.updateTicker();

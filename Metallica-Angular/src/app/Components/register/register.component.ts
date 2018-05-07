@@ -38,25 +38,17 @@ export class RegisterComponent implements OnInit {
   });
   }
   onSubmit({ value, valid }: { value: Register, valid: boolean }) {
-    console.log(value, valid);
 }
 
 AddUser(item) {
-  console.log("Hi there");
-  console.log(item.value);
-  //this.registerService.Add(item.value);
   this.registerService.Add(item.value).subscribe(
     response => {
       this.status = response
-      console.log("At register response: ",response);
     },
     error => {
-      //alert("Username already exists!");
-      //console.error(error)
 			this.throwAlert("Registration Failed","Username already exists!","Please provide another username.","Error");
     },
     () => {
-      //alert("Registered Successfully");
 			this.throwAlert("Register Successfully!","User has been successfully registerd.","Press OK to continue","Success");      
     }
   );
@@ -66,18 +58,15 @@ AddUser(item) {
 
 throwAlert(title,body,bodyDetails,alertSource){
   this.alertHidden = false;
-  console.log("2 at Parent");
   this.title = title;
   this.body = body;
   this.bodyDetails = bodyDetails;
   this.alertSource = alertSource;
   this.parentSubject.next();
-  //$("#LoginModal").modal();
 }
 
 closeAlertRoute(value){
   if(value)
     this.router.navigateByUrl('Login');
 }
-
 }

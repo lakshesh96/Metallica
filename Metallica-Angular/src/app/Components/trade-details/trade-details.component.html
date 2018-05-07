@@ -36,8 +36,6 @@
 		<tr>
 			<th><label for="side">Side</label></th>
 			<td>
-				<!--<input type="radio" formControlName="Side" [value]="0">Buy
-				<input type="radio" formControlName="Side" [value]="1">Sell-->
 				<div class="form-check form-check-inline">
 					<input class="form-check-input" type="radio" name="Side" id="buy" formControlName="Side" [value]="0">
 					<label class="form-check-label" for="buy">Buy</label>
@@ -46,8 +44,6 @@
 					<input class="form-check-input" type="radio" name="Side" id="sell" formControlName="Side" [value]="1">
 					<label class="form-check-label" for="sell">Sell</label>
 				</div>
-
-
 			</td>
 		</tr>
   
@@ -62,24 +58,12 @@
   
 		<tr>
 			<th><label for="price">Price</label></th>
-			<td>{{price}}
-				<!--<div class="input-group">
-					<div class="input-group-prepend">
-						<span class="input-group-text">₹</span>
-					</div>
-					<input type="text" class="form-control" formControlName="Price">
-					<div class="input-group-append">
-						<span class="input-group-text">/MT</span>
-					</div>
-				</div>-->
-
-			</td>
+			<td>{{price}}</td>
 		</tr>
   
 		<tr>
 			<th><label for="quantity">Quantity</label></th>
 			<td>
-				<!--<input class="form-control" formControlName="Quantity" [(ngModel)]="trade.Quantity"> -->
 				<div class="input-group">
 					<input type="number" class="form-control" formControlName="Quantity" aria-label="Recipient's username" aria-describedby="basic-addon2">
 					<div class="input-group-append">

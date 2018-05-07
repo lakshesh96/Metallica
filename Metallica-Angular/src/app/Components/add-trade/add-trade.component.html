@@ -32,22 +32,9 @@
 			</td>
 		</tr>
 
-		<!--<tr [hidden]=true>
-			<th>User Id</th>
-			<td>
-				<input type="text" class="form-control" name="UserId" formControlName="UserId" [(ngModel)]="Userid" />
-				<input type="text" class="form-control" name="Status" formControlName="Status" [(ngModel)]="status"/>
-			</td>
-		</tr>-->
-
 		<tr>
 			<th>Side</th>
-			<td><!--
-				<input type="radio" formControlName="Side" value="buy">Buy
-				<input type="radio" formControlName="Side" value="sell">Sell
-				<div class="error text-danger" *ngIf="TradeForm.get('Side').hasError('required') && TradeForm.get('Side').touched">Side is required</div>
-			-->
-
+			<td>
 				<div class="form-check form-check-inline">
 					<input class="form-check-input" type="radio" name="Side" id="buy" formControlName="Side" value="buy">
 					<label class="form-check-label" for="buy">Buy</label>
@@ -56,8 +43,6 @@
 					<input class="form-check-input" type="radio" name="Side" id="sell" formControlName="Side" value="sell">
 					<label class="form-check-label" for="sell">Sell</label>
 				</div>
-
-
 			</td>
 		</tr>
 
@@ -83,10 +68,6 @@
 		<tr>
 			<th>Quantity</th>
 			<td>
-				<!--<input type="number" min='1' class="form-control" name="Quantity" formControlName="Quantity" required />
-				<div class="error text-danger" *ngIf="TradeForm.get('Quantity').hasError('required') && TradeForm.get('Quantity').touched">Quantity is required</div>
-				<div class="error text-danger" *ngIf="TradeForm.get('Quantity').hasError('pattern')">Quantity Should be numerical and between 1-9999</div>
-				-->
 				<div class="input-group">
 					<input type="number" class="form-control" aria-label="Recipient's username" formControlName="Quantity" required aria-describedby="basic-addon2">
 					<div class="input-group-append">
