@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+	--input-padding-x: .75rem;
+	--input-padding-y: .75rem;
+}
+
+body {
+	padding-top: 3.5rem;
+}

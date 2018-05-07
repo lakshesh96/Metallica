@@ -1,28 +1,30 @@
 <form [formGroup]="searchForm">
 <div class="row border p-2 mt-2 shadow-sm bg-white">
 	<div class="col-lg-4 form-group my-auto">
-		<label class="h6 border-bottom pr-2 pl-1">Date</label>
+		<label class="h6 border-bottom pr-2 pl-1 mb-0">Date</label>
 		<div class="row">
-			<div class="col-lg-6 pr-1">
+			<div class="col-6 pr-lg-1">
 				<label class="mb-0">From</label>
-				<input type="date" class="form-control pr-1 mb-1" name="date" formControlName="dateFrom">
+				<input type="date" class="form-control mb-1" name="date" formControlName="dateFrom">
 			</div>
-			<div class="col-lg-6 pl-1">
+			<div class="col-6 pl-0">
 				<label class="mb-0">To</label>
-				<input type="date" class="form-control pr-1 mb-1" name="date" formControlName="dateTo">
+				<input type="date" class="form-control mb-1" name="date" formControlName="dateTo">
 			</div>
 		</div>
 	</div>
 
 	<div class="col-lg-1 my-auto form-group">
-		<label class="h6 border-bottom pr-2 pl-1" for="side">Side</label>
-		<div class="form-check">
-			<input class="form-check-input" type="checkbox" id="buySide" value="buy" formControlName="buy">
-			<label class="form-check-label" for="buySide">Buy</label>
-		</div>
-		<div class="form-check">
-			<input class="form-check-input" type="checkbox" id="sellSide" value="sell" formControlName="sell">
-			<label class="form-check-label" for="sellSide">Sell</label>
+		<label class="h6 border-bottom pr-2 pl-1 mb-1" for="side">Side</label>
+		<div class="row pl-3">
+			<div class="col-2 col-lg form-check">
+				<input class="form-check-input" type="checkbox" id="buySide" value="buy" formControlName="buy">
+				<label class="form-check-label" for="buySide">Buy</label>
+			</div>
+			<div class="col form-check">
+				<input class="form-check-input" type="checkbox" id="sellSide" value="sell" formControlName="sell">
+				<label class="form-check-label" for="sellSide">Sell</label>
+			</div>
 		</div>
 	</div>
 
@@ -50,9 +52,11 @@
 		</select>
 	</div>
 	
-	<div class="col-lg-1 form-group my-auto">
-		<input type="button" class="btn btn-primary btn-sm btn-block" value="Search" (click)="onSubmit(searchForm)"/>
-		<input type="reset" class="btn btn-primary btn-sm btn-block" value="Clear" data-toggle="modal" data-target="#exampleModalCenter"/>
+	<div class="col-lg-1 my-lg-auto mt-md-1 pl-lg-0">
+		<div class="row px-2">
+			<input type="button" class="col btn btn-primary btn-sm m-1" value="Search" (click)="onSubmit(searchForm)"/>
+			<input type="reset" class="col btn btn-secondary btn-sm m-1" value="Clear"/>
+		</div>
 	</div>	
 </div>
 </form>

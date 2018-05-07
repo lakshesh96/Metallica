@@ -12,17 +12,18 @@ import { TradeTable } from "../../Models/trade-table";
 export class GlobalService {
 
 	//private _baseUrl:string; // = "http://localhost:60061/api/Admin";
-	private _baseUrl:string = "http://localhost:51811";
+	//private _baseUrl:string = "http://localhost:51811";
+	private _baseUrl:string = "http://192.168.1.14:51811";
 	
 	//headers:Headers = new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")});
 	constructor(private _http:Http) { }
 
 	setReferenceData(data) {
-    localStorage.setItem("RefData", JSON.stringify(data.RefData));
-    localStorage.setItem("UserDetails",JSON.stringify(data.UserDetails));
+		localStorage.setItem("RefData", JSON.stringify(data.RefData));
+		localStorage.setItem("UserDetails",JSON.stringify(data.UserDetails));
 	}
 
-  getUserData(type) {
+  	getUserData(type) {
 		return JSON.parse(localStorage.getItem("UserDetails"))[type];
 	}
 
@@ -66,24 +67,24 @@ export class GlobalService {
 	// 	return this._http.get(this._baseUrl+url+"/"+id,{headers:this.headers}).map(this.extractData).catch(this.handleError);
 	// }
 
-	LoginPost(credentials,url,header):Observable<any>{
+	LoginPost(credentials, url, header):Observable<any>{
 		console.log("Global Service: POST:", this._baseUrl+url, "Data:", credentials, "Header:", header);
 		return this._http.post(this._baseUrl+url,credentials,{headers:header}).map(this.extractData).catch(this.handleError);
 	}
 
-	PostRegister(credentials,url):Observable<any>{
+	PostRegister(credentials, url):Observable<any>{
 		console.log("Global Service: RegisterPOST:", this._baseUrl+url, "Data:", credentials);
 		return this._http.post(this._baseUrl+url,credentials).map(this.extractData).catch(this.handleError);
 	}
 
-	Delete(id,url):Observable<any>{
-		console.log("Global Service: Delete",this._baseUrl+url,"Data:",id,"Header:", {headers: new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")})});
+	Delete(id, url):Observable<any>{
+		console.log("Global Service: Delete", this._baseUrl+url, "Data:", id, "Header:", {headers: new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")})});
 		return this._http.delete(this._baseUrl+url+"/"+id,{headers: new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")})}).map(this.extractData).catch(this.handleError);
 	}
+
 	extractData(res:Response){
 		let response = res.json();
 		let body = response;
-		//console.log("Body", body);
 		return body || {};
 	}
 

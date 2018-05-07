@@ -14,12 +14,12 @@ import { Subject } from 'rxjs/Subject';
 export class MainComponent implements OnInit {
 
 	//Alert Modal Variables
-	title:string;
-	body:string;
-	bodyDetails:string;
-	alertSource:string;
-	alertHidden:boolean = true;
-	parentSubject:Subject<any> = new Subject();
+	title: string;
+	body: string;
+	bodyDetails: string;
+	alertSource: string;
+	alertHidden: boolean = true;
+	parentSubject: Subject<any> = new Subject();
 
 
 	UserName:string;
@@ -37,26 +37,31 @@ export class MainComponent implements OnInit {
 
 	trade:TradeTable;
 
-	addTrade() {
+	openTradeAddForm() {
 		this.hideRightBar = false;
 		this.hideDetails = true;
 		this.hideAddTrade = false;
 	}
 
+	closeRightTab() {
+		this.hideRightBar = true;
+		this.hideDetails = true;
+		this.hideAddTrade = true;
+	}
+
 	searchReceived(data) {
-		console.log("Received Search Result", data);
+		console.log("Received Search Result:", data);
 		this.searchData = data;
 	}
 
 	logOut(){
-		this.throwAlert("Successfully Logged Out","User session has been deleted!","Press OK to continue","Success");
+		this.throwAlert("Successfully Logged Out", "User session has been deleted!", "Press OK to continue", "Success");
 		sessionStorage.removeItem("AccessToken");
 		localStorage.removeItem("RefData");
 		// console.log("LoggedOut");
-
 	}
-	tradeReceive(trade)
-	{
+
+	tradeReceive(trade) {
 		this.hideRightBar = false;
 		this.hideDetails = false;
 		this.hideAddTrade = true;
@@ -64,9 +69,8 @@ export class MainComponent implements OnInit {
 		//console.log(trade);
 	}
 
-	throwAlert(title,body,bodyDetails,alertSource){
+	throwAlert(title,body,bodyDetails,alertSource) {
 		this.alertHidden = false;
-		console.log("2 at Parent");
 		this.title = title;
 		this.body = body;
 		this.bodyDetails = bodyDetails;
@@ -75,8 +79,7 @@ export class MainComponent implements OnInit {
 		//$("#LoginModal").modal();
 	}
 
-	closeAlertRoute(value){
-		console.log("3");
+	closeAlertRoute(value) {
 		if(value)
 			this.router.navigateByUrl('Login');
 	}

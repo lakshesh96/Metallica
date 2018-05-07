@@ -1,39 +1,36 @@
-<div align="center" [hidden]="!x">
-  <div style="width:50%;height:40%;padding:35px"class="border border-dark">
-  <form novalidate (ngSubmit)="onSubmit(login)" [formGroup]="login">
-    <legend><strong>Login</strong></legend>
-      <div class="form-group" [ngClass]="{
-        'has-danger': login.controls.UserName.invalid && login.controls.UserName.invalid,
-        'has-success': login.controls.UserName.valid && login.controls.UserName.dirty
-        }">
-      
-      <span class="col-sm-2 col-form-label" ><strong>Username :</strong></span>
-      <input type="text" placeholder="Enter Username" id="username" formControlName="UserName" >
-    
-      <div class="error text-danger" *ngIf="login.get('UserName').hasError(('required')) && login.get('UserName').touched">
-        Username is required
-      </div>
-    </div>
-  <div class="form-group">  
-    
-        <span class="col-sm-2 col-form-label"><strong>Password :</strong></span>
-        <input type="password" placeholder="Enter Password" id="password" formControlName="Password">
-      
-      <div class="error text-danger" *ngIf="login.get('Password').hasError('required') && login.get('Password').touched">
-        Password is required
-      </div>
-      <div class="error text-danger" *ngIf="login.get('Password').hasError('pattern')">
-        Password wrong
-      </div>
-    </div>
-	  <button type="submit" class="btn btn-outline-success" [disabled]="!login.valid">Log In</button>
-    <br>    
-  </form>
-  <a class="nav-link" routerLink="/Register">New User? Register Here</a>
-  <!-- <a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#exampleModalCenter">
-      Click to open Modal
-    </a> -->
-  </div>
-  </div>
+<div class="loginContainer container">
+	<div class="mt-5 d-flex justify-content-center border rounded">
+		<form class="form-signin" novalidate (ngSubmit)="onSubmit(login)" [formGroup]="login" autocomplete="off">
+			<div class="text-center mb-3">
+				<!--<img class="mb-4" src="../assets/logo.png" alt="Logo" height="120">-->
+				<h1 class="py-2 display-1">Metallica</h1>
+				<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+			</div>
+
+			<div class="form-label-group">
+				<input type="email" id="inputEmail" class="form-control" placeholder="Email address" formControlName="UserName" required>
+				<label for="inputEmail">Username</label>
+				<div class="error text-danger" *ngIf="login.get('UserName').hasError(('required')) && login.get('UserName').touched">
+					Username is required
+				</div>
+			</div>
+
+			<div class="form-label-group">
+				<input type="password" id="inputPassword" class="form-control" placeholder="Password" formControlName="Password" required>
+				<label for="inputPassword">Password</label>
+				<div class="error text-danger" *ngIf="login.get('Password').hasError('pattern')">
+					Password wrong
+				</div>
+			</div>
+
+			<span class="d-block" tabindex="0" data-toggle="tooltip" title="Please input valid details">
+				<button class="btn btn-lg btn-primary btn-block" style="pointer-events: none;" type="submit" [hidden]="login.valid" [disabled]="!login.valid">Sign in</button>
+			</span>
+			<button class="btn btn-lg btn-primary btn-block" type="submit" [hidden]="!login.valid" [disabled]="!login.valid">Sign in</button>
+
+			<p class="my-3 text-center"><a class="nav-link" routerLink="/Register">New User? Register Here!</a></p>
+		</form>
+	</div>
+</div>
 
 <app-alert-modal [title]="title" [body]="body" [bodyDetails]="bodyDetails" [alertSource]="alertSource" [alertHidden]="alertHidden" [hidden]="alertHidden" (okEmit)="closeAlertRoute($event)"></app-alert-modal>

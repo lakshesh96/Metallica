@@ -16,8 +16,13 @@ export class TradeTableComponent implements OnInit {
 	@Output() tradeEmit = new EventEmitter<TradeTable>(); 
 
 	constructor(private tradeService: TradeTableService,public router:Router,public searchService:SearchService) { }
-	//trades : any[];
+	
+	selectedRow: number;
 	url : string = "/api/trades";
+
+	ngOnChange() {
+		console.log("Hello");
+	}
 
 	ngOnInit() {
 		let search:any;
@@ -40,7 +45,7 @@ export class TradeTableComponent implements OnInit {
 			response => this.trades = response,
 			error => console.error(error),
 			() => {
-				this.updateNewTrades();
+				//this.updateNewTrades();
 			}
 		);
 	}
@@ -90,8 +95,8 @@ export class TradeTableComponent implements OnInit {
 		this.trades = this.trades.filter((findTrade) => { return findTrade.Id != trade.Id });
 		console.log("delete");
 	}
-	detailRequest(trade:TradeTable)
-	{
+	detailRequest(trade: TradeTable, row: number) {
+		this.selectedRow = row;
 		this.tradeEmit.emit(trade);
 	}
 	

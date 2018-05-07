@@ -21,9 +21,31 @@
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
+	<script>
+		$(document).ready(function(){
+			$('[data-toggle="tooltip"]').tooltip();   
+		});
+
+		$('#tradeTable').ready(function(){
+			resizeDiv();
+		});
+
+		window.onresize = function(event) {
+			resizeDiv();
+		}
+
+		function resizeDiv() {
+			vpw = $(window).width();
+			vph = $(window).height();
+			var x = $('#tradeTable').offset();
+			vph = vph-x.top-8;
+			$('#tradeTable').css({'max-height': vph +'px'});
+		}
+	</script>
 
 </head>
 <body class="bg-light">
+
   	<app-root></app-root>
 </body>
 </html>
