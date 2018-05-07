@@ -1,20 +1,25 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-lg fixed-top bg-dark navbar-dark">
 	<div class="container">
 		<a class="navbar-brand" href="#">Metallica</a>
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item"><a class="nav-link active" href="/Main">Trades</a></li>
-			<li class="nav-item"><a class="nav-link" href="/Main">Transfers</a></li>
-			<li class="nav-item"><a class="nav-link" href="/Main">Transports</a></li>
-		</ul>
-		<ul class="navbar-nav">
-			<a class="navbar-brand" href="#">
-				<img src="" width="30" height="30" alt="">
-			</a>
-      <li class="nav-item"><a class="nav-link" href="#">{{ UserName }}</a></li>
-	  <!-- <li class="nav-item" onclick="logOut()">LogOut</li> -->
-	
-	  <li class="nav-item"><a class="nav-link" (click)="logOut()">LogOut</a></li>
-	</ul>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link active" href="/Main">Trades</a></li>
+				<li class="nav-item"><a class="nav-link" href="/Main">Transfers</a></li>
+				<li class="nav-item"><a class="nav-link" href="/Main">Transports</a></li>
+			</ul>
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<!--<a class="navbar-brand" href="#">
+						<img src="" width="30" height="30" alt="">
+					</a>-->
+					<a class="nav-link" href="#">{{ UserName }}</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" (click)="logOut()">LogOut</a></li>
+			</ul>
+		</div>
 	</div>
 </nav>
 
@@ -22,14 +27,14 @@
 	<app-price-ticker></app-price-ticker>
 	<app-search (searchEmit)="searchReceived($event)"></app-search>
 	<div class="row">
-		<div class="col-lg px-0 my-2 border border-top-0 shadow-sm bg-white">   
+		<div class="col-xl px-0 my-2 border border-top-0 shadow-sm bg-white" id="tradeTable">   
             <app-trade-table [trades]="searchData" (tradeEmit)="tradeReceive($event)"></app-trade-table>
-			  <img src="../assets/add.png" (click)="addTrade()" style="position: fixed; right: 25px; bottom: 25px;"/>
+			  <img src="../assets/add.png" (click)="openTradeAddForm()" style="position: fixed; right: 25px; bottom: 25px; cursor: pointer;" [hidden]="hideAddButton"/>
 		</div>
 		
-		<div class="col-lg-4 border my-2 ml-2 px-0 shadow-sm bg-white" [hidden]="hideRightBar">
-			<app-add-trade [hidden]="hideAddTrade"></app-add-trade>
-			<app-trade-details [trade]="trade" [hidden]="hideDetails"></app-trade-details>
+		<div class="col-xl-4 mt-xl-2 mb-2 ml-xl-2 px-0" [hidden]="hideRightBar">
+			<app-add-trade [hidden]="hideAddTrade" (closeForm)="closeRightTab()"></app-add-trade>
+			<app-trade-details [trade]="trade" (closeForm)="closeRightTab()" [hidden]="hideDetails"></app-trade-details>
 		</div>
 	</div>
 </div>

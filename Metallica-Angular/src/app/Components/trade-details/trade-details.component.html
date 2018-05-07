@@ -1,24 +1,33 @@
 <form [formGroup]="tradeForm">
-  	<table>
+  	<table class="table table-sm mb-1 border shadow-sm bg-white">
+
       	<tr style="background-color:darkgray">
-        	<th>TRADE ID:</th>
-        	<td align="right">
-				<a href="#"><img src="../../../assets/edit.png"></a>
-				<a href="#"><img src="../../../assets/delete.png"></a>
-        	</td>
+			<th colspan="2" style="font-size: 1.2rem;">
+				<div class="row">
+					<div class="col">
+						TRADE <span [hidden]="details">DETAILS</span><span [hidden]="!details">EDIT</span>
+					</div>
+					<div class="col-auto mr-3">
+						<i style="cursor: pointer;" class="far fa-edit" (click)="onEditClick()" data-toggle="tooltip" data-placement="top" title="Edit Trade" [hidden]="details"></i>
+						<i style="cursor: pointer;" class="fas fa-info-circle" (click)="showInfo()" data-toggle="tooltip" data-placement="top" title="Trade Details" [hidden]="!details"></i>
+						<i style="margin-left: 5px; cursor: pointer;" (click)="onDeleteClick()" class="far fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete Trade"></i>
+						<i style="color: aliceblue; margin-left: 15px; cursor: pointer;" (click)="closeTab()" class="far fa-times-circle" data-toggle="tooltip" data-placement="top" title="Close Tab"></i>
+					</div>
+				</div>
+			</th>
 		</tr>
   
       	<tr>
 			<th><label for="tradeDate">Date</label></th>
 			<td>
-				<input type="date" formControlName="Date" [ngModel] ="trade.Date | date:'yyyy-MM-dd'">
+				{{trade.Date | date: 'mediumDate'}}
 			</td>
       	</tr>
   
 		<tr>
 			<th><label for="commodity">Commodity</label></th>
 			<td>
-				<select formControlName="CommodityId">
+				<select class="form-control" formControlName="CommodityId" (change)="changePriceOnCommoditySelection($event)">
 					<option *ngFor="let c of commodities" [value]="c.Id">{{c.Name}}</option>
 				</select>
 			</td>
@@ -27,15 +36,25 @@
 		<tr>
 			<th><label for="side">Side</label></th>
 			<td>
-				<input type="radio" formControlName="Side" [value]="0">Buy
-                <input type="radio" formControlName="Side" [value]="1">Sell
+				<!--<input type="radio" formControlName="Side" [value]="0">Buy
+				<input type="radio" formControlName="Side" [value]="1">Sell-->
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="Side" id="buy" formControlName="Side" [value]="0">
+					<label class="form-check-label" for="buy">Buy</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="Side" id="sell" formControlName="Side" [value]="1">
+					<label class="form-check-label" for="sell">Sell</label>
+				</div>
+
+
 			</td>
 		</tr>
   
 		<tr>
 			<th><label for="counterparty">CounterParty</label></th>
 			<td>
-				<select id="abc" formControlName="CounterPartyId">
+				<select id="abc" class="form-control" formControlName="CounterPartyId">
 					<option *ngFor="let cp of counterParties" [value]="cp.Id">{{cp.Name}}</option>
 				</select>
 			</td>
@@ -43,31 +62,46 @@
   
 		<tr>
 			<th><label for="price">Price</label></th>
-			<td>
-				<input formControlName="Price" [(ngModel)]="trade.Price">
+			<td>{{price}}
+				<!--<div class="input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text">₹</span>
+					</div>
+					<input type="text" class="form-control" formControlName="Price">
+					<div class="input-group-append">
+						<span class="input-group-text">/MT</span>
+					</div>
+				</div>-->
+
 			</td>
 		</tr>
   
 		<tr>
 			<th><label for="quantity">Quantity</label></th>
 			<td>
-				<input formControlName="Quantity" [(ngModel)]="trade.Quantity"> 
+				<!--<input class="form-control" formControlName="Quantity" [(ngModel)]="trade.Quantity"> -->
+				<div class="input-group">
+					<input type="number" class="form-control" formControlName="Quantity" aria-label="Recipient's username" aria-describedby="basic-addon2">
+					<div class="input-group-append">
+						<span class="input-group-text" id="basic-addon2">MT</span>
+					</div>
+				</div>
 			</td>
 		</tr>
         
 		<tr>
 			<th><label for="location">Location</label></th>
 			<td>
-				<select formControlName="LocationId" >
+				<select class="form-control" formControlName="LocationId" >
 					<option *ngFor="let l of locations" [value]="l.Id">{{l.Name}}</option>
 				</select>
 			</td>
 		</tr>
 		<tr>
 			<th></th>
-			<td>
-				<input type="button" class="btn" value="Submit" (click)="onSubmit(tradeForm.value)"/>
-				<input type="button" class="btn" value="Edit" (click)="onEditClick()" />
+			<td align="right">
+				<input type="button" class="btn btn-primary mb-2" value="Submit" (click)="onSubmit(tradeForm.value)" [hidden]="!details" />
+				<input type="button" class="btn btn-secondary mb-2" value="Edit" (click)="onEditClick()" [hidden]="details" />
 			</td>
 		</tr>
 	</table>

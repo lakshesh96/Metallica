@@ -59,36 +59,30 @@ export class LoginOauthComponent implements OnInit {
 
 		if(sessionStorage.getItem("AccessToken"))
 		{
-			console.log("1");
 			this.throwAlert("Already Logged In","User session already exists!","Press OK to continue","Success");
-			//alert("Already Logged In");
-			//this.router.navigateByUrl('Main');
 		}
 	}
 
-	onSubmit({ value, valid }: { value: Login, valid: boolean }){
+	onSubmit({ value, valid }: { value: Login, valid: boolean }) {
 		this.loading = true;
 		let hashPass = Md5.hashStr(value.Password);
 		let params = `username=${value.UserName}&password=${hashPass}&grant_type=password`;
-		console.log("At Login: " + params);
+		console.log("");
 		this.headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-		try{
+		try {
 			this.globalService.LoginPost(params,this.url,this.headers).subscribe(
 				response => {
 					this.AccessToken = response.access_token;		
 					sessionStorage.setItem("AccessToken",this.AccessToken.toString());
-					if(this.AccessToken != null){
+					if(this.AccessToken != null)
 						this.loadReferenceData(value.UserName);
-
-					}
 				},
 				error => {
 					this.throwAlert("Authentication Failed","Please check your UserName and Password or","Contact your Server Admin","Error");
 				},
 				()=> { }
 			);
-		}
-		catch(Exception){
+		} catch(Exception){
 			this.throwAlert("Authentication Failed","Please check your UserName and Password or","Contact your Server Admin","Error");
 		}
 	}
@@ -99,19 +93,15 @@ export class LoginOauthComponent implements OnInit {
 			response => {
 				console.log(response);
 				this.globalService.setReferenceData(response);
-				//this.router.navigateByUrl('Main');
-			this.throwAlert("Successfully Logged In","Welcome "+ username,"","Success");
+				this.throwAlert("Successfully Logged In","Welcome "+ username,"","Success");
 			},
 			error => console.error(error),
-			() => {
-				
-			}
+			() => { }
 		);
 	}
 
 	throwAlert(title,body,bodyDetails,alertSource){
 		this.alertHidden = false;
-		console.log("2 at Parent");
 		this.title = title;
 		this.body = body;
 		this.bodyDetails = bodyDetails;
@@ -120,8 +110,7 @@ export class LoginOauthComponent implements OnInit {
 		//$("#LoginModal").modal();
 	}
 
-	closeAlertRoute(value){
-		console.log("3");
+	closeAlertRoute(value) {
 		if(value)
 			this.router.navigateByUrl('Main');
 	}

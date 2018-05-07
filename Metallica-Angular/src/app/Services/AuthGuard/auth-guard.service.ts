@@ -8,7 +8,7 @@ export class AuthGuardService implements CanActivate{
 
 	canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 		if (sessionStorage.getItem('AccessToken')) {
-			console.log("At Auth Guard, Token Received:", sessionStorage.getItem('AccessToken'));
+			console.log("At Auth Guard, Token Received and Stored.");
 			return true;
 		}
 

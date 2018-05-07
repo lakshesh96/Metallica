@@ -21,6 +21,32 @@ export class TradeOperationService {
 			() => {
 				console.log("Trade Added Successfully. Response:", this.status);
 			}
+    );
+  }
+  Edit(trade:TradeTable){
+      console.log("Editing Trade",trade);
+      this.globalService.PutMethod(trade,this.url).subscribe(
+        response => this.status = response,
+				error => {
+					console.error(error);
+					alert("Error");
+				},
+        () => {
+          console.log("Trade Updated Successfully. Response:", this.status);
+        }
+      );
+	}
+	Delete(trade:TradeTable){
+		console.log("Deleting Trade",trade);
+		this.globalService.Delete(trade.Id,this.url).subscribe(
+			response => this.status = response,
+			error => {
+				console.error(error);
+				alert("Error");
+			},
+			() => {
+				console.log("Trade Deleted Successfully. Response:", this.status);
+			}
 		);
 	}
 }

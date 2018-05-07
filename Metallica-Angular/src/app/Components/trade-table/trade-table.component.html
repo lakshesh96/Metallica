@@ -1,25 +1,27 @@
 <div class="table-responsive">
-<table class="table table-hover">
-  <th>Trade Date</th>
-  <th>Commodity</th>
-  <th>Side</th>
-  <th>Qty(MT)</th>
-  <th>Price(/MT)</th>
-  <th>CounterParty</th>
-  <th>Location</th>
-  <th></th>
-  <tr *ngFor = "let trade of trades;" (click)="detailRequest(trade)">
-    <td>{{trade.Date | date: 'mediumDate'}}</td>
-    <td>{{trade.Commodity.Name}} | {{trade.Commodity.Code}}</td>
-    <td>
-		<span *ngIf="trade.Side == 0">Buy</span>
-		<span *ngIf="trade.Side == 1">Sell</span>
-	</td>
-	<td>{{trade.Quantity}}</td>  
-	<td>{{trade.Price | currency:'INR':3}}</td>      
-	<td>{{trade.CounterParty.Name}} | {{trade.CounterParty.Code}}</td>      
-	<td>{{trade.Location.Name}} | {{trade.Location.Code}}</td> 	
-	<td><img src="../../../assets/delete.png" /></td>
-  </tr>
-</table>
+	<table class="table table-hover table-fixed">
+		<tr>
+			<th>Trade Date</th>
+			<th>Commodity</th>
+			<th>Side</th>
+			<th>Qty(MT)</th>
+			<th>Price(/MT)</th>
+			<th>CounterParty</th>
+			<th>Location</th>
+			<th></th>
+		</tr>
+		<tr *ngFor = "let trade of trades; let i = index" (click)="detailRequest(trade, i)" [class.active]="i == selectedRow" style="cursor:context-menu;">
+			<td>{{trade.Date | date: 'mediumDate'}}</td>
+			<td>{{trade.Commodity.Name}} | {{trade.Commodity.Code}}</td>
+			<td>
+				<span *ngIf="trade.Side == 0">Buy</span>
+				<span *ngIf="trade.Side == 1">Sell</span>
+			</td>
+			<td>{{trade.Quantity}}</td>  
+			<td>{{trade.Price | currency:'INR':3}}</td>      
+			<td>{{trade.CounterParty.Name}} | {{trade.CounterParty.Code}}</td>      
+			<td>{{trade.Location.Name}} | {{trade.Location.Code}}</td> 	
+			<td><i style="padding-left: 5px; cursor: pointer;" class="far fa-trash-alt"></i></td>
+		</tr>
+	</table>
 </div>
