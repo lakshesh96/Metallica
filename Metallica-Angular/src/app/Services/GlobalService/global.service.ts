@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import {Headers} from '@angular/http';
-import {HttpHeaders} from '@angular/common/http';
+import { Http, Response, Headers } from '@angular/http';
+import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -12,8 +11,7 @@ import { TradeTable } from "../../Models/trade-table";
 export class GlobalService {
 
 	//private _baseUrl:string; // = "http://localhost:60061/api/Admin";
-	//private _baseUrl:string = "http://localhost:51811";
-	private _baseUrl:string = "http://192.168.1.14:51811";
+	private _baseUrl:string = "http://localhost:51811";
 	
 	//headers:Headers = new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")});
 	constructor(private _http:Http) { }
