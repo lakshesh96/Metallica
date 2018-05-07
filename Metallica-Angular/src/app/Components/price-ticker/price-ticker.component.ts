@@ -15,7 +15,7 @@ export class PriceTickerComponent implements OnInit {
 
   	constructor(public priceTickerService: PriceTickerService, public globalService: GlobalService) { 
 		this.commodityList = this.globalService.getReferenceData("Commodities");
-		//this.updateTicker();
+		this.updateTicker();
 	}
 
 	ngOnInit() { }

@@ -119,6 +119,8 @@ export class TradeDetailsComponent implements OnInit,OnChanges {
 		trade["Price"] = this.price;
 		console.log("Updating trade:", trade);
 		this.tradeService.Edit(trade);
+		this.closeTab();
+
 	}
 
 	closeTab() {

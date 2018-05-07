@@ -51,6 +51,7 @@ export class AddTradeComponent implements OnInit {
 		item.value["UserId"] = this.GlobalService.getUserData("UserId");
 		item.value["Date"] = new Date().toLocaleString();
 		this.TradeOperationService.Add(item.value);
+		this.closeTab();
 	}
 
 	changePriceOnCommoditySelection(event){

@@ -45,7 +45,7 @@ export class TradeTableComponent implements OnInit {
 			response => this.trades = response,
 			error => console.error(error),
 			() => {
-				//this.updateNewTrades();
+				this.updateNewTrades();
 			}
 		);
 	}
