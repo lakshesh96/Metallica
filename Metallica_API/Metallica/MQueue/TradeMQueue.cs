@@ -40,11 +40,11 @@ namespace Metallica.MQueue
                 if (!MessageQueue.Exists(TradeQueueName))
                     return null;
                 MessageQueue messageQueue = new MessageQueue(TradeQueueName);
-                TradeQueueMessage<Trade> tradeMessage = null;
+                TradeQueueMessage<Trade> trade = null;
                 try
                 {
                     messageQueue.Formatter = new XmlMessageFormatter(new Type[] { typeof(TradeQueueMessage<Trade>) });
-                    tradeMessage = (TradeQueueMessage<Trade>)messageQueue.Receive().Body;
+                    trade = (TradeQueueMessage<Trade>)messageQueue.Receive().Body;
                 }
                 catch {
                     return null;
@@ -53,7 +53,7 @@ namespace Metallica.MQueue
                 {
                     messageQueue.Close();
                 }
-                return tradeMessage;
+                return trade;
             }
     }
 }

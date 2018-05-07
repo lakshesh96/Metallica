@@ -94,19 +94,21 @@ namespace Metallica.Controllers
         }
         
         // DELETE: api/Trades/5
+        [HttpPost]
+        [Route("api/Trades/Remove")]
         [ResponseType(typeof(Trade))]
-        public IHttpActionResult DeleteTrade(Guid id)
+        public IHttpActionResult RemoveTrade(Trade trade)
         {
-            Trade trade = db.Trades.Find(id);
-            if (trade == null)
+            Guid id = (from n in db.Trades where n.Id == trade.Id select n.Id).FirstOrDefault();
+            if (trade == null||id==null)
             {
                 return NotFound();
             }
 
-            db.Trades.Remove(trade);
             businessLayer.DeleteNotification((trade));
+            trade = db.Trades.Find(id);
+            db.Trades.Remove(trade);
             db.SaveChanges();
-
             return Ok(trade);
         }
        
