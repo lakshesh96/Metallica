@@ -60,10 +60,10 @@ export class GlobalService {
 	// 	return this._http.put(this._baseUrl+url,data,{headers:this.headers}).map(this.extractData).catch(this.handleError);
 	// }
 
-	// GetWithId(url,id):Observable<any[]>{
-	// 	console.log("Global Service: GET:", this._baseUrl+url+"/"+id, "Header:", new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")}));
-	// 	return this._http.get(this._baseUrl+url+"/"+id,{headers:this.headers}).map(this.extractData).catch(this.handleError);
-	// }
+	 /*GetWithId(url,id):Observable<any[]>{
+	 	console.log("Global Service: GET:", this._baseUrl+url+"/"+id, "Header:", new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")}));
+	 	return this._http.get(this._baseUrl+url+"/"+id,{headers: new Headers({'Authorization': 'bearer '+sessionStorage.getItem("AccessToken")})}).map(this.extractData).catch(this.handleError);
+	 }*/
 
 	LoginPost(credentials, url, header):Observable<any>{
 		console.log("Global Service: POST:", this._baseUrl+url, "Data:", credentials, "Header:", header);

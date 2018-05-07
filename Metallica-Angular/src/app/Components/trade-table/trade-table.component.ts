@@ -4,6 +4,7 @@ import {  } from 'events';
 import { TradeTable } from '../../Models/trade-table';
 import { Router } from '@angular/router';
 import { SearchService } from '../../Services/Search/search.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-trade-table',
@@ -15,7 +16,7 @@ export class TradeTableComponent implements OnInit {
 	@Input() trades: any[];
 	@Output() tradeEmit = new EventEmitter<TradeTable>(); 
 
-	constructor(private tradeService: TradeTableService,public router:Router,public searchService:SearchService) { }
+	constructor(private tradeService: TradeTableService,public router:Router,public searchService:SearchService, private toastr: ToastrService) { }
 	
 	selectedRow: number;
 	url : string = "/api/trades";
@@ -80,6 +81,7 @@ export class TradeTableComponent implements OnInit {
 	addToTradeTable(newTrade) {
 		console.log("Notif: New Trade Added", newTrade, "Before Adding:", this.trades);
 		this.trades.unshift(newTrade);
+		this.toastr.success('Trade Added Successfully','Success!');
 		console.log("Notif: New Trade Added", newTrade, "After Adding:", this.trades);
 	}
 	
@@ -89,10 +91,13 @@ export class TradeTableComponent implements OnInit {
 		let index:number = this.trades.findIndex(a=>a.Id == trade.Id);
 		this.trades[index] = trade;
 		console.log("After Update",this.trades);
+		this.toastr.info('Trade Updated Successfully','Success!');
+				
 	}
 
 	deleteFromTable(trade) {
 		this.trades = this.trades.filter((findTrade) => { return findTrade.Id != trade.Id });
+		this.toastr.info('Trade Deleted Successfully','Success!');
 		console.log("delete");
 	}
 	detailRequest(trade: TradeTable, row: number) {

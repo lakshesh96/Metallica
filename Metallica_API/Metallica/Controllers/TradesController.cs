@@ -71,7 +71,6 @@ namespace Metallica.Controllers
                     throw;
                 }
             }
-
             return StatusCode(HttpStatusCode.NoContent);
         }
 
@@ -87,26 +86,49 @@ namespace Metallica.Controllers
             trade.Date = System.DateTime.Now;
             trade.Price = db.Commodities.Find(trade.CommodityId).CurrentPrice;
 
-            db.Trades.Add(trade);
-            db.SaveChanges();
-            businessLayer.AddNotification((trade));
+            try { 
+                db.Trades.Add(trade);
+                db.SaveChanges();
+                businessLayer.AddNotification((trade));
+            }
+            catch (DbUpdateException e)
+            {
+                return BadRequest(e.ToString());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
             return CreatedAtRoute("DefaultApi", new { id = trade.Id }, trade);
         }
         
         // DELETE: api/Trades/5
+        [HttpPost]
+        [Route("api/Trades/Remove")]
         [ResponseType(typeof(Trade))]
-        public IHttpActionResult DeleteTrade(Guid id)
+        public IHttpActionResult RemoveTrade(Trade trade)
         {
-            Trade trade = db.Trades.Find(id);
-            if (trade == null)
+            Guid id = (from n in db.Trades where n.Id == trade.Id select n.Id).FirstOrDefault();
+            if (trade == null||id==null)
             {
                 return NotFound();
             }
 
-            db.Trades.Remove(trade);
-            businessLayer.DeleteNotification((trade));
-            db.SaveChanges();
-
+            try
+            {
+                businessLayer.DeleteNotification((trade));
+                trade = db.Trades.Find(id);
+                db.Trades.Remove(trade);
+                db.SaveChanges();
+            }
+            catch (DbUpdateException e)
+            {
+                return BadRequest(e.ToString());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
             return Ok(trade);
         }
        

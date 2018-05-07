@@ -10,7 +10,7 @@ namespace Metallica.Models
     {
         public MetallicaContext():base("Metallica")
         {
-           // this.Configuration.LazyLoadingEnabled = false;
+            // this.Configuration.LazyLoadingEnabled = false;
         }
         public DbSet<Commodity> Commodities { get; set; }
         public DbSet<CounterParty> CounterParties { get; set; }

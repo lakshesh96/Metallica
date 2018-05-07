@@ -38,7 +38,7 @@ export class TradeOperationService {
 	}
 	Delete(trade:TradeTable){
 		console.log("Deleting Trade",trade);
-		this.globalService.Delete(trade.Id,this.url).subscribe(
+		this.globalService.PostMethod(trade,this.url+"/Remove").subscribe(
 			response => this.status = response,
 			error => {
 				console.error(error);
