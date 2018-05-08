@@ -51,8 +51,9 @@ export class SearchComponent implements OnInit {
 			let dateTo: Date = new Date(data.value.dateTo);
 			dateTo.setDate(dateTo.getDate() + 1);
 
-			if (dateFrom > dateTo) {
-				alert("'From' Date cannot be greater than or equal to the 'To' Date");
+			if (dateFrom >= dateTo) {
+				//alert("'From' Date cannot be greater than or equal to the 'To' Date");
+				this.throwAlert("Search Failed!","'From' Date cannot be greater than or equal to the 'To' Date","","Success");		
 				return;
 			}
 
