@@ -74,6 +74,7 @@
 						<span class="input-group-text" id="basic-addon2">MT</span>
 					</div>
 				</div>
+				<div class="error text-danger" *ngIf="TradeForm.get('Quantity').hasError('pattern')">Quantity should be Greater than 0</div>   
 			</td>  
 		</tr>
 

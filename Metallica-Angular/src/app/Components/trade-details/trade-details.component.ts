@@ -37,7 +37,7 @@ export class TradeDetailsComponent implements OnInit,OnChanges {
 			'CommodityId': new FormControl('', [Validators.required]),
 			'Side': new FormControl(),
 			'CounterPartyId': new FormControl('', [Validators.required]),
-			'Quantity': new FormControl('', [Validators.required]),
+			'Quantity': new FormControl('', [Validators.required,Validators.pattern(/^[1-9]{1}[0-9]{0,3}$/)]),
 			'LocationId': new FormControl('', [Validators.required])
 		});
 	}

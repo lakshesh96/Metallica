@@ -70,6 +70,7 @@
 						<span class="input-group-text" id="basic-addon2">MT</span>
 					</div>
 				</div>
+				<div class="error text-danger" *ngIf="tradeForm.get('Quantity').hasError('pattern')">Quantity should be Greater than 0</div>   
 			</td>
 		</tr>
         
@@ -84,7 +85,7 @@
 		<tr>
 			<th></th>
 			<td align="right">
-				<input type="button" class="btn btn-primary mb-2" value="Submit" (click)="onSubmit(tradeForm.value)" [hidden]="!details" />
+				<input type="button" class="btn btn-primary mb-2" value="Submit" (click)="onSubmit(tradeForm.value)" [disabled]="!tradeForm.valid" [hidden]="!details" />
 				<input type="button" class="btn btn-secondary mb-2" value="Edit" (click)="onEditClick()" [hidden]="details" />
 			</td>
 		</tr>
