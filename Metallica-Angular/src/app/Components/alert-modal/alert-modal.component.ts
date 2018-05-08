@@ -14,7 +14,6 @@ export class AlertModalComponent implements OnInit, OnChanges {
 	@Input() title:string = "";
 	@Input() body:string = "";
 	@Input() bodyDetails:string = "";
-	@Input() parentSubject:Subject<any>;
 	@Input() alertSource:string = "";
 	@Input() alertHidden = true;
 
@@ -27,18 +26,29 @@ export class AlertModalComponent implements OnInit, OnChanges {
 
 	ngOnChanges(){
 		if(this.alertHidden == false)
+		{
 			this.throwAlert();
+		}
+		
 	}
 
 	throwAlert(){
 		$("#LoginModal").modal();
+		
 	}
   
 	closeAlertRoute(){
+		
 		if(this.alertSource=="Success")
 			this.okEmit.emit(true);
 		else if(this.alertSource=="Error")
 			this.okEmit.emit(false);
+		
+		this.title = "";
+		this.body = "";
+		this.bodyDetails = "";
+		this.alertSource = "";
+		this.alertHidden = true;
 	}
 
 }

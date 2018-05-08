@@ -27,7 +27,9 @@ export class MainComponent implements OnInit {
 		this.UserName = globalService.getUserData("Name");
 	}
 
-	ngOnInit() { }
+	ngOnInit() {
+		
+	 }
 
 	searchData: any[];
 
@@ -55,9 +57,12 @@ export class MainComponent implements OnInit {
 	}
 
 	logOut(){
-		this.throwAlert("Successfully Logged Out", "User session has been deleted!", "Press OK to continue", "Success");
 		sessionStorage.removeItem("AccessToken");
 		localStorage.removeItem("RefData");
+		localStorage.removeItem("UserDetails");
+		this.alertHidden = true;
+		
+		this.throwAlert("Successfully Logged Out", "User session has been deleted!", "Press OK to continue", "Success");
 	}
 
 	tradeReceive(trade) {
@@ -73,9 +78,11 @@ export class MainComponent implements OnInit {
 		this.body = body;
 		this.bodyDetails = bodyDetails;
 		this.alertSource = alertSource;
+		console.log("At Main component throw",this.alertHidden,title,body,alertSource,bodyDetails);
 	}
 
 	closeAlertRoute(value) {
+		console.log("At Main component close: ",value);
 		if(value)
 			this.router.navigateByUrl('Login');
 	}
