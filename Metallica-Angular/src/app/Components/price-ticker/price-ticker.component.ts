@@ -41,10 +41,13 @@ export class PriceTickerComponent implements OnInit {
 			if (element.Id == commodity.Id) {
 				element.Increase = element.CurrentPrice >= commodity.CurrentPrice;
 				element.CurrentPrice = commodity.CurrentPrice;
-				if(element.Increase)
+				if(element.Increase) {
 					this.toastr.error(element.Name + ': -' + (element.BasePrice-element.CurrentPrice).toString(),'Price Decreased!');
-				else
+				} else {
 					this.toastr.success(element.Name + ': +' + (element.CurrentPrice-element.BasePrice).toString(),'Price Increased!');					
+				}
+				
+				
 			}
 		});
 	}
