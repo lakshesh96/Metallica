@@ -15,6 +15,7 @@ export class TradeTableComponent implements OnInit,OnChanges {
 	@Input() trades: any[];
 	@Output() tradeEmit = new EventEmitter<TradeTable>();
 	@Input() rowHighlightToggle:number;
+	@Input() rowHighlightToggle2:number;
 
 	constructor(private tradeService: TradeTableService,public router:Router,public searchService:SearchService, private toastr: ToastrService) { }
 	
@@ -22,7 +23,7 @@ export class TradeTableComponent implements OnInit,OnChanges {
 	url : string = "/api/trades";
 
 	ngOnChanges() {
-		if(this.rowHighlightToggle != null && this.rowHighlightToggle == -1)
+		if((this.rowHighlightToggle != null && this.rowHighlightToggle == -1)||(this.rowHighlightToggle2 != null && this.rowHighlightToggle2 == -1))
 		{
 			this.selectedRow = -1;
 		}

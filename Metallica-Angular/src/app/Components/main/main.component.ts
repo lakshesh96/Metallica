@@ -20,14 +20,17 @@ export class MainComponent implements OnInit {
 	alertSource: string;
 	alertHidden: boolean = true;
 	
-	rowHighlightToggle:number;
+	rowHighlightToggle:number=-1;
+	rowHighlightToggle2:number=-2;
 	UserName:string;
 
 	constructor(private router: Router, private globalService: GlobalService,private tradeService:TradeOperationService) { 
 		this.UserName = globalService.getUserData("Name");
 	}
 
-	ngOnInit() { }
+	ngOnInit() {
+		
+	 }
 
 	searchData: any[];
 
@@ -47,7 +50,17 @@ export class MainComponent implements OnInit {
 		this.hideRightBar = true;
 		this.hideDetails = true;
 		this.hideAddTrade = true;
-		this.rowHighlightToggle = -1;
+		if(this.rowHighlightToggle2==-1)
+		{
+			this.rowHighlightToggle = -1;
+			this.rowHighlightToggle2 = -2;
+		}
+		else if(this.rowHighlightToggle==-1)
+		{
+			this.rowHighlightToggle = -2;
+			this.rowHighlightToggle2 = -1;
+		}
+
 	}
 
 	searchReceived(data) {
@@ -55,9 +68,12 @@ export class MainComponent implements OnInit {
 	}
 
 	logOut(){
-		this.throwAlert("Successfully Logged Out", "User session has been deleted!", "Press OK to continue", "Success");
 		sessionStorage.removeItem("AccessToken");
 		localStorage.removeItem("RefData");
+		localStorage.removeItem("UserDetails");
+		this.alertHidden = true;
+		
+		this.throwAlert("Successfully Logged Out", "User session has been deleted!", "Press OK to continue", "Success");
 	}
 
 	tradeReceive(trade) {
@@ -73,9 +89,11 @@ export class MainComponent implements OnInit {
 		this.body = body;
 		this.bodyDetails = bodyDetails;
 		this.alertSource = alertSource;
+		console.log("At Main component throw",this.alertHidden,title,body,alertSource,bodyDetails);
 	}
 
 	closeAlertRoute(value) {
+		console.log("At Main component close: ",value);
 		if(value)
 			this.router.navigateByUrl('Login');
 	}

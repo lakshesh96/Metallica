@@ -4,6 +4,8 @@ import { ReferenceDataService } from '../../Services/ReferenceData/reference-dat
 import { SearchService } from '../../Services/Search/search.service';
 import { TradeTableComponent } from '../trade-table/trade-table.component';
 import { GlobalService } from '../../Services/GlobalService/global.service';
+import { Router } from '@angular/router';
+declare var $:any;
 
 @Component({
   selector: 'app-search',
@@ -13,6 +15,13 @@ import { GlobalService } from '../../Services/GlobalService/global.service';
 export class SearchComponent implements OnInit {
 
 	@Output() searchEmit = new EventEmitter<any[]>();
+
+	//Alert Modal Variables
+	title:string;
+	body:string;
+	bodyDetails:string;
+	alertSource:string;
+	alertHidden:boolean = true;
 
 	searchForm = new FormGroup({
 		dateFrom: new FormControl(),
@@ -27,15 +36,8 @@ export class SearchComponent implements OnInit {
 	commodities: any[];
 	locations: any[];
 	counterParties: any[];
-
-	//Alert Modal Variables
-	title:string;
-	body:string;
-	bodyDetails:string;
-	alertSource:string;
-	alertHidden:boolean = true;
 	
-	constructor(public searchService: SearchService, public globalService: GlobalService) { 
+	constructor(public searchService: SearchService, public globalService: GlobalService, private router:Router) { 
 		this.commodities = globalService.getReferenceData("Commodities");
 		this.locations = globalService.getReferenceData("Locations");
 		this.counterParties = globalService.getReferenceData("CounterParties");
@@ -47,10 +49,10 @@ export class SearchComponent implements OnInit {
 		if (data.value.dateFrom != null && data.value.dateTo != null) {
 			let dateFrom: Date = new Date(data.value.dateFrom);
 			let dateTo: Date = new Date(data.value.dateTo);
+			dateTo.setDate(dateTo.getDate() + 1);
 
-			if (dateFrom > dateTo) {
-				//alert("'From' Date cannot be greater than or equal to the 'To' Date");
-				
+			if (dateFrom >= dateTo) {
+				this.throwAlert("Search Error!","'From' Date cannot be greater than or equal to the 'To' Date","","Success");
 				return;
 			}
 
@@ -69,5 +71,20 @@ export class SearchComponent implements OnInit {
 				this.searchEmit.emit(trades);
 			}
 		);
+	}
+
+	throwAlert(title,body,bodyDetails,alertSource){
+		this.alertHidden = false;
+		this.title = title;
+		this.body = body;
+		this.bodyDetails = bodyDetails;
+		this.alertSource = alertSource;
+		$("#SearchModal").modal();
+	}
+
+	closeAlertRoute() {
+		console.log("At close Alert:");
+		/*if(value)
+			this.router.navigateByUrl('Main');*/
 	}
 }

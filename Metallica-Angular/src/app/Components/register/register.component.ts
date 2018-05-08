@@ -46,10 +46,10 @@ AddUser(item) {
       this.status = response
     },
     error => {
-			this.throwAlert("Registration Failed","Username already exists!","Please provide another username.","Error");
+			this.throwAlert("Registration Failed!","Username already exists!","Please provide another Username.","Error");
     },
     () => {
-			this.throwAlert("Register Successfully!","User has been successfully registerd.","Press OK to continue","Success");      
+			this.throwAlert("Registration Successfull!","User has been successfully registered.","Press OK to continue","Success");      
     }
   );
 
