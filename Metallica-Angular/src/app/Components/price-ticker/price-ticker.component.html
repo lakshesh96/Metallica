@@ -1,10 +1,35 @@
 <div class="row border p-1 my-2 shadow-sm bg-white">
 	<div class="col" *ngFor="let e of commodityList">
-		<span class="" style="display: block;margin-bottom: -5px;">{{e.Name}}</span>
+		<!-- <span class="" style="display: block;margin-bottom: -5px;">{{e.Name}}</span>
 		<span style="display: flex;font-weight: 600;flex-direction: row;align-items: center;">
 			{{e.CurrentPrice | number:'1.1-3'}} 
 			<i class="fas fa-chevron-up pl-1" style="color: #0fbf0f" [hidden]="e.Increase"></i>
 			<i class="fas fa-chevron-down pl-1" style="color: #bf0f0f" [hidden]="!e.Increase"></i>
-		</span>
+		</span> -->
+		<div class="row mx-0" style="margin-bottom: -3px;">
+			<span class="border-bottom" [class.bg-success]="e.Increase">{{e.Name}}</span>
+		</div>
+		<div class="row mx-0">
+			<span style="display: flex;font-weight: 600;flex-direction: row;align-items: center;">{{e.CurrentPrice | number:'1.1-3'}}
+				<i class="fas fa-chevron-up pl-1" style="color: #0fbf0f" [hidden]="e.Increase"></i>
+				<i class="fas fa-chevron-down pl-1" style="color: #bf0f0f" [hidden]="!e.Increase"></i>
+			</span>
+		</div>
 	</div>
 </div>
+
+
+
+
+<!-- 
+<div class="col">
+    <div class="row">
+		<span>Ishan</span>
+	</div>
+    <div class="row">
+    	<span>0.0
+			<i class="fas fa-chevron-up pl-1" style="color: #0fbf0f"></i>
+			<i class="fas fa-chevron-down pl-1" style="color: #bf0f0f" hidden=""></i>
+		</span>
+	</div>
+</div> -->

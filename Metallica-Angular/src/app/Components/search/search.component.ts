@@ -27,6 +27,13 @@ export class SearchComponent implements OnInit {
 	commodities: any[];
 	locations: any[];
 	counterParties: any[];
+
+	//Alert Modal Variables
+	title:string;
+	body:string;
+	bodyDetails:string;
+	alertSource:string;
+	alertHidden:boolean = true;
 	
 	constructor(public searchService: SearchService, public globalService: GlobalService) { 
 		this.commodities = globalService.getReferenceData("Commodities");
@@ -42,7 +49,8 @@ export class SearchComponent implements OnInit {
 			let dateTo: Date = new Date(data.value.dateTo);
 
 			if (dateFrom > dateTo) {
-				alert("'From' Date cannot be greater than or equal to the 'To' Date");
+				//alert("'From' Date cannot be greater than or equal to the 'To' Date");
+				
 				return;
 			}
 

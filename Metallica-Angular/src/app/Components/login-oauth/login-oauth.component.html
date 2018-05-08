@@ -21,10 +21,10 @@
 				</div>
 			</div>
 
-			<span class="d-block" tabindex="0" data-toggle="tooltip" title="Please input valid details">
+			<span class="d-block" data-toggle="tooltip" title="Please input valid details" [hidden]="login.valid">
 				<button class="btn btn-lg btn-primary btn-block" style="pointer-events: none;" type="submit" [hidden]="login.valid" [disabled]="!login.valid">Sign in</button>
 			</span>
-			<button class="btn btn-lg btn-primary btn-block" type="submit" [hidden]="!login.valid" [disabled]="!login.valid">Sign in</button>
+			<button class="btn btn-lg btn-primary btn-block"  type="submit" [hidden]="!login.valid" [disabled]="!login.valid">Sign in</button>
 			<p class="my-3 text-center"><a class="nav-link" routerLink="/Register">New User? Register Here!</a></p>
 		</form>
 	</div>
