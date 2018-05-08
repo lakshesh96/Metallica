@@ -25,7 +25,8 @@
 	<meta name="google-signin-client_id" content="351844398119-1snsmgp63bgma6vo71sj5lgfskl48f64.apps.googleusercontent.com">
 	<script>
 		$(document).ready(function(){
-			$('[data-toggle="tooltip"]').tooltip();   
+			$('[data-toggle="tooltip"]').tooltip(); 
+			resizeDiv();  
 		});
 
 		$('#tradeTable').ready(function(){
@@ -40,7 +41,7 @@
 			vpw = $(window).width();
 			vph = $(window).height();
 			var x = $('#tradeTable').offset();
-			vph = vph-x.top-8;
+			vph = vph-8;
 			$('#tradeTable').css({'max-height': vph +'px'});
 		}
 	</script>

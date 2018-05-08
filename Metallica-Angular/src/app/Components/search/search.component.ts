@@ -37,7 +37,7 @@ export class SearchComponent implements OnInit {
 	locations: any[];
 	counterParties: any[];
 	
-	constructor(public searchService: SearchService, public globalService: GlobalService, private router:Router) { 
+	constructor(public searchService: SearchService, public globalService: GlobalService) { 
 		this.commodities = globalService.getReferenceData("Commodities");
 		this.locations = globalService.getReferenceData("Locations");
 		this.counterParties = globalService.getReferenceData("CounterParties");
@@ -51,8 +51,8 @@ export class SearchComponent implements OnInit {
 			let dateTo: Date = new Date(data.value.dateTo);
 			dateTo.setDate(dateTo.getDate() + 1);
 
-			if (dateFrom >= dateTo) {
-				this.throwAlert("Search Error!","'From' Date cannot be greater than or equal to the 'To' Date","","Success");
+			if (dateFrom > dateTo) {
+				alert("'From' Date cannot be greater than or equal to the 'To' Date");
 				return;
 			}
 

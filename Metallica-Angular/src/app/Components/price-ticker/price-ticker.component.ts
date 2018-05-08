@@ -42,12 +42,15 @@ export class PriceTickerComponent implements OnInit {
 				element.Increase = element.CurrentPrice >= commodity.CurrentPrice;
 				element.CurrentPrice = commodity.CurrentPrice;
 				if(element.Increase) {
+					element.Color = 1;
 					this.toastr.error(element.Name + ': -' + (element.BasePrice-element.CurrentPrice).toString(),'Price Decreased!');
 				} else {
+					element.Color = 2;
 					this.toastr.success(element.Name + ': +' + (element.CurrentPrice-element.BasePrice).toString(),'Price Increased!');					
 				}
-				
-				
+				setTimeout(() => {
+					element.Color = 0;
+				}, 3000);
 			}
 		});
 	}
