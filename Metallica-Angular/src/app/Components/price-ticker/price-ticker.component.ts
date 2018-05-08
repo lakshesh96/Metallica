@@ -41,10 +41,15 @@ export class PriceTickerComponent implements OnInit {
 			if (element.Id == commodity.Id) {
 				element.Increase = element.CurrentPrice >= commodity.CurrentPrice;
 				if(element.Increase) {
+					element.Color = 1;
 					this.toastr.error(element.Name + ': -' + (element.CurrentPrice-commodity.CurrentPrice).toFixed(2).toString(),'Price Decreased!');
 				} else {
+					element.Color = 2;
 					this.toastr.success(element.Name + ': +' + (commodity.CurrentPrice-element.CurrentPrice).toFixed(2).toString(),'Price Increased!');					
 				}
+				setTimeout(() => {
+					element.Color = 0;
+				}, 3000);
 				element.CurrentPrice = commodity.CurrentPrice;
 				
 				
