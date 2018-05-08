@@ -8,7 +8,6 @@
 			<th>Price(/MT)</th>
 			<th>CounterParty</th>
 			<th>Location</th>
-			<th></th>
 		</tr>
 		<tr *ngFor = "let trade of trades; let i = index" (click)="detailRequest(trade, i)" [class.active]="i == selectedRow" style="cursor:context-menu;">
 			<td>{{trade.Date | date: 'mediumDate'}}</td>
@@ -21,7 +20,6 @@
 			<td>{{trade.Price | currency:'INR':3}}</td>      
 			<td>{{trade.CounterParty.Name}} | {{trade.CounterParty.Code}}</td>      
 			<td>{{trade.Location.Name}} | {{trade.Location.Code}}</td> 	
-			<td><i style="padding-left: 5px; cursor: pointer;" class="far fa-trash-alt"></i></td>
 		</tr>
 	</table>
 </div>
