@@ -20,7 +20,8 @@ export class MainComponent implements OnInit {
 	alertSource: string;
 	alertHidden: boolean = true;
 	
-	rowHighlightToggle:number;
+	rowHighlightToggle:number=-1;
+	rowHighlightToggle2:number=-2;
 	UserName:string;
 
 	constructor(private router: Router, private globalService: GlobalService,private tradeService:TradeOperationService) { 
@@ -49,7 +50,17 @@ export class MainComponent implements OnInit {
 		this.hideRightBar = true;
 		this.hideDetails = true;
 		this.hideAddTrade = true;
-		this.rowHighlightToggle = -1;
+		if(this.rowHighlightToggle2==-1)
+		{
+			this.rowHighlightToggle = -1;
+			this.rowHighlightToggle2 = -2;
+		}
+		else if(this.rowHighlightToggle==-1)
+		{
+			this.rowHighlightToggle = -2;
+			this.rowHighlightToggle2 = -1;
+		}
+
 	}
 
 	searchReceived(data) {

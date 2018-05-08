@@ -25,7 +25,7 @@
 	<app-search (searchEmit)="searchReceived($event)"></app-search>
 	<div class="row">
 		<div class="col-lg px-0 my-2 border border-top-0 shadow-sm bg-white" id="tradeTable">   
-            <app-trade-table [trades]="searchData" [rowHighlightToggle]="rowHighlightToggle" (tradeEmit)="tradeReceive($event)"></app-trade-table>
+            <app-trade-table [trades]="searchData" [rowHighlightToggle]="rowHighlightToggle" [rowHighlightToggle2]="rowHighlightToggle2" (tradeEmit)="tradeReceive($event)"></app-trade-table>
 			  <img src="../assets/add.png" (click)="openTradeAddForm()" style="z-index:1; position: fixed; right: 25px; bottom: 25px; cursor: pointer;" [hidden]="hideAddButton"/>
 		</div>
 		
