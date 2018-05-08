@@ -67,6 +67,7 @@ namespace Metallica.Provider
             {
                 context.SetError("invalid_grant", "Provided username and password is incorrect");
                 context.Rejected();
+                return;
             }
         }
     }

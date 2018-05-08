@@ -43,12 +43,6 @@ export class AlertModalComponent implements OnInit, OnChanges {
 			this.okEmit.emit(true);
 		else if(this.alertSource=="Error")
 			this.okEmit.emit(false);
-		
-		this.title = "";
-		this.body = "";
-		this.bodyDetails = "";
-		this.alertSource = "";
-		this.alertHidden = true;
 	}
 
 }

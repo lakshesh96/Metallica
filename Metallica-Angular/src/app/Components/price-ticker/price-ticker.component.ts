@@ -40,12 +40,13 @@ export class PriceTickerComponent implements OnInit {
 		this.commodityList.forEach(element => {
 			if (element.Id == commodity.Id) {
 				element.Increase = element.CurrentPrice >= commodity.CurrentPrice;
-				element.CurrentPrice = commodity.CurrentPrice;
 				if(element.Increase) {
-					this.toastr.error(element.Name + ': -' + (element.BasePrice-element.CurrentPrice).toString(),'Price Decreased!');
+					this.toastr.error(element.Name + ': -' + (element.CurrentPrice-commodity.CurrentPrice).toFixed(2).toString(),'Price Decreased!');
 				} else {
-					this.toastr.success(element.Name + ': +' + (element.CurrentPrice-element.BasePrice).toString(),'Price Increased!');					
+					this.toastr.success(element.Name + ': +' + (commodity.CurrentPrice-element.CurrentPrice).toFixed(2).toString(),'Price Increased!');					
 				}
+				element.CurrentPrice = commodity.CurrentPrice;
+				
 				
 				
 			}

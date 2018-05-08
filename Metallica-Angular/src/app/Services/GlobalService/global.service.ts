@@ -77,6 +77,7 @@ export class GlobalService {
 		} else {
 			errMsg = error.message ? error.message : error.toString();
 		}
+		console.log("At Global Service handleError");
 		console.error(errMsg);
 		let errorResponse = error.json();
 		if (errorResponse.StatusCode == 401) {

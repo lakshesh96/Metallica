@@ -65,7 +65,8 @@ export class LoginOauthComponent implements OnInit {
 		try {
 			this.globalService.LoginPost(params,this.url,this.headers).subscribe(
 				response => {
-					this.AccessToken = response.access_token;		
+					console.log("At Login response");					
+					this.AccessToken = response.access_token;
 					sessionStorage.setItem("AccessToken",this.AccessToken.toString());
 					if(this.AccessToken != null)
 						this.loadReferenceData(value.UserName);
@@ -84,7 +85,9 @@ export class LoginOauthComponent implements OnInit {
 	loadReferenceData(username) {
 		this.globalService.GetMethod("/api/RefData/" + username).subscribe(
 			response => {
+				console.log("At loadingReference");
 				this.globalService.setReferenceData(response);
+				console.log("At loadingReference 2");				
 				this.throwAlert("Successfully Logged In","Welcome "+ username,"","Success");
 			},
 			error => console.error(error),
@@ -93,6 +96,7 @@ export class LoginOauthComponent implements OnInit {
 	}
 
 	throwAlert(title,body,bodyDetails,alertSource){
+		console.log("At throw alert 1");						
 		this.alertHidden = false;
 		this.title = title;
 		this.body = body;
@@ -101,6 +105,7 @@ export class LoginOauthComponent implements OnInit {
 	}
 
 	closeAlertRoute(value) {
+		console.log("At close alert");		
 		if(value)
 			this.router.navigateByUrl('Main');
 	}
