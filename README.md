@@ -38,12 +38,17 @@ Metallica is a Full-Stack service Based Web Application
 - Run Metallica WebApi
 
   > Navigate to Metallica_API folder
+  
   > Open Metallica.sln in Visual Studio
+  
   > Build and Run
-
+  
 - Run Metallica Angular Web App
+
   > Open Windows PowerShell and navigate to Metallica-Angular folder
+  
   > Run npm install
+  
   > Run ng serve
   
 # Usage
