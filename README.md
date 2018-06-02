@@ -27,7 +27,9 @@ Metallica is a Full-Stack service Based Web Application
   
   > Check MSMQ Server
 
-# Compilation & Installation (Preffered way)
+# Compilation & Installation
+
+### (Preffered way)
 
 - Clone Git Repo
 
