@@ -3,7 +3,7 @@ Metal Trading application
 
 # Overview
 
-Metallica is a Full-Stack service Based Web Application
+Metallica is a Full-Stack service based Web Application
 
 # Tech
 
