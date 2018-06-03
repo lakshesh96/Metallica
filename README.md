@@ -51,7 +51,7 @@ Metallica is a Full-Stack service based Web Application
   
   > Run ng serve
   
-# Usage
+# Procedure
 
 - Open any browser
 
