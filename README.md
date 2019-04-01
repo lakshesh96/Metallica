@@ -7,7 +7,7 @@ Metallica is a Full-Stack service based Web Application
 
 # Tech
 
-  * Angular 2
+  * Angular 4
   
   * ASP.Net WebApi
   
